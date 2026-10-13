@@ -1,5 +1,5 @@
 {
- "emitido_utc": "2026-10-13T10:28:33+00:00",
+ "emitido_utc": "2026-10-13T15:56:20+00:00",
  "valido_ate": "2026-10-23",
  "desatualizado": false,
  "nivel_hoje": "verde",
@@ -177,13 +177,13 @@
  "aviso": "Boletim experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. A turbidez é um indicador da cor da água visto por satélite: não mede se a água é segura.",
  "fontes": "Caudal: GloFAS v4 (Copernicus EMS) via Open-Meteo. Chuva: ECMWF IFS via Open-Meteo. Turbidez: Sentinel-2 (Copernicus). Terreno: Copernicus DEM, MERIT Hydro, JRC.",
  "estado": {
-  "emitido_utc": "2026-10-13T10:28:33+00:00",
+  "emitido_utc": "2026-10-13T15:56:20+00:00",
   "versao_codigo": "0.1.0",
   "fonte": "cache",
   "problemas": [],
   "data_da_previsao": "2026-10-13",
   "dados_obtidos_utc": "2026-10-13T10:28:11+00:00",
-  "idade_dos_dados_horas": 0.0,
+  "idade_dos_dados_horas": 5.5,
   "desatualizado": false,
   "cenarios": 51,
   "limites_caudal": {

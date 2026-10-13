@@ -22,30 +22,47 @@ não há perigo. Nesse caso, ouvir os avisos oficiais.
 
 ## As páginas
 
-### Hoje
-A cor do alerta, o que fazer, os lugares que alagam primeiro e os próximos dez dias.
-É a página para ver todos os dias.
+As páginas escolhem-se na barra do topo. Em várias delas há botões **◀ Anterior** e
+**Seguinte ▶** para andar de dia em dia, de mês em mês, de ano em ano ou de troço em troço.
 
-### Quantidade (cheias)
-O mapa. Pode escolher:
+### Início
+A cor do alerta, o que fazer, os números do dia e os próximos dez dias. Com os botões pode ver
+cada dia: o caudal previsto e a probabilidade de passar cada limite. É a página para ver todos os dias.
+
+### Cheias
+A previsão do caudal para dez dias, a chuva na bacia, o que quer dizer cada nível de alerta e
+o rio nos últimos três anos.
+
+### Mapa
+Pode escolher:
 - **Zonas de aviso:** a vermelho, onde a água chegou primeiro na cheia de janeiro de 2026; a
   laranja, onde chegou na cheia grande. Os pontos são lugares com nome.
-- **Suscetibilidade:** onde o terreno favorece a acumulação de água.
-- **Água vista por radar:** onde o satélite viu água em cada mês.
+- **Terreno que favorece cheias:** onde o terreno favorece a acumulação de água.
+- **Água vista por radar:** onde o satélite viu água em cada mês. Os botões mudam de mês.
 
-Mais abaixo: o caudal previsto do rio e o que existe em cada zona (casas, estradas, terras).
+Pode procurar um lugar pelo nome. O mapa aparece primeiro como imagem, que gasta poucos
+dados; o botão "Mapa interactivo" permite aproximar e afastar.
 
-### Qualidade (água do rio)
+### Água do rio
 O rio da fronteira à foz, dividido em nove partes. A cor de cada parte diz se a água está
 **normal**, **elevada** ou **muito elevada** em turbidez, comparando com o costume para essa
-época do ano.
+época do ano. Há também a previsão para as próximas manhãs em Marracuene.
 
 **Atenção:** o satélite vê a cor da água. Não vê micróbios nem químicos. **A água do rio deve
 ser sempre tratada antes de beber** (ferver, ou usar cloro). Com água barrenta, deixar
 assentar e filtrar por um pano limpo antes de ferver.
 
-### Sobre os dados
-De onde vem a informação e até onde se pode confiar nela.
+### Histórico
+Vinte anos do rio: quantos dias de alerta houve em cada ano, um calendário com o alerta mais
+alto de cada mês, e cada ano em detalhe.
+
+### Lugares
+O que existe em cada zona de aviso (casas, estradas, terras) e a lista dos lugares por ordem
+de alagamento.
+
+### Como funciona
+De onde vem a informação, até onde se pode confiar nela, perguntas frequentes e o estado do
+sistema.
 
 ## Com pouca rede
 

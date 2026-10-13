@@ -1,5 +1,5 @@
 {
- "executado_utc": "2026-10-13T10:28:34+00:00",
+ "executado_utc": "2026-10-13T15:56:21+00:00",
  "codigo_de_saida": 0,
  "passos": [
   {
@@ -11,19 +11,19 @@
   {
    "passo": "modulo_q",
    "estado": "saltado",
-   "detalhe": "ainda não extraído (correr scripts/update_module_q_series.py)",
+   "detalhe": "feito no computador do projecto, uma vez por mês",
    "segundos": 0
   },
   {
    "passo": "previsao",
    "estado": "ok",
    "detalhe": "",
-   "segundos": 1.4
+   "segundos": 1.5
   },
   {
    "passo": "pacote",
    "estado": "atualizado",
-   "detalhe": "19 camadas",
+   "detalhe": "21 camadas",
    "segundos": 0.1
   },
   {

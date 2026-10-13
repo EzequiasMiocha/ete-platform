@@ -1,6 +1,6 @@
 # Boletim ETE - Rio Incomáti, Marracuene
 
-**Emitido:** 2026-10-13 10:28 UTC · **Válido até:** 23/10
+**Emitido:** 2026-10-13 15:56 UTC · **Válido até:** 23/10
 
 ## Nível VERDE nos próximos 10 dias: nenhum cenário prevê cheia no Incomáti em Marracuene.
 

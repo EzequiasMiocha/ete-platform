@@ -91,7 +91,7 @@ def _figure(width: float = 6.4, height: float = 7.2):
 
 def _save_light(fig, plt, file) -> None:
     fig.tight_layout(pad=0.4)
-    fig.savefig(file, dpi=85)
+    fig.savefig(file, dpi=150)
     plt.close(fig)
     from PIL import Image
 
@@ -234,8 +234,19 @@ def export_series(cfg: dict, folder) -> list[dict]:
     history.loc[history.index >= history.index.max() - pd.Timedelta(days=3 * 365), ["q", "rain"]].round(2).rename(
         columns={"q": "caudal_m3s", "rain": "chuva_bacia_mm"}).rename_axis("data").to_csv(out / "caudal_e_chuva_diario.csv")
     alerts = pd.read_csv(series / "alertas_diarios.csv", parse_dates=["date"])
-    alerts.loc[alerts["date"] >= "2015-01-01", ["date", "p7_basin", "discharge_m3s", "alerta"]].rename(
+    alerts[["date", "p7_basin", "discharge_m3s", "alerta"]].assign(p7_basin=alerts["p7_basin"].round(1), discharge_m3s=alerts["discharge_m3s"].round(1)).rename(
         columns={"date": "data", "p7_basin": "chuva_7d_mm", "discharge_m3s": "caudal_m3s"}).to_csv(out / "alertas_historicos.csv", index=False)
+    # facts and validation tables behind the "how it works" page, when the notebooks have produced them
+    about = folder / "sobre"
+    about.mkdir(parents=True, exist_ok=True)
+    reports = path(cfg, "reports", "semana_3", mkdir=False)
+    extra = []
+    for source, target, identifier, title, description in (
+            ("38_factos.csv", "factos.csv", "factos", "O problema em números", "Factos medidos com os dados do projecto (notebook 38)."),
+            ("33_relatorio_de_validacao.csv", "validacao_cheias.csv", "validacao_cheias", "Validação dos modelos de cheias", "Medidas de acerto dos modelos A e B (notebook 33).")):
+        if (reports / source).exists():
+            shutil.copy2(reports / source, about / target)
+            extra.append({"id": identifier, "titulo": title, "tipo": "tabela", "ficheiro": f"sobre/{target}", "descricao": description, "atualizacao": "quando os modelos mudam"})
     shutil.copy2(series / "modelo_b_area_mensal.csv", out / "area_de_agua_mensal.csv")
     shutil.copy2(series / "vegetacao_no_rio_mensal.csv", out / "vegetacao_no_rio_mensal.csv")
     measured = load_scene_series(cfg, "sentinel2")[["date", "troco", "ndti", "pixeis"]]
@@ -245,7 +256,7 @@ def export_series(cfg: dict, folder) -> list[dict]:
         {"id": "caudal_e_chuva", "titulo": "Caudal e chuva dos últimos 3 anos", "tipo": "serie", "ficheiro": "series/caudal_e_chuva_diario.csv",
          "limites_de_alerta_m3s": limits, "descricao": "Caudal do Incomáti em Marracuene (modelo GloFAS) e chuva média na bacia (ERA5).",
          "limites": "O caudal vem de um modelo global, não de uma estação de medição."},
-        {"id": "alertas_historicos", "titulo": "Alertas dia a dia desde 2015", "tipo": "serie", "ficheiro": "series/alertas_historicos.csv",
+        {"id": "alertas_historicos", "titulo": "Alertas dia a dia desde 2006", "tipo": "serie", "ficheiro": "series/alertas_historicos.csv",
          "legenda": [{"valor": k, "nome": k, "cor": v} for k, v in ALERT_COLOURS.items()], "descricao": "O nível de alerta que as regras teriam dado em cada dia."},
         {"id": "area_de_agua", "titulo": "Área com água por mês", "tipo": "serie", "ficheiro": "series/area_de_agua_mensal.csv",
          "descricao": "Área de água e de cheia vista pelo radar em cada mês (km²)."},
@@ -253,7 +264,7 @@ def export_series(cfg: dict, folder) -> list[dict]:
          "descricao": "Índice de cor NDTI de cada troço em cada imagem do Sentinel-2 (mais alto = mais turva).",
          "limites": "Índice relativo: não é turbidez em unidades reais nem diz se a água é segura."},
         {"id": "vegetacao_no_rio", "titulo": "Vegetação sobre a água", "tipo": "serie", "ficheiro": "series/vegetacao_no_rio_mensal.csv",
-         "descricao": "Parte do canal do rio coberta por plantas, por troço e por mês.", "limites": "Só tem expressão no troço a montante. Por confirmar no terreno."}]
+         "descricao": "Parte do canal do rio coberta por plantas, por troço e por mês.", "limites": "Só tem expressão no troço a montante. Por confirmar no terreno."}] + extra
 
 
 def export_daily(cfg: dict, folder) -> list[dict]:
@@ -344,6 +355,13 @@ def _model_summary(cfg: dict) -> dict:
             "mare": {k: read("mare_maputo.json").get(k) for k in ("source", "period", "test_last_12_months")}}
 
 
+def _advice() -> dict:
+    """What to do at each alert level and with turbid water: the texts the bulletin uses."""
+    from .operations import ADVICE, TURBIDITY_ADVICE
+
+    return {**ADVICE, "agua_turva": TURBIDITY_ADVICE}
+
+
 def _write_catalogue(cfg: dict, folder, entries: list[dict]) -> dict:
     file = folder / "catalogo.json"
     old = {e["id"]: e for e in json.loads(file.read_text())["camadas"]} if file.exists() else {}
@@ -353,7 +371,7 @@ def _write_catalogue(cfg: dict, folder, entries: list[dict]) -> dict:
                  "gerado_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"), "sistema_de_coordenadas": "EPSG:4326 (latitude, longitude)",
                  "aviso": DISCLAIMER, "aplicacao": cfg.get("publication", {}).get("app_url", ""), "pagina_simples": cfg.get("publication", {}).get("page_url", ""),
                  "estado_da_previsao": {k: status.get(k) for k in ("estado", "data_da_previsao", "desatualizado", "fonte")},
-                 "modelos": _model_summary(cfg), "camadas": list(old.values())}
+                 "modelos": _model_summary(cfg), "conselhos": _advice(), "camadas": list(old.values())}
     file.write_text(json.dumps(catalogue, indent=1, ensure_ascii=False))
     return catalogue
 
