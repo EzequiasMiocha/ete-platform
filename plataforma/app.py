@@ -23,9 +23,20 @@ import json
 import pandas as pd
 import streamlit as st
 
+import importlib
+from pathlib import Path
+
 import graficos as G
 import leitor
 import tema as T
+
+# A running server keeps the helper modules it first loaded. When one of them changes on disk it
+# is loaded again here, so an update never leaves the app calling a function the old copy lacks.
+for _modulo in (T, G):
+    _alterado = Path(_modulo.__file__).stat().st_mtime
+    if getattr(_modulo, "_carregado_em", None) != _alterado:
+        importlib.reload(_modulo)
+    _modulo._carregado_em = _alterado
 
 st.set_page_config(page_title="ETE · Incomáti, Marracuene", page_icon="🌊", layout="wide", initial_sidebar_state="collapsed")
 T.html(T.CSS)
