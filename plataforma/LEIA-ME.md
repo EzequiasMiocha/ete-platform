@@ -7,7 +7,8 @@ projecto, nem o Earth Engine, nem os modelos.
 |---|---|
 | Dados (cerca de 4 MB) | `dados/` |
 | Funções de leitura, testadas | `leitor.py` |
-| Aplicação Streamlit (Hoje, Quantidade, Qualidade, Sobre os dados) | `app.py`; teste sem navegador: `testar_app.py` |
+| Aplicação Streamlit (Hoje, Cheias, Água do rio, Sobre os dados) | `app.py` (páginas) e `ui.py` (estilo, cartões, gráficos); teste sem navegador: `testar_app.py` |
+| Versão anterior da aplicação | `arquivo/app_v1.py` |
 | Exemplo mínimo anterior | `app_exemplo.py` |
 
 ## Começar

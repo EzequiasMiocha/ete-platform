@@ -74,6 +74,70 @@ def _geojson(frame, file, tolerance_m: float = 0.0, decimals: int = 5) -> None:
     frame.to_file(file, driver="GeoJSON")
 
 
+# ----------------------------------------------------------------------------- light static maps
+def _figure(width: float = 6.4, height: float = 7.2):
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(width, height))
+    ax.set_facecolor("#f7f5ef")
+    ax.set_xticks([]), ax.set_yticks([])
+    for side in ax.spines.values():
+        side.set_color("#d5d8dc")
+    return fig, ax, plt
+
+
+def _save_light(fig, plt, file) -> None:
+    fig.tight_layout(pad=0.4)
+    fig.savefig(file, dpi=85)
+    plt.close(fig)
+    from PIL import Image
+
+    Image.open(file).convert("P", palette=Image.ADAPTIVE, colors=64).save(file, optimize=True)        # a few tens of KB
+
+
+def _light_zone_map(cfg: dict, zones, places, water, grid, file) -> None:
+    """Small picture of the warning zones with the names of the places, for phones on little data."""
+    import matplotlib.colors as mcolors
+    import matplotlib.patheffects as effects
+
+    fig, ax, plt = _figure()
+    district = load_aoi(cfg, "district").to_crs(grid.crs)
+    west, south, east, north = grid.bounds
+    ax.imshow(water, extent=[west, east, south, north], cmap=mcolors.ListedColormap(["#7fb3d5"]), interpolation="nearest", zorder=2)
+    for value, colour in ZONE_COLOURS.items():
+        zones[zones["zona"] == value].plot(ax=ax, color=colour, alpha=0.75, zorder=3)
+    district.boundary.plot(ax=ax, color="black", linewidth=1.1, zorder=5)
+    inside = places[places.within(district.union_all().buffer(1000)) & places["categoria"].isin(["alaga primeiro", "alaga em cheia grande"])]
+    inside = inside.sort_values("parte_alagada", ascending=False).head(16)
+    inside.plot(ax=ax, color="#1c2833", markersize=14, zorder=6)
+    for _, row in inside.iterrows():
+        ax.annotate(row["lugar"], (row.geometry.x, row.geometry.y), xytext=(4, 3), textcoords="offset points", fontsize=7.5, zorder=7,
+                    path_effects=[effects.withStroke(linewidth=2, foreground="white")])
+    bounds = district.total_bounds
+    ax.set_xlim(bounds[0] - 2000, bounds[2] + 2000), ax.set_ylim(bounds[1] - 2000, bounds[3] + 2000)
+    ax.set_xlabel(""), ax.set_ylabel("")
+    _save_light(fig, plt, file)
+
+
+def _light_quality_map(cfg: dict, water, file) -> None:
+    """Small picture of the river from the border to the mouth, each section in the colour of its state."""
+    import matplotlib.patheffects as effects
+
+    fig, ax, plt = _figure(7.0, 5.2)
+    load_aoi(cfg, "district").to_crs(water.crs).boundary.plot(ax=ax, color="#7f8c8d", linewidth=0.9, zorder=2)
+    for _, row in water.iterrows():
+        type(water)([row], crs=water.crs).buffer(350).plot(ax=ax, color=row["cor"], zorder=3)
+        point = row.geometry.representative_point()
+        ax.annotate(row["troco"], (point.x, point.y), xytext=(6, 6), textcoords="offset points", fontsize=9, fontweight="bold", zorder=5,
+                    path_effects=[effects.withStroke(linewidth=2.2, foreground="white")])
+    ax.set_xlabel(""), ax.set_ylabel("")
+    ax.margins(0.06)
+    _save_light(fig, plt, file)
+
+
 # ----------------------------------------------------------------------------- static layers
 def export_static(cfg: dict, folder) -> list[dict]:
     """Layers that only change when the models or the reference data change."""
@@ -104,7 +168,14 @@ def export_static(cfg: dict, folder) -> list[dict]:
                     "descricao": "Onde a água chegou na cheia de janeiro de 2026 (mapas do Copernicus EMS): zona 1 nos primeiros mapas, zona 2 na maior extensão.",
                     "limites": "Baseadas numa única cheia. Fora da área analisada pelo Copernicus, as zonas são estimadas pelo Modelo A."})
 
+    # the same zones as a small image: the web map draws this instead of the heavy polygons
+    zone_raster = read_bands(path(cfg, "maps", "zonas_de_aviso", f"zonas_de_aviso_{name}_30m.tif", mkdir=False), ["zona"])["zona"]
+    zone_corners = write_overlay(np.where(zone_raster > 0, zone_raster, np.nan), grid, {1: ("zona 1", ZONE_COLOURS[1]), 2: ("zona 2", ZONE_COLOURS[2])},
+                                 maps / "zonas_de_aviso.png", 0.00027, alpha=170)
+    entries[-1].update({"imagem": "mapas/zonas_de_aviso.png", "cantos": zone_corners})
     places = gpd.read_file(path(cfg, "maps", "zonas_de_aviso", f"lugares_{name}.gpkg", mkdir=False))
+    _light_zone_map(cfg, zones, places, np.where(classes == 0, 1.0, np.nan), grid, maps / "mapa_leve_zonas.png")
+    entries[-1]["mapa_leve"] = "mapas/mapa_leve_zonas.png"
     _geojson(places, vectors / "lugares.geojson")
     entries.append({"id": "lugares", "titulo": "Lugares e ordem de alagamento", "tipo": "vetor", "ficheiro": "vetores/lugares.geojson",
                     "campos": {"lugar": "nome", "categoria": "alaga primeiro / alaga em cheia grande / na margem da cheia / fora das zonas de aviso",
@@ -243,11 +314,13 @@ def export_quality(cfg: dict, folder) -> list[dict]:
     water = water.assign(geometry=water.buffer(25)).join(state[["mes", "classe", "fiabilidade", "alerta_de_qualidade"]], on="troco")      # widened a little so narrow reaches show on the map
     water["cor"] = water["classe"].map(QUALITY_COLOURS).fillna("#bdc3c7")
     _geojson(water, folder / "vetores" / "trocos_modulo_q.geojson", tolerance_m=20)
+    _light_quality_map(cfg, water, folder / "mapas" / "mapa_leve_qualidade.png")
     limits = ("Índice de cor da água visto por satélite, comparado com o normal de cada troço para o mês. A turbidez em FNU e os sólidos em mg/L são "
               "ESTIMATIVAS sem calibração local (os dois satélites diferem tipicamente por um fator de 1,5). Não mede se a água é segura.")
     return [
         {"id": "trocos_modulo_q", "titulo": "Qualidade da água por troço, da fronteira à foz", "tipo": "vetor", "ficheiro": "vetores/trocos_modulo_q.geojson",
          "legenda": [{"valor": k, "nome": k, "cor": v} for k, v in QUALITY_COLOURS.items() if k != "sem dados"], "atualizacao": "mensal",
+         "mapa_leve": "mapas/mapa_leve_qualidade.png",
          "descricao": "Os nove troços do Incomáti em Moçambique, coloridos pelo estado do último mês medido.", "limites": limits},
         {"id": "qualidade_estado", "titulo": "Estado de cada troço", "tipo": "tabela", "ficheiro": "qualidade/estado_por_troco.csv", "atualizacao": "mensal",
          "descricao": "Último mês medido de cada troço: classe face ao normal, e se a cor está acima do que a chuva e o caudal explicam (alerta de qualidade).",
