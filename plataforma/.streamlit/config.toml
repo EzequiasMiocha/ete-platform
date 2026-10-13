@@ -1,0 +1,16 @@
+# Aparência e servidor da aplicação ETE
+[theme]
+primaryColor = "#1f618d"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f2f4f4"
+textColor = "#1c2833"
+font = "sans serif"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"

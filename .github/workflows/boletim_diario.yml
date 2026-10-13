@@ -1,0 +1,48 @@
+# Boletim diário do ETE: previsão, boletim, mensagem, pacote da plataforma e página leve.
+# Corre todos os dias nos servidores do GitHub. Também se pode correr à mão: Actions > Boletim diário > Run workflow.
+name: Boletim diário
+
+on:
+  schedule:
+    - cron: "15 3 * * *"        # 03:15 UTC = 05:15 em Maputo
+  workflow_dispatch:
+
+permissions:
+  contents: write               # o boletim é guardado no próprio repositório
+
+concurrency:
+  group: boletim-diario
+  cancel-in-progress: false
+
+jobs:
+  boletim:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+      - name: Instalar
+        run: pip install -r requirements.txt
+      - name: Previsão, boletim, pacote e página
+        id: pipeline
+        run: |
+          set +e
+          python scripts/run_daily_pipeline.py --sem-imagens
+          echo "codigo=$?" >> "$GITHUB_OUTPUT"
+      - name: Verificar o pacote
+        run: python plataforma/leitor.py
+      - name: Guardar no repositório
+        run: |
+          git config user.name "ete-boletim"
+          git config user.email "ete-boletim@users.noreply.github.com"
+          git add -A plataforma/dados docs data/raw/forecast data/processed/forecast
+          git diff --cached --quiet || git commit -m "Boletim de $(date -u +%F)"
+          git push
+      - name: Falhar se o boletim não saiu
+        if: steps.pipeline.outputs.codigo == '2'
+        run: |
+          echo "O pipeline terminou com erro (código 2). A página e a aplicação mostram 'previsão indisponível' ao fim de 36 horas."
+          exit 1

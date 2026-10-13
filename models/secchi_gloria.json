@@ -1,0 +1,10 @@
+{
+ "name": "secchi_gloria",
+ "created_utc": "2026-10-12T18:54:57+00:00",
+ "formula": "log10(Secchi depth, m) = intercept + slope * log10(pi * Rrs(665 nm))",
+ "intercept": -1.271702732518037,
+ "slope": -0.7327608366058793,
+ "samples": 1346,
+ "typical_factor": 1.7526260249837773,
+ "source": "GLORIA (Lehmann et al., 2023), doi:10.1594/PANGAEA.948492"
+}

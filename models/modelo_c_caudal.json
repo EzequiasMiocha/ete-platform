@@ -1,0 +1,72 @@
+{
+ "name": "modelo_c_caudal",
+ "created_utc": "2026-10-11T13:14:29+00:00",
+ "train": [
+  "1997-01-01",
+  "2021-12-31"
+ ],
+ "test_from": "2022-01-01",
+ "target": "log1p(discharge) at t + lead",
+ "skill": [
+  {
+   "dias_a_frente": 1,
+   "dias_de_teste": 1738,
+   "nse_modelo": 0.922,
+   "pod_modelo": 0.911,
+   "far_modelo": 0.122,
+   "csi_modelo": 0.809,
+   "nse_persistencia": 0.895,
+   "pod_persistencia": 0.861,
+   "far_persistencia": 0.139,
+   "csi_persistencia": 0.756
+  },
+  {
+   "dias_a_frente": 2,
+   "dias_de_teste": 1737,
+   "nse_modelo": 0.831,
+   "pod_modelo": 0.81,
+   "far_modelo": 0.158,
+   "csi_modelo": 0.703,
+   "nse_persistencia": 0.752,
+   "pod_persistencia": 0.759,
+   "far_persistencia": 0.241,
+   "csi_persistencia": 0.612
+  },
+  {
+   "dias_a_frente": 3,
+   "dias_de_teste": 1736,
+   "nse_modelo": 0.699,
+   "pod_modelo": 0.734,
+   "far_modelo": 0.159,
+   "csi_modelo": 0.644,
+   "nse_persistencia": 0.611,
+   "pod_persistencia": 0.722,
+   "far_persistencia": 0.278,
+   "csi_persistencia": 0.564
+  },
+  {
+   "dias_a_frente": 5,
+   "dias_de_teste": 1734,
+   "nse_modelo": 0.542,
+   "pod_modelo": 0.608,
+   "far_modelo": 0.2,
+   "csi_modelo": 0.527,
+   "nse_persistencia": 0.389,
+   "pod_persistencia": 0.633,
+   "far_persistencia": 0.367,
+   "csi_persistencia": 0.463
+  },
+  {
+   "dias_a_frente": 7,
+   "dias_de_teste": 1732,
+   "nse_modelo": 0.444,
+   "pod_modelo": 0.62,
+   "far_modelo": 0.155,
+   "csi_modelo": 0.557,
+   "nse_persistencia": 0.208,
+   "pod_persistencia": 0.608,
+   "far_persistencia": 0.392,
+   "csi_persistencia": 0.436
+  }
+ ]
+}

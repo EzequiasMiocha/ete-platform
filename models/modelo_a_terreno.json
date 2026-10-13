@@ -1,0 +1,23 @@
+{
+  "name": "modelo_a_terreno",
+  "features": [
+    "hand",
+    "slope",
+    "twi",
+    "elevation",
+    "log_upstream_area",
+    "distance_to_river_m",
+    "distance_to_water_m",
+    "distance_to_stream_m"
+  ],
+  "created_utc": "2026-10-11T07:06:13+00:00",
+  "algorithm": "XGBClassifier",
+  "params": {
+    "learning_rate": 0.1,
+    "max_depth": 6,
+    "n_estimators": 300
+  },
+  "rows": 250000,
+  "target": "label_flood",
+  "train_years": "<= 2019"
+}

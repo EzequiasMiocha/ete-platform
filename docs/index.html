@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ETE - Rio Incomáti, Marracuene</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0;background:#f4f6f6;color:#1c2833;line-height:1.45}
+  main{max-width:640px;margin:0 auto;padding:14px}
+  h1{font-size:1.15rem;margin:.3rem 0} h2{font-size:1rem;margin:1.2rem 0 .4rem}
+  .alerta{border-radius:10px;padding:16px;color:white;background:#27ae60;font-size:1.15rem}
+  .alerta b{font-size:1.5rem;display:block}
+  .caixa{background:#fff;border-radius:10px;padding:12px 14px;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:.92rem} td,th{padding:5px 6px;border-bottom:1px solid #e5e8e8;text-align:left}
+  .ponto{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.35em;vertical-align:middle}
+  small,.nota{color:#566573;font-size:.82rem} a{color:#1f618d}
+</style>
+</head>
+<body><main>
+<h1>Eyes to Earth: rio Incomáti, Marracuene</h1>
+<small>Boletim de 13/10/2026, 10:28 UTC</small>
+<div id="alerta" class="alerta"><b>ALERTA VERDE</b>Nível VERDE nos próximos 10 dias: nenhum cenário prevê cheia no Incomáti em Marracuene.</div>
+<div id="corpo">
+<div class="caixa"><h2 style="margin-top:0">O que fazer</h2><p>Sem sinais de cheia nos próximos dias. Não é precisa nenhuma ação especial.</p></div>
+<div class="caixa"><h2 style="margin-top:0">Próximos dias</h2><table><tr><th>Dia</th><th>Alerta</th><th>Caudal (m³/s)</th></tr><tr><td>13/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>7</td></tr><tr><td>14/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>5</td></tr><tr><td>15/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>4</td></tr><tr><td>16/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>4</td></tr><tr><td>17/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>3</td></tr><tr><td>18/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>3</td></tr><tr><td>19/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>2</td></tr><tr><td>20/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>2</td></tr><tr><td>21/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>2</td></tr><tr><td>22/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>2</td></tr><tr><td>23/10</td><td><span class='ponto' style='background:#27ae60'></span>verde</td><td>2</td></tr></table></div>
+<div class='caixa'><h2 style='margin-top:0'>Água do rio</h2><table><tr><th>Troço</th><th>Últimos 20 dias</th><th>Mais turva nos próximos dias?</th></tr><tr><td>1 montante (norte)</td><td>normal</td><td>sem previsão</td></tr><tr><td>2 troço médio</td><td>elevada</td><td>possível</td></tr><tr><td>3 jusante</td><td>elevada</td><td>possível</td></tr><tr><td>4 foz / estuário</td><td>normal</td><td>possível</td></tr></table><p class='nota'>A água do rio deve ser sempre tratada antes de beber. O satélite vê a cor da água; não mede se é segura.</p></div>
+</div>
+<p class="nota">Produto experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.</p>
+</main>
+<script>
+// never show an old bulletin as if it were today's: after 36 hours the alert is replaced
+var emitido = new Date("2026-10-13T10:28:33+00:00");
+if ((Date.now() - emitido.getTime()) / 36e5 > 36) {
+  var a = document.getElementById("alerta");
+  a.style.background = "#566573"; a.style.color = "white";
+  a.innerHTML = "<b>PREVISÃO INDISPONÍVEL</b>O último boletim tem mais de 36 horas. Consulte os avisos oficiais do INGD, do INAM e da ARA-Sul.";
+  document.getElementById("corpo").style.display = "none";
+}
+</script>
+</body></html>

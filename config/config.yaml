@@ -1,0 +1,247 @@
+# =============================================================================
+# EYES TO EARTH (ETE) - central configuration
+# Single source of truth for the study area, grids, periods and dataset IDs.
+# Every notebook reads this file through `ete.config.load_config()`.
+# Dataset IDs follow sheet "Parte I - Variaveis" of ETE_Plano_e_Acompanhamento.xlsx.
+# =============================================================================
+
+project:
+  name: eyes-to-earth
+  aoi_name: marracuene          # used in every output file name
+
+gee:
+  # Google Cloud project registered for Earth Engine. Prefer setting EE_PROJECT
+  # in the .env file; this value is only the fallback.
+  project: null
+  high_volume: true             # use the high-volume endpoint for pixel downloads
+  max_tile_mb: 24               # request size budget (hard GEE limit is 48 MB)
+  workers: 4                    # parallel tile requests
+
+# -----------------------------------------------------------------------------
+# Study area (task S1-03)
+# -----------------------------------------------------------------------------
+aoi:
+  country: Mozambique
+  district: Marracuene
+  district_asset: FAO/GAUL/2015/level2
+  # A point ON the Incomati river near Marracuene town (lon, lat). It is used to
+  # find the basin in HydroBASINS. Check it on the map in notebook 01.
+  river_point: [32.690, -25.735]
+  basins_asset_root: WWF/HydroSHEDS/v1/Basins
+  subbasin_level: 6             # "sub-bacia baixa" (hybas_6, as in the plan)
+  basin_level: 12               # used to assemble the full basin via MAIN_BAS
+  # Imagery AOI (10-30 m data) = bounding box of the district + buffer.
+  imagery_buffer_km: 5
+  # Climate AOI (CHIRPS, IMERG, ERA5-Land, SMAP, GloFAS) = full basin bbox + buffer.
+  climate_buffer_deg: 0.25
+
+grid:
+  crs: EPSG:32736               # UTM 36S, fixed for the whole project
+  snap_m: 30                    # grid origin snapped to this, so 10 m nests in 30 m
+  res_historical_m: 30          # Layer 1 (Landsat, terrain, JRC)
+  res_recent_m: 10              # Layer 2 (Sentinel-1/2, Dynamic World, WorldCover)
+
+period:
+  start: "2006-01-01"
+  end: null                     # null = last complete month before today
+
+# -----------------------------------------------------------------------------
+# Datasets
+# -----------------------------------------------------------------------------
+datasets:
+  landsat:
+    sensors:
+      # search windows from the plan (column "Intervalo de pesquisa")
+      LT05: {id: LANDSAT/LT05/C02/T1_L2, start: "2006-01-01", end: "2011-12-31"}
+      LE07: {id: LANDSAT/LE07/C02/T1_L2, start: "2006-01-01", end: "2013-12-31"}
+      LC08: {id: LANDSAT/LC08/C02/T1_L2, start: "2013-01-01", end: null}
+      LC09: {id: LANDSAT/LC09/C02/T1_L2, start: "2021-01-01", end: null}
+    bands: [blue, green, red, nir, swir1, swir2]
+    # Roy et al. (2016) ETM+ -> OLI coefficients for Landsat 5/7. Kept OFF: the
+    # intercepts lift the near-zero SWIR/NIR of water, so water MNDWI drops from
+    # about 0.68 to 0.16 (measured over the AOI, dry seasons 2013 and 2014, against
+    # Landsat 8), while on land the gain is small (difference 0.04 -> 0.02).
+    harmonize_tm_etm_to_oli: false
+    start: "2006-01-01"
+
+  sentinel1:
+    id: COPERNICUS/S1_GRD
+    start: "2014-10-01"
+    # ASCENDING, DESCENDING or auto (auto = the pass with most scenes over the AOI)
+    orbit_pass: auto
+    # VV, VH: monthly median (the normal state). VV_p10, VH_p10: 10th percentile, the
+    # darkest moment of the month, which is what catches floods lasting a few days
+    # (January 2026 against Copernicus EMS: VH median AUC 0.75, VH p10 AUC 0.97).
+    bands: [VV, VH, angle, VV_p10, VH_p10]
+
+  sentinel2:
+    id: COPERNICUS/S2_SR_HARMONIZED
+    start: "2017-01-01"
+    # B5 (red edge) is kept for the chlorophyll proxy NDCI = (B5 - B4) / (B5 + B4)
+    bands: {B2: blue, B3: green, B4: red, B5: red_edge1, B8: nir, B8A: nir_narrow, B11: swir1, B12: swir2}
+    # SCL classes removed: 0 no data, 1 saturated, 3 cloud shadow,
+    # 8 cloud medium, 9 cloud high, 10 cirrus
+    scl_mask: [0, 1, 3, 8, 9, 10]
+
+  chirps:
+    id: UCSB-CHG/CHIRPS/DAILY
+    band: precipitation
+    start: "2006-01-01"
+
+  imerg:
+    id: NASA/GPM_L3/IMERG_V07
+    band: precipitation        # mm/hr, half-hourly
+    start: "2006-01-01"
+
+  era5_land:
+    id: ECMWF/ERA5_LAND/DAILY_AGGR
+    start: "2006-01-01"
+    bands:
+      - volumetric_soil_water_layer_1
+      - volumetric_soil_water_layer_2
+      - surface_runoff_sum
+      - temperature_2m
+      - total_evaporation_sum
+
+  smap:
+    # v007 stopped on 2025-06-27 and was superseded; v008 covers 2015-03-31 to present
+    id: NASA/SMAP/SPL4SMGP/008
+    start: "2015-04-01"
+    bands: [sm_surface, sm_rootzone]
+
+  glofas:
+    dataset: cems-glofas-historical
+    api_url: https://ewds.climate.copernicus.eu/api
+    start_year: 2006
+    system_version: version_4_0
+    hydrological_model: lisflood
+
+  jrc_monthly:
+    id: JRC/GSW1_4/MonthlyHistory
+    start: "2006-01-01"
+    end: "2021-12-31"
+
+  dynamic_world:
+    id: GOOGLE/DYNAMICWORLD/V1
+    start: "2015-07-01"
+
+  static:
+    dem: COPERNICUS/DEM/GLO30
+    merit_hydro: MERIT/Hydro/v1_0_1
+    worldcover: ESA/WorldCover/v200
+    jrc_gsw: JRC/GSW1_4/GlobalSurfaceWater
+    rivers: WWF/HydroSHEDS/v1/FreeFlowingRivers
+
+  exposure:
+    worldpop: WorldPop/GP/100m/pop
+    worldpop_year: 2020
+    open_buildings: GOOGLE/Research/open-buildings/v3/polygons
+    open_buildings_min_confidence: 0.70
+
+# -----------------------------------------------------------------------------
+# Processing (week 2)
+# -----------------------------------------------------------------------------
+processing:
+  dry_months: [6, 7, 8, 9]              # dry season used for the Sentinel-1 reference
+  wet_months: [11, 12, 1, 2, 3, 4]      # rainy season (metadata column `season`)
+  permanent_water_occurrence: 75        # JRC occurrence (%) from which water counts as permanent
+  low_hand_m: 5                         # "low ground": HAND at or below this height
+  calibration: {start: "2015-04-01", end: "2021-12-31"}   # ERA5-Land -> SMAP quantile mapping
+  overlap: {start: "2017-01-01", end: "2021-12-31"}       # period where all sources coexist
+  splits: {train_end: 2019, val_end: 2021}                # train <=2019, validation 2020-2021, test >=2022
+  block_size_m: 3000                    # spatial blocks for cross-validation
+  n_folds: 5
+  seed: 42
+  # week 3
+  model_b_start_year: 2016              # 2015 has a single radar orbit (different incidence angle)
+  water_probability: 0.5                # Model B: probability from which a pixel counts as water
+  min_patch_px: 25                      # map cleaning: water patches smaller than this (10 m pixels) are removed
+  susceptibility_classes: [0.5, 0.8, 0.95]   # Model A: percentile limits of the classes baixa/média/alta/muito alta
+  alerts:
+    rain_p7_min_mm: 50                  # a 7-day total below this never raises an alert
+    rain_pct: {amarelo: 95, laranja: 99}          # percentile of the 7-day basin rain for the time of year
+    discharge_pct: {amarelo: 90, laranja: 97, vermelho: 99.5}   # percentile of daily discharge, 2006-2021
+    calibration_end: "2021-12-31"
+
+  # pixels sampled per month and stratum for the training tables
+  sampling: {flood: 1500, permanent: 300, dry_low: 1500, dry_other: 700}
+
+# -----------------------------------------------------------------------------
+# Forecast (production): daily outlook of flood alerts and water turbidity
+# -----------------------------------------------------------------------------
+forecast:
+  # Open-Meteo: free, no key, CC BY 4.0. The flood API serves GloFAS v4 (the same model as
+  # our reanalysis); the weather APIs serve ECMWF IFS forecasts and the ERA5 archive.
+  flood_api: https://flood-api.open-meteo.com/v1/flood
+  weather_api: https://api.open-meteo.com/v1/forecast
+  archive_api: https://archive-api.open-meteo.com/v1/archive
+  marine_api: https://marine-api.open-meteo.com/v1/marine
+  # Maputo Bay, off the mouth of the Incomati: hourly sea level used once to fit the tide constants
+  tide_point: [-25.95, 32.85]
+  tide_history_start: "2023-01-01"   # first day the service has sea level for
+  # Main-stem cell of the Incomati at Marracuene IN THE SERVICE'S GRID (lat, lon). It is one
+  # cell away from the cell of our GloFAS files; chosen by correlation with our series (0.97).
+  discharge_point: [-25.775, 32.675]
+  rain_lattice_deg: 0.5            # basin rain = mean of the points of this lattice inside the basin
+  history_start: "1997-01-01"      # first day of the service's discharge history
+  rain_history_start: "1984-01-01"
+  calibration_end: "2021-12-31"    # alert limits use data up to here; later years test them
+  horizon_days: 10                 # days ahead shown in the bulletin
+  ensemble_days: 30                # days ahead used for the monthly turbidity outlook
+  rain_skill_days: 7               # beyond this, the rain forecast is not used as a trigger
+  probability: {provavel: 0.5, possivel: 0.2}   # share of the 51 scenarios needed for each wording
+  model_leads: [1, 2, 3, 5, 7]     # lead times (days) of our own discharge model
+  stale_after_hours: 36            # a bulletin older than this is flagged as out of date
+
+# -----------------------------------------------------------------------------
+# Folders (relative to the repository root)
+# -----------------------------------------------------------------------------
+paths:
+  aoi: data/raw/aoi
+  static_terrain: data/raw/static/terrain
+  static_land_cover: data/raw/static/land_cover
+  static_surface_water: data/raw/static/surface_water
+  static_hydrography: data/raw/static/hydrography
+  landsat: data/raw/optical/landsat
+  sentinel2: data/raw/optical/sentinel2
+  sentinel1: data/raw/radar/sentinel1
+  chirps: data/raw/precipitation/chirps
+  imerg: data/raw/precipitation/imerg
+  era5_land: data/raw/hydromet/era5_land
+  smap: data/raw/hydromet/smap
+  glofas: data/raw/discharge/glofas
+  jrc_monthly: data/raw/labels/jrc_monthly_history
+  flood_events: data/raw/labels/flood_events
+  ems_unosat: data/raw/labels/ems_unosat
+  sen1floods11: data/raw/labels/sen1floods11
+  dynamic_world: data/raw/land_cover/dynamic_world
+  population: data/raw/exposure/population
+  buildings: data/raw/exposure/buildings
+  osm: data/raw/exposure/osm
+  interim: data/interim
+  features: data/interim/features                  # week 2: derived rasters (static stack, radar dry reference)
+  series: data/processed/series                    # week 2: daily and monthly driver tables
+  training: data/processed/training                # week 2: train_historico.parquet, train_recente.parquet
+  labels_manual: data/raw/labels/manual            # week 2: labels.gpkg digitised in QGIS
+  reports: reports                                 # figures and tables for the OAD report
+  models: models                                   # week 3: trained models (.joblib) and their metadata
+  forecast_raw: data/raw/forecast                  # production: history and every day's raw forecast
+  places: data/raw/places                          # place names (OpenStreetMap, GeoNames) and administrative posts
+  tide: data/raw/tide                              # hourly sea level of Maputo Bay (fits the tide constants)
+  sections: data/interim/water_quality             # Module Q: river sections border -> mouth (trocos_rio.gpkg) and width table
+  module_q_raw: data/raw/water_quality/modulo_q    # Module Q: per-image values per section, 2006-2026 (Earth Engine tables)
+  water_quality: data/raw/water_quality            # per-image water colour of the river reaches (Sentinel-2, Landsat 8/9)
+  forecast: data/processed/forecast                # production: latest bulletin and archive of past runs
+  static_page: docs                                 # week 4: light static page of the bulletin (the fallback when the app is unreachable)
+  platform: plataforma/dados                       # week 4: small web-ready package read by the application
+  maps: data/processed/maps                        # week 3: flood and susceptibility maps
+  processed: data/processed
+  metadata: data/metadata
+  manifest: data/metadata/download_manifest.csv
+
+# -----------------------------------------------------------------------------
+# Publication (week 4). Fill in after the first deploy; empty = not published yet.
+publication:
+  app_url: ""            # the Streamlit application, e.g. https://ete-incomati.streamlit.app
+  page_url: ""           # the light static page (GitHub Pages), e.g. https://<conta>.github.io/ete-plataforma/
+  stale_after_hours: 36  # older than this, the page and the app say "previsão indisponível"

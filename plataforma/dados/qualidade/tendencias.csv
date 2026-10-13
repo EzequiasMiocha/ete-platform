@@ -1,0 +1,37 @@
+troco,nome,parametro,periodo,n,inclinacao_por_decada,p,tendencia,primeiro_mes,ultimo_mes,leitura
+Q1,Q1 fronteira / Ressano Garcia,ndti,registo completo,110,0.22536,0.0,sobe,2017-01,2026-10,um só satélite: válida para o período medido
+Q1,Q1 fronteira / Ressano Garcia,vegetacao,registo completo,113,-0.30281,0.0,desce,2017-01,2026-10,um só satélite: válida para o período medido
+Q2,Q2 km 37 a 74,ndti,registo completo,110,0.11549,1e-05,sobe,2017-01,2026-10,um só satélite: válida para o período medido
+Q2,Q2 km 37 a 74,vegetacao,registo completo,112,-0.16642,0.0,desce,2017-01,2026-10,um só satélite: válida para o período medido
+Q3,Q3 km 74 a 110,ndti,registo completo,112,-0.07267,0.00046,desce,2017-01,2026-10,um só satélite: válida para o período medido
+Q3,Q3 km 74 a 110,vegetacao,registo completo,112,-0.21862,0.0,desce,2017-01,2026-10,um só satélite: válida para o período medido
+Q4,Q4 Magude,ndti,registo completo,108,0.0137,0.55483,sem tendência,2017-01,2026-09,
+Q4,Q4 Magude,vegetacao,registo completo,110,-0.25168,0.0,desce,2017-01,2026-09,um só satélite: válida para o período medido
+Q5,Q5 Xinavane,ndti,registo completo,112,0.04559,0.01883,sobe,2017-01,2026-10,um só satélite: válida para o período medido
+Q5,Q5 Xinavane,vegetacao,registo completo,114,-0.36479,0.0,desce,2017-01,2026-10,um só satélite: válida para o período medido
+Q6,Q6 km 184 a 221,ndti,registo completo,114,0.02143,0.1845,sem tendência,2017-01,2026-10,
+Q6,Q6 km 184 a 221,vegetacao,registo completo,116,-0.5526,0.0,desce,2017-01,2026-10,um só satélite: válida para o período medido
+Q7,Q7 Manhiça,ndti,registo completo,159,-0.01695,0.02713,desce,2006-01,2026-10,não confirmada: pode vir da mudança de satélite
+Q7,Q7 Manhiça,ndti,Landsat 5/7 (2006-2013),38,0.02978,0.20042,sem tendência,2006-01,2012-12,
+Q7,Q7 Manhiça,ndti,Landsat 8/9 (2013-2026),121,-0.02165,0.13982,sem tendência,2013-04,2026-10,
+Q7,Q7 Manhiça,vegetacao,registo completo,210,-0.00449,0.75595,sem tendência,2006-01,2026-10,
+Q7,Q7 Manhiça,vegetacao,Landsat 5/7 (2006-2013),57,-0.22407,0.10221,sem tendência,2006-01,2013-02,
+Q7,Q7 Manhiça,vegetacao,Landsat 8/9 (2013-2026),152,-0.04315,0.25226,sem tendência,2013-04,2026-10,
+Q8,Q8 Marracuene,ndti,registo completo,200,-0.01914,0.00501,desce,2006-01,2026-10,não confirmada: pode vir da mudança de satélite
+Q8,Q8 Marracuene,ndti,Landsat 5/7 (2006-2013),54,0.04984,0.16583,sem tendência,2006-01,2013-02,
+Q8,Q8 Marracuene,ndti,Landsat 8/9 (2013-2026),145,0.00337,0.68738,sem tendência,2013-04,2026-10,
+Q8,Q8 Marracuene,vegetacao,registo completo,206,0.01579,0.00635,sobe,2006-01,2026-10,não confirmada: pode vir da mudança de satélite
+Q8,Q8 Marracuene,vegetacao,Landsat 5/7 (2006-2013),54,-9e-05,1.0,sem tendência,2006-01,2013-02,
+Q8,Q8 Marracuene,vegetacao,Landsat 8/9 (2013-2026),151,0.00178,0.92761,sem tendência,2013-04,2026-10,
+Q8,Q8 Marracuene,temp_c,registo completo,200,0.56743,0.00032,sobe,2006-01,2026-10,não confirmada: pode vir da mudança de satélite
+Q8,Q8 Marracuene,temp_c,Landsat 5/7 (2006-2013),54,-0.33905,0.94186,sem tendência,2006-01,2013-02,
+Q8,Q8 Marracuene,temp_c,Landsat 8/9 (2013-2026),145,0.21319,0.43207,sem tendência,2013-04,2026-10,
+Q9,Q9 foz / estuário,ndti,registo completo,205,-0.00927,0.23728,sem tendência,2006-01,2026-10,
+Q9,Q9 foz / estuário,ndti,Landsat 5/7 (2006-2013),53,0.06481,0.29175,sem tendência,2006-01,2013-02,
+Q9,Q9 foz / estuário,ndti,Landsat 8/9 (2013-2026),151,0.01806,0.20977,sem tendência,2013-04,2026-10,
+Q9,Q9 foz / estuário,vegetacao,registo completo,205,0.00426,0.0077,sobe,2006-01,2026-10,não confirmada: pode vir da mudança de satélite
+Q9,Q9 foz / estuário,vegetacao,Landsat 5/7 (2006-2013),53,0.0043,0.76324,sem tendência,2006-01,2013-02,
+Q9,Q9 foz / estuário,vegetacao,Landsat 8/9 (2013-2026),151,0.00138,0.6759,sem tendência,2013-04,2026-10,
+Q9,Q9 foz / estuário,temp_c,registo completo,205,0.49627,0.00092,sobe,2006-01,2026-10,não confirmada: pode vir da mudança de satélite
+Q9,Q9 foz / estuário,temp_c,Landsat 5/7 (2006-2013),53,-1.2681,0.45141,sem tendência,2006-01,2013-02,
+Q9,Q9 foz / estuário,temp_c,Landsat 8/9 (2013-2026),151,0.3349,0.11379,sem tendência,2013-04,2026-10,

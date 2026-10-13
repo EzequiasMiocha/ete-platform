@@ -1,0 +1,36 @@
+{
+ "executado_utc": "2026-10-13T10:28:34+00:00",
+ "codigo_de_saida": 0,
+ "passos": [
+  {
+   "passo": "imagens",
+   "estado": "saltado",
+   "detalhe": "última atualização há 2 dias",
+   "segundos": 0
+  },
+  {
+   "passo": "modulo_q",
+   "estado": "saltado",
+   "detalhe": "ainda não extraído (correr scripts/update_module_q_series.py)",
+   "segundos": 0
+  },
+  {
+   "passo": "previsao",
+   "estado": "ok",
+   "detalhe": "",
+   "segundos": 1.4
+  },
+  {
+   "passo": "pacote",
+   "estado": "atualizado",
+   "detalhe": "19 camadas",
+   "segundos": 0.1
+  },
+  {
+   "passo": "pagina",
+   "estado": "atualizada",
+   "detalhe": "docs/index.html",
+   "segundos": 0.0
+  }
+ ]
+}

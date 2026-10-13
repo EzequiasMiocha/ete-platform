@@ -1,0 +1,28 @@
+# Testes a cada alteração: o pacote está completo e todas as páginas da aplicação abrem sem erros.
+name: Testes
+
+on:
+  push:
+    paths-ignore: ["docs/**", "data/**", "plataforma/dados/boletim/**", "plataforma/dados/series/**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+      - name: Instalar
+        run: pip install -r requirements.txt
+      - name: Pacote de dados completo
+        run: python plataforma/leitor.py --sem-prazo
+      - name: Todas as páginas da aplicação
+        working-directory: plataforma
+        run: python testar_app.py
+      - name: Mensagem de alerta de ponta a ponta
+        run: python scripts/test_alert_end_to_end.py

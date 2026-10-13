@@ -1,0 +1,134 @@
+{
+ "name": "modelo_turbidez",
+ "created_utc": "2026-10-11T21:24:43+00:00",
+ "target": "NDTI (water colour index) of the reach at the morning satellite overpass; and the event 'elevada'",
+ "features": [
+  "lq",
+  "lq_mean7",
+  "lq_max7",
+  "dq3",
+  "p3",
+  "p7",
+  "p30",
+  "sin",
+  "cos",
+  "t_h",
+  "t_dh",
+  "t_range",
+  "last_ndti",
+  "last_age",
+  "last_t_h",
+  "last_lq",
+  "has_last",
+  "troco=2 troço médio",
+  "troco=3 jusante",
+  "troco=4 foz / estuário"
+ ],
+ "reaches": [
+  "2 troço médio",
+  "3 jusante",
+  "4 foz / estuário"
+ ],
+ "ndti_limits_elevada": {
+  "1 montante (norte)": 0.0044,
+  "2 troço médio": -0.0067,
+  "3 jusante": -0.0225,
+  "4 foz / estuário": -0.042
+ },
+ "landsat_bias_added": 0.0136,
+ "latest_measurement_max_age_days": 30,
+ "rows": 2211,
+ "period": [
+  "2017-01-06",
+  "2026-09-26"
+ ],
+ "valid_for": "about 07:30 UTC (09:30 local): the only time of day the satellites observe",
+ "tested_and_not_used": [
+  "wind",
+  "local rain",
+  "rain per sub-basin",
+  "training on both satellites together"
+ ],
+ "skill": [
+  {
+   "modelo": "modelo final: última medição há 1 dia ou mais",
+   "dias": 2211,
+   "r2": 0.682,
+   "mae": 0.043,
+   "auc": 0.885,
+   "bss": 0.298
+  },
+  {
+   "modelo": "modelo final: última medição há 3 dias ou mais",
+   "dias": 2211,
+   "r2": 0.674,
+   "mae": 0.043,
+   "auc": 0.878,
+   "bss": 0.278
+  },
+  {
+   "modelo": "modelo final: última medição há 5 dias ou mais",
+   "dias": 2211,
+   "r2": 0.665,
+   "mae": 0.043,
+   "auc": 0.874,
+   "bss": 0.262
+  },
+  {
+   "modelo": "modelo final: última medição há 10 dias ou mais",
+   "dias": 2211,
+   "r2": 0.651,
+   "mae": 0.045,
+   "auc": 0.875,
+   "bss": 0.268
+  },
+  {
+   "modelo": "modelo final: sem medição recente",
+   "dias": 2211,
+   "r2": 0.614,
+   "mae": 0.047,
+   "auc": 0.849,
+   "bss": 0.196
+  },
+  {
+   "modelo": "passo anterior: maré só pela fase M2",
+   "dias": 2211,
+   "r2": 0.599,
+   "mae": 0.048,
+   "auc": 0.838,
+   "bss": 0.195
+  },
+  {
+   "modelo": "sem maré",
+   "dias": 2211,
+   "r2": 0.189,
+   "mae": 0.071,
+   "auc": 0.741,
+   "bss": -0.041
+  },
+  {
+   "modelo": "referência: época do ano",
+   "dias": 2211,
+   "r2": 0.207,
+   "mae": 0.07,
+   "auc": 0.707,
+   "bss": NaN
+  },
+  {
+   "modelo": "modelo final no Landsat 8/9 (outro satélite): todos os anos",
+   "dias": 739,
+   "r2": 0.651,
+   "mae": 0.045,
+   "auc": 0.897,
+   "bss": NaN
+  },
+  {
+   "modelo": "modelo final no Landsat antes de 2017 (outro satélite e outros anos)",
+   "dias": 128,
+   "r2": 0.592,
+   "mae": 0.068,
+   "auc": 0.879,
+   "bss": NaN
+  }
+ ]
+}

@@ -1,0 +1,1492 @@
+{
+ "created_utc": "2026-10-11T13:14:26+00:00",
+ "calibration": [
+  "1997-01-01",
+  "2021-12-31"
+ ],
+ "discharge_point": [
+  -25.775,
+  32.675
+ ],
+ "discharge_pct": {
+  "amarelo": 90,
+  "laranja": 97,
+  "vermelho": 99.5
+ },
+ "rain_pct": {
+  "amarelo": 95,
+  "laranja": 99
+ },
+ "rain_p7_min_mm": 50,
+ "discharge_m3s": {
+  "amarelo": 163.8,
+  "laranja": 375.8,
+  "vermelho": 969.9
+ },
+ "rain_p7_mm_by_doy": {
+  "1": {
+   "amarelo": 69.6,
+   "laranja": 107.0
+  },
+  "2": {
+   "amarelo": 69.9,
+   "laranja": 106.6
+  },
+  "3": {
+   "amarelo": 70.5,
+   "laranja": 105.8
+  },
+  "4": {
+   "amarelo": 71.2,
+   "laranja": 106.6
+  },
+  "5": {
+   "amarelo": 72.4,
+   "laranja": 107.6
+  },
+  "6": {
+   "amarelo": 74.1,
+   "laranja": 109.4
+  },
+  "7": {
+   "amarelo": 74.9,
+   "laranja": 110.6
+  },
+  "8": {
+   "amarelo": 75.1,
+   "laranja": 111.3
+  },
+  "9": {
+   "amarelo": 75.5,
+   "laranja": 111.8
+  },
+  "10": {
+   "amarelo": 75.8,
+   "laranja": 112.5
+  },
+  "11": {
+   "amarelo": 75.9,
+   "laranja": 114.6
+  },
+  "12": {
+   "amarelo": 76.1,
+   "laranja": 116.0
+  },
+  "13": {
+   "amarelo": 76.1,
+   "laranja": 117.0
+  },
+  "14": {
+   "amarelo": 75.8,
+   "laranja": 120.4
+  },
+  "15": {
+   "amarelo": 75.6,
+   "laranja": 122.9
+  },
+  "16": {
+   "amarelo": 75.4,
+   "laranja": 123.8
+  },
+  "17": {
+   "amarelo": 75.1,
+   "laranja": 126.2
+  },
+  "18": {
+   "amarelo": 75.1,
+   "laranja": 128.1
+  },
+  "19": {
+   "amarelo": 75.6,
+   "laranja": 129.4
+  },
+  "20": {
+   "amarelo": 75.8,
+   "laranja": 130.0
+  },
+  "21": {
+   "amarelo": 76.7,
+   "laranja": 130.0
+  },
+  "22": {
+   "amarelo": 78.9,
+   "laranja": 130.0
+  },
+  "23": {
+   "amarelo": 79.4,
+   "laranja": 132.4
+  },
+  "24": {
+   "amarelo": 78.9,
+   "laranja": 143.7
+  },
+  "25": {
+   "amarelo": 78.9,
+   "laranja": 149.2
+  },
+  "26": {
+   "amarelo": 80.5,
+   "laranja": 152.5
+  },
+  "27": {
+   "amarelo": 82.8,
+   "laranja": 155.1
+  },
+  "28": {
+   "amarelo": 83.5,
+   "laranja": 157.0
+  },
+  "29": {
+   "amarelo": 86.2,
+   "laranja": 157.0
+  },
+  "30": {
+   "amarelo": 87.8,
+   "laranja": 157.0
+  },
+  "31": {
+   "amarelo": 91.0,
+   "laranja": 157.0
+  },
+  "32": {
+   "amarelo": 91.0,
+   "laranja": 157.0
+  },
+  "33": {
+   "amarelo": 90.1,
+   "laranja": 157.0
+  },
+  "34": {
+   "amarelo": 89.6,
+   "laranja": 157.0
+  },
+  "35": {
+   "amarelo": 88.6,
+   "laranja": 157.0
+  },
+  "36": {
+   "amarelo": 88.6,
+   "laranja": 155.9
+  },
+  "37": {
+   "amarelo": 88.6,
+   "laranja": 155.3
+  },
+  "38": {
+   "amarelo": 88.6,
+   "laranja": 155.1
+  },
+  "39": {
+   "amarelo": 87.7,
+   "laranja": 153.4
+  },
+  "40": {
+   "amarelo": 87.5,
+   "laranja": 152.0
+  },
+  "41": {
+   "amarelo": 86.3,
+   "laranja": 152.0
+  },
+  "42": {
+   "amarelo": 84.0,
+   "laranja": 152.0
+  },
+  "43": {
+   "amarelo": 83.2,
+   "laranja": 152.0
+  },
+  "44": {
+   "amarelo": 81.4,
+   "laranja": 152.0
+  },
+  "45": {
+   "amarelo": 81.4,
+   "laranja": 152.0
+  },
+  "46": {
+   "amarelo": 81.1,
+   "laranja": 152.0
+  },
+  "47": {
+   "amarelo": 81.5,
+   "laranja": 152.0
+  },
+  "48": {
+   "amarelo": 83.7,
+   "laranja": 152.0
+  },
+  "49": {
+   "amarelo": 85.3,
+   "laranja": 149.0
+  },
+  "50": {
+   "amarelo": 86.3,
+   "laranja": 143.9
+  },
+  "51": {
+   "amarelo": 86.3,
+   "laranja": 140.7
+  },
+  "52": {
+   "amarelo": 85.3,
+   "laranja": 140.7
+  },
+  "53": {
+   "amarelo": 83.7,
+   "laranja": 140.7
+  },
+  "54": {
+   "amarelo": 81.6,
+   "laranja": 135.2
+  },
+  "55": {
+   "amarelo": 80.5,
+   "laranja": 127.9
+  },
+  "56": {
+   "amarelo": 79.6,
+   "laranja": 115.2
+  },
+  "57": {
+   "amarelo": 78.4,
+   "laranja": 112.1
+  },
+  "58": {
+   "amarelo": 75.9,
+   "laranja": 105.9
+  },
+  "59": {
+   "amarelo": 70.3,
+   "laranja": 105.5
+  },
+  "60": {
+   "amarelo": 68.2,
+   "laranja": 102.4
+  },
+  "61": {
+   "amarelo": 67.0,
+   "laranja": 101.5
+  },
+  "62": {
+   "amarelo": 66.3,
+   "laranja": 99.6
+  },
+  "63": {
+   "amarelo": 66.0,
+   "laranja": 98.9
+  },
+  "64": {
+   "amarelo": 65.3,
+   "laranja": 98.9
+  },
+  "65": {
+   "amarelo": 64.5,
+   "laranja": 98.9
+  },
+  "66": {
+   "amarelo": 64.5,
+   "laranja": 98.9
+  },
+  "67": {
+   "amarelo": 64.1,
+   "laranja": 98.3
+  },
+  "68": {
+   "amarelo": 60.7,
+   "laranja": 97.9
+  },
+  "69": {
+   "amarelo": 59.0,
+   "laranja": 95.8
+  },
+  "70": {
+   "amarelo": 58.6,
+   "laranja": 92.6
+  },
+  "71": {
+   "amarelo": 57.5,
+   "laranja": 91.6
+  },
+  "72": {
+   "amarelo": 56.2,
+   "laranja": 91.1
+  },
+  "73": {
+   "amarelo": 52.6,
+   "laranja": 91.1
+  },
+  "74": {
+   "amarelo": 51.7,
+   "laranja": 90.9
+  },
+  "75": {
+   "amarelo": 50.6,
+   "laranja": 90.6
+  },
+  "76": {
+   "amarelo": 49.9,
+   "laranja": 90.2
+  },
+  "77": {
+   "amarelo": 49.5,
+   "laranja": 89.7
+  },
+  "78": {
+   "amarelo": 48.2,
+   "laranja": 85.2
+  },
+  "79": {
+   "amarelo": 47.7,
+   "laranja": 74.1
+  },
+  "80": {
+   "amarelo": 47.6,
+   "laranja": 72.0
+  },
+  "81": {
+   "amarelo": 46.8,
+   "laranja": 70.6
+  },
+  "82": {
+   "amarelo": 46.2,
+   "laranja": 69.6
+  },
+  "83": {
+   "amarelo": 45.7,
+   "laranja": 69.6
+  },
+  "84": {
+   "amarelo": 45.6,
+   "laranja": 68.2
+  },
+  "85": {
+   "amarelo": 45.3,
+   "laranja": 67.8
+  },
+  "86": {
+   "amarelo": 45.1,
+   "laranja": 67.8
+  },
+  "87": {
+   "amarelo": 44.6,
+   "laranja": 67.8
+  },
+  "88": {
+   "amarelo": 44.2,
+   "laranja": 67.8
+  },
+  "89": {
+   "amarelo": 43.4,
+   "laranja": 67.8
+  },
+  "90": {
+   "amarelo": 42.3,
+   "laranja": 67.8
+  },
+  "91": {
+   "amarelo": 41.9,
+   "laranja": 67.8
+  },
+  "92": {
+   "amarelo": 41.0,
+   "laranja": 67.8
+  },
+  "93": {
+   "amarelo": 39.9,
+   "laranja": 67.7
+  },
+  "94": {
+   "amarelo": 39.5,
+   "laranja": 64.8
+  },
+  "95": {
+   "amarelo": 38.9,
+   "laranja": 62.3
+  },
+  "96": {
+   "amarelo": 38.2,
+   "laranja": 55.1
+  },
+  "97": {
+   "amarelo": 36.4,
+   "laranja": 53.6
+  },
+  "98": {
+   "amarelo": 35.9,
+   "laranja": 50.1
+  },
+  "99": {
+   "amarelo": 35.1,
+   "laranja": 50.1
+  },
+  "100": {
+   "amarelo": 34.8,
+   "laranja": 50.1
+  },
+  "101": {
+   "amarelo": 33.0,
+   "laranja": 48.7
+  },
+  "102": {
+   "amarelo": 32.5,
+   "laranja": 46.1
+  },
+  "103": {
+   "amarelo": 32.4,
+   "laranja": 45.5
+  },
+  "104": {
+   "amarelo": 31.8,
+   "laranja": 45.5
+  },
+  "105": {
+   "amarelo": 31.3,
+   "laranja": 45.5
+  },
+  "106": {
+   "amarelo": 31.2,
+   "laranja": 45.9
+  },
+  "107": {
+   "amarelo": 30.4,
+   "laranja": 47.0
+  },
+  "108": {
+   "amarelo": 30.3,
+   "laranja": 47.8
+  },
+  "109": {
+   "amarelo": 29.2,
+   "laranja": 48.2
+  },
+  "110": {
+   "amarelo": 28.2,
+   "laranja": 45.9
+  },
+  "111": {
+   "amarelo": 25.9,
+   "laranja": 45.5
+  },
+  "112": {
+   "amarelo": 25.3,
+   "laranja": 44.8
+  },
+  "113": {
+   "amarelo": 25.0,
+   "laranja": 43.3
+  },
+  "114": {
+   "amarelo": 23.9,
+   "laranja": 42.8
+  },
+  "115": {
+   "amarelo": 23.6,
+   "laranja": 41.8
+  },
+  "116": {
+   "amarelo": 22.9,
+   "laranja": 41.3
+  },
+  "117": {
+   "amarelo": 22.2,
+   "laranja": 40.5
+  },
+  "118": {
+   "amarelo": 22.1,
+   "laranja": 40.5
+  },
+  "119": {
+   "amarelo": 22.0,
+   "laranja": 40.5
+  },
+  "120": {
+   "amarelo": 22.0,
+   "laranja": 40.5
+  },
+  "121": {
+   "amarelo": 22.0,
+   "laranja": 40.5
+  },
+  "122": {
+   "amarelo": 21.9,
+   "laranja": 40.5
+  },
+  "123": {
+   "amarelo": 21.2,
+   "laranja": 40.0
+  },
+  "124": {
+   "amarelo": 21.1,
+   "laranja": 39.7
+  },
+  "125": {
+   "amarelo": 21.0,
+   "laranja": 39.4
+  },
+  "126": {
+   "amarelo": 20.8,
+   "laranja": 39.4
+  },
+  "127": {
+   "amarelo": 20.2,
+   "laranja": 38.3
+  },
+  "128": {
+   "amarelo": 19.4,
+   "laranja": 37.7
+  },
+  "129": {
+   "amarelo": 18.7,
+   "laranja": 35.8
+  },
+  "130": {
+   "amarelo": 18.5,
+   "laranja": 33.7
+  },
+  "131": {
+   "amarelo": 17.8,
+   "laranja": 33.1
+  },
+  "132": {
+   "amarelo": 17.6,
+   "laranja": 33.1
+  },
+  "133": {
+   "amarelo": 17.3,
+   "laranja": 33.1
+  },
+  "134": {
+   "amarelo": 17.1,
+   "laranja": 33.0
+  },
+  "135": {
+   "amarelo": 16.4,
+   "laranja": 33.0
+  },
+  "136": {
+   "amarelo": 16.1,
+   "laranja": 33.0
+  },
+  "137": {
+   "amarelo": 14.5,
+   "laranja": 32.5
+  },
+  "138": {
+   "amarelo": 14.2,
+   "laranja": 29.4
+  },
+  "139": {
+   "amarelo": 13.9,
+   "laranja": 26.4
+  },
+  "140": {
+   "amarelo": 13.7,
+   "laranja": 25.8
+  },
+  "141": {
+   "amarelo": 13.5,
+   "laranja": 26.4
+  },
+  "142": {
+   "amarelo": 13.3,
+   "laranja": 26.1
+  },
+  "143": {
+   "amarelo": 13.1,
+   "laranja": 26.1
+  },
+  "144": {
+   "amarelo": 13.1,
+   "laranja": 26.1
+  },
+  "145": {
+   "amarelo": 12.8,
+   "laranja": 26.1
+  },
+  "146": {
+   "amarelo": 12.5,
+   "laranja": 26.1
+  },
+  "147": {
+   "amarelo": 12.5,
+   "laranja": 24.6
+  },
+  "148": {
+   "amarelo": 12.2,
+   "laranja": 24.6
+  },
+  "149": {
+   "amarelo": 12.2,
+   "laranja": 24.6
+  },
+  "150": {
+   "amarelo": 11.7,
+   "laranja": 24.6
+  },
+  "151": {
+   "amarelo": 11.2,
+   "laranja": 24.6
+  },
+  "152": {
+   "amarelo": 11.0,
+   "laranja": 23.5
+  },
+  "153": {
+   "amarelo": 10.5,
+   "laranja": 23.1
+  },
+  "154": {
+   "amarelo": 10.5,
+   "laranja": 23.0
+  },
+  "155": {
+   "amarelo": 10.4,
+   "laranja": 22.8
+  },
+  "156": {
+   "amarelo": 10.4,
+   "laranja": 22.7
+  },
+  "157": {
+   "amarelo": 10.4,
+   "laranja": 21.3
+  },
+  "158": {
+   "amarelo": 10.4,
+   "laranja": 20.3
+  },
+  "159": {
+   "amarelo": 10.4,
+   "laranja": 20.3
+  },
+  "160": {
+   "amarelo": 10.4,
+   "laranja": 20.3
+  },
+  "161": {
+   "amarelo": 10.4,
+   "laranja": 20.3
+  },
+  "162": {
+   "amarelo": 10.7,
+   "laranja": 20.3
+  },
+  "163": {
+   "amarelo": 10.7,
+   "laranja": 20.3
+  },
+  "164": {
+   "amarelo": 10.4,
+   "laranja": 20.3
+  },
+  "165": {
+   "amarelo": 10.4,
+   "laranja": 19.9
+  },
+  "166": {
+   "amarelo": 10.4,
+   "laranja": 19.8
+  },
+  "167": {
+   "amarelo": 10.4,
+   "laranja": 19.8
+  },
+  "168": {
+   "amarelo": 10.4,
+   "laranja": 19.8
+  },
+  "169": {
+   "amarelo": 10.1,
+   "laranja": 19.9
+  },
+  "170": {
+   "amarelo": 10.0,
+   "laranja": 20.3
+  },
+  "171": {
+   "amarelo": 9.7,
+   "laranja": 20.3
+  },
+  "172": {
+   "amarelo": 9.7,
+   "laranja": 19.9
+  },
+  "173": {
+   "amarelo": 9.5,
+   "laranja": 19.8
+  },
+  "174": {
+   "amarelo": 9.5,
+   "laranja": 19.8
+  },
+  "175": {
+   "amarelo": 9.5,
+   "laranja": 19.7
+  },
+  "176": {
+   "amarelo": 9.5,
+   "laranja": 18.8
+  },
+  "177": {
+   "amarelo": 9.6,
+   "laranja": 18.1
+  },
+  "178": {
+   "amarelo": 9.7,
+   "laranja": 18.8
+  },
+  "179": {
+   "amarelo": 10.0,
+   "laranja": 19.7
+  },
+  "180": {
+   "amarelo": 10.0,
+   "laranja": 19.8
+  },
+  "181": {
+   "amarelo": 9.7,
+   "laranja": 19.8
+  },
+  "182": {
+   "amarelo": 9.6,
+   "laranja": 19.8
+  },
+  "183": {
+   "amarelo": 9.5,
+   "laranja": 19.8
+  },
+  "184": {
+   "amarelo": 9.5,
+   "laranja": 20.5
+  },
+  "185": {
+   "amarelo": 9.4,
+   "laranja": 20.5
+  },
+  "186": {
+   "amarelo": 9.4,
+   "laranja": 20.5
+  },
+  "187": {
+   "amarelo": 9.2,
+   "laranja": 20.5
+  },
+  "188": {
+   "amarelo": 9.2,
+   "laranja": 20.5
+  },
+  "189": {
+   "amarelo": 9.2,
+   "laranja": 20.9
+  },
+  "190": {
+   "amarelo": 9.2,
+   "laranja": 21.0
+  },
+  "191": {
+   "amarelo": 9.2,
+   "laranja": 21.4
+  },
+  "192": {
+   "amarelo": 9.2,
+   "laranja": 22.7
+  },
+  "193": {
+   "amarelo": 9.2,
+   "laranja": 22.7
+  },
+  "194": {
+   "amarelo": 9.2,
+   "laranja": 22.7
+  },
+  "195": {
+   "amarelo": 9.3,
+   "laranja": 22.8
+  },
+  "196": {
+   "amarelo": 9.4,
+   "laranja": 22.9
+  },
+  "197": {
+   "amarelo": 9.3,
+   "laranja": 23.1
+  },
+  "198": {
+   "amarelo": 9.4,
+   "laranja": 23.2
+  },
+  "199": {
+   "amarelo": 10.5,
+   "laranja": 23.5
+  },
+  "200": {
+   "amarelo": 10.6,
+   "laranja": 27.2
+  },
+  "201": {
+   "amarelo": 10.8,
+   "laranja": 28.1
+  },
+  "202": {
+   "amarelo": 10.8,
+   "laranja": 28.1
+  },
+  "203": {
+   "amarelo": 10.9,
+   "laranja": 28.1
+  },
+  "204": {
+   "amarelo": 11.6,
+   "laranja": 28.1
+  },
+  "205": {
+   "amarelo": 11.6,
+   "laranja": 28.1
+  },
+  "206": {
+   "amarelo": 11.6,
+   "laranja": 28.1
+  },
+  "207": {
+   "amarelo": 11.6,
+   "laranja": 28.1
+  },
+  "208": {
+   "amarelo": 11.4,
+   "laranja": 28.1
+  },
+  "209": {
+   "amarelo": 11.3,
+   "laranja": 24.6
+  },
+  "210": {
+   "amarelo": 11.3,
+   "laranja": 23.0
+  },
+  "211": {
+   "amarelo": 11.3,
+   "laranja": 22.7
+  },
+  "212": {
+   "amarelo": 11.3,
+   "laranja": 22.6
+  },
+  "213": {
+   "amarelo": 11.3,
+   "laranja": 21.9
+  },
+  "214": {
+   "amarelo": 11.3,
+   "laranja": 21.7
+  },
+  "215": {
+   "amarelo": 11.2,
+   "laranja": 21.7
+  },
+  "216": {
+   "amarelo": 11.2,
+   "laranja": 21.7
+  },
+  "217": {
+   "amarelo": 11.2,
+   "laranja": 21.7
+  },
+  "218": {
+   "amarelo": 11.3,
+   "laranja": 21.7
+  },
+  "219": {
+   "amarelo": 11.3,
+   "laranja": 21.9
+  },
+  "220": {
+   "amarelo": 11.3,
+   "laranja": 22.6
+  },
+  "221": {
+   "amarelo": 12.1,
+   "laranja": 22.7
+  },
+  "222": {
+   "amarelo": 12.2,
+   "laranja": 25.5
+  },
+  "223": {
+   "amarelo": 12.5,
+   "laranja": 25.7
+  },
+  "224": {
+   "amarelo": 12.5,
+   "laranja": 25.9
+  },
+  "225": {
+   "amarelo": 12.5,
+   "laranja": 25.9
+  },
+  "226": {
+   "amarelo": 12.4,
+   "laranja": 25.9
+  },
+  "227": {
+   "amarelo": 12.4,
+   "laranja": 25.9
+  },
+  "228": {
+   "amarelo": 12.3,
+   "laranja": 25.9
+  },
+  "229": {
+   "amarelo": 12.2,
+   "laranja": 25.9
+  },
+  "230": {
+   "amarelo": 12.1,
+   "laranja": 25.9
+  },
+  "231": {
+   "amarelo": 11.3,
+   "laranja": 25.7
+  },
+  "232": {
+   "amarelo": 11.3,
+   "laranja": 25.7
+  },
+  "233": {
+   "amarelo": 11.3,
+   "laranja": 25.9
+  },
+  "234": {
+   "amarelo": 11.8,
+   "laranja": 25.9
+  },
+  "235": {
+   "amarelo": 12.1,
+   "laranja": 26.2
+  },
+  "236": {
+   "amarelo": 12.6,
+   "laranja": 30.4
+  },
+  "237": {
+   "amarelo": 13.3,
+   "laranja": 31.0
+  },
+  "238": {
+   "amarelo": 13.6,
+   "laranja": 33.3
+  },
+  "239": {
+   "amarelo": 13.7,
+   "laranja": 39.5
+  },
+  "240": {
+   "amarelo": 13.8,
+   "laranja": 42.4
+  },
+  "241": {
+   "amarelo": 14.2,
+   "laranja": 46.5
+  },
+  "242": {
+   "amarelo": 14.2,
+   "laranja": 46.5
+  },
+  "243": {
+   "amarelo": 14.3,
+   "laranja": 46.5
+  },
+  "244": {
+   "amarelo": 14.5,
+   "laranja": 46.5
+  },
+  "245": {
+   "amarelo": 15.0,
+   "laranja": 46.5
+  },
+  "246": {
+   "amarelo": 15.7,
+   "laranja": 46.5
+  },
+  "247": {
+   "amarelo": 15.8,
+   "laranja": 46.5
+  },
+  "248": {
+   "amarelo": 16.6,
+   "laranja": 46.5
+  },
+  "249": {
+   "amarelo": 16.7,
+   "laranja": 46.5
+  },
+  "250": {
+   "amarelo": 16.9,
+   "laranja": 46.5
+  },
+  "251": {
+   "amarelo": 17.2,
+   "laranja": 46.5
+  },
+  "252": {
+   "amarelo": 16.9,
+   "laranja": 46.5
+  },
+  "253": {
+   "amarelo": 16.7,
+   "laranja": 46.5
+  },
+  "254": {
+   "amarelo": 16.2,
+   "laranja": 45.2
+  },
+  "255": {
+   "amarelo": 15.8,
+   "laranja": 42.4
+  },
+  "256": {
+   "amarelo": 16.2,
+   "laranja": 42.4
+  },
+  "257": {
+   "amarelo": 16.2,
+   "laranja": 42.4
+  },
+  "258": {
+   "amarelo": 16.7,
+   "laranja": 42.4
+  },
+  "259": {
+   "amarelo": 17.5,
+   "laranja": 42.4
+  },
+  "260": {
+   "amarelo": 19.6,
+   "laranja": 45.2
+  },
+  "261": {
+   "amarelo": 21.3,
+   "laranja": 46.5
+  },
+  "262": {
+   "amarelo": 23.5,
+   "laranja": 49.1
+  },
+  "263": {
+   "amarelo": 25.0,
+   "laranja": 49.1
+  },
+  "264": {
+   "amarelo": 25.1,
+   "laranja": 49.1
+  },
+  "265": {
+   "amarelo": 25.5,
+   "laranja": 49.1
+  },
+  "266": {
+   "amarelo": 25.8,
+   "laranja": 49.1
+  },
+  "267": {
+   "amarelo": 25.8,
+   "laranja": 46.7
+  },
+  "268": {
+   "amarelo": 25.7,
+   "laranja": 45.9
+  },
+  "269": {
+   "amarelo": 25.7,
+   "laranja": 45.6
+  },
+  "270": {
+   "amarelo": 25.8,
+   "laranja": 45.6
+  },
+  "271": {
+   "amarelo": 26.3,
+   "laranja": 44.6
+  },
+  "272": {
+   "amarelo": 27.7,
+   "laranja": 43.3
+  },
+  "273": {
+   "amarelo": 28.6,
+   "laranja": 44.4
+  },
+  "274": {
+   "amarelo": 29.3,
+   "laranja": 45.5
+  },
+  "275": {
+   "amarelo": 30.2,
+   "laranja": 45.8
+  },
+  "276": {
+   "amarelo": 31.4,
+   "laranja": 47.0
+  },
+  "277": {
+   "amarelo": 32.3,
+   "laranja": 47.7
+  },
+  "278": {
+   "amarelo": 33.4,
+   "laranja": 51.7
+  },
+  "279": {
+   "amarelo": 34.9,
+   "laranja": 53.6
+  },
+  "280": {
+   "amarelo": 35.5,
+   "laranja": 53.6
+  },
+  "281": {
+   "amarelo": 36.2,
+   "laranja": 53.6
+  },
+  "282": {
+   "amarelo": 37.3,
+   "laranja": 53.6
+  },
+  "283": {
+   "amarelo": 37.5,
+   "laranja": 53.6
+  },
+  "284": {
+   "amarelo": 38.7,
+   "laranja": 53.6
+  },
+  "285": {
+   "amarelo": 38.9,
+   "laranja": 53.6
+  },
+  "286": {
+   "amarelo": 39.2,
+   "laranja": 53.6
+  },
+  "287": {
+   "amarelo": 39.2,
+   "laranja": 50.6
+  },
+  "288": {
+   "amarelo": 39.2,
+   "laranja": 50.2
+  },
+  "289": {
+   "amarelo": 38.9,
+   "laranja": 50.1
+  },
+  "290": {
+   "amarelo": 39.5,
+   "laranja": 49.8
+  },
+  "291": {
+   "amarelo": 39.9,
+   "laranja": 49.8
+  },
+  "292": {
+   "amarelo": 40.0,
+   "laranja": 50.1
+  },
+  "293": {
+   "amarelo": 40.3,
+   "laranja": 50.2
+  },
+  "294": {
+   "amarelo": 40.8,
+   "laranja": 50.5
+  },
+  "295": {
+   "amarelo": 41.2,
+   "laranja": 51.0
+  },
+  "296": {
+   "amarelo": 41.3,
+   "laranja": 51.0
+  },
+  "297": {
+   "amarelo": 41.5,
+   "laranja": 51.0
+  },
+  "298": {
+   "amarelo": 41.9,
+   "laranja": 51.2
+  },
+  "299": {
+   "amarelo": 42.5,
+   "laranja": 51.7
+  },
+  "300": {
+   "amarelo": 42.6,
+   "laranja": 52.3
+  },
+  "301": {
+   "amarelo": 42.6,
+   "laranja": 52.6
+  },
+  "302": {
+   "amarelo": 42.8,
+   "laranja": 53.3
+  },
+  "303": {
+   "amarelo": 43.3,
+   "laranja": 62.1
+  },
+  "304": {
+   "amarelo": 44.1,
+   "laranja": 69.0
+  },
+  "305": {
+   "amarelo": 44.8,
+   "laranja": 69.0
+  },
+  "306": {
+   "amarelo": 45.4,
+   "laranja": 69.0
+  },
+  "307": {
+   "amarelo": 46.8,
+   "laranja": 70.2
+  },
+  "308": {
+   "amarelo": 47.3,
+   "laranja": 69.0
+  },
+  "309": {
+   "amarelo": 47.7,
+   "laranja": 70.2
+  },
+  "310": {
+   "amarelo": 47.9,
+   "laranja": 73.3
+  },
+  "311": {
+   "amarelo": 48.3,
+   "laranja": 77.2
+  },
+  "312": {
+   "amarelo": 49.3,
+   "laranja": 78.6
+  },
+  "313": {
+   "amarelo": 51.0,
+   "laranja": 79.4
+  },
+  "314": {
+   "amarelo": 51.7,
+   "laranja": 83.3
+  },
+  "315": {
+   "amarelo": 52.6,
+   "laranja": 83.3
+  },
+  "316": {
+   "amarelo": 53.3,
+   "laranja": 83.6
+  },
+  "317": {
+   "amarelo": 54.3,
+   "laranja": 83.6
+  },
+  "318": {
+   "amarelo": 54.3,
+   "laranja": 83.6
+  },
+  "319": {
+   "amarelo": 54.4,
+   "laranja": 83.6
+  },
+  "320": {
+   "amarelo": 55.2,
+   "laranja": 84.7
+  },
+  "321": {
+   "amarelo": 56.9,
+   "laranja": 85.2
+  },
+  "322": {
+   "amarelo": 60.5,
+   "laranja": 86.4
+  },
+  "323": {
+   "amarelo": 60.8,
+   "laranja": 89.9
+  },
+  "324": {
+   "amarelo": 61.6,
+   "laranja": 90.1
+  },
+  "325": {
+   "amarelo": 62.6,
+   "laranja": 90.1
+  },
+  "326": {
+   "amarelo": 63.2,
+   "laranja": 90.1
+  },
+  "327": {
+   "amarelo": 63.6,
+   "laranja": 90.1
+  },
+  "328": {
+   "amarelo": 63.9,
+   "laranja": 90.1
+  },
+  "329": {
+   "amarelo": 64.1,
+   "laranja": 91.2
+  },
+  "330": {
+   "amarelo": 64.1,
+   "laranja": 93.4
+  },
+  "331": {
+   "amarelo": 64.1,
+   "laranja": 94.1
+  },
+  "332": {
+   "amarelo": 64.1,
+   "laranja": 95.5
+  },
+  "333": {
+   "amarelo": 65.0,
+   "laranja": 96.4
+  },
+  "334": {
+   "amarelo": 64.2,
+   "laranja": 97.8
+  },
+  "335": {
+   "amarelo": 64.2,
+   "laranja": 98.3
+  },
+  "336": {
+   "amarelo": 64.7,
+   "laranja": 100.4
+  },
+  "337": {
+   "amarelo": 64.7,
+   "laranja": 102.3
+  },
+  "338": {
+   "amarelo": 64.7,
+   "laranja": 104.1
+  },
+  "339": {
+   "amarelo": 65.0,
+   "laranja": 104.1
+  },
+  "340": {
+   "amarelo": 64.2,
+   "laranja": 102.5
+  },
+  "341": {
+   "amarelo": 62.5,
+   "laranja": 100.4
+  },
+  "342": {
+   "amarelo": 60.8,
+   "laranja": 98.3
+  },
+  "343": {
+   "amarelo": 60.3,
+   "laranja": 97.8
+  },
+  "344": {
+   "amarelo": 59.4,
+   "laranja": 98.3
+  },
+  "345": {
+   "amarelo": 59.0,
+   "laranja": 100.3
+  },
+  "346": {
+   "amarelo": 58.7,
+   "laranja": 100.3
+  },
+  "347": {
+   "amarelo": 58.6,
+   "laranja": 100.3
+  },
+  "348": {
+   "amarelo": 59.2,
+   "laranja": 100.3
+  },
+  "349": {
+   "amarelo": 60.5,
+   "laranja": 102.2
+  },
+  "350": {
+   "amarelo": 64.1,
+   "laranja": 104.9
+  },
+  "351": {
+   "amarelo": 64.4,
+   "laranja": 104.9
+  },
+  "352": {
+   "amarelo": 65.6,
+   "laranja": 105.5
+  },
+  "353": {
+   "amarelo": 66.4,
+   "laranja": 105.8
+  },
+  "354": {
+   "amarelo": 66.3,
+   "laranja": 105.8
+  },
+  "355": {
+   "amarelo": 65.8,
+   "laranja": 105.8
+  },
+  "356": {
+   "amarelo": 64.9,
+   "laranja": 105.8
+  },
+  "357": {
+   "amarelo": 66.2,
+   "laranja": 105.8
+  },
+  "358": {
+   "amarelo": 66.7,
+   "laranja": 105.8
+  },
+  "359": {
+   "amarelo": 67.8,
+   "laranja": 106.3
+  },
+  "360": {
+   "amarelo": 68.3,
+   "laranja": 108.5
+  },
+  "361": {
+   "amarelo": 68.6,
+   "laranja": 110.5
+  },
+  "362": {
+   "amarelo": 68.3,
+   "laranja": 110.7
+  },
+  "363": {
+   "amarelo": 67.8,
+   "laranja": 111.3
+  },
+  "364": {
+   "amarelo": 67.7,
+   "laranja": 111.3
+  },
+  "365": {
+   "amarelo": 67.8,
+   "laranja": 110.6
+  },
+  "366": {
+   "amarelo": 68.6,
+   "laranja": 108.5
+  }
+ }
+}

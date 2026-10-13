@@ -1,0 +1,98 @@
+{
+ "name": "turbidez_por_caudal",
+ "created_utc": "2026-10-11T21:22:38+00:00",
+ "indicator": "NDTI = (red - green) / (red + green), median of the open-water pixels of the reach, per satellite image",
+ "elevated_definition": "NDTI at or above the 75th percentile of the reach's Sentinel-2 record",
+ "ndti_limits": {
+  "1 montante (norte)": 0.0044,
+  "2 troço médio": -0.0067,
+  "3 jusante": -0.0225,
+  "4 foz / estuário": -0.042
+ },
+ "reaches_used": [
+  "2 troço médio",
+  "3 jusante",
+  "4 foz / estuário"
+ ],
+ "period": [
+  "2017-01-06",
+  "2026-10-09"
+ ],
+ "classes": {
+  "edges_m3s": [
+   0.0,
+   20.0,
+   60.0,
+   163.8,
+   375.8,
+   null
+  ],
+  "labels": [
+   "abaixo de 20",
+   "20 a 60",
+   "60 a 164",
+   "164 a 376 (amarelo)",
+   "acima de 376 (laranja ou mais)"
+  ]
+ },
+ "table": [
+  {
+   "caudal_m3s": "abaixo de 20",
+   "dias_medidos": 1415,
+   "turbidez_elevada": 0.139,
+   "intervalo_min": 0.124,
+   "intervalo_max": 0.154
+  },
+  {
+   "caudal_m3s": "20 a 60",
+   "dias_medidos": 339,
+   "turbidez_elevada": 0.363,
+   "intervalo_min": 0.321,
+   "intervalo_max": 0.407
+  },
+  {
+   "caudal_m3s": "60 a 164",
+   "dias_medidos": 265,
+   "turbidez_elevada": 0.408,
+   "intervalo_min": 0.359,
+   "intervalo_max": 0.458
+  },
+  {
+   "caudal_m3s": "164 a 376 (amarelo)",
+   "dias_medidos": 139,
+   "turbidez_elevada": 0.604,
+   "intervalo_min": 0.535,
+   "intervalo_max": 0.67
+  },
+  {
+   "caudal_m3s": "acima de 376 (laranja ou mais)",
+   "dias_medidos": 56,
+   "turbidez_elevada": 0.786,
+   "intervalo_min": 0.683,
+   "intervalo_max": 0.862
+  }
+ ],
+ "skill": [
+  {
+   "previsao": "tabela por caudal (ano deixado de fora)",
+   "dias": 2214,
+   "auc": 0.643,
+   "brier": 0.164,
+   "bss": 0.036
+  },
+  {
+   "previsao": "referência: época do ano",
+   "dias": 2214,
+   "auc": 0.696,
+   "brier": 0.17,
+   "bss": NaN
+  },
+  {
+   "previsao": "tabela, dias do Landsat antes de 2017",
+   "dias": 128,
+   "auc": 0.765,
+   "brier": 0.145,
+   "bss": NaN
+  }
+ ]
+}
