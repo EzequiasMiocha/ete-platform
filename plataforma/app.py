@@ -195,11 +195,6 @@ def pagina_inicio() -> None:
 
 
 # ----------------------------------------------------------------------------- 2. the project
-EQUIPA = [("Amilton Docole", "Líder do projecto"), ("Ezequias Miocha", "Líder técnico (IA e sistemas de dados)"), ("Armenia Machava", "Finanças"),
-          ("Irene Timane", "Conteúdos e comunicação de ciência"), ("Gervasio Mate", "Engenheiro de sensores (equipa de dados)"), ("Nilza Taide", "Design gráfico e media"),
-          ("Glads Sitoe", "Logística e operações"), ("Agostinho Oliveira", "Detecção remota e SIG"), ("Mussa Abdala", "Software e plataforma")]
-
-
 def pagina_projecto() -> None:
     T.section("Eyes to Earth: olhos no céu para proteger quem vive junto ao rio", "O que é o projecto, que problema quer resolver e o que esta plataforma faz.", "O projecto")
     T.card("", "<p style='margin:0;font-size:1.04rem'>O <b>Eyes to Earth (ETE)</b> usa imagens de satélite e machine learning para <b>vigiar a água do rio Incomáti</b> e "
@@ -255,10 +250,8 @@ def pagina_projecto() -> None:
     T.card("", "<p style='margin:0'><b>Nunca inventar dados.</b> Um mês sem imagem limpa fica vazio. Um satélite que não existia num ano fica marcado como ausente. "
            "Os testes que falharam estão publicados ao lado dos que passaram. E o que o satélite não vê (micróbios, químicos, pH) é dito com todas as letras.</p>")
 
-    T.section("Quem faz", eyebrow="A equipa")
-    T.html("<div class='ete-kpis'>" + "".join(f"<div class='ete-kpi'><div class='valor' style='font-size:1.02rem'>{nome}</div><div class='nota'>{papel}</div></div>" for nome, papel in EQUIPA) + "</div>")
     T.card("", "<p style='margin:0'>Projecto financiado pelo <b>IAU Office of Astronomy for Development (OAD)</b>: usar a ciência e as técnicas da observação do céu "
-           "para resolver problemas na Terra. Os workshops do projecto decorrem na Universidade Eduardo Mondlane.</p>", "Apoio")
+           "para resolver problemas na Terra.</p>", "Apoio")
     st.warning("Serviço experimental. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. Se as autoridades derem uma ordem, siga a ordem.", icon="⚠️")
 
 
