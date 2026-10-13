@@ -76,7 +76,7 @@ CSS = f"""
   .ete-heroi .nivel {{font-size: 1.9rem; font-weight: 800; line-height: 1.1;}}
   .ete-heroi .palavra {{font-size: 1rem; font-weight: 600; opacity: .92;}}
   .ete-heroi .texto {{font-size: 1.02rem; margin-top: 6px; max-width: 760px;}}
-  .ete-kpis {{display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 10px; margin-bottom: 14px;}}
+  .ete-kpis {{display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px;}}
   .ete-kpi {{background: {CARD}; border: 1px solid {BORDER}; border-radius: 14px; padding: 12px 14px;}}
   .ete-kpi .rotulo {{color: {MUTED}; font-size: .78rem; font-weight: 600;}}
   .ete-kpi .valor {{font-size: 1.5rem; font-weight: 700; color: {NAVY}; line-height: 1.2;}}

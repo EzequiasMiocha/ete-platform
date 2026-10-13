@@ -175,6 +175,7 @@ def climatology(normals: pd.DataFrame):
 def buildings_by_place(places: pd.DataFrame, colours: dict):
     """Buildings around each named place that lie inside the flooded zone (largest first)."""
     data = places[places["edificios_alagados"] > 0].nlargest(12, "edificios_alagados")
+    colours = {k: v for k, v in colours.items() if k in set(data["categoria"])}          # legend only for what is drawn
     chart = alt.Chart(data).mark_bar(cornerRadiusTopRight=4, cornerRadiusBottomRight=4).encode(
         y=alt.Y("lugar:N", sort="-x", title=None), x=alt.X("edificios_alagados:Q", title="Edifícios dentro da zona de aviso (raio de 500 m)"),
         color=alt.Color("categoria:N", scale=alt.Scale(domain=list(colours), range=list(colours.values()))),

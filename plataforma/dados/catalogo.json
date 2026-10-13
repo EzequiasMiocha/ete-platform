@@ -1,7 +1,7 @@
 {
  "projeto": "Eyes to Earth (ETE): cheias e água do rio Incomáti, Marracuene",
  "versao_codigo": "0.1.0",
- "gerado_utc": "2026-10-13T15:56:21+00:00",
+ "gerado_utc": "2026-10-13T15:52:21+00:00",
  "sistema_de_coordenadas": "EPSG:4326 (latitude, longitude)",
  "aviso": "Produto experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.",
  "aplicacao": "",
@@ -10,7 +10,7 @@
   "estado": "ok",
   "data_da_previsao": "2026-10-13",
   "desatualizado": false,
-  "fonte": "cache"
+  "fonte": "online"
  },
  "modelos": {
   "limites_de_alerta": {
