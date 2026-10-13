@@ -144,10 +144,13 @@ def pagina_cheias() -> None:
                 mes = st.select_slider("Mês", camada["meses"], value=camada["meses"][-1])
                 ficheiro, cantos = leitor.imagem("agua_mensal", mes)
             elif escolha == "zonas_de_aviso":
-                ficheiro, cantos = leitor.caminho(camada["imagem"]), camada["cantos"]
+                ficheiro, cantos = (leitor.caminho(camada["imagem"]), camada["cantos"]) if camada.get("imagem") else (None, None)
             else:
                 ficheiro, cantos = leitor.imagem(escolha)
-            folium.raster_layers.ImageOverlay(str(ficheiro), bounds=cantos, opacity=0.8).add_to(mapa)
+            if ficheiro is not None:
+                folium.raster_layers.ImageOverlay(str(ficheiro), bounds=cantos, opacity=0.8).add_to(mapa)
+            else:                                    # older package without the light image: draw the polygons
+                folium.GeoJson(geojson("zonas_de_aviso", V), style_function=lambda f: {"color": f["properties"]["cor"], "weight": 1, "fillOpacity": 0.45}).add_to(mapa)
             for lugar in geojson("lugares", V)["features"]:
                 p = lugar["properties"]
                 if p["categoria"] in ("alaga primeiro", "alaga em cheia grande"):
