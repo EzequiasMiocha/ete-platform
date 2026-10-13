@@ -30,7 +30,7 @@ import tema as T
 st.set_page_config(page_title="ETE · Incomáti, Marracuene", page_icon="🌊", layout="wide", initial_sidebar_state="collapsed")
 T.html(T.CSS)
 
-PAGINAS = {"inicio": "🏠 Início", "cheias": "🌧️ Cheias", "mapa": "🗺️ Mapa", "agua": "💧 Água do rio",
+PAGINAS = {"inicio": "🏠 Início", "projecto": "🌍 O projecto", "cheias": "🌧️ Cheias", "mapa": "🗺️ Mapa", "agua": "💧 Água do rio",
            "historico": "📅 Histórico", "lugares": "📍 Lugares", "modelos": "🧠 Modelos", "sobre": "ℹ️ Como funciona"}
 CORES_LUGARES = {"alaga primeiro": "#7b241c", "alaga em cheia grande": "#af601a", "na margem da cheia": "#566573", "fora das zonas de aviso": "#aab7b8"}
 
@@ -122,6 +122,10 @@ def cenarios_do_boletim() -> pd.DataFrame:
 
 # ----------------------------------------------------------------------------- 1. home
 def pagina_inicio() -> None:
+    T.intro("Vigiamos a água do rio Incomáti e avisamos das cheias em Marracuene",
+            "O Eyes to Earth transforma imagens de satélite e machine learning em alertas e mapas simples, actualizados todos os dias, "
+            "para as comunidades que vivem junto ao rio.")
+    st.button("Conhecer o projecto e o nosso objectivo", on_click=ir_para, args=("projecto",), key="ir_projecto")
     if not VALIDO:
         T.hero_unavailable()
         st.button("Ver os mapas e o histórico", on_click=ir_para, args=("mapa",))
@@ -188,6 +192,74 @@ def pagina_inicio() -> None:
             with st.expander("📨 Mensagem pronta para enviar aos líderes comunitários (WhatsApp ou SMS)"):
                 st.code(mensagem.read_text(), language=None)
                 st.download_button("Descarregar a mensagem", mensagem.read_text().encode("utf-8"), "mensagem_ete.txt", "text/plain")
+
+
+# ----------------------------------------------------------------------------- 2. the project
+EQUIPA = [("Amilton Docole", "Líder do projecto"), ("Ezequias Miocha", "Líder técnico (IA e sistemas de dados)"), ("Armenia Machava", "Finanças"),
+          ("Irene Timane", "Conteúdos e comunicação de ciência"), ("Gervasio Mate", "Engenheiro de sensores (equipa de dados)"), ("Nilza Taide", "Design gráfico e media"),
+          ("Glads Sitoe", "Logística e operações"), ("Agostinho Oliveira", "Detecção remota e SIG"), ("Mussa Abdala", "Software e plataforma")]
+
+
+def pagina_projecto() -> None:
+    T.section("Eyes to Earth: olhos no céu para proteger quem vive junto ao rio", "O que é o projecto, que problema quer resolver e o que esta plataforma faz.", "O projecto")
+    T.card("", "<p style='margin:0;font-size:1.04rem'>O <b>Eyes to Earth (ETE)</b> usa imagens de satélite e machine learning para <b>vigiar a água do rio Incomáti</b> e "
+           "<b>avisar das cheias</b> no distrito de Marracuene, província de Maputo. Transforma dados abertos, que já existem mas não chegam às pessoas, "
+           "em alertas e mapas simples, actualizados todos os dias.</p>", "Em poucas palavras")
+
+    T.section("O problema", eyebrow="Porquê")
+    a, b = st.columns(2, gap="medium")
+    with a:
+        T.card("Cheias sem aviso", "<p style='margin:0'>As comunidades do Baixo Incomáti (agricultores, pescadores, famílias) vivem numa planície que alaga. "
+               "Quando o rio sobe, a informação que existe nos satélites e nos modelos não chega a tempo a quem precisa dela.</p>")
+    with b:
+        T.card("Água que ninguém acompanha", "<p style='margin:0'>A água do rio é usada todos os dias para regar, pescar e para as casas. "
+               "Na bacia do Incomáti não há nenhuma estação pública de qualidade da água num arquivo mundial que possa ser consultado por todos.</p>")
+    with T.guard("os números do problema"):
+        if "factos" in CAMADAS:
+            bruto = serie("factos", V)
+            f = bruto.set_index(bruto.columns[0])["valor"]
+            T.kpis([{"rotulo": "Anos com alerta laranja ou vermelho", "valor": f"{f['anos_com_alerta_laranja_ou_vermelho']:.0f} em {f['anos_analisados']:.0f}", "nota": "2006 a 2026"},
+                    {"rotulo": "Área alagada em janeiro de 2026", "valor": num(f["area_alagada_cheia_grande_km2"]), "unidade": "km²", "nota": "no distrito"},
+                    {"rotulo": "Edifícios na zona alagada", "valor": num(f["edificios"])}, {"rotulo": "Terras agrícolas alagadas", "valor": num(f["terras_agricolas_km2"]), "unidade": "km²"},
+                    {"rotulo": "Estações públicas de qualidade da água", "valor": num(f["estacoes_publicas_de_qualidade_na_bacia"]), "nota": "na bacia (arquivo GEMStat)"}])
+
+    T.section("O nosso objectivo", "Uma plataforma com dois módulos, que avisa de forma automática e em linguagem simples.", "Para quê")
+    a, b = st.columns(2, gap="medium")
+    with a:
+        T.card("💧 Qualidade: vigiar a água do rio", "<p style='margin:0 0 8px 0'>Acompanhar por satélite o que muda a cor da água (sedimentos e plantas à superfície) em nove troços, "
+               "da fronteira à foz, e dizer quando a água está mais turva do que é costume.</p>"
+               "<span class='ete-chip'>9 troços</span><span class='ete-chip'>20 anos de imagens</span><span class='ete-chip'>previsão das próximas manhãs</span>", "Módulo 1")
+        st.button("Ver a água do rio", on_click=ir_para, args=("agua",), key="proj_agua", use_container_width=True)
+    with b:
+        T.card("🌧️ Quantidade: avisar das cheias", "<p style='margin:0 0 8px 0'>Prever o caudal do rio com dias de avanço, dar um nível de alerta (verde, amarelo, laranja, vermelho) "
+               "e mostrar que lugares a água alcança primeiro.</p>"
+               "<span class='ete-chip'>alerta para 10 dias</span><span class='ete-chip'>zonas de aviso com nomes</span><span class='ete-chip'>mensagem para os líderes</span>", "Módulo 2")
+        st.button("Ver a previsão de cheias", on_click=ir_para, args=("cheias",), key="proj_cheias", use_container_width=True)
+
+    T.section("Para quem", eyebrow="Quem serve")
+    T.steps([("Famílias e líderes comunitários", "Saber, numa frase, se há perigo e o que fazer. A mensagem diária segue por WhatsApp ou SMS."),
+             ("Agricultores e pescadores", "Saber quando o rio vai subir e como está a água que usam."),
+             ("Autoridades locais e protecção civil", "Mapas de onde a água chega primeiro e o que está exposto, como apoio aos avisos oficiais."),
+             ("Estudantes e investigadores", "Dados abertos, métodos explicados e resultados que se podem repetir.")])
+
+    T.section("Como funciona", "Só com dados abertos e de acesso imediato: nenhuma informação depende de pedidos a instituições.", "O método")
+    T.steps([("Satélites", "Sentinel-1 (radar), Sentinel-2 e Landsat (imagem), mais chuva, caudal e terreno: 20 anos de dados."),
+             ("Machine learning", "Modelos que detectam água, mapeiam o risco do terreno, prevêem o caudal e a turbidez. Cada um foi comparado com alternativas e testado em dados que nunca viu."),
+             ("Regras de alerta claras", "O nível de alerta compara o caudal e a chuva previstos com 25 anos de história."),
+             ("Todos os dias", "Um boletim, uma mensagem curta e esta plataforma são actualizados de manhã, de forma automática.")])
+    a, b = st.columns(2)
+    a.button("Ver os modelos e os testes", on_click=ir_para, args=("modelos",), key="proj_modelos", use_container_width=True)
+    b.button("Ver até onde confiar", on_click=ir_para, args=("sobre",), key="proj_sobre", use_container_width=True)
+
+    T.section("Uma regra que não se quebra", eyebrow="Rigor")
+    T.card("", "<p style='margin:0'><b>Nunca inventar dados.</b> Um mês sem imagem limpa fica vazio. Um satélite que não existia num ano fica marcado como ausente. "
+           "Os testes que falharam estão publicados ao lado dos que passaram. E o que o satélite não vê (micróbios, químicos, pH) é dito com todas as letras.</p>")
+
+    T.section("Quem faz", eyebrow="A equipa")
+    T.html("<div class='ete-kpis'>" + "".join(f"<div class='ete-kpi'><div class='valor' style='font-size:1.02rem'>{nome}</div><div class='nota'>{papel}</div></div>" for nome, papel in EQUIPA) + "</div>")
+    T.card("", "<p style='margin:0'>Projecto financiado pelo <b>IAU Office of Astronomy for Development (OAD)</b>: usar a ciência e as técnicas da observação do céu "
+           "para resolver problemas na Terra. Os workshops do projecto decorrem na Universidade Eduardo Mondlane.</p>", "Apoio")
+    st.warning("Serviço experimental. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. Se as autoridades derem uma ordem, siga a ordem.", icon="⚠️")
 
 
 # ----------------------------------------------------------------------------- 2. flood forecast
@@ -833,7 +905,7 @@ rotulo = st.radio("Página", list(PAGINAS.values()), horizontal=True, key="pagin
 pagina = next(k for k, v in PAGINAS.items() if v == rotulo)
 st.query_params["p"] = pagina
 
-{"inicio": pagina_inicio, "cheias": pagina_cheias, "mapa": pagina_mapa, "agua": pagina_agua, "historico": pagina_historico, "lugares": pagina_lugares, "modelos": pagina_modelos, "sobre": pagina_sobre}[pagina]()
+{"inicio": pagina_inicio, "projecto": pagina_projecto, "cheias": pagina_cheias, "mapa": pagina_mapa, "agua": pagina_agua, "historico": pagina_historico, "lugares": pagina_lugares, "modelos": pagina_modelos, "sobre": pagina_sobre}[pagina]()
 
 leve = CATALOGO.get("pagina_simples", "")
 T.footer(CATALOGO["aviso"] + (f" &nbsp;·&nbsp; <a href='{leve}'>Versão leve do boletim, para pouca rede</a>" if leve else "")

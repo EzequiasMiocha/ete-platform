@@ -34,7 +34,7 @@ def report(name: str, app, extra_ok: bool = True) -> None:
         print("      ", problem[:300])
 
 
-for page in ("Início", "Cheias", "Mapa", "Água do rio", "Histórico", "Lugares", "Modelos", "Como funciona"):
+for page in ("Início", "O projecto", "Cheias", "Mapa", "Água do rio", "Histórico", "Lugares", "Modelos", "Como funciona"):
     report(f"página {page}", open_page(page))
 
 # back and forward buttons

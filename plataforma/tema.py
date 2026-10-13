@@ -69,6 +69,9 @@ CSS = f"""
   /* cards and tiles */
   .ete-cartao {{background: {CARD}; border: 1px solid {BORDER}; border-radius: 16px; padding: 16px 18px; box-shadow: 0 1px 3px rgba(20,33,46,.05); margin-bottom: 12px;}}
   .ete-cartao h4 {{margin: 0 0 6px 0; font-size: 1rem; color: {NAVY};}}
+  .ete-intro {{background: {CARD}; border: 1px solid {BORDER}; border-left: 6px solid {TEAL}; border-radius: 16px; padding: 16px 20px; margin: 4px 0 10px 0;}}
+  .ete-intro .titulo {{font-size: 1.3rem; font-weight: 700; color: {NAVY}; line-height: 1.25;}}
+  .ete-intro .texto {{color: {INK}; font-size: 1rem; margin-top: 4px; max-width: 860px;}}
   .ete-olho {{text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; font-weight: 700; color: {TEAL}; margin-bottom: 2px;}}
   .ete-sub {{color: {MUTED}; font-size: .93rem; margin: -2px 0 12px 0;}}
   .ete-heroi {{border-radius: 18px; padding: 22px 24px; display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; box-shadow: 0 6px 22px rgba(20,33,46,.12); margin: 6px 0 14px 0;}}
@@ -143,6 +146,11 @@ def top_bar(issued: str, valid: bool) -> None:
     state = "boletim em dia" if valid else "boletim desactualizado"
     html(f"<div class='ete-top'>{LOGO}<div><div class='nome'>Eyes to Earth · Incomáti</div><div class='lema'>Monitorização da água e alertas de cheia, com satélites e machine learning</div></div>"
          f"<div class='direita'><span class='ete-pilula'><i style='background:{dot}'></i>{state}</span><span class='ete-pilula'>Boletim de {issued}</span></div></div>")
+
+
+def intro(title: str, text: str) -> None:
+    """The project in two lines, at the very top of the first page."""
+    html(f"<div class='ete-intro'><div class='ete-olho'>O projecto</div><div class='titulo'>{title}</div><div class='texto'>{text}</div></div>")
 
 
 def section(title: str, subtitle: str = "", eyebrow: str = "") -> None:

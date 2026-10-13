@@ -29,6 +29,9 @@ As páginas escolhem-se na barra do topo. Em várias delas há botões **◀ Ant
 A cor do alerta, o que fazer, os números do dia e os próximos dez dias. Com os botões pode ver
 cada dia: o caudal previsto e a probabilidade de passar cada limite. É a página para ver todos os dias.
 
+### O projecto
+O que é o Eyes to Earth, que problema quer resolver, o objectivo, para quem é, como funciona e quem o faz.
+
 ### Cheias
 A previsão do caudal para dez dias, a chuva na bacia, o que quer dizer cada nível de alerta e
 o rio nos últimos três anos.
