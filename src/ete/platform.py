@@ -315,7 +315,20 @@ def export_quality(cfg: dict, folder) -> list[dict]:
     state.round(4).to_csv(out / "estado_por_troco.csv")
     classes = analysis.anomalies(data, "ndti").set_index(["troco", "month"])["classe"]
     monthly = data.join(classes, on=["troco", "month"])
-    columns = ["troco", "nome", "month", "fonte", "fiabilidade", "ndti", "turbidez_fnu", "tss_mg_l", "secchi_m", "vegetacao", "temp_c", "esperado", "residuo", "nao_explicada",
+    monthly["ano"], monthly["mes_do_ano"] = monthly["month"].str[:4].astype(int), monthly["month"].str[5:].astype(int)
+    images = analysis.load_images(cfg)
+    analysis.cross_sensor(images).round(3).to_csv(out / "concordancia_entre_satelites.csv")
+    unusual = analysis.isolation_forest(cfg, data)
+    if len(unusual):
+        unusual[unusual["invulgar"]].merge(data[["troco", "month", "nome", "caudal_m3s", "chuva_mm"]], on=["troco", "month"]).round(3).to_csv(out / "meses_invulgares.csv", index=False)
+    measured = images.dropna(subset=["ndti"])
+    (out / "resumo.json").write_text(json.dumps({
+        "trocos": int(data["troco"].nunique()), "dias_com_medicao": int(measured["date"].nunique()), "medicoes": int(len(measured)),
+        "por_satelite": {k: int(v) for k, v in measured.groupby("sensor")["date"].nunique().items()}, "primeira_medicao": str(measured["date"].min().date()),
+        "ultima_medicao": str(measured["date"].max().date()), "meses_com_medicao": int(data["ndti"].notna().sum()),
+        "trocos_com_20_anos": int(data.groupby("troco")["landsat_utilizavel"].first().sum()),
+        "trocos_fiaveis": int((data.groupby("troco")["fiabilidade"].first() == "boa").sum())}, indent=1))
+    columns = ["troco", "nome", "month", "ano", "mes_do_ano", "epoca", "fonte", "fiabilidade", "ndti_s2", "ndti_landsat", "ndci", "ndti", "turbidez_fnu", "tss_mg_l", "secchi_m", "vegetacao", "temp_c", "esperado", "residuo", "nao_explicada",
                "classe", "chuva_mm", "caudal_m3s", "n_imagens_landsat", "n_imagens_s2"]
     monthly[columns].round(4).to_csv(out / "serie_mensal.csv", index=False)
     analysis.climatology(data, "ndti").round(4).to_csv(out / "normais_por_mes.csv")
@@ -343,6 +356,53 @@ def export_quality(cfg: dict, folder) -> list[dict]:
         {"id": "qualidade_tendencias", "titulo": "Tendências por troço", "tipo": "tabela", "ficheiro": "qualidade/tendencias.csv", "atualizacao": "anual",
          "descricao": "Teste de Mann-Kendall sazonal por parâmetro e troço, para o registo completo e para cada era de satélites.",
          "limites": "Uma tendência que só aparece no registo completo pode vir da mudança de satélite em 2013."}]
+
+
+MODEL_TABLES = {      # name in the package: (week folder of the report, file)
+    "modelo_b_algoritmos": ("semana_3", "30_modelo_b_algoritmos.csv"), "modelo_b_entradas": ("semana_3", "30_modelo_b_features.csv"),
+    "modelo_a_algoritmos": ("semana_3", "31_modelo_a_algoritmos.csv"), "modelo_a_entradas": ("semana_3", "31_modelo_a_features.csv"),
+    "modelo_a_teste_2026": ("semana_3", "31_modelo_a_teste_2026.csv"), "antecedencia_dos_alertas": ("semana_3", "32_antecedencia_dos_alertas.csv"),
+    "turbidez_modelo": ("semana_3", "35_modelo_com_mare.csv"), "turbidez_entradas_testadas": ("semana_3", "35_entradas_testadas.csv"),
+    "turbidez_esperada_por_troco": ("semana_3", "37_turbidez_esperada_desempenho.csv"), "validacao_gloria": ("semana_3", "37_validacao_gloria.csv"),
+    "sobreposicao_entre_fontes": ("semana_2", "25_sobreposicao_resumo.csv"), "humidade_do_solo_calibracao": ("semana_2", "24_quantile_mapping_validacao.csv"),
+    "concordancia_entre_satelites": ("semana_2", "29_concordancia_entre_satelites.csv")}
+
+
+def export_models(cfg: dict, folder) -> list[dict]:
+    """The machine-learning page: one card per trained model (algorithm, settings, inputs, rows,
+    date) and the tables of the tests that chose and validated them, copied from the reports."""
+    out = folder / "modelos"
+    out.mkdir(parents=True, exist_ok=True)
+    models = path(cfg, "models", mkdir=False)
+    cards = {}
+    for file in sorted(models.glob("modelo_*.json")):
+        meta = json.loads(file.read_text())
+        cards[meta.get("name", file.stem)] = {k: meta.get(k) for k in ("algorithm", "params", "features", "rows", "event_rows", "created_utc", "target", "train_years", "train",
+                                                                       "test_from", "period", "valid_for", "skill", "tested_and_not_used", "reaches") if meta.get(k) is not None}
+    training = path(cfg, "training", mkdir=False)
+    sizes = {}
+    for name in ("train_historico", "train_recente", "qualidade_trocos"):
+        file = training / f"{name}.parquet"
+        if file.exists():
+            import pyarrow.parquet as pq
+
+            info = pq.ParquetFile(file).metadata
+            sizes[name] = {"linhas": info.num_rows, "colunas": info.num_columns}
+    raw = list(path(cfg, "module_q_raw").glob("*.csv"))
+    if raw:
+        images = pd.concat([pd.read_csv(f, usecols=["date", "sensor", "image"]) for f in raw if f.stat().st_size > 60])
+        sizes["imagens_modulo_q"] = {"imagens": int(images["image"].nunique()), "por_satelite": images.groupby("sensor")["image"].nunique().to_dict(),
+                                     "primeira": str(images["date"].min()), "ultima": str(images["date"].max())}
+    (out / "fichas.json").write_text(json.dumps({"modelos": cards, "dados_de_treino": sizes}, indent=1, ensure_ascii=False))
+    tables = {}
+    for name, (week, source) in MODEL_TABLES.items():
+        file = path(cfg, "reports", week, mkdir=False) / source
+        if file.exists():
+            shutil.copy2(file, out / f"{name}.csv")
+            tables[name] = f"modelos/{name}.csv"
+    return [{"id": "modelos_ml", "titulo": "Modelos de machine learning e os seus testes", "tipo": "modelos", "ficheiro": "modelos/fichas.json", "tabelas": tables,
+             "atualizacao": "quando os modelos são treinados de novo", "descricao": "Ficha de cada modelo treinado e as tabelas dos testes que o escolheram e validaram.",
+             "limites": "Os modelos de cheias foram validados numa única cheia (janeiro de 2026). Os de qualidade da água não têm medições no rio para validação local."}]
 
 
 def _model_summary(cfg: dict) -> dict:
@@ -456,7 +516,7 @@ def write_static_page(cfg: dict) -> "Path":
 def export_package(cfg: dict) -> dict:
     """Rebuild the whole package (about a minute)."""
     folder = path(cfg, "platform")
-    entries = export_static(cfg, folder) + export_water_maps(cfg, folder) + export_series(cfg, folder) + export_quality(cfg, folder) + export_daily(cfg, folder)
+    entries = export_static(cfg, folder) + export_water_maps(cfg, folder) + export_series(cfg, folder) + export_quality(cfg, folder) + export_models(cfg, folder) + export_daily(cfg, folder)
     return _write_catalogue(cfg, folder, entries)
 
 

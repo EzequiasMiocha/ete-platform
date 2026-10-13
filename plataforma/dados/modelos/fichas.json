@@ -1,0 +1,269 @@
+{
+ "modelos": {
+  "modelo_a_terreno": {
+   "algorithm": "XGBClassifier",
+   "params": {
+    "learning_rate": 0.1,
+    "max_depth": 6,
+    "n_estimators": 300
+   },
+   "features": [
+    "hand",
+    "slope",
+    "twi",
+    "elevation",
+    "log_upstream_area",
+    "distance_to_river_m",
+    "distance_to_water_m",
+    "distance_to_stream_m"
+   ],
+   "rows": 250000,
+   "created_utc": "2026-10-11T07:06:13+00:00",
+   "target": "label_flood",
+   "train_years": "<= 2019"
+  },
+  "modelo_b_radar": {
+   "algorithm": "XGBClassifier",
+   "params": {
+    "learning_rate": 0.1,
+    "max_depth": 6,
+    "n_estimators": 300
+   },
+   "features": [
+    "vv",
+    "vh",
+    "vv_p10",
+    "vh_p10",
+    "vv_vh_ratio",
+    "ratio_p10",
+    "dvv_p10",
+    "dvh_p10",
+    "s1_angle"
+   ],
+   "rows": 140000,
+   "event_rows": 40000,
+   "created_utc": "2026-10-11T07:02:49+00:00",
+   "target": "label_water"
+  },
+  "modelo_c_caudal": {
+   "created_utc": "2026-10-11T13:14:29+00:00",
+   "target": "log1p(discharge) at t + lead",
+   "train": [
+    "1997-01-01",
+    "2021-12-31"
+   ],
+   "test_from": "2022-01-01",
+   "skill": [
+    {
+     "dias_a_frente": 1,
+     "dias_de_teste": 1738,
+     "nse_modelo": 0.922,
+     "pod_modelo": 0.911,
+     "far_modelo": 0.122,
+     "csi_modelo": 0.809,
+     "nse_persistencia": 0.895,
+     "pod_persistencia": 0.861,
+     "far_persistencia": 0.139,
+     "csi_persistencia": 0.756
+    },
+    {
+     "dias_a_frente": 2,
+     "dias_de_teste": 1737,
+     "nse_modelo": 0.831,
+     "pod_modelo": 0.81,
+     "far_modelo": 0.158,
+     "csi_modelo": 0.703,
+     "nse_persistencia": 0.752,
+     "pod_persistencia": 0.759,
+     "far_persistencia": 0.241,
+     "csi_persistencia": 0.612
+    },
+    {
+     "dias_a_frente": 3,
+     "dias_de_teste": 1736,
+     "nse_modelo": 0.699,
+     "pod_modelo": 0.734,
+     "far_modelo": 0.159,
+     "csi_modelo": 0.644,
+     "nse_persistencia": 0.611,
+     "pod_persistencia": 0.722,
+     "far_persistencia": 0.278,
+     "csi_persistencia": 0.564
+    },
+    {
+     "dias_a_frente": 5,
+     "dias_de_teste": 1734,
+     "nse_modelo": 0.542,
+     "pod_modelo": 0.608,
+     "far_modelo": 0.2,
+     "csi_modelo": 0.527,
+     "nse_persistencia": 0.389,
+     "pod_persistencia": 0.633,
+     "far_persistencia": 0.367,
+     "csi_persistencia": 0.463
+    },
+    {
+     "dias_a_frente": 7,
+     "dias_de_teste": 1732,
+     "nse_modelo": 0.444,
+     "pod_modelo": 0.62,
+     "far_modelo": 0.155,
+     "csi_modelo": 0.557,
+     "nse_persistencia": 0.208,
+     "pod_persistencia": 0.608,
+     "far_persistencia": 0.392,
+     "csi_persistencia": 0.436
+    }
+   ]
+  },
+  "modelo_turbidez": {
+   "features": [
+    "lq",
+    "lq_mean7",
+    "lq_max7",
+    "dq3",
+    "p3",
+    "p7",
+    "p30",
+    "sin",
+    "cos",
+    "t_h",
+    "t_dh",
+    "t_range",
+    "last_ndti",
+    "last_age",
+    "last_t_h",
+    "last_lq",
+    "has_last",
+    "troco=2 troço médio",
+    "troco=3 jusante",
+    "troco=4 foz / estuário"
+   ],
+   "rows": 2211,
+   "created_utc": "2026-10-11T21:24:43+00:00",
+   "target": "NDTI (water colour index) of the reach at the morning satellite overpass; and the event 'elevada'",
+   "period": [
+    "2017-01-06",
+    "2026-09-26"
+   ],
+   "valid_for": "about 07:30 UTC (09:30 local): the only time of day the satellites observe",
+   "skill": [
+    {
+     "modelo": "modelo final: última medição há 1 dia ou mais",
+     "dias": 2211,
+     "r2": 0.682,
+     "mae": 0.043,
+     "auc": 0.885,
+     "bss": 0.298
+    },
+    {
+     "modelo": "modelo final: última medição há 3 dias ou mais",
+     "dias": 2211,
+     "r2": 0.674,
+     "mae": 0.043,
+     "auc": 0.878,
+     "bss": 0.278
+    },
+    {
+     "modelo": "modelo final: última medição há 5 dias ou mais",
+     "dias": 2211,
+     "r2": 0.665,
+     "mae": 0.043,
+     "auc": 0.874,
+     "bss": 0.262
+    },
+    {
+     "modelo": "modelo final: última medição há 10 dias ou mais",
+     "dias": 2211,
+     "r2": 0.651,
+     "mae": 0.045,
+     "auc": 0.875,
+     "bss": 0.268
+    },
+    {
+     "modelo": "modelo final: sem medição recente",
+     "dias": 2211,
+     "r2": 0.614,
+     "mae": 0.047,
+     "auc": 0.849,
+     "bss": 0.196
+    },
+    {
+     "modelo": "passo anterior: maré só pela fase M2",
+     "dias": 2211,
+     "r2": 0.599,
+     "mae": 0.048,
+     "auc": 0.838,
+     "bss": 0.195
+    },
+    {
+     "modelo": "sem maré",
+     "dias": 2211,
+     "r2": 0.189,
+     "mae": 0.071,
+     "auc": 0.741,
+     "bss": -0.041
+    },
+    {
+     "modelo": "referência: época do ano",
+     "dias": 2211,
+     "r2": 0.207,
+     "mae": 0.07,
+     "auc": 0.707,
+     "bss": NaN
+    },
+    {
+     "modelo": "modelo final no Landsat 8/9 (outro satélite): todos os anos",
+     "dias": 739,
+     "r2": 0.651,
+     "mae": 0.045,
+     "auc": 0.897,
+     "bss": NaN
+    },
+    {
+     "modelo": "modelo final no Landsat antes de 2017 (outro satélite e outros anos)",
+     "dias": 128,
+     "r2": 0.592,
+     "mae": 0.068,
+     "auc": 0.879,
+     "bss": NaN
+    }
+   ],
+   "tested_and_not_used": [
+    "wind",
+    "local rain",
+    "rain per sub-basin",
+    "training on both satellites together"
+   ],
+   "reaches": [
+    "2 troço médio",
+    "3 jusante",
+    "4 foz / estuário"
+   ]
+  }
+ },
+ "dados_de_treino": {
+  "train_historico": {
+   "linhas": 670243,
+   "colunas": 80
+  },
+  "train_recente": {
+   "linhas": 311413,
+   "colunas": 96
+  },
+  "qualidade_trocos": {
+   "linhas": 2250,
+   "colunas": 36
+  },
+  "imagens_modulo_q": {
+   "imagens": 5276,
+   "por_satelite": {
+    "landsat57": 466,
+    "landsat89": 1346,
+    "sentinel2": 3464
+   },
+   "primeira": "2006-01-04",
+   "ultima": "2026-10-09"
+  }
+ }
+}

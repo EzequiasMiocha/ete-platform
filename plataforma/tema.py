@@ -141,7 +141,7 @@ def guard(what: str):
 def top_bar(issued: str, valid: bool) -> None:
     dot = "#58D68D" if valid else "#F5B041"
     state = "boletim em dia" if valid else "boletim desactualizado"
-    html(f"<div class='ete-top'>{LOGO}<div><div class='nome'>Eyes to Earth · Incomáti</div><div class='lema'>Cheias e água do rio em Marracuene, vistas por satélite</div></div>"
+    html(f"<div class='ete-top'>{LOGO}<div><div class='nome'>Eyes to Earth · Incomáti</div><div class='lema'>Monitorização da água e alertas de cheia, com satélites e machine learning</div></div>"
          f"<div class='direita'><span class='ete-pilula'><i style='background:{dot}'></i>{state}</span><span class='ete-pilula'>Boletim de {issued}</span></div></div>")
 
 

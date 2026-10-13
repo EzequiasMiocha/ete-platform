@@ -1,0 +1,11 @@
+modelo,dias,r2,mae,auc,bss
+modelo final: última medição há 1 dia ou mais,2211,0.682,0.043,0.885,0.298
+modelo final: última medição há 3 dias ou mais,2211,0.674,0.043,0.878,0.278
+modelo final: última medição há 5 dias ou mais,2211,0.665,0.043,0.874,0.262
+modelo final: última medição há 10 dias ou mais,2211,0.651,0.045,0.875,0.268
+modelo final: sem medição recente,2211,0.614,0.047,0.849,0.196
+passo anterior: maré só pela fase M2,2211,0.599,0.048,0.838,0.195
+sem maré,2211,0.189,0.071,0.741,-0.041
+referência: época do ano,2211,0.207,0.07,0.707,
+modelo final no Landsat 8/9 (outro satélite): todos os anos,739,0.651,0.045,0.897,
+modelo final no Landsat antes de 2017 (outro satélite e outros anos),128,0.592,0.068,0.879,

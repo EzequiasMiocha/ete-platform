@@ -1,7 +1,7 @@
 {
  "projeto": "Eyes to Earth (ETE): cheias e água do rio Incomáti, Marracuene",
  "versao_codigo": "0.1.0",
- "gerado_utc": "2026-10-13T15:52:21+00:00",
+ "gerado_utc": "2026-10-13T16:07:49+00:00",
  "sistema_de_coordenadas": "EPSG:4326 (latitude, longitude)",
  "aviso": "Produto experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.",
  "aplicacao": "",
@@ -569,6 +569,30 @@
    "ficheiro": "sobre/validacao_cheias.csv",
    "descricao": "Medidas de acerto dos modelos A e B (notebook 33).",
    "atualizacao": "quando os modelos mudam"
+  },
+  {
+   "id": "modelos_ml",
+   "titulo": "Modelos de machine learning e os seus testes",
+   "tipo": "modelos",
+   "ficheiro": "modelos/fichas.json",
+   "tabelas": {
+    "modelo_b_algoritmos": "modelos/modelo_b_algoritmos.csv",
+    "modelo_b_entradas": "modelos/modelo_b_entradas.csv",
+    "modelo_a_algoritmos": "modelos/modelo_a_algoritmos.csv",
+    "modelo_a_entradas": "modelos/modelo_a_entradas.csv",
+    "modelo_a_teste_2026": "modelos/modelo_a_teste_2026.csv",
+    "antecedencia_dos_alertas": "modelos/antecedencia_dos_alertas.csv",
+    "turbidez_modelo": "modelos/turbidez_modelo.csv",
+    "turbidez_entradas_testadas": "modelos/turbidez_entradas_testadas.csv",
+    "turbidez_esperada_por_troco": "modelos/turbidez_esperada_por_troco.csv",
+    "validacao_gloria": "modelos/validacao_gloria.csv",
+    "sobreposicao_entre_fontes": "modelos/sobreposicao_entre_fontes.csv",
+    "humidade_do_solo_calibracao": "modelos/humidade_do_solo_calibracao.csv",
+    "concordancia_entre_satelites": "modelos/concordancia_entre_satelites.csv"
+   },
+   "atualizacao": "quando os modelos são treinados de novo",
+   "descricao": "Ficha de cada modelo treinado e as tabelas dos testes que o escolheram e validaram.",
+   "limites": "Os modelos de cheias foram validados numa única cheia (janeiro de 2026). Os de qualidade da água não têm medições no rio para validação local."
   }
  ]
 }

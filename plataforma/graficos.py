@@ -181,3 +181,59 @@ def buildings_by_place(places: pd.DataFrame, colours: dict):
         color=alt.Color("categoria:N", scale=alt.Scale(domain=list(colours), range=list(colours.values()))),
         tooltip=[alt.Tooltip("lugar:N", title="Lugar"), alt.Tooltip("categoria:N", title="Situação"), alt.Tooltip("edificios_alagados:Q", title="Edifícios na zona")])
     return _base(chart, 26 * len(data) + 60)
+
+
+# ----------------------------------------------------------------------------- machine learning and monitoring
+def ranked_bars(frame: pd.DataFrame, label: str, value: str, title: str, chosen: str | None = None, domain=(0, 1), reference: float | None = None):
+    """Horizontal bars in the order given. The chosen row is in the main colour, the others in a
+    quiet one; an optional dashed line marks a reference value (for example chance)."""
+    data = frame[[label, value]].dropna().copy()
+    data["tipo"] = ["escolhido" if chosen is not None and chosen in str(name) else "comparado" for name in data[label]]
+    data["rotulo"] = [f"{v:.2f}".replace(".", ",") for v in data[value]]
+    y = alt.Y(f"{label}:N", sort=list(data[label]), title=None, axis=alt.Axis(labelLimit=260))
+    x = alt.X(f"{value}:Q", title=title, scale=alt.Scale(domain=list(domain), nice=False), axis=alt.Axis(labelExpr="replace(format(datum.value, '.1f'), '.', ',')", tickMinStep=0.1))
+    bars = alt.Chart(data).mark_bar(cornerRadiusTopRight=4, cornerRadiusBottomRight=4, clip=True).encode(
+        y=y, x=x, x2=alt.datum(domain[0]), color=alt.Color("tipo:N", scale=alt.Scale(domain=["escolhido", "comparado"], range=[SERIES[0], "#A9BDD3"]), legend=alt.Legend(title=None, orient="bottom") if chosen else None),
+        tooltip=[alt.Tooltip(f"{label}:N", title=""), alt.Tooltip("rotulo:N", title=title)])
+    text = alt.Chart(data).mark_text(align="left", dx=5, fontSize=11, color=INK).encode(y=y, x=x, text="rotulo:N")
+    layers = [bars, text]
+    if reference is not None:
+        layers.append(alt.Chart(pd.DataFrame({"v": [reference]})).mark_rule(strokeDash=[4, 3], color=MUTED).encode(x="v:Q"))
+    # a fixed step per row keeps the bars the same size however many rows there are
+    return (alt.layer(*layers).properties(height=alt.Step(30), background="white", padding={"left": 6, "right": 34, "top": 10, "bottom": 8}).configure_view(stroke=None)
+            .configure_axis(grid=True, gridColor=GRID, domainColor=GRID, tickColor=GRID, labelColor=MUTED, titleColor=MUTED, labelFontSize=11, titleFontSize=11, titlePadding=8)
+            .configure_scale(bandPaddingInner=0.28).configure_legend(orient="bottom", title=None, labelColor=INK, labelFontSize=12, symbolType="circle"))
+
+
+def lead_skill(frame: pd.DataFrame):
+    """Our discharge model against simply repeating today's value, by days ahead (two series)."""
+    long = frame.rename(columns={"nse_modelo": "modelo próprio", "nse_persistencia": "repetir o valor de hoje"}).melt("dias_a_frente", ["modelo próprio", "repetir o valor de hoje"], "quem", "nse")
+    names = ["modelo próprio", "repetir o valor de hoje"]
+    chart = alt.Chart(long).mark_line(strokeWidth=2.2, point=alt.OverlayMarkDef(size=60, filled=True)).encode(
+        x=alt.X("dias_a_frente:O", title="Dias à frente", axis=alt.Axis(labelAngle=0)), y=alt.Y("nse:Q", title="Acerto (NSE: 1 = perfeito)", scale=alt.Scale(domain=[0, 1])),
+        color=alt.Color("quem:N", scale=alt.Scale(domain=names, range=SERIES[:2]), sort=names),
+        tooltip=[alt.Tooltip("quem:N", title=""), alt.Tooltip("dias_a_frente:O", title="Dias à frente"), alt.Tooltip("nse:Q", title="NSE", format=".2f")])
+    return _base(chart, 250)
+
+
+def monitoring_matrix(year: pd.DataFrame, colours: dict, order: list[str]):
+    """One year of monitoring: every river section (rows, border at the top) in every month
+    (columns), coloured by the state of the water against its normal."""
+    data = year.assign(mes_nome=lambda d: [MESES[m - 1] for m in d["mes_do_ano"]])
+    classes = [c for c in ("normal", "elevada", "muito elevada", "sem dados") if c in colours]
+    chart = alt.Chart(data).mark_rect(stroke="white", strokeWidth=3, cornerRadius=5).encode(
+        x=alt.X("mes_nome:O", sort=MESES, title=None, axis=alt.Axis(labelAngle=0, orient="top")), y=alt.Y("nome:N", sort=order, title=None, axis=alt.Axis(labelLimit=220)),
+        color=alt.Color("classe:N", scale=alt.Scale(domain=classes, range=[colours[c] for c in classes]), legend=alt.Legend(title=None, orient="bottom")),
+        tooltip=[alt.Tooltip("nome:N", title="Troço"), alt.Tooltip("month:N", title="Mês"), alt.Tooltip("classe:N", title="Estado"), alt.Tooltip("ndti:Q", title="Índice de cor", format=".3f"),
+                 alt.Tooltip("fonte:N", title="Satélite"), alt.Tooltip("caudal_m3s:Q", title="Caudal do mês (m³/s)", format=".0f")])
+    return _base(chart, 36 * len(order) + 70).configure_axis(grid=False, domain=False, ticks=False, labelColor=MUTED, labelFontSize=11)
+
+
+def river_profile(profile: pd.DataFrame, order: list[str]):
+    """The colour of the water along the river, border to mouth, in the dry and in the rainy season."""
+    names = ["época seca", "época chuvosa"]
+    chart = alt.Chart(profile).mark_line(strokeWidth=2.2, point=alt.OverlayMarkDef(size=70, filled=True)).encode(
+        x=alt.X("troco:N", sort=order, title="Da fronteira (Q1) à foz (Q9)", axis=alt.Axis(labelAngle=0)), y=alt.Y("ndti:Q", title="Índice de cor (mais alto = mais turva)", scale=alt.Scale(zero=False)),
+        color=alt.Color("epoca:N", scale=alt.Scale(domain=names, range=SERIES[:2]), sort=names),
+        tooltip=[alt.Tooltip("nome:N", title="Troço"), alt.Tooltip("epoca:N", title=""), alt.Tooltip("ndti:Q", title="Índice de cor (mediana)", format=".3f"), alt.Tooltip("meses:Q", title="Meses medidos")])
+    return _base(chart, 260)

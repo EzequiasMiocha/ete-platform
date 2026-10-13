@@ -46,7 +46,9 @@ dados; o botão "Mapa interactivo" permite aproximar e afastar.
 ### Água do rio
 O rio da fronteira à foz, dividido em nove partes. A cor de cada parte diz se a água está
 **normal**, **elevada** ou **muito elevada** em turbidez, comparando com o costume para essa
-época do ano. Há também a previsão para as próximas manhãs em Marracuene.
+época do ano. O **painel de monitorização** mostra o ano inteiro, mês a mês: cada quadrado é
+uma parte do rio num mês, e os botões mudam de ano. Há também a previsão para as próximas
+manhãs em Marracuene.
 
 **Atenção:** o satélite vê a cor da água. Não vê micróbios nem químicos. **A água do rio deve
 ser sempre tratada antes de beber** (ferver, ou usar cloro). Com água barrenta, deixar
@@ -59,6 +61,11 @@ alto de cada mês, e cada ano em detalhe.
 ### Lugares
 O que existe em cada zona de aviso (casas, estradas, terras) e a lista dos lugares por ordem
 de alagamento.
+
+### Modelos
+Para quem quer saber como funciona por dentro: que modelos de machine learning são usados,
+com que dados foram treinados, como foram testados, a qualidade dos dados e o que foi
+experimentado e rejeitado.
 
 ### Como funciona
 De onde vem a informação, até onde se pode confiar nela, perguntas frequentes e o estado do

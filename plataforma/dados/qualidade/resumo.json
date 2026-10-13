@@ -1,0 +1,15 @@
+{
+ "trocos": 9,
+ "dias_com_medicao": 1545,
+ "medicoes": 8106,
+ "por_satelite": {
+  "landsat57": 155,
+  "landsat89": 516,
+  "sentinel2": 1038
+ },
+ "primeira_medicao": "2006-01-13",
+ "ultima_medicao": "2026-10-09",
+ "meses_com_medicao": 1230,
+ "trocos_com_20_anos": 3,
+ "trocos_fiaveis": 7
+}

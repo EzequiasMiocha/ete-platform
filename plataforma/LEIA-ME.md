@@ -7,7 +7,7 @@ projecto, nem o Earth Engine, nem os modelos.
 |---|---|
 | Dados (cerca de 4 MB) | `dados/` |
 | Funções de leitura, testadas | `leitor.py` |
-| Aplicação Streamlit (Início, Cheias, Mapa, Água do rio, Histórico, Lugares, Como funciona) | `app.py` (páginas), `tema.py` (paleta, estilo, cartões, botões de anterior e seguinte), `graficos.py` (gráficos); teste sem navegador: `testar_app.py` |
+| Aplicação Streamlit (Início, Cheias, Mapa, Água do rio, Histórico, Lugares, Modelos, Como funciona) | `app.py` (páginas), `tema.py` (paleta, estilo, cartões, botões de anterior e seguinte), `graficos.py` (gráficos); teste sem navegador: `testar_app.py` |
 | Versões anteriores da aplicação | `arquivo/` |
 | Exemplo mínimo anterior | `app_exemplo.py` |
 
@@ -30,7 +30,8 @@ python testar_app.py                 # corre todas as páginas: deve terminar co
 | `exposicao/` | o que está em cada zona de aviso; lugares por ordem de alagamento | raramente |
 | `vetores/` | zonas de aviso, lugares, distrito, troços do rio (GeoJSON) | raramente |
 | `mapas/` | suscetibilidade e água por mês (PNG transparente + cantos no catálogo) | mensal |
-| `qualidade/` | Módulo Q: estado por troço, série mensal desde 2006, normais, tendências | mensal |
+| `qualidade/` | Módulo Q: estado por troço, série mensal desde 2006, normais, tendências, meses invulgares, resumo | mensal |
+| `modelos/` | fichas dos modelos de machine learning e tabelas dos testes | quando os modelos mudam |
 | `pipeline.json` | resumo da última execução do pipeline diário | todos os dias |
 
 Tudo está em latitude/longitude (EPSG:4326). Os mapas em PNG põem-se sobre o mapa de base com

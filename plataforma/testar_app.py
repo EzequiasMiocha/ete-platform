@@ -34,7 +34,7 @@ def report(name: str, app, extra_ok: bool = True) -> None:
         print("      ", problem[:300])
 
 
-for page in ("Início", "Cheias", "Mapa", "Água do rio", "Histórico", "Lugares", "Como funciona"):
+for page in ("Início", "Cheias", "Mapa", "Água do rio", "Histórico", "Lugares", "Modelos", "Como funciona"):
     report(f"página {page}", open_page(page))
 
 # back and forward buttons
@@ -49,6 +49,9 @@ last = app.session_state["ano_hist_i"]
 app.button(key="ano_hist_prev").click().run()
 report("Histórico: anterior recua um ano", app, app.session_state["ano_hist_i"] == last - 1)
 app = open_page("Água do rio")
+year = app.session_state["ano_agua_i"]
+app.button(key="ano_agua_prev").click().run()
+report("Água do rio: painel, ano anterior", app, app.session_state["ano_agua_i"] == year - 1)
 start = app.session_state["troco_i"]
 app.button(key="troco_prev").click().run()
 report("Água do rio: anterior sobe um troço", app, app.session_state["troco_i"] == start - 1)

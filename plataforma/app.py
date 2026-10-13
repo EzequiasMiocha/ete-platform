@@ -31,7 +31,7 @@ st.set_page_config(page_title="ETE · Incomáti, Marracuene", page_icon="🌊", 
 T.html(T.CSS)
 
 PAGINAS = {"inicio": "🏠 Início", "cheias": "🌧️ Cheias", "mapa": "🗺️ Mapa", "agua": "💧 Água do rio",
-           "historico": "📅 Histórico", "lugares": "📍 Lugares", "sobre": "ℹ️ Como funciona"}
+           "historico": "📅 Histórico", "lugares": "📍 Lugares", "modelos": "🧠 Modelos", "sobre": "ℹ️ Como funciona"}
 CORES_LUGARES = {"alaga primeiro": "#7b241c", "alaga em cheia grande": "#af601a", "na margem da cheia": "#566573", "fora das zonas de aviso": "#aab7b8"}
 
 
@@ -141,6 +141,12 @@ def pagina_inicio() -> None:
     ])
 
     T.card("O que fazer", f"<p style='margin:0;font-size:1.05rem'>{BOLETIM['conselho']}</p>", "Hoje")
+    with T.guard("a monitorização da água"):
+        if "qualidade_estado" in CAMADAS:
+            T.section("A água do rio, da fronteira à foz", "Estado do último mês medido por satélite em cada troço, face ao que é costume na época.", "Monitorização")
+            estado_agua = serie("qualidade_estado", V).set_index("troco")
+            T.river_tiles(estado_agua, {i["nome"]: i["cor"] for i in CAMADAS["trocos_modulo_q"]["legenda"]})
+            st.button("Abrir o painel de monitorização da água", on_click=ir_para, args=("agua",), key="ir_painel")
     esquerda, direita = st.columns([3, 2], gap="medium")
     with esquerda:
         T.section("Os próximos dez dias", "Use os botões para andar de dia em dia.", "Previsão")
@@ -290,7 +296,42 @@ def pagina_agua() -> None:
     estado = serie("qualidade_estado", V).set_index("troco")
     mensal = serie("qualidade_mensal", V)
     cores = {i["nome"]: i["cor"] for i in CAMADAS["trocos_modulo_q"]["legenda"]}
-    manhas, rio, troco_tab, comparar, satelite = st.tabs(["Próximas manhãs", "O rio todo", "Explorar um troço", "Comparar troços", "O que o satélite vê"])
+    ordem = list(estado["nome"])
+    with T.guard("os números da monitorização"):
+        resumo = json.loads(leitor.caminho("qualidade/resumo.json").read_text())
+        em_alta = int(estado["classe"].isin(["elevada", "muito elevada"]).sum())
+        T.kpis([{"rotulo": "Troços vigiados", "valor": resumo["trocos"], "nota": "da fronteira à foz, 295 km"},
+                {"rotulo": "Acima do normal agora", "valor": f"{em_alta} de {len(estado)}", "nota": "no último mês medido"},
+                {"rotulo": "Dias com medição", "valor": num(resumo["dias_com_medicao"]), "nota": f"desde {resumo['primeira_medicao'][:4]}"},
+                {"rotulo": "Última medição", "valor": pd.Timestamp(resumo["ultima_medicao"]).strftime("%d/%m/%Y"), "nota": "por satélite"},
+                {"rotulo": "Troços com medição fiável", "valor": f"{resumo['trocos_fiaveis']} de {resumo['trocos']}", "nota": "dois satélites concordam"}])
+    painel, manhas, rio, troco_tab, comparar, satelite = st.tabs(["Painel de monitorização", "Próximas manhãs", "O rio todo", "Explorar um troço", "Comparar troços", "Como medimos"])
+
+    with painel:
+        st.markdown("**O rio agora, da fronteira (Q1) à foz (Q9).** A cor no topo de cada cartão é o estado do último mês medido.")
+        T.river_tiles(estado, cores)
+        st.markdown("##### O ano, mês a mês")
+        with T.guard("o painel de monitorização"):
+            anos = sorted(int(a) for a in mensal.loc[mensal["ndti"].notna(), "ano"].unique())
+            ano = T.stepper("ano_agua", anos, lambda a: f"Ano de {a}", "cada quadrado é um troço num mês")
+            cores_painel = {**cores, "sem dados": "#E6EBF1"}
+            st.altair_chart(G.monitoring_matrix(mensal[mensal["ano"] == ano], cores_painel, ordem), use_container_width=True)
+            st.caption("Cada linha é um troço do rio; cada coluna, um mês. Azul: água como é costume nessa época. Castanho: mais turva do que o costume. Cinzento: sem imagem limpa nesse mês "
+                       "(nunca se preenche com estimativas). A montante de Manhiça só há medições desde 2017.")
+        esquerda, direita = st.columns(2, gap="medium")
+        with esquerda, T.guard("o perfil do rio"):
+            st.markdown("##### A cor da água ao longo do rio")
+            perfil = mensal[(mensal["ano"] >= 2017) & mensal["ndti_s2"].notna()].assign(epoca=lambda d: "época " + d["epoca"])
+            perfil = perfil.groupby(["troco", "nome", "epoca"]).agg(ndti=("ndti_s2", "median"), meses=("ndti_s2", "count")).reset_index()
+            st.altair_chart(G.river_profile(perfil, list(estado.index)), use_container_width=True)
+            st.caption("Mediana desde 2017, medida pelo mesmo satélite (Sentinel-2) em todos os troços. Mostra onde a água é habitualmente mais turva e quanto muda com as chuvas.")
+        with direita, T.guard("os meses invulgares"):
+            st.markdown("##### Meses que fugiram ao normal")
+            invulgares = pd.read_csv(leitor.caminho("qualidade/meses_invulgares.csv")).sort_values("month", ascending=False)
+            st.dataframe(invulgares[["nome", "month", "anomalia_ndti", "anomalia_vegetacao", "caudal_m3s"]].head(40).rename(
+                columns={"nome": "Troço", "month": "Mês", "anomalia_ndti": "Desvio da cor", "anomalia_vegetacao": "Desvio das plantas", "caudal_m3s": "Caudal (m³/s)"}),
+                hide_index=True, width="stretch", height=300)
+            st.caption("Apontados por um modelo (Isolation Forest) que olha para a cor, as plantas e o caudal em conjunto. Um mês apontado é um convite a ir ver, não um diagnóstico.")
 
     with manhas:
         with T.guard("a previsão para as próximas manhãs"):
@@ -392,6 +433,11 @@ def pagina_agua() -> None:
         st.download_button("Descarregar a série mensal de todos os troços (CSV)", mensal.to_csv(index=False).encode("utf-8"), "qualidade_por_troco.csv", "text/csv")
 
     with satelite:
+        T.steps([("Nove troços", "O rio é seguido da fronteira à foz e cortado em nove partes."), ("Só água pura", "Em cada imagem só contam os píxeis de água afastados das margens, da areia e das plantas."),
+                 ("Cor da água", "A relação entre o vermelho e o verde diz quanto sedimento a água traz."), ("O normal de cada mês", "Cada troço é comparado consigo mesmo, na mesma época de outros anos."),
+                 ("Dois satélites", "Onde o Sentinel-2 e o Landsat não concordam, a medição fica marcada como menos fiável.")])
+        st.button("Ver os modelos e os testes em detalhe", on_click=ir_para, args=("modelos",), key="ir_modelos_agua")
+        st.markdown("##### O que o satélite vê e o que não vê")
         st.dataframe(pd.DataFrame([
             {"O que": "Lama e sedimentos (turbidez)", "O satélite vê?": "Sim", "Como é mostrado": "\"Normal\", \"elevada\" ou \"muito elevada\" face ao costume do troço"},
             {"O que": "Plantas sobre a água", "O satélite vê?": "Sim", "Como é mostrado": "Parte do canal coberta (mais fiável nos troços largos)"},
@@ -489,7 +535,195 @@ def pagina_lugares() -> None:
         st.download_button("Descarregar a lista de lugares (CSV)", lugares.to_csv(index=False).encode("utf-8"), "lugares_por_ordem_de_alagamento.csv", "text/csv")
 
 
-# ----------------------------------------------------------------------------- 7. how it works
+# ----------------------------------------------------------------------------- 7. machine learning
+ENTRADAS = {"vv": "radar VV", "vh": "radar VH", "vv_p10": "VV mais escuro do mês", "vh_p10": "VH mais escuro do mês", "vv_vh_ratio": "razão VV/VH", "ratio_p10": "razão nos dias mais escuros",
+            "dvv_p10": "VV face à época seca", "dvh_p10": "VH face à época seca", "s1_angle": "ângulo do radar", "hand": "altura acima do rio (HAND)", "slope": "declive",
+            "twi": "índice de humidade do terreno", "elevation": "altitude", "log_upstream_area": "área drenada a montante", "distance_to_river_m": "distância ao rio",
+            "distance_to_water_m": "distância à água permanente", "distance_to_stream_m": "distância à linha de água", "lq": "caudal do dia", "lq_mean7": "caudal médio de 7 dias",
+            "lq_max7": "caudal máximo de 7 dias", "dq3": "variação do caudal em 3 dias", "p3": "chuva de 3 dias", "p7": "chuva de 7 dias", "p30": "chuva de 30 dias",
+            "sin": "época do ano", "cos": "época do ano", "t_h": "altura da maré", "t_dh": "maré a encher ou a vazar", "t_range": "amplitude da maré",
+            "last_ndti": "última medição por satélite", "last_age": "idade dessa medição", "last_t_h": "maré nessa medição", "last_lq": "caudal nessa medição", "has_last": "há medição recente"}
+
+
+@st.cache_data(show_spinner=False)
+def ml(nome: str, versao: float) -> pd.DataFrame:
+    ficheiro = CAMADAS["modelos_ml"]["tabelas"].get(nome)
+    return pd.read_csv(leitor.caminho(ficheiro)) if ficheiro else pd.DataFrame()
+
+
+@st.cache_data(show_spinner=False)
+def fichas(versao: float) -> dict:
+    return json.loads(leitor.caminho(CAMADAS["modelos_ml"]["ficheiro"]).read_text())
+
+
+def ficha_do_modelo(chave: str, pergunta: str, onde: str) -> None:
+    m = fichas(V)["modelos"].get(chave, {})
+    entradas = list(dict.fromkeys(ENTRADAS.get(f, f) for f in m.get("features", []) if not str(f).startswith("troco=")))
+    parametros = ", ".join(f"{k} = {v}" for k, v in (m.get("params") or {}).items())
+    corpo = f"<p style='margin:0 0 8px 0'><b>Pergunta:</b> {pergunta}</p>"
+    if m.get("algorithm") or parametros:
+        corpo += f"<p style='margin:0 0 8px 0'><b>Algoritmo:</b> {m.get('algorithm', 'gradient boosting')}" + (f" ({parametros})" if parametros else "") + "</p>"
+    if m.get("rows"):
+        corpo += f"<p style='margin:0 0 8px 0'><b>Exemplos de treino:</b> {num(m['rows'])}</p>"
+    if entradas:
+        corpo += "<p style='margin:0 0 6px 0'><b>O que o modelo recebe:</b></p>" + "".join(f"<span class='ete-chip'>{e}</span>" for e in entradas)
+    corpo += f"<p style='margin:10px 0 0 0;color:{T.MUTED};font-size:.86rem'><b>Onde aparece na plataforma:</b> {onde}" + (f" · treinado em {str(m['created_utc'])[:10]}" if m.get("created_utc") else "") + "</p>"
+    T.card("", corpo, "Ficha do modelo")
+
+
+def pagina_modelos() -> None:
+    T.section("Machine learning para vigiar a água e avisar das cheias", "Que modelos a plataforma usa, com que dados foram treinados, como foram testados e até onde se pode confiar neles.", "Os modelos")
+    if "modelos_ml" not in CAMADAS:
+        st.warning("O pacote ainda não tem as fichas dos modelos.")
+        return
+    dados = fichas(V)["dados_de_treino"]
+    imagens = dados.get("imagens_modulo_q", {})
+    T.kpis([{"rotulo": "Modelos treinados", "valor": "4", "nota": "mais 2 métodos de análise"}, {"rotulo": "Algoritmos comparados", "valor": "4", "nota": "em cada modelo de cheias"},
+            {"rotulo": "Linhas nas tabelas de treino", "valor": num(dados.get("train_historico", {}).get("linhas", 0) + dados.get("train_recente", {}).get("linhas", 0)), "nota": "píxeis rotulados, 2006 a 2026"},
+            {"rotulo": "Imagens da água analisadas", "valor": num(imagens.get("imagens")), "nota": "três famílias de satélites"},
+            {"rotulo": "Anos de dados", "valor": "20", "nota": "2006 a 2026"}])
+    geral, agua_b, risco, caudal, turbidez, modulo_q, qualidade, rejeitado = st.tabs(
+        ["Visão geral", "Detectar água", "Risco do terreno", "Prever o caudal", "Prever a turbidez", "Vigiar a qualidade", "Qualidade dos dados", "O que rejeitámos"])
+
+    with geral:
+        st.markdown("##### Do satélite ao aviso")
+        T.steps([("Dados abertos", "Radar e imagens ópticas de satélite, chuva, caudal e terreno: 20 anos, sempre com a contagem de observações por píxel."),
+                 ("Rótulos independentes", "A \"resposta certa\" vem de fora: água mensal do JRC e os mapas da cheia de 2026 do Copernicus. Um modelo nunca é testado com rótulos feitos por ele."),
+                 ("Vários algoritmos", "Regressão logística, Random Forest, Gradient Boosting e XGBoost, com as regras de escolha escritas antes de ver os resultados."),
+                 ("Testes exigentes", "Blocos de 3 km para que píxeis vizinhos não entrem no treino e no teste; anos inteiros deixados de fora; um segundo satélite como juiz."),
+                 ("Produção", "Os modelos escolhidos correm todos os dias e alimentam o alerta, os mapas e a previsão da água.")])
+        st.markdown("##### Os modelos, de relance")
+        st.dataframe(pd.DataFrame([
+            {"Modelo": "B · Detectar água por radar", "Pergunta": "Onde está a água neste mês?", "Algoritmo": "XGBoost", "Teste principal": "cheia de jan. 2026, blocos de 3 km", "Resultado": "IoU 0,91 · F1 0,95", "Usado em": "Mapa (radar), Histórico"},
+            {"Modelo": "A · Risco do terreno", "Pergunta": "Onde o terreno favorece cheias?", "Algoritmo": "XGBoost", "Teste principal": "anos 2020-21 e cheia de 2026", "Resultado": "AUC 0,96", "Usado em": "Mapa (terreno), zonas fora da área mapeada"},
+            {"Modelo": "C · Prever o caudal", "Pergunta": "Que caudal daqui a 1 a 7 dias?", "Algoritmo": "XGBoost", "Teste principal": "anos 2022 a 2026", "Resultado": "melhor do que repetir o valor de hoje", "Usado em": "Cheias (segunda opinião)"},
+            {"Modelo": "Turbidez · próximas manhãs", "Pergunta": "A água vai estar mais turva do que o habitual?", "Algoritmo": "Gradient Boosting", "Teste principal": "ano deixado de fora; outro satélite", "Resultado": "AUC 0,87 a 0,89", "Usado em": "Água do rio, Início"},
+            {"Modelo": "Módulo Q · meses invulgares", "Pergunta": "Que meses fogem ao normal?", "Algoritmo": "Isolation Forest", "Teste principal": "sem rótulos: aponta, não decide", "Resultado": "5 % dos meses de cada troço", "Usado em": "Água do rio"},
+            {"Modelo": "Módulo Q · tendências", "Pergunta": "A água está a mudar em 20 anos?", "Algoritmo": "Mann-Kendall sazonal", "Teste principal": "repetido por era de satélite", "Resultado": "nenhuma tendência confirmada", "Usado em": "Água do rio"}]),
+            hide_index=True, width="stretch")
+        st.info("**O nível de alerta em si não é machine learning.** Vem de regras simples e transparentes: o caudal e a chuva previstos comparados com 25 anos de história. "
+                "Foi uma escolha: um alerta tem de se poder explicar numa frase.", icon="ℹ️")
+
+    with agua_b:
+        ficha_do_modelo("modelo_b_radar", "onde há água em cada mês, mesmo com nuvens?", "Mapa → Água vista por radar; Histórico → Água vista por radar")
+        a, b = st.columns(2, gap="medium")
+        with a, T.guard("a comparação de algoritmos"):
+            st.markdown("**Quatro algoritmos, o mesmo teste**")
+            st.altair_chart(G.ranked_bars(ml("modelo_b_algoritmos", V), "algoritmo", "iou", "IoU na cheia de janeiro de 2026 (1 = perfeito)", "XGBoost"), use_container_width=True)
+        with b, T.guard("o teste das entradas"):
+            st.markdown("**Que dados ajudam o modelo**")
+            st.altair_chart(G.ranked_bars(ml("modelo_b_entradas", V), "features", "iou", "IoU na cheia de janeiro de 2026"), use_container_width=True)
+        st.caption("IoU: da área que o modelo ou a referência dizem ser água, que parte é comum aos dois. A referência são os mapas do Copernicus EMS, feitos por analistas. "
+                   "Uma regra simples (um só limiar de radar) já chega a 0,88: o modelo acrescenta pouco, mas de forma consistente em todos os blocos.")
+        with st.expander("Tabela completa dos algoritmos"):
+            st.dataframe(ml("modelo_b_algoritmos", V), hide_index=True, width="stretch")
+        st.warning("Limite: validado numa única cheia. Em zonas construídas marca água a mais; por isso os avisos usam as zonas da cheia real, não este mapa.", icon="⚠️")
+
+    with risco:
+        ficha_do_modelo("modelo_a_terreno", "que zonas o terreno torna mais fáceis de alagar?", "Mapa → Terreno que favorece cheias")
+        a, b = st.columns(2, gap="medium")
+        with a, T.guard("a comparação de algoritmos"):
+            st.markdown("**Quatro algoritmos, o mesmo teste**")
+            st.altair_chart(G.ranked_bars(ml("modelo_a_algoritmos", V), "algoritmo", "auc_cheia_2026", "AUC na cheia de 2026 (0,5 = acaso)", "XGBoost", (0.5, 1)), use_container_width=True)
+        with b, T.guard("o teste por classe"):
+            st.markdown("**As classes de risco batem com a cheia real?**")
+            classes = ml("modelo_a_teste_2026", V)
+            classes = classes.rename(columns={classes.columns[0]: "classe"})
+            st.altair_chart(G.ranked_bars(classes, "classe", "parte_da_classe_que_alagou", "Parte da classe que alagou em janeiro de 2026"), use_container_width=True)
+        st.caption("O modelo foi treinado com dados até 2019, afinado em 2020-21 e testado numa cheia que nunca viu. Na classe \"muito alta\" alagou quase tudo; na \"baixa\", quase nada. "
+                   "A chuva e o caudal foram deixados de fora deste modelo de propósito, para ele descrever só o terreno.")
+        with st.expander("Tabela completa dos algoritmos e das entradas"):
+            st.dataframe(ml("modelo_a_algoritmos", V), hide_index=True, width="stretch")
+            st.dataframe(ml("modelo_a_entradas", V), hide_index=True, width="stretch")
+
+    with caudal:
+        ficha_do_modelo("modelo_c_caudal", "que caudal terá o rio nos próximos dias, só com a chuva que já caiu?", "Cheias → coluna \"Segunda opinião\"")
+        with T.guard("o acerto do modelo de caudal"):
+            acerto = pd.DataFrame(fichas(V)["modelos"].get("modelo_c_caudal", {}).get("skill") or [])
+            if len(acerto):
+                st.altair_chart(G.lead_skill(acerto), use_container_width=True)
+                st.caption("Testado em 2022 a 2026, anos que o modelo não viu. Ganha a quem repete o valor de hoje em todos os prazos, mas reage tarde ao início das cheias: "
+                           "por isso é uma segunda opinião, e o alerta usa os 51 cenários do GloFAS.")
+                with st.expander("Tabela completa"):
+                    st.dataframe(acerto, hide_index=True, width="stretch")
+
+    with turbidez:
+        ficha_do_modelo("modelo_turbidez", "nas próximas manhãs, a água vai estar mais turva do que o habitual?", "Água do rio → Próximas manhãs; Início")
+        with T.guard("o caminho até ao modelo de turbidez"):
+            passos = ml("turbidez_modelo", V)
+            curtos = {"modelo final: última medição há 1 dia ou mais": "modelo final, medição de ontem", "modelo final: última medição há 3 dias ou mais": "modelo final, medição de há 3 dias",
+                      "modelo final: última medição há 5 dias ou mais": "modelo final, medição de há 5 dias", "modelo final: última medição há 10 dias ou mais": "modelo final, medição de há 10 dias",
+                      "modelo final: sem medição recente": "modelo final, sem medição recente", "passo anterior: maré só pela fase M2": "só com a fase da maré",
+                      "sem maré": "caudal e chuva, sem maré", "referência: época do ano": "só a época do ano",
+                      "modelo final no Landsat 8/9 (outro satélite): todos os anos": "modelo final, noutro satélite", "modelo final no Landsat antes de 2017 (outro satélite e outros anos)": "modelo final, noutro satélite e noutros anos"}
+            passos = passos.assign(modelo=passos["modelo"].map(lambda m: curtos.get(m, m)))
+            ordem = ["só a época do ano", "caudal e chuva, sem maré", "só com a fase da maré", "modelo final, sem medição recente", "modelo final, medição de há 10 dias",
+                     "modelo final, medição de há 5 dias", "modelo final, medição de há 3 dias", "modelo final, medição de ontem", "modelo final, noutro satélite",
+                     "modelo final, noutro satélite e noutros anos"]
+            passos = passos.set_index("modelo").reindex([o for o in ordem if o in set(passos["modelo"])]).reset_index()
+            st.markdown("**Como se chegou a este modelo**")
+            st.altair_chart(G.ranked_bars(passos, "modelo", "auc", "AUC para \"mais turva do que o habitual\" (0,5 = acaso)", "modelo final", (0.5, 1), 0.5), use_container_width=True)
+            st.caption("De cima para baixo: só a época do ano; juntando caudal e chuva (pouco ganho); juntando a maré (o salto); e por fim a maré completa e a última medição por satélite. "
+                       "As duas últimas linhas são o teste mais duro: o modelo foi treinado só com o Sentinel-2 e acerta igualmente nas medições de outro satélite, incluindo anos anteriores.")
+        st.warning("Limites: prevê a cor da água à hora de passagem do satélite (cerca das 9h30); é um índice relativo, sem medições no rio; a maré é calculada, não medida.", icon="⚠️")
+
+    with modulo_q:
+        T.card("", "<p style='margin:0'>O Módulo Q acompanha nove troços do rio, da fronteira à foz. Sem medições no rio não se pode treinar um modelo que \"saiba\" a qualidade da água. "
+               "Por isso a inteligência aqui é de outro tipo: <b>aprender o que é normal</b> em cada troço e em cada mês, e <b>apontar o que foge ao normal</b>.</p>", "Como o machine learning entra na qualidade")
+        T.steps([("Normal de cada troço", "Mediana e percentis de cada mês do ano, com todos os anos disponíveis."), ("Meses invulgares", "Isolation Forest sobre a cor, as plantas e o desvio face ao esperado."),
+                 ("Tendências", "Mann-Kendall sazonal, repetido por era de satélite para não confundir mudança de sensor com mudança do rio."),
+                 ("Esperado pela chuva e caudal", "Gradient Boosting imagem a imagem. Só tem acerto útil na foz; nos outros troços não é usado para avisos.")])
+        with T.guard("o modelo de turbidez esperada"):
+            esperado = ml("turbidez_esperada_por_troco", V)
+            if len(esperado):
+                st.markdown("**A chuva e o caudal explicam a cor da água? Depende do troço**")
+                st.altair_chart(G.ranked_bars(esperado.assign(r2=esperado["r2_chuva_caudal_mare"].clip(lower=0)), "nome", "r2", "Parte da variação explicada em anos não vistos (R²)", None, (0, 1), 0.3), use_container_width=True)
+                st.caption("Só acima da linha tracejada (0,3) o modelo explica o suficiente para se poder dizer \"esta turbidez não vem da chuva\". Hoje isso só acontece na foz. "
+                           "É um resultado negativo, e fica aqui escrito: a ideia inicial do plano não se confirmou na maior parte do rio.")
+
+    with qualidade:
+        st.markdown("##### Cinco garantias sobre os dados")
+        T.steps([("Nunca inventar dados", "Um mês sem imagem limpa fica vazio. Um satélite que não existia num ano fica marcado como ausente."),
+                 ("Fontes comparadas entre si", "No período em que todas existem (2017 a 2021), cada par de fontes foi comparado."),
+                 ("Contagem de observações", "Cada composição mensal guarda quantas imagens limpas viu cada píxel."),
+                 ("Dois satélites como juízes", "A cor da água só é usada onde o Sentinel-2 e o Landsat concordam no mesmo dia."),
+                 ("Fórmulas testadas com medições reais", "As fórmulas de turbidez foram testadas no GLORIA, com medições em centenas de massas de água.")])
+        a, b = st.columns(2, gap="medium")
+        with a, T.guard("a sobreposição entre fontes"):
+            st.markdown("**Fontes diferentes concordam? (2017 a 2021)**")
+            pares = ml("sobreposicao_entre_fontes", V)
+            pares = pares.assign(par_variavel=pares["par"] + " · " + pares["variável"]).dropna(subset=["r2"])
+            st.altair_chart(G.ranked_bars(pares, "par_variavel", "r2", "R² entre as duas fontes (1 = concordância total)"), use_container_width=True)
+        with b, T.guard("a concordância entre satélites"):
+            st.markdown("**A cor da água: dois satélites no mesmo dia**")
+            pares = ml("concordancia_entre_satelites", V).dropna(subset=["r_ndti"])
+            st.altair_chart(G.ranked_bars(pares, "troco", "r_ndti", "Correlação do índice de cor entre os dois satélites", None, (0, 1), 0.7), use_container_width=True)
+            st.caption("Abaixo da linha tracejada (0,7) o troço fica marcado com fiabilidade reduzida e não gera avisos.")
+        with st.expander("Fórmulas de turbidez testadas com medições reais (GLORIA)"):
+            st.dataframe(ml("validacao_gloria", V), hide_index=True, width="stretch")
+            st.caption("fator_tipico 2,5 quer dizer que uma estimativa isolada pode ser duas vezes e meia maior ou menor do que a medição. Por isso a plataforma mostra classes, não números.")
+        with st.expander("Humidade do solo: calibração entre duas fontes"):
+            st.dataframe(ml("humidade_do_solo_calibracao", V), hide_index=True, width="stretch")
+
+    with rejeitado:
+        st.markdown("Um sistema é tão sério quanto os testes que deixa falhar. Estes foram feitos e **não passaram**, e por isso não estão na plataforma:")
+        st.dataframe(pd.DataFrame([
+            {"O que se tentou": "Harmonizar o Landsat 5/7 com os coeficientes publicados", "Resultado": "A água deixava de se distinguir (índice de água de 0,68 para 0,16)", "Decisão": "Desligado"},
+            {"O que se tentou": "Radar pela mediana do mês", "Resultado": "Perdia as cheias curtas (AUC 0,75 contra 0,97 com os dias mais escuros)", "Decisão": "Usar os dias mais escuros do mês"},
+            {"O que se tentou": "Turbidez em FNU pela banda do infravermelho", "Resultado": "Os dois satélites não concordam (correlação 0,21)", "Decisão": "Rejeitada; a banda do vermelho fica só como estimativa"},
+            {"O que se tentou": "Clorofila pelo índice NDCI", "Resultado": "Segue o sedimento, não as algas (correlação 0,81 com a turbidez)", "Decisão": "Não é reportada"},
+            {"O que se tentou": "Prever a turbidez só com caudal, chuva e época", "Resultado": "Não ganhava à simples época do ano", "Decisão": "Só passou com a maré"},
+            {"O que se tentou": "Juntar vento, chuva local e chuva por sub-bacia", "Resultado": "Ganho de 0,003 em AUC", "Decisão": "Fora: mais uma coisa que pode falhar"},
+            {"O que se tentou": "Turbidez esperada mês a mês (ideia do plano)", "Resultado": "Pior do que a época do ano em todos os troços", "Decisão": "Substituída por imagem a imagem; só usada na foz"},
+            {"O que se tentou": "Tendências de 20 anos na cor da água", "Resultado": "Desaparecem quando se testa a mudança de satélite de 2013", "Decisão": "Nenhuma é afirmada"},
+            {"O que se tentou": "Usar as classes do Modelo A para avisar", "Resultado": "Largas de mais (53 mil edifícios em risco \"médio\")", "Decisão": "Avisos pelas zonas da cheia real"}]),
+            hide_index=True, width="stretch")
+        with T.guard("as entradas testadas"):
+            with st.expander("Entradas testadas no modelo de turbidez"):
+                st.dataframe(ml("turbidez_entradas_testadas", V), hide_index=True, width="stretch")
+
+
+# ----------------------------------------------------------------------------- 8. how it works
 def pagina_sobre() -> None:
     T.section("Como funciona", "De onde vem a informação, até onde se pode confiar nela e como está o sistema hoje.", "Sobre a plataforma")
     st.info(CATALOGO["aviso"], icon="⚠️")
@@ -599,7 +833,7 @@ rotulo = st.radio("Página", list(PAGINAS.values()), horizontal=True, key="pagin
 pagina = next(k for k, v in PAGINAS.items() if v == rotulo)
 st.query_params["p"] = pagina
 
-{"inicio": pagina_inicio, "cheias": pagina_cheias, "mapa": pagina_mapa, "agua": pagina_agua, "historico": pagina_historico, "lugares": pagina_lugares, "sobre": pagina_sobre}[pagina]()
+{"inicio": pagina_inicio, "cheias": pagina_cheias, "mapa": pagina_mapa, "agua": pagina_agua, "historico": pagina_historico, "lugares": pagina_lugares, "modelos": pagina_modelos, "sobre": pagina_sobre}[pagina]()
 
 leve = CATALOGO.get("pagina_simples", "")
 T.footer(CATALOGO["aviso"] + (f" &nbsp;·&nbsp; <a href='{leve}'>Versão leve do boletim, para pouca rede</a>" if leve else "")
