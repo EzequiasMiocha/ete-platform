@@ -4,3 +4,5 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 .streamlit/secrets.toml
+# telefones das pessoas inscritas nos alertas: nunca no repositório
+data/private/

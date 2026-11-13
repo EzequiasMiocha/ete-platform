@@ -7,7 +7,9 @@ projecto, nem o Earth Engine, nem os modelos.
 |---|---|
 | Dados (cerca de 4 MB) | `dados/` |
 | Funções de leitura, testadas | `leitor.py` |
-| Aplicação Streamlit (Início, O projecto, Cheias, Mapa, Água do rio, Histórico, Lugares, Modelos, Como funciona) | `app.py` (páginas), `tema.py` (paleta, estilo, cartões, botões de anterior e seguinte), `graficos.py` (gráficos); teste sem navegador: `testar_app.py` |
+| Aplicação Streamlit (Início, O projecto, Cheias, Mapa, Água do rio, Histórico, Lugares, Modelos, Como funciona) | `app.py` (páginas), `tema.py` (sistema de desenho "Incomáti": paleta, tipografia Fraunces e Plus Jakarta Sans, barra de navegação fixa, cartões, tabelas em HTML, botões de anterior e seguinte), `graficos.py` (gráficos); teste sem navegador: `testar_app.py` |
+| Línguas (português, inglês, francês) | `idioma.py` (troca de língua, datas, números) e `textos.py` (as traduções, português → inglês, francês) |
+| Logótipos (ETE, IAU-OAD, DARA) nas cores da paleta | `static/`, feitos a partir de `logos/` por `scripts/build_platform_logos.py` |
 | Versões anteriores da aplicação | `arquivo/` |
 | Exemplo mínimo anterior | `app_exemplo.py` |
 
@@ -17,7 +19,7 @@ projecto, nem o Earth Engine, nem os modelos.
 python plataforma/leitor.py          # verifica o pacote: deve terminar com PACOTE COMPLETO
 pip install -r plataforma/requirements.txt
 cd plataforma && streamlit run app.py
-python testar_app.py                 # corre todas as páginas: deve terminar com APLICAÇÃO SEM ERROS
+python testar_app.py                 # corre todas as páginas nas três línguas: deve terminar com APLICAÇÃO SEM ERROS
 ```
 
 ## O que há em `dados/`
@@ -63,3 +65,31 @@ os cantos `[[sul, oeste], [norte, leste]]` que estão no catálogo.
 Para publicar a aplicação num serviço como o Streamlit Community Cloud, esta pasta tem de ir
 no repositório (é pequena de propósito) e o servidor que corre o pipeline tem de a enviar
 depois de cada execução.
+
+## Línguas
+
+A plataforma está escrita em português; cada texto passa por `t()` e aparece na língua escolhida
+no selector **PT | EN | FR** (ou no endereço, por exemplo `?lang=en&p=agua`). Para acrescentar ou
+corrigir uma tradução, editar `textos.py`. Um texto sem tradução aparece em português. Para ver
+os que faltam: `ETE_REGISTAR_EM_FALTA=1 python testar_app.py` (escreve `textos_em_falta.txt`;
+nomes de lugares e frases montadas a partir de peças já traduzidas também aparecem lá e podem
+ser ignorados). A mensagem para WhatsApp e o boletim completo ficam sempre em português.
+
+## Alertas no WhatsApp
+
+As pessoas inscrevem-se na plataforma (janela de convite na primeira visita, página **Alertas**,
+botão na barra do topo). Todas as manhãs, com alerta laranja ou vermelho, recebem uma mensagem com
+o nível, pelo menos dois lugares que podem alagar e a ligação para a plataforma; e outra quando o
+perigo passa. Base de dados `subscritores` (SQLite no computador, Supabase na plataforma publicada): `inscricoes.py`; ver quem está inscrito: `python scripts/ver_subscritores.py`; decidir e enviar: `alertas_whatsapp.py`;
+teste: `python testar_alertas.py`. Como ligar o envio automático, criar a base no Supabase
+e os textos dos modelos para a Meta: `docs/alertas_whatsapp.md`. Os números de telefone
+nunca vão para o pacote `dados/` nem para o repositório.
+
+## Conselhos sobre a água
+
+A página **Conselhos** (e o resumo na primeira página e na página da qualidade da água) diz o que
+fazer, para cada público: famílias, agricultores e criadores, pescadores, escolas, unidades de
+saúde, quem trata e distribui água, autoridades e líderes. `conselhos.py` detecta as situações a
+partir dos dados do dia (água mais turva, água turva prevista, alerta de cheia, depois da cheia,
+rio com pouca água para a época, plantas sobre a água) e escolhe os conselhos. Os textos seguem as
+orientações da OMS e da UNICEF; editar só em `conselhos.py` (e as traduções em `textos.py`).

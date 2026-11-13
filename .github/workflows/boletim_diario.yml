@@ -26,8 +26,14 @@ jobs:
           cache: pip
       - name: Instalar
         run: pip install -r requirements.txt
-      - name: Previsão, boletim, pacote e página
+      - name: Previsão, boletim, pacote, página e alertas no WhatsApp
         id: pipeline
+        env:                      # segredos do repositório (Settings > Secrets and variables > Actions); sem eles, os alertas não saem
+          WHATSAPP_TOKEN: ${{ secrets.WHATSAPP_TOKEN }}
+          WHATSAPP_PHONE_ID: ${{ secrets.WHATSAPP_PHONE_ID }}
+          ETE_SUBSCRITORES: supabase
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           set +e
           python scripts/run_daily_pipeline.py --sem-imagens

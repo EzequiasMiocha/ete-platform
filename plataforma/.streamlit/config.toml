@@ -1,17 +1,23 @@
-# Aparência e servidor da aplicação ETE (as cores vêm de tema.py)
+# Aparência e servidor da aplicação ETE (as cores e a tipografia vêm de tema.py; aqui ficam
+# os valores de base, para os componentes do Streamlit nascerem já com a paleta "Incomáti")
 [theme]
 base = "light"
-primaryColor = "#1769AA"
-backgroundColor = "#F4F7FA"
-secondaryBackgroundColor = "#EAF2FA"
-textColor = "#14212E"
-font = "sans serif"
+primaryColor = "#0F766E"
+backgroundColor = "#F7F3EA"
+secondaryBackgroundColor = "#F1ECDF"
+textColor = "#10231F"
+linkColor = "#0F766E"
+borderColor = "#E8E1D2"
+baseRadius = "large"
+font = "sans-serif"
 
 [server]
 headless = true
+enableStaticServing = true     # logos in static/, at app/static/...
 
 [browser]
 gatherUsageStats = false
 
 [client]
-toolbarMode = "minimal"
+toolbarMode = "viewer"
+showErrorDetails = "none"

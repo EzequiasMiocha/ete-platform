@@ -1,6 +1,6 @@
 # Guia de deploy da plataforma ETE
 
-Projecto Eyes to Earth. Para quem publica e mantém a plataforma (Ezequias, Mussa).
+Projecto Eyes to Earth. Para quem publica e mantém a plataforma (a equipa técnica do projecto).
 
 ## Como fica montado
 

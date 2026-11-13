@@ -12,6 +12,7 @@ Passos:
   2. Previsão de cheia e de turbidez e boletim (Open-Meteo, poucos KB).
   3. Pacote de dados da plataforma (plataforma/dados/), sem internet.
   4. Página leve do boletim (plataforma/pagina/index.html): a reserva para quando a aplicação não abre.
+  5. Alertas no WhatsApp para quem se inscreveu na plataforma (laranja ou vermelho; ver docs/alertas_whatsapp.md).
 O resumo de cada execução fica em plataforma/dados/pipeline.json.
 
 Código de saída: 0 = boletim emitido, 1 = previsão indisponível, 2 = erro.
@@ -107,6 +108,21 @@ try:
     record("pagina", "atualizada", str(page.relative_to(ROOT)), started)
 except Exception as err:
     record("pagina", "erro", f"{type(err).__name__}: {err}", started)
+
+# 5. WhatsApp alerts to the people who signed up (only with a valid bulletin; no phone numbers are logged)
+started = time.time()
+if code == 2:
+    record("whatsapp", "saltado", "sem boletim novo")
+else:
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import send_whatsapp_alerts
+
+        sent = send_whatsapp_alerts.correr()
+        detail = f"{sent['motivo']}; enviadas {sent['enviadas']}, boas-vindas {sent['boas_vindas']}" + (f", falharam {sent['falharam']}" if sent["falharam"] else "")
+        record("whatsapp", sent["decisao"] if sent["modo"] != "não configurado" else "não configurado", detail, started)
+    except Exception as err:
+        record("whatsapp", "erro", f"{type(err).__name__}: {err}", started)
 
 summary = {"executado_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"), "codigo_de_saida": code, "passos": steps}
 (config.path(cfg, "platform") / "pipeline.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False))

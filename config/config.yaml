@@ -242,6 +242,10 @@ paths:
 # -----------------------------------------------------------------------------
 # Publication (week 4). Fill in after the first deploy; empty = not published yet.
 publication:
-  app_url: ""            # the Streamlit application, e.g. https://ete-incomati.streamlit.app
-  page_url: ""           # the light static page (GitHub Pages), e.g. https://<conta>.github.io/ete-plataforma/
+  app_url: "https://eyestoearth.co.mz"        # the platform, on the project server (servidor/, docs/guia_servidor_proprio.md)
+  page_url: "https://eyestoearth.co.mz/leve/" # the light page of the bulletin, served by the same server
   stale_after_hours: 36  # older than this, the page and the app say "previsão indisponível"
+
+whatsapp:                # flood alerts sent to the people who signed up on the platform (docs/alertas_whatsapp.md)
+  niveis_que_avisam: [laranja, vermelho]   # the level that half or more of the scenarios show
+  lembrar_a_cada_dias: 2                   # while an alert lasts, a reminder every N days (a higher level is sent at once)
