@@ -1,5 +1,5 @@
 troco,estado,medicoes_em_20_dias,ultima_medicao,fiabilidade,medicao_usada,dias_elevada,prob_max,dia_prob_max,previsao
-1 montante (norte),normal,2,2026-09-26,reduzida,,-1,,,sem previsão
-2 troço médio,elevada,2,2026-10-09,boa,2026-10-09,0,0.346,2026-10-13,possível
-3 jusante,elevada,1,2026-09-24,boa,2026-10-09,0,0.416,2026-10-13,possível
-4 foz / estuário,normal,1,2026-09-24,boa,2026-10-09,0,0.32,2026-10-13,possível
+1 montante (norte),sem medição recente,0,,reduzida,,-1,,,sem previsão
+2 troço médio,sem medição recente,0,,boa,,1,0.609,2026-11-22,provável
+3 jusante,sem medição recente,0,,boa,,1,0.519,2026-11-23,provável
+4 foz / estuário,sem medição recente,0,,boa,,1,0.524,2026-11-23,provável

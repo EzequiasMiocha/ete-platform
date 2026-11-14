@@ -1,11 +1,11 @@
 {
- "emitido_utc": "2026-10-13T15:56:20+00:00",
+ "emitido_utc": "2026-11-14T10:33:38+00:00",
  "versao_codigo": "0.1.0",
- "fonte": "cache",
+ "fonte": "online",
  "problemas": [],
- "data_da_previsao": "2026-10-13",
- "dados_obtidos_utc": "2026-10-13T10:28:11+00:00",
- "idade_dos_dados_horas": 5.5,
+ "data_da_previsao": "2026-11-14",
+ "dados_obtidos_utc": "2026-11-14T10:33:42+00:00",
+ "idade_dos_dados_horas": -0.0,
  "desatualizado": false,
  "cenarios": 51,
  "limites_caudal": {

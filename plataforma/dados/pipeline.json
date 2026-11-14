@@ -1,11 +1,11 @@
 {
- "executado_utc": "2026-10-13T15:56:21+00:00",
+ "executado_utc": "2026-11-14T10:33:44+00:00",
  "codigo_de_saida": 0,
  "passos": [
   {
    "passo": "imagens",
    "estado": "saltado",
-   "detalhe": "última atualização há 2 dias",
+   "detalhe": "última atualização há 0 dias",
    "segundos": 0
   },
   {
@@ -18,12 +18,12 @@
    "passo": "previsao",
    "estado": "ok",
    "detalhe": "",
-   "segundos": 1.5
+   "segundos": 5.3
   },
   {
    "passo": "pacote",
    "estado": "atualizado",
-   "detalhe": "21 camadas",
+   "detalhe": "22 camadas",
    "segundos": 0.1
   },
   {
@@ -31,6 +31,12 @@
    "estado": "atualizada",
    "detalhe": "docs/index.html",
    "segundos": 0.0
+  },
+  {
+   "passo": "whatsapp",
+   "estado": "não configurado",
+   "detalhe": "nível verde: sem alerta · WhatsApp não configurado (faltam WHATSAPP_TOKEN e WHATSAPP_PHONE_ID); enviadas 0, boas-vindas 0",
+   "segundos": 0.1
   }
  ]
 }
