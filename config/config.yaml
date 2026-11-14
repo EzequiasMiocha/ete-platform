@@ -242,8 +242,11 @@ paths:
 # -----------------------------------------------------------------------------
 # Publication (week 4). Fill in after the first deploy; empty = not published yet.
 publication:
-  app_url: "https://eyestoearth.co.mz"        # the platform, on the project server (servidor/, docs/guia_servidor_proprio.md)
-  page_url: "https://eyestoearth.co.mz/leve/" # the light page of the bulletin, served by the same server
+  # Published on Streamlit Community Cloud + GitHub Pages (docs/guia_de_deploy.md; scripts/publicar_plataforma.py).
+  # Later, with the own server and domain (servidor/, docs/guia_servidor_proprio.md):
+  #   app_url "https://eyestoearth.co.mz" and page_url "https://eyestoearth.co.mz/leve/"
+  app_url: "https://ete-incomati.streamlit.app"                  # the application (Streamlit Community Cloud)
+  page_url: "https://ezequiasmiocha.github.io/ete-platform/"   # the light page of the bulletin (GitHub Pages)
   stale_after_hours: 36  # older than this, the page and the app say "previsão indisponível"
 
 whatsapp:                # flood alerts sent to the people who signed up on the platform (docs/alertas_whatsapp.md)
