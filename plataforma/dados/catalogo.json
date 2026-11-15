@@ -3,7 +3,7 @@
  "versao_codigo": "0.1.0",
  "gerado_utc": "2026-11-15T11:03:14+00:00",
  "sistema_de_coordenadas": "EPSG:4326 (latitude, longitude)",
- "aviso": "Produto experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.",
+ "aviso": "Produto experimental do projecto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.",
  "aplicacao": "https://ete-platform.streamlit.app",
  "pagina_simples": "https://ezequiasmiocha.github.io/ete-platform/",
  "estado_da_previsao": {
@@ -194,16 +194,16 @@
   }
  },
  "conselhos": {
-  "verde": "Sem sinais de cheia nos próximos dias. Não é precisa nenhuma ação especial.",
+  "verde": "Sem sinais de cheia nos próximos dias. Não é preciso fazer nada de especial.",
   "amarelo": "Atenção. Acompanhe os próximos boletins. Quem vive ou trabalha nas zonas baixas junto ao rio deve rever para onde ir e o que levar se a água subir.",
   "laranja": "Preparação. Proteja documentos, alimentos e bens em local alto; leve o gado para terreno elevado; evite atravessar o rio e as zonas baixas. Siga as indicações do INGD e das autoridades locais.",
   "vermelho": "Cheia provável ou em curso nas zonas baixas junto ao Incomáti. Siga de imediato as ordens das autoridades, incluindo a de sair de casa. Não atravesse zonas alagadas a pé nem de carro.",
-  "agua_turva": "A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com turbidez elevada, deixe primeiro a água assentar e filtre-a por um pano limpo: a água barrenta é mais difícil de desinfetar."
+  "agua_turva": "A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com turbidez elevada, deixe primeiro a água assentar e filtre-a por um pano limpo: a água barrenta é mais difícil de desinfectar."
  },
  "camadas": [
   {
    "id": "suscetibilidade",
-   "titulo": "Suscetibilidade a cheias",
+   "titulo": "Susceptibilidade a cheias",
    "tipo": "imagem",
    "ficheiro": "mapas/suscetibilidade.png",
    "cantos": [
@@ -266,7 +266,7 @@
     }
    ],
    "atualizacao": "quando houver uma nova cheia mapeada",
-   "descricao": "Onde a água chegou na cheia de janeiro de 2026 (mapas do Copernicus EMS): zona 1 nos primeiros mapas, zona 2 na maior extensão.",
+   "descricao": "Onde a água chegou na cheia de Janeiro de 2026 (mapas do Copernicus EMS): zona 1 nos primeiros mapas, zona 2 na maior extensão.",
    "limites": "Baseadas numa única cheia. Fora da área analisada pelo Copernicus, as zonas são estimadas pelo Modelo A.",
    "imagem": "mapas/zonas_de_aviso.png",
    "cantos": [
@@ -519,7 +519,7 @@
    "atualizacao": "mensal",
    "mapa_leve": "mapas/mapa_leve_qualidade.png",
    "descricao": "Os nove troços do Incomáti em Moçambique, coloridos pelo estado do último mês medido.",
-   "limites": "Índice de cor da água visto por satélite, comparado com o normal de cada troço para o mês. A turbidez em FNU e os sólidos em mg/L são ESTIMATIVAS sem calibração local (os dois satélites diferem tipicamente por um fator de 1,5). Não mede se a água é segura."
+   "limites": "Índice de cor da água visto por satélite, comparado com o normal de cada troço para o mês. A turbidez em FNU e os sólidos em mg/L são ESTIMATIVAS sem calibração local (os dois satélites diferem tipicamente por um factor de 1,5). Não mede se a água é segura."
   },
   {
    "id": "qualidade_estado",
@@ -537,7 +537,7 @@
    "ficheiro": "qualidade/serie_mensal.csv",
    "atualizacao": "mensal",
    "descricao": "Cor da água, turbidez e sólidos estimados, transparência estimada, vegetação sobre a água e temperatura, por troço e mês.",
-   "limites": "Índice de cor da água visto por satélite, comparado com o normal de cada troço para o mês. A turbidez em FNU e os sólidos em mg/L são ESTIMATIVAS sem calibração local (os dois satélites diferem tipicamente por um fator de 1,5). Não mede se a água é segura."
+   "limites": "Índice de cor da água visto por satélite, comparado com o normal de cada troço para o mês. A turbidez em FNU e os sólidos em mg/L são ESTIMATIVAS sem calibração local (os dois satélites diferem tipicamente por um factor de 1,5). Não mede se a água é segura."
   },
   {
    "id": "qualidade_normais",
@@ -594,7 +594,7 @@
    },
    "atualizacao": "quando os modelos são treinados de novo",
    "descricao": "Ficha de cada modelo treinado e as tabelas dos testes que o escolheram e validaram.",
-   "limites": "Os modelos de cheias foram validados numa única cheia (janeiro de 2026). Os de qualidade da água não têm medições no rio para validação local."
+   "limites": "Os modelos de cheias foram validados numa única cheia (Janeiro de 2026). Os de qualidade da água não têm medições no rio para validação local."
   },
   {
    "id": "cor_da_agua_mapa",
@@ -725,7 +725,7 @@
    "pares": [
     {
      "id": "cheia_2026",
-     "titulo": "A cheia de janeiro de 2026",
+     "titulo": "A cheia de Janeiro de 2026",
      "antes": {
       "ficheiro": "imagens/cheia_2026_antes.jpg",
       "data": "2025-10-23",
@@ -736,7 +736,7 @@
       "data": "2026-01-24",
       "satelite": "Sentinel-2"
      },
-     "texto": "A 24 de janeiro de 2026 a água cobria pelo menos 246 km² do distrito; antes da cheia eram cerca de 31 km², o rio e as lagoas.",
+     "texto": "A 24 de Janeiro de 2026 a água cobria pelo menos 246 km² do distrito; antes da cheia eram cerca de 31 km², o rio e as lagoas.",
      "fonte": "Copernicus Sentinel-2 (ESA), cor natural. Medição da água: índice MNDWI acima de zero."
     }
    ],
@@ -765,8 +765,8 @@
    "tipo": "lugares",
    "ficheiro": "lugares/lugares.json",
    "atualizacao": "quando houver uma nova cheia fotografada",
-   "descricao": "Para cada lugar, um quadrado de 6 km visto pelo satélite antes e durante a cheia de janeiro de 2026, e as zonas de aviso à sua volta.",
-   "limites": "Imagens de 30 m: mostram a zona, não cada casa. Onde as nuvens tapavam a cheia, a imagem da cheia é a do radar (o mês inteiro de janeiro de 2026)."
+   "descricao": "Para cada lugar, um quadrado de 6 km visto pelo satélite antes e durante a cheia de Janeiro de 2026, e as zonas de aviso à sua volta.",
+   "limites": "Imagens de 30 m: mostram a zona, não cada casa. Onde as nuvens tapavam a cheia, a imagem da cheia é a do radar (o mês inteiro de Janeiro de 2026)."
   }
  ]
 }

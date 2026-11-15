@@ -120,7 +120,9 @@ O comando traz primeiro os boletins que o GitHub guardou, por isso o envio não 
 | A aplicação e a página dizem "previsão indisponível" | o boletim não corre há mais de 36 horas | **Actions > Boletim diário**: ver o erro; correr à mão com **Run workflow** |
 | O boletim falha em "Previsão" | o serviço de previsão (Open-Meteo) esteve em baixo | normalmente resolve-se no dia seguinte; pode correr-se à mão mais tarde |
 | O boletim falha em "Guardar no repositório" | falta a permissão do passo 3.1 | **Settings > Actions > General > Read and write permissions** |
-| A aplicação mostra "This app has gone to sleep" | ficou muito tempo sem visitas | carregar em **Yes, get this app back up** |
+| A aplicação mostra "This app has gone to sleep" | passou 12 horas sem visitas | carregar em **Yes, get this app back up**. O processo **Manter a plataforma acordada** (Actions) visita-a de 4 em 4 horas para isto não acontecer |
+| A aplicação fica muito tempo em "Your app is in the oven" ou "taking longer than normal" | o Streamlit está a instalar as bibliotecas (depois de uma publicação que as muda) ou não consegue arrancar a aplicação | esperar 5 minutos; depois **Manage app**: ler as últimas linhas dos *logs* e carregar em **Reboot app** |
+| O processo **Manter a plataforma acordada** falha (o GitHub manda um email) | a plataforma não abriu em 10 minutos | o mesmo que a linha anterior |
 | A aplicação dá erro ao arrancar | versão de uma biblioteca | **Manage app > Reboot**; se continuar, ver os *logs* e o resultado de **Actions > Testes** |
 | O boletim automático deixou de correr sem erro nenhum | o GitHub suspende tarefas agendadas de repositórios parados há muito tempo | **Actions > Boletim diário > Enable workflow** |
 | O comando de publicar diz que o envio foi recusado | o GitHub guardou um boletim no mesmo minuto | voltar a correr o comando |

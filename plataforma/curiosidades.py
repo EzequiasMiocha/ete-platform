@@ -4,7 +4,7 @@ Cada curiosidade foi verificada (fonte no fim de cada uma) e abre com um número
 sem ícones nem emojis. As que têm números entre chavetas são calculadas pela aplicação a partir do pacote
 de dados, para nunca ficarem desactualizadas:
     caudal, dia, segundos        o dia de maior caudal desde 2006 (series/alertas_historicos.csv)
-    area, parte                  a área alagada em janeiro de 2026 (sobre/factos.csv) e a parte do distrito
+    area, parte                  a área alagada em Janeiro de 2026 (sobre/factos.csv) e a parte do distrito
     imagens, por_mes             as imagens do Sentinel-2 em que se via o rio em Marracuene (series/cor_da_agua_por_imagem.csv)
     bacia                        a área da bacia (46 624 km², arredondada a 46 600), escrita à maneira de cada língua
 As outras áreas foram calculadas uma vez pelo projecto, em EPSG:32736: a bacia do Incomáti
@@ -34,7 +34,7 @@ CURIOSIDADES = [
               "Chegava para encher uma piscina olímpica (2 500 m³) em {segundos} segundos.",
      "fonte": "Caudal estimado pelo modelo GloFAS (Copernicus), não medido no rio"},
     {"chave": "terco", "grupo": "rio", "figura": "{parte} %", "legenda": "do distrito", "titulo": "Um terço do distrito debaixo de água",
-     "texto": "Na cheia de janeiro de 2026, a água cobriu {area} km² do distrito de Marracuene: {parte} % da sua área.",
+     "texto": "Na cheia de Janeiro de 2026, a água cobriu {area} km² do distrito de Marracuene: {parte} % da sua área.",
      "fonte": "Mapas da cheia do Copernicus EMS (activação EMSR857), calculado pelo projecto"},
     {"chave": "radar", "grupo": "ceu", "figura": "Dia e noite", "legenda": "com ou sem nuvens", "titulo": "O radar vê através das nuvens",
      "texto": "O Sentinel-1 não tira fotografias: envia ondas de radar e mede o eco, de dia e de noite, com ou sem nuvens. "
@@ -53,18 +53,18 @@ CURIOSIDADES = [
               "O primeiro Landsat foi lançado em 1972: é o registo mais longo da Terra vista do espaço.",
      "fonte": "Comissão Europeia e ESA; NASA e USGS"},
     {"chave": "swot", "grupo": "ciencia", "figura": "100 m", "legenda": "de largura mínima", "titulo": "Medir a altura dos rios a partir do espaço",
-     "texto": "O satélite SWOT, lançado em dezembro de 2022 pela NASA e pela agência espacial francesa, é o primeiro a medir a altura da água "
+     "texto": "O satélite SWOT, lançado em Dezembro de 2022 pela NASA e pela agência espacial francesa, é o primeiro a medir a altura da água "
               "em quase todos os rios com mais de 100 m de largura. Os cientistas ainda estão a aprender a usar estas medições para seguir as cheias.",
      "fonte": "NASA JPL e CNES, missão SWOT"},
     {"chave": "radares", "grupo": "ciencia", "figura": "12 dias", "legenda": "duas imagens da Terra", "titulo": "Mais radares no céu",
-     "texto": "O Sentinel-1C (dezembro de 2024) e o Sentinel-1D (novembro de 2025) voam na mesma órbita, em lados opostos da Terra. "
-              "O NISAR, da NASA e da agência espacial indiana, lançado em julho de 2025, vê quase toda a terra do planeta duas vezes em cada 12 dias. "
+     "texto": "O Sentinel-1C (Dezembro de 2024) e o Sentinel-1D (Novembro de 2025) voam na mesma órbita, em lados opostos da Terra. "
+              "O NISAR, da NASA e da agência espacial indiana, lançado em Julho de 2025, vê quase toda a terra do planeta duas vezes em cada 12 dias. "
               "Mais radares quer dizer cheias vistas mais vezes, mesmo com nuvens.",
      "fonte": "ESA; NASA JPL e ISRO"},
     {"chave": "ia", "grupo": "ciencia", "figura": "100", "legenda": "países com previsão", "titulo": "Inteligência artificial contra as cheias",
      "texto": "Em 2024, a previsão de cheias de rios feita com inteligência artificial pela Google chegou a mais de 100 países, onde vivem 700 milhões de pessoas. "
               "Estes modelos aprendem com o passado: quanto mais medições houver nos rios, melhores ficam.",
-     "fonte": "Google, Flood Hub (novembro de 2024)"},
+     "fonte": "Google, Flood Hub (Novembro de 2024)"},
     {"chave": "qualidade", "grupo": "ciencia", "figura": "0", "legenda": "estações públicas", "titulo": "A cor da água ainda não diz tudo",
      "texto": "Do espaço já se vê a lama e as plantas na água, mas não se vêem micróbios nem químicos. "
               "Na bacia do Incomáti não há nenhuma estação pública de qualidade da água no arquivo mundial GEMStat: medir a água no rio é o passo que falta.",

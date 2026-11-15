@@ -33,7 +33,7 @@ from .alerts import LEVELS
 from .config import path
 
 ADVICE = {
-    "verde": "Sem sinais de cheia nos próximos dias. Não é precisa nenhuma ação especial.",
+    "verde": "Sem sinais de cheia nos próximos dias. Não é preciso fazer nada de especial.",
     "amarelo": "Atenção. Acompanhe os próximos boletins. Quem vive ou trabalha nas zonas baixas junto ao rio "
                "deve rever para onde ir e o que levar se a água subir.",
     "laranja": "Preparação. Proteja documentos, alimentos e bens em local alto; leve o gado para terreno elevado; "
@@ -42,8 +42,8 @@ ADVICE = {
                 "autoridades, incluindo a de sair de casa. Não atravesse zonas alagadas a pé nem de carro.",
 }
 TURBIDITY_ADVICE = ("A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com turbidez elevada, "
-                    "deixe primeiro a água assentar e filtre-a por um pano limpo: a água barrenta é mais difícil de desinfetar.")
-DISCLAIMER = ("Boletim experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da "
+                    "deixe primeiro a água assentar e filtre-a por um pano limpo: a água barrenta é mais difícil de desinfectar.")
+DISCLAIMER = ("Boletim experimental do projecto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da "
               "ARA-Sul. A turbidez é um indicador da cor da água visto por satélite: não mede se a água é segura.")
 
 
@@ -180,7 +180,7 @@ def build_bulletin(cfg: dict, fc: dict, outlook: pd.DataFrame, turbidity: pd.Dat
             lines += [f"**Lugares atingidos numa cheia grande** (em 2026, cerca de 10 dias depois do alerta): {', '.join(large)}.", ""]
         if first or large:
             lines += ["Os nomes vêm de mapas públicos e indicam a zona à volta de cada lugar (500 m), não limites oficiais de bairros.", ""]
-        lines += [f"**Onde:** {zone.name}, no mapa de zonas de aviso (onde a água chegou na cheia de janeiro de 2026). "
+        lines += [f"**Onde:** {zone.name}, no mapa de zonas de aviso (onde a água chegou na cheia de Janeiro de 2026). "
                   f"No distrito, essa zona tem cerca de {num(zone['area_km2'])} km², dos quais {num(zone['area_agricola_km2'])} km² de terras agrícolas, "
                   f"{num(zone['edificios'])} edifícios e {num(zone['estradas_km'])} km de estradas e caminhos.", ""]
     lines += ["## Previsão para os próximos dias", "",

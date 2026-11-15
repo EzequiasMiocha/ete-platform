@@ -1,0 +1,26 @@
+# Mantém a plataforma acordada. O Streamlit gratuito adormece as aplicações que passam 12 horas sem visitas,
+# e a primeira pessoa a seguir fica à espera. De 4 em 4 horas, o GitHub abre a plataforma num navegador
+# (o Chrome que já vem nos servidores do GitHub) e, se estiver a dormir, acorda-a.
+# Se a plataforma não abrir em 10 minutos, este processo falha e o GitHub avisa por email.
+name: Manter a plataforma acordada
+
+on:
+  schedule:
+    - cron: "40 */4 * * *"      # 00:40, 04:40, 08:40, 12:40, 16:40 e 20:40 UTC (mais 2 horas em Maputo)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manter-acordada
+  cancel-in-progress: true
+
+jobs:
+  visitar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Abrir a plataforma
+        run: python3 scripts/manter_acordada.py --url "https://ete-platform.streamlit.app" --navegador chrome --minutos 10

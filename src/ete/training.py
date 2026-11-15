@@ -322,7 +322,7 @@ _GROUPS = [
     (lambda c: c.startswith("landsat_"), "landsat", "Qualidade Landsat: nº de observações limpas / satélites usados", ""),
     (lambda c: c in ("vv", "vh", "s1_angle", "s1_n_obs", "vv_vh_ratio", "dvv", "dvh", "dvv_rel", "dvh_rel"), "sentinel1", "Radar Sentinel-1 (dB), diferença para a época seca (_rel: sem o desvio geral do mês), ângulo, nº de observações", "dB"),
     (lambda c: c in ("vv_p10", "vh_p10", "dvv_p10", "dvh_p10"), "sentinel1", "Radar no momento mais escuro do mês (percentil 10) e a sua diferença para a época seca: apanha cheias de poucos dias", "dB"),
-    (lambda c: c.startswith("s2_"), "sentinel2", "Sentinel-2: refletância, índices e nº de observações limpas", ""),
+    (lambda c: c.startswith("s2_"), "sentinel2", "Sentinel-2: reflectância, índices e nº de observações limpas", ""),
     (lambda c: c.startswith("dw_"), "dynamic_world", "Probabilidade Dynamic World (produto de um modelo, não é rótulo)", "0-1"),
     (lambda c: c.startswith(("rain_", "imerg_")), "chuva", "Chuva mensal: total, máximos e percentis (bacia e distrito)", "mm ou percentil"),
     (lambda c: c.startswith(("sm_", "smap_")), "humidade_solo", "Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)", "m3/m3"),

@@ -1,15 +1,15 @@
 modelo,teste,IoU,F1,Kappa,ROC-AUC
-B - Regressão logística,"cheia jan 2026, blocos espaciais de 3 km (Copernicus EMS)",0.791,0.883,0.744,0.953
-B - Random Forest,"cheia jan 2026, blocos espaciais de 3 km (Copernicus EMS)",0.899,0.947,0.876,0.982
-B - Gradient Boosting (HistGB),"cheia jan 2026, blocos espaciais de 3 km (Copernicus EMS)",0.907,0.951,0.885,0.983
-B - XGBoost (escolhido),"cheia jan 2026, blocos espaciais de 3 km (Copernicus EMS)",0.908,0.952,0.886,0.983
-B - regra simples VH,cheia jan 2026 (Copernicus EMS),0.88,0.936,0.842,
+B - Regressão logística,"cheia de Janeiro de 2026, blocos espaciais de 3 km (Copernicus EMS)",0.791,0.883,0.744,0.953
+B - Random Forest,"cheia de Janeiro de 2026, blocos espaciais de 3 km (Copernicus EMS)",0.899,0.947,0.876,0.982
+B - Gradient Boosting (HistGB),"cheia de Janeiro de 2026, blocos espaciais de 3 km (Copernicus EMS)",0.907,0.951,0.885,0.983
+B - XGBoost (escolhido),"cheia de Janeiro de 2026, blocos espaciais de 3 km (Copernicus EMS)",0.908,0.952,0.886,0.983
+B - regra simples VH,cheia de Janeiro de 2026 (Copernicus EMS),0.88,0.936,0.842,
 B - XGBoost (escolhido),água JRC de controlo 2016-2021,,,,0.99
 A - Regressão logística,validação temporal 2020-2021 (JRC),,,,0.853
-A - Regressão logística,cheia jan 2026 (Copernicus EMS),,,,0.91
+A - Regressão logística,cheia de Janeiro de 2026 (Copernicus EMS),,,,0.91
 A - Random Forest,validação temporal 2020-2021 (JRC),,,,0.959
-A - Random Forest,cheia jan 2026 (Copernicus EMS),,,,0.95
+A - Random Forest,cheia de Janeiro de 2026 (Copernicus EMS),,,,0.95
 A - Gradient Boosting (HistGB),validação temporal 2020-2021 (JRC),,,,0.962
-A - Gradient Boosting (HistGB),cheia jan 2026 (Copernicus EMS),,,,0.959
+A - Gradient Boosting (HistGB),cheia de Janeiro de 2026 (Copernicus EMS),,,,0.959
 A - XGBoost (escolhido),validação temporal 2020-2021 (JRC),,,,0.962
-A - XGBoost (escolhido),cheia jan 2026 (Copernicus EMS),,,,0.96
+A - XGBoost (escolhido),cheia de Janeiro de 2026 (Copernicus EMS),,,,0.96

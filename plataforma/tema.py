@@ -52,8 +52,8 @@ ALERT_WORD = {"verde": "Sem sinais de cheia", "amarelo": "Atenção", "laranja":
 ALERT_HEADLINE = {"verde": "Sem sinais de cheia no Incomáti.", "amarelo": "Atenção ao rio Incomáti.", "laranja": "É tempo de preparação.",
                   "vermelho": "Cheia provável no Incomáti."}
 LEVELS = ["verde", "amarelo", "laranja", "vermelho"]
-MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
-MESES_LONGOS = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+MESES_LONGOS = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 DIAS = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"]
 DIAS_CURTOS = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"]
 

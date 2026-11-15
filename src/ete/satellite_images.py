@@ -77,8 +77,8 @@ def export(cfg: dict, folder) -> list[dict]:
         render_photo(cfg, natural(scenes / name, FLOOD_BOX), FLOOD_BOX, file)
         pictures[key] = {"ficheiro": f"imagens/{file.name}", "data": day, "satelite": "Sentinel-2"}
     return [{"id": "imagens_satelite", "titulo": "Imagens de satélite", "tipo": "imagens", "atualizacao": "quando houver uma nova cheia fotografada",
-             "pares": [{"id": "cheia_2026", "titulo": "A cheia de janeiro de 2026", "antes": pictures["antes"], "depois": pictures["cheia"],
-                        "texto": "A 24 de janeiro de 2026 a água cobria pelo menos 246 km² do distrito; antes da cheia eram cerca de 31 km², o rio e as lagoas.",
+             "pares": [{"id": "cheia_2026", "titulo": "A cheia de Janeiro de 2026", "antes": pictures["antes"], "depois": pictures["cheia"],
+                        "texto": "A 24 de Janeiro de 2026 a água cobria pelo menos 246 km² do distrito; antes da cheia eram cerca de 31 km², o rio e as lagoas.",
                         "fonte": "Copernicus Sentinel-2 (ESA), cor natural. Medição da água: índice MNDWI acima de zero."}],
              "descricao": "Fotografias reais do satélite, em cor natural: a mesma zona antes e durante a cheia de 2026.",
              "limites": "Cada fotografia é de um só dia e de uma só passagem do satélite; as nuvens tapam partes da imagem."}]

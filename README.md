@@ -10,6 +10,7 @@ boletim e o boletim diário automático. O trabalho de dados e modelos está no 
 | Página leve do boletim (GitHub Pages) | `docs/index.html` |
 | Boletim diário automático | `.github/workflows/boletim_diario.yml` |
 | Testes automáticos | `.github/workflows/testes.yml` |
+| Visita que mantém a aplicação acordada | `.github/workflows/manter_acordada.yml` |
 | Como publicar e manter | `GUIA_DE_DEPLOY.md` |
 | Como usar a plataforma | `MANUAL_DO_UTILIZADOR.md` |
 

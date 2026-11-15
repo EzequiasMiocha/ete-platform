@@ -696,7 +696,7 @@ def proximos_dez_dias() -> None:
     T.anchor("cores")
     T.subtitle("O que quer dizer cada cor")
     T.level_cards(LIMITES, CORES, CONSELHOS)
-    T.caption("Os limites de caudal foram calculados com 25 anos de dados (1997 a 2021) e testados nos anos seguintes. Na cheia de janeiro de 2026, "
+    T.caption("Os limites de caudal foram calculados com 25 anos de dados (1997 a 2021) e testados nos anos seguintes. Na cheia de Janeiro de 2026, "
               "estas regras teriam dado alerta laranja 4 a 5 dias antes do primeiro mapa de cheia.")
     if VALIDO:
         with st.expander(t("A previsão dia a dia, em tabela")), T.guard("a tabela da previsão"):
@@ -721,7 +721,7 @@ def onde_a_agua_chega() -> None:
     camada = CAMADAS.get("zonas_de_aviso")
     if not camada:
         return
-    T.section("Onde a água chega primeiro", "As zonas de aviso mostram onde a água chegou na cheia de janeiro de 2026. Procure o seu lugar.", "Lugares", "lugares")
+    T.section("Onde a água chega primeiro", "As zonas de aviso mostram onde a água chegou na cheia de Janeiro de 2026. Procure o seu lugar.", "Lugares", "lugares")
     lugares = serie("lugares_por_ordem", V)
     vista, lado = st.columns([1.15, 1], gap="large")
     with lado:                                          # drawn first (the map needs the place and the switch), shown on the right
@@ -742,7 +742,7 @@ def onde_a_agua_chega() -> None:
         with T.guard("a exposição por zona"):
             exposicao = serie("exposicao", V)
             grande, primeira = exposicao.iloc[-1], exposicao.iloc[0]
-            T.note(t("Na cheia de janeiro de 2026, a água cobriu {area} km² do distrito: {edificios} edifícios e {campos} km² de campos ficaram dentro da zona alagada. "
+            T.note(t("Na cheia de Janeiro de 2026, a água cobriu {area} km² do distrito: {edificios} edifícios e {campos} km² de campos ficaram dentro da zona alagada. "
                      "A zona 1, onde a água chegou primeiro, tem {area1} km² e {edificios1} edifícios.", area=num(grande["area_km2"]), edificios=num(grande["edificios"]),
                      campos=num(grande["area_agricola_km2"]), area1=num(primeira["area_km2"]), edificios1=num(primeira["edificios"])), "neutra")
         interativo = st.toggle(t("Mapa interactivo (gasta mais dados)"), value=False, key="mapa_cheias")
@@ -784,7 +784,7 @@ def onde_a_agua_chega() -> None:
         T.table(exposicao[["zona", "area_km2", "area_agricola_km2", "edificios", "escolas", "unidades_de_saude", "estradas_km"]].rename(columns={
             "zona": "Zona", "area_km2": "Área (km²)", "area_agricola_km2": "Terras agrícolas (km²)", "edificios": "Edifícios", "escolas": "Escolas",
             "unidades_de_saude": "Unidades de saúde", "estradas_km": "Estradas e caminhos (km)"}))
-        T.caption("Dentro do distrito de Marracuene. As zonas são onde a água chegou na cheia de janeiro de 2026 (mapas do Copernicus EMS). "
+        T.caption("Dentro do distrito de Marracuene. As zonas são onde a água chegou na cheia de Janeiro de 2026 (mapas do Copernicus EMS). "
                   "As escolas e unidades de saúde vêm do OpenStreetMap, que pode estar incompleto.")
         st.download_button(t("Descarregar a lista de lugares (CSV)"), lugares.to_csv(index=False).encode("utf-8"), "lugares_por_ordem_de_alagamento.csv", "text/csv")
 
@@ -838,7 +838,7 @@ def vinte_anos() -> None:
     with T.guard("os números do histórico"):
         maior = dados.loc[dados["caudal_m3s"].idxmax()]
         T.kpis([{"rotulo": "Anos com alerta laranja ou vermelho", "valor": t("{n} em {total}", n=int(((completos["laranja"] + completos["vermelho"]) > 0).sum()), total=len(completos)),
-                 "nota": "anos de outubro a setembro"},
+                 "nota": "anos de Outubro a Setembro"},
                 {"rotulo": "Anos com alerta vermelho", "valor": t("{n} em {total}", n=int((completos["vermelho"] > 0).sum()), total=len(completos))},
                 {"rotulo": "Maior caudal", "valor": num(maior["caudal_m3s"]), "unidade": "m³/s", "nota": maior["data"].strftime("%d/%m/%Y")}])
     with T.guard("os dias de alerta por ano"):
@@ -847,7 +847,7 @@ def vinte_anos() -> None:
                   "O caudal vem de um modelo mundial (GloFAS), não de uma estação no rio.")
     with st.expander(t("Um ano em detalhe")):
         anos = [int(a) for a in por_ano.index if por_ano.loc[a].sum() >= 200]
-        ano = T.stepper("ano_hist", anos, lambda a: t("Ano hidrológico {inicio}/{fim}", inicio=a - 1, fim=a), "de outubro a setembro")
+        ano = T.stepper("ano_hist", anos, lambda a: t("Ano hidrológico {inicio}/{fim}", inicio=a - 1, fim=a), "de Outubro a Setembro")
         do_ano = dados[dados["ano"] == ano]
         with T.guard("o ano em detalhe"):
             pico = do_ano.loc[do_ano["caudal_m3s"].idxmax()]
@@ -1134,7 +1134,7 @@ def modelos_em_detalhe() -> None:
         {"olho": "Módulo Q · Mann-Kendall sazonal", "titulo": "Tendências", "texto": "A água está a mudar em 20 anos?", "resultado": "Nenhuma confirmada",
          "nota": "repetido por era de satélite", "chips": ["Qualidade da água"]},
         {"olho": "Modelo B · XGBoost", "titulo": "Detectar água por radar", "texto": "Onde está a água neste mês, mesmo com nuvens?", "resultado": "IoU 0,91 · F1 0,95",
-         "nota": "cheia de janeiro de 2026, blocos de 3 km", "chips": ["Cheias"]},
+         "nota": "cheia de Janeiro de 2026, blocos de 3 km", "chips": ["Cheias"]},
         {"olho": "Modelo C · XGBoost", "titulo": "Prever o caudal", "texto": "Que caudal terá o rio daqui a 1 a 7 dias?", "resultado": "Melhor do que repetir hoje",
          "nota": "testado em 2022 a 2026", "chips": ["Cheias: segunda opinião"]},
         {"olho": "Modelo A · XGBoost", "titulo": "Risco do terreno", "texto": "Onde o terreno favorece cheias?", "resultado": "AUC 0,96",
@@ -1200,10 +1200,10 @@ def modelos_em_detalhe() -> None:
         a, b = st.columns(2, gap="medium")
         with a, T.guard("a comparação de algoritmos"):
             T.subtitle("Quatro algoritmos, o mesmo teste")
-            grafico(G.ranked_bars(ml("modelo_b_algoritmos", V), "algoritmo", "iou", "IoU na cheia de janeiro de 2026 (1 = perfeito)", "XGBoost"))
+            grafico(G.ranked_bars(ml("modelo_b_algoritmos", V), "algoritmo", "iou", "IoU na cheia de Janeiro de 2026 (1 = perfeito)", "XGBoost"))
         with b, T.guard("o teste das entradas"):
             T.subtitle("Que dados ajudam o modelo")
-            grafico(G.ranked_bars(ml("modelo_b_entradas", V), "features", "iou", "IoU na cheia de janeiro de 2026"))
+            grafico(G.ranked_bars(ml("modelo_b_entradas", V), "features", "iou", "IoU na cheia de Janeiro de 2026"))
         T.caption("IoU: da área que o modelo ou a referência dizem ser água, que parte é comum aos dois. A referência são os mapas do Copernicus EMS, feitos por analistas. "
                   "Uma regra simples (um só limiar de radar) já chega a 0,88: o modelo acrescenta pouco, mas de forma consistente em todos os blocos.")
         with T.guard("a validação dos modelos"):
@@ -1233,7 +1233,7 @@ def modelos_em_detalhe() -> None:
             T.subtitle("As classes de risco batem com a cheia real?")
             classes = ml("modelo_a_teste_2026", V)
             classes = classes.rename(columns={classes.columns[0]: "classe"})
-            grafico(G.ranked_bars(classes, "classe", "parte_da_classe_que_alagou", "Parte da classe que alagou em janeiro de 2026"))
+            grafico(G.ranked_bars(classes, "classe", "parte_da_classe_que_alagou", "Parte da classe que alagou em Janeiro de 2026"))
         T.caption("O modelo foi treinado com dados até 2019, afinado em 2020-21 e testado numa cheia que nunca viu. Na classe \"muito alta\" alagou quase tudo; na \"baixa\", quase nada. "
                   "A chuva e o caudal foram deixados de fora deste modelo de propósito, para ele descrever só o terreno.")
 
@@ -1305,8 +1305,8 @@ def pagina_sobre() -> None:
             _, completos = anos_completos()
             T.kpis([{"rotulo": "Estações públicas de qualidade da água", "valor": num(f["estacoes_publicas_de_qualidade_na_bacia"]), "nota": "na bacia (arquivo GEMStat)"},
                     {"rotulo": "Anos com alerta laranja ou vermelho", "valor": t("{n} em {total}", n=int(((completos["laranja"] + completos["vermelho"]) > 0).sum()), total=len(completos)),
-                     "nota": "anos de outubro a setembro"},
-                    {"rotulo": "Área alagada em janeiro de 2026", "valor": num(f["area_alagada_cheia_grande_km2"]), "unidade": "km²", "nota": "no distrito"},
+                     "nota": "anos de Outubro a Setembro"},
+                    {"rotulo": "Área alagada em Janeiro de 2026", "valor": num(f["area_alagada_cheia_grande_km2"]), "unidade": "km²", "nota": "no distrito"},
                     {"rotulo": "Edifícios na zona alagada", "valor": num(f["edificios"])}, {"rotulo": "Terras agrícolas alagadas", "valor": num(f["terras_agricolas_km2"]), "unidade": "km²"}])
 
     T.section("Para quem", "Quatro grupos de pessoas, a mesma informação, dita de maneira que sirva a cada um.", "Quem serve")
@@ -1332,13 +1332,13 @@ def pagina_sobre() -> None:
     lista = lambda itens: "<ul style='margin:0;padding-left:1.100rem'>" + "".join(f"<li>{t(i)}</li>" for i in itens) + "</ul>"
     with a:
         T.card("O que está provado", lista([
-            "Na cheia de janeiro de 2026, as regras de alerta teriam dado laranja 4 a 5 dias antes do primeiro mapa de cheia.",
+            "Na cheia de Janeiro de 2026, as regras de alerta teriam dado laranja 4 a 5 dias antes do primeiro mapa de cheia.",
             "O modelo que detecta água por radar acerta 91 % da área alagada nessa cheia (IoU 0,91), comparado com os mapas do Copernicus.",
             "A cor da água medida por dois satélites diferentes no mesmo dia concorda (correlação 0,85)."]), "Sim", "suave")
     with b:
         T.card("O que ainda não está provado", lista([
             "Tudo o que diz respeito a cheias foi testado com <b>uma única cheia</b>. Outras cheias podem comportar-se de outra maneira.",
-            "O acerto da previsão no dia-a-dia está a ser medido desde outubro de 2026, guardando todas as previsões.",
+            "O acerto da previsão no dia-a-dia está a ser medido desde Outubro de 2026, guardando todas as previsões.",
             "Os nomes dos lugares vêm de mapas públicos e não foram confirmados no terreno.",
             "A qualidade da água é um indicador de cor, sem medições no rio."]), "Ainda não")
     T.anchor("perguntas")
@@ -1347,7 +1347,7 @@ def pagina_sobre() -> None:
             ("O alerta está verde, mas está a chover muito aqui.", "O alerta é para a cheia do rio, que depende da chuva em toda a bacia, incluindo na África do Sul e em Essuatíni. "
              "A chuva forte no local pode alagar ruas sem o rio subir."),
             ("O meu bairro não aparece.", "Os nomes vêm de mapas públicos e ainda não foram todos confirmados. Veja no mapa se a sua casa fica dentro de uma zona vermelha ou laranja."),
-            ("Com quantos dias de avanço avisa?", "Na cheia de janeiro de 2026, o sistema teria dado alerta laranja 4 a 5 dias antes. Só foi testado com essa cheia."),
+            ("Com quantos dias de avanço avisa?", "Na cheia de Janeiro de 2026, o sistema teria dado alerta laranja 4 a 5 dias antes. Só foi testado com essa cheia."),
             ("Posso confiar no número do caudal?", "Vem de um modelo mundial, não de um aparelho no rio. Serve para saber se o rio vai subir muito, não para saber o valor exacto."),
             ("A água está \"normal\". Posso bebê-la?", "Não sem a tratar. O satélite vê a cor da água; não vê micróbios nem químicos. Ferva a água ou use cloro."),
             ("O que quer dizer \"previsão indisponível\"?", "Que a plataforma não tem um boletim das últimas 36 horas. Não quer dizer que não há perigo: nesse caso, ouça os avisos oficiais."),
@@ -1365,7 +1365,7 @@ def pagina_sobre() -> None:
         T.table(pd.DataFrame([
             {"Informação": "Previsão de caudal do rio", "Fonte": "GloFAS, Copernicus (via Open-Meteo)", "Actualização": "diária"},
             {"Informação": "Chuva prevista e chuva caída na bacia", "Fonte": "ECMWF IFS e ERA5 (via Open-Meteo)", "Actualização": "diária"},
-            {"Informação": "Zonas de aviso", "Fonte": "Copernicus EMS, activação EMSR857 (cheia de janeiro de 2026)", "Actualização": "quando houver nova cheia mapeada"},
+            {"Informação": "Zonas de aviso", "Fonte": "Copernicus EMS, activação EMSR857 (cheia de Janeiro de 2026)", "Actualização": "quando houver nova cheia mapeada"},
             {"Informação": "Água vista por radar", "Fonte": "Sentinel-1 (Copernicus) e Modelo B do projecto", "Actualização": "mensal"},
             {"Informação": "Cor da água do rio", "Fonte": "Sentinel-2 (Copernicus) e Landsat 5, 7, 8 e 9 (USGS e NASA)", "Actualização": "semanal em Marracuene; mensal no rio todo"},
             {"Informação": "Fotografias de satélite", "Fonte": "Sentinel-2 (Copernicus), em cor natural", "Actualização": "semanal"},
@@ -1382,11 +1382,11 @@ def pagina_sobre() -> None:
             {"Palavra": "Caudal", "Quer dizer": "A quantidade de água que passa no rio em cada segundo (m³/s)."},
             {"Palavra": "Bacia", "Quer dizer": "Toda a área de onde a chuva escorre para o rio. A do Incomáti estende-se pela África do Sul, Essuatíni e Moçambique."},
             {"Palavra": "Cenários", "Quer dizer": "51 previsões ligeiramente diferentes do mesmo modelo. Se quase todas concordam, a previsão é mais certa."},
-            {"Palavra": "Zona de aviso", "Quer dizer": "Área onde a água chegou na cheia de janeiro de 2026. Zona 1: chegou primeiro. Zona 2: chegou na cheia grande."},
+            {"Palavra": "Zona de aviso", "Quer dizer": "Área onde a água chegou na cheia de Janeiro de 2026. Zona 1: chegou primeiro. Zona 2: chegou na cheia grande."},
             {"Palavra": "Turbidez", "Quer dizer": "Quanto a água está barrenta."},
             {"Palavra": "Troço", "Quer dizer": "Uma parte do rio. O Incomáti foi dividido em nove, da fronteira (Q1) à foz (Q9)."},
             {"Palavra": "Radar", "Quer dizer": "Satélite que vê através das nuvens. A água calma aparece muito escura."},
-            {"Palavra": "Ano hidrológico", "Quer dizer": "De outubro a setembro, para a época das chuvas ficar inteira no mesmo ano."}]))
+            {"Palavra": "Ano hidrológico", "Quer dizer": "De Outubro a Setembro, para a época das chuvas ficar inteira no mesmo ano."}]))
     with st.expander(t("O estado do sistema hoje")):
         estado = BOLETIM["estado"]
         T.kpis([{"rotulo": "Boletim", "valor": t("em dia") if VALIDO else t("desactualizado"), "nota": t("emitido há {h} h", h=f"{BOLETIM['horas_desde_a_emissao']:.0f}")},
@@ -1667,7 +1667,7 @@ def pagina_zona() -> None:
     T.answers([cheia, cor_da_agua, beber])
 
     # 2. the floods here
-    T.section("Cheias: o que esperar aqui", "O alerta dos próximos 10 dias e o que a cheia de janeiro de 2026 fez neste lugar.", "Cheias", "zona_cheias")
+    T.section("Cheias: o que esperar aqui", "O alerta dos próximos 10 dias e o que a cheia de Janeiro de 2026 fez neste lugar.", "Cheias", "zona_cheias")
     esquerda, direita = st.columns([3, 2], gap="large")
     with esquerda:
         with T.guard("a previsão para este lugar"):
@@ -1748,7 +1748,7 @@ def pagina_zona() -> None:
     fotos = ficha.get("ficheiros", {})
     if fotos and all(leitor.caminho(fotos[k]).is_file() for k in ("antes", "cheia")):
         with T.guard("as imagens de satélite do lugar"):
-            T.section("A sua zona vista do espaço", "Um quadrado de 6 km à volta do lugar, visto pelo satélite antes e durante a cheia de janeiro de 2026.", "Satélite", "zona_espaco")
+            T.section("A sua zona vista do espaço", "Um quadrado de 6 km à volta do lugar, visto pelo satélite antes e durante a cheia de Janeiro de 2026.", "Satélite", "zona_espaco")
             lado = fichas_dos_lugares(V).get("lado_m", 6000)
             antes = fichas_dos_lugares(V).get("antes", {}).get("data", "2025-10-23")
             radar = ficha["cheia"]["tipo"] != "foto"
@@ -1758,7 +1758,7 @@ def pagina_zona() -> None:
             else:
                 mes = ficha["cheia"]["mes"]
                 direita_rotulo = t("Cheia · radar, {mes}", mes=f"{L.meses()[int(mes[5:7]) - 1]} {mes[:4]}")
-                nota = t("As nuvens tapavam esta zona nas fotografias da cheia. À direita, o que o radar viu em janeiro de 2026, através das nuvens: "
+                nota = t("As nuvens tapavam esta zona nas fotografias da cheia. À direita, o que o radar viu em Janeiro de 2026, através das nuvens: "
                          "a vermelho, a água da cheia; a azul, a água de sempre. Junto à praia, o radar pode confundir a areia molhada com água.")
             a, b = st.columns([3, 2], gap="large")
             with a:

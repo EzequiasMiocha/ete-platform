@@ -143,8 +143,8 @@ def export(cfg: dict, folder) -> list[dict]:
                                                    "lugares": records}, ensure_ascii=False, indent=1))
     return [{"id": "zona_lugares", "titulo": "A sua zona: imagens de cada lugar", "tipo": "lugares", "ficheiro": "lugares/lugares.json",
              "atualizacao": "quando houver uma nova cheia fotografada",
-             "descricao": "Para cada lugar, um quadrado de 6 km visto pelo satélite antes e durante a cheia de janeiro de 2026, e as zonas de aviso à sua volta.",
-             "limites": "Imagens de 30 m: mostram a zona, não cada casa. Onde as nuvens tapavam a cheia, a imagem da cheia é a do radar (o mês inteiro de janeiro de 2026)."}]
+             "descricao": "Para cada lugar, um quadrado de 6 km visto pelo satélite antes e durante a cheia de Janeiro de 2026, e as zonas de aviso à sua volta.",
+             "limites": "Imagens de 30 m: mostram a zona, não cada casa. Onde as nuvens tapavam a cheia, a imagem da cheia é a do radar (o mês inteiro de Janeiro de 2026)."}]
 
 
 def refresh(cfg: dict) -> dict:

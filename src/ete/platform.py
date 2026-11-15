@@ -31,7 +31,7 @@ ZONE_COLOURS = {1: "#c0392b", 2: "#e67e22"}
 ALERT_COLOURS = {"verde": "#27ae60", "amarelo": "#f1c40f", "laranja": "#e67e22", "vermelho": "#c0392b"}
 TURBIDITY_COLOURS = {"normal": "#5dade2", "elevada": "#b9770e", "muito elevada": "#6e2c00", "sem medição recente": "#bdc3c7"}
 WATER_MAP_MONTHS = 12
-DISCLAIMER = ("Produto experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.")
+DISCLAIMER = ("Produto experimental do projecto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.")
 
 
 def _rgba(hex_colour: str, alpha: int) -> tuple[int, int, int, int]:
@@ -174,7 +174,7 @@ def export_static(cfg: dict, folder) -> list[dict]:
 
     classes = read_bands(path(cfg, "maps", "modelo_a", f"suscetibilidade_{name}_30m.tif", mkdir=False), ["classe"])["classe"]
     corners = write_overlay(classes, grid, SUSCEPTIBILITY, maps / "suscetibilidade.png", 0.00027)
-    entries.append({"id": "suscetibilidade", "titulo": "Suscetibilidade a cheias", "tipo": "imagem", "ficheiro": "mapas/suscetibilidade.png", "cantos": corners,
+    entries.append({"id": "suscetibilidade", "titulo": "Susceptibilidade a cheias", "tipo": "imagem", "ficheiro": "mapas/suscetibilidade.png", "cantos": corners,
                     "legenda": _legend(SUSCEPTIBILITY), "resolucao_m": 30, "atualizacao": "quando o Modelo A é treinado de novo",
                     "descricao": "Onde o terreno favorece a acumulação de água (Modelo A, treinado com 20 anos de dados).",
                     "limites": "As classes são faixas relativas dentro da área de estudo. Para avisar a população usam-se as zonas de aviso, não este mapa."})
@@ -185,7 +185,7 @@ def export_static(cfg: dict, folder) -> list[dict]:
     entries.append({"id": "zonas_de_aviso", "titulo": "Zonas de aviso", "tipo": "vetor", "ficheiro": "vetores/zonas_de_aviso.geojson",
                     "legenda": [{"valor": 1, "nome": "zona 1: primeiras a alagar", "cor": ZONE_COLOURS[1]}, {"valor": 2, "nome": "zona 2: cheia grande", "cor": ZONE_COLOURS[2]}],
                     "atualizacao": "quando houver uma nova cheia mapeada",
-                    "descricao": "Onde a água chegou na cheia de janeiro de 2026 (mapas do Copernicus EMS): zona 1 nos primeiros mapas, zona 2 na maior extensão.",
+                    "descricao": "Onde a água chegou na cheia de Janeiro de 2026 (mapas do Copernicus EMS): zona 1 nos primeiros mapas, zona 2 na maior extensão.",
                     "limites": "Baseadas numa única cheia. Fora da área analisada pelo Copernicus, as zonas são estimadas pelo Modelo A."})
 
     # the same zones as a small image: the web map draws this instead of the heavy polygons
@@ -373,7 +373,7 @@ def export_quality(cfg: dict, folder) -> list[dict]:
     _geojson(water, folder / "vetores" / "trocos_modulo_q.geojson", tolerance_m=20)
     _light_quality_map(cfg, water, folder / "mapas" / "mapa_leve_qualidade.png")
     limits = ("Índice de cor da água visto por satélite, comparado com o normal de cada troço para o mês. A turbidez em FNU e os sólidos em mg/L são "
-              "ESTIMATIVAS sem calibração local (os dois satélites diferem tipicamente por um fator de 1,5). Não mede se a água é segura.")
+              "ESTIMATIVAS sem calibração local (os dois satélites diferem tipicamente por um factor de 1,5). Não mede se a água é segura.")
     return [
         {"id": "trocos_modulo_q", "titulo": "Qualidade da água por troço, da fronteira à foz", "tipo": "vetor", "ficheiro": "vetores/trocos_modulo_q.geojson",
          "legenda": [{"valor": k, "nome": k, "cor": v} for k, v in QUALITY_COLOURS.items() if k != "sem dados"], "atualizacao": "mensal",
@@ -465,7 +465,7 @@ def export_models(cfg: dict, folder) -> list[dict]:
             tables[name] = f"modelos/{name}.csv"
     return [{"id": "modelos_ml", "titulo": "Modelos de machine learning e os seus testes", "tipo": "modelos", "ficheiro": "modelos/fichas.json", "tabelas": tables,
              "atualizacao": "quando os modelos são treinados de novo", "descricao": "Ficha de cada modelo treinado e as tabelas dos testes que o escolheram e validaram.",
-             "limites": "Os modelos de cheias foram validados numa única cheia (janeiro de 2026). Os de qualidade da água não têm medições no rio para validação local."}]
+             "limites": "Os modelos de cheias foram validados numa única cheia (Janeiro de 2026). Os de qualidade da água não têm medições no rio para validação local."}]
 
 
 def _model_summary(cfg: dict) -> dict:

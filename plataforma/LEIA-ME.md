@@ -59,7 +59,7 @@ os cantos `[[sul, oeste], [norte, leste]]` que estão no catálogo.
 6. **Nomes de lugares:** ainda não foram validados no terreno (coluna `validado` vazia).
 7. Ler os títulos, as cores e as legendas do catálogo, sem os escrever à mão no código.
 
-## Quem atualiza o quê
+## Quem actualiza o quê
 
 | Comando | Quando | Internet |
 |---|---|---|

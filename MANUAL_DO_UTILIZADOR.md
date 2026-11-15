@@ -37,7 +37,7 @@ Tudo o que a plataforma sabe sobre um lugar, numa só página, de cima para baix
 1. **Três respostas curtas:** se há perigo de cheia nos próximos 10 dias, como está a água do
    troço do rio mais perto e se pode beber a água do rio (só depois de tratada).
 2. **Cheias aqui:** a cor de cada um dos 10 dias e o que quer dizer para este lugar, conforme o
-   que a cheia de janeiro de 2026 lá fez (por exemplo «Em 2026, a água chegou aqui 4 dias
+   que a cheia de Janeiro de 2026 lá fez (por exemplo «Em 2026, a água chegou aqui 4 dias
    depois do alerta laranja»). Os números do lugar (edifícios a 500 m, distância e altura em
    relação ao rio) e o mapa das zonas de aviso à volta, com o lugar marcado por um círculo.
 3. **O caudal do rio (a vazão):** quanta água passa no rio em cada segundo, prevista para 10
@@ -104,7 +104,7 @@ Começa com a resposta do boletim de hoje. Depois:
 1. **Os próximos dez dias:** a cor de cada dia, o gráfico do caudal previsto e o que quer dizer
    cada cor. A tabela dia a dia e a chuva na bacia estão nas caixas fechadas.
 2. **Onde a água chega primeiro:** o mapa das zonas de aviso (a vermelho, onde a água chegou
-   primeiro na cheia de janeiro de 2026; a laranja, onde chegou na cheia grande). Pode procurar
+   primeiro na cheia de Janeiro de 2026; a laranja, onde chegou na cheia grande). Pode procurar
    um lugar pelo nome. O mapa aparece primeiro como imagem, que gasta poucos dados; o botão
    "Mapa interactivo" permite aproximar e afastar.
 3. **O rio visto do espaço:** fotografias reais do satélite, a mesma zona antes e durante a
@@ -164,7 +164,7 @@ Os nomes vêm de mapas públicos e ainda não foram todos confirmados. Veja no m
 fica dentro de uma zona vermelha ou laranja.
 
 **Com quantos dias de avanço avisa?**
-Na cheia de janeiro de 2026, o sistema teria dado alerta laranja 4 a 5 dias antes. Só foi
+Na cheia de Janeiro de 2026, o sistema teria dado alerta laranja 4 a 5 dias antes. Só foi
 testado com essa cheia.
 
 **Posso confiar no número do caudal?**

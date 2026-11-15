@@ -27,7 +27,7 @@ _AXIS = dict(grid=True, gridColor=GRID, domainColor=GRID, tickColor=GRID, labelC
              titleFontWeight=600, labelPadding=6, tickSize=4)
 _LEGEND = dict(orient="bottom", title=None, labelColor=INK, labelFontSize=12, symbolType="circle", symbolSize=90, padding=6)
 LEVELS = ["verde", "amarelo", "laranja", "vermelho"]
-MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
 
 
 def _base(chart, height: int = 270):
@@ -121,7 +121,7 @@ def alert_days(yearly: pd.DataFrame, colours: dict):
     long["nivel"] = long["alerta"].map(order.index)
     long["alerta"] = long["alerta"].map(t)
     chart = alt.Chart(long).mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3, stroke="white", strokeWidth=1).encode(
-        x=alt.X("ano:O", title=t("Ano hidrológico (de outubro a setembro)"), axis=alt.Axis(labelAngle=0, labelOverlap="parity")), y=alt.Y("dias:Q", title=t("Dias")),   # on a phone every other year
+        x=alt.X("ano:O", title=t("Ano hidrológico (de Outubro a Setembro)"), axis=alt.Axis(labelAngle=0, labelOverlap="parity")), y=alt.Y("dias:Q", title=t("Dias")),   # on a phone every other year
         color=alt.Color("alerta:N", scale=_levels(colours, order), sort=[t(k) for k in order]),
         order=alt.Order("nivel:Q"), tooltip=[alt.Tooltip("ano:O", title=t("Ano")), alt.Tooltip("alerta:N", title=t("Alerta")), alt.Tooltip("dias:Q", title=t("Dias"))])
     return _base(chart, 270)

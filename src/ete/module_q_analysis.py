@@ -471,7 +471,7 @@ def gloria_validation(cfg: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
         slope, intercept = np.polyfit(x[~test], y[~test], 1)
         predicted[test] = intercept + slope * x[test]
     slope, intercept = np.polyfit(x, y, 1)
-    rows.append({"teste": "transparência (Secchi) a partir da refletância no vermelho", "amostras": int(len(part)), "r2_log": float(1 - ((y - predicted) ** 2).sum() / ((y - y.mean()) ** 2).sum()),
+    rows.append({"teste": "transparência (Secchi) a partir da reflectância no vermelho", "amostras": int(len(part)), "r2_log": float(1 - ((y - predicted) ** 2).sum() / ((y - y.mean()) ** 2).sum()),
                  "correlacao_log": float(np.corrcoef(y, predicted)[0, 1]), "fator_tipico": float(10 ** np.sqrt(((predicted - y) ** 2).mean())), "razao_mediana": 1.0,
                  "nota": "relação ajustada aqui e usada em `secchi_m` (validação cruzada, 5 partes)"})
     path(cfg, "models", "secchi_gloria.json").write_text(json.dumps({

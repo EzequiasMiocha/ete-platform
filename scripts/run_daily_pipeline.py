@@ -51,15 +51,15 @@ def record(name: str, state: str, detail: str = "", started: float | None = None
 files = sorted(config.path(cfg, "water_quality").glob("sentinel2_*.csv"))
 age_days = (time.time() - files[-1].stat().st_mtime) / 86400 if files else float("inf")
 if "--sem-imagens" in sys.argv or (offline and "--imagens" not in sys.argv):
-    record("imagens", "saltado", f"última atualização há {age_days:.0f} dias")
+    record("imagens", "saltado", f"última actualização há {age_days:.0f} dias")
 elif age_days < IMAGES_EVERY_DAYS and "--imagens" not in sys.argv:
-    record("imagens", "em dia", f"última atualização há {age_days:.0f} dias")
+    record("imagens", "em dia", f"última actualização há {age_days:.0f} dias")
 else:
     started = time.time()
     try:
         done = subprocess.run([sys.executable, str(ROOT / "scripts" / "update_water_quality_scenes.py")], capture_output=True, text=True, timeout=1800)
         if done.returncode == 0:
-            record("imagens", "atualizado", "", started)
+            record("imagens", "actualizado", "", started)
         else:
             record("imagens", "falhou", (done.stderr.strip().splitlines() or ["erro"])[-1][:200], started)
     except subprocess.TimeoutExpired:
@@ -70,14 +70,14 @@ MODULE_Q_EVERY_DAYS = 30
 q_files = sorted(config.path(cfg, "module_q_raw").glob("sentinel2_*.csv"))
 q_age = (time.time() - q_files[-1].stat().st_mtime) / 86400 if q_files else float("inf")
 if "--sem-imagens" in sys.argv or offline or not q_files:
-    record("modulo_q", "saltado", f"última atualização há {q_age:.0f} dias" if q_files else "feito no computador do projecto, uma vez por mês")
+    record("modulo_q", "saltado", f"última actualização há {q_age:.0f} dias" if q_files else "feito no computador do projecto, uma vez por mês")
 elif q_age < MODULE_Q_EVERY_DAYS and "--imagens" not in sys.argv:
-    record("modulo_q", "em dia", f"última atualização há {q_age:.0f} dias")
+    record("modulo_q", "em dia", f"última actualização há {q_age:.0f} dias")
 else:
     started = time.time()
     try:
         done = subprocess.run([sys.executable, str(ROOT / "scripts" / "update_module_q_series.py")], capture_output=True, text=True, timeout=5400)
-        record("modulo_q", "atualizado" if done.returncode == 0 else "falhou", "" if done.returncode == 0 else (done.stderr.strip().splitlines() or ["erro"])[-1][:200], started)
+        record("modulo_q", "actualizado" if done.returncode == 0 else "falhou", "" if done.returncode == 0 else (done.stderr.strip().splitlines() or ["erro"])[-1][:200], started)
     except subprocess.TimeoutExpired:
         record("modulo_q", "falhou", "demorou mais de 90 minutos", started)
 
@@ -96,7 +96,7 @@ except Exception as err:                       # nothing usable at all
 started = time.time()
 try:
     catalogue = platform.refresh_daily(cfg)
-    record("pacote", "atualizado", f"{len(catalogue['camadas'])} camadas", started)
+    record("pacote", "actualizado", f"{len(catalogue['camadas'])} camadas", started)
 except Exception as err:
     record("pacote", "erro", f"{type(err).__name__}: {err}", started)
     code = 2
@@ -105,7 +105,7 @@ except Exception as err:
 started = time.time()
 try:
     page = platform.write_static_page(cfg)
-    record("pagina", "atualizada", str(page.relative_to(ROOT)), started)
+    record("pagina", "actualizada", str(page.relative_to(ROOT)), started)
 except Exception as err:
     record("pagina", "erro", f"{type(err).__name__}: {err}", started)
 

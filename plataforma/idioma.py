@@ -104,10 +104,10 @@ def numero(valor, casas: int | None = 0) -> str:
     return texto.replace(",", " " if inteiro_grande else "").replace(".", ",")
 
 
-_MESES = {"pt": ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"],
+_MESES = {"pt": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
           "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
           "fr": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]}
-_MESES_CURTOS = {"pt": ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
+_MESES_CURTOS = {"pt": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
                  "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                  "fr": ["janv", "févr", "mars", "avr", "mai", "juin", "juil", "août", "sept", "oct", "nov", "déc"]}
 _DIAS = {"pt": ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"],
@@ -130,14 +130,14 @@ def dia_curto(dia) -> str:
 
 
 def dia_mes(dia) -> str:
-    """23 de outubro · 23 October · 23 octobre"""
+    """23 de Outubro · 23 October · 23 octobre"""
     dia = pd.Timestamp(dia)
     mes = _MESES[lingua()][dia.month - 1]
     return f"{dia.day} de {mes}" if lingua() == "pt" else f"{dia.day} {mes}"
 
 
 def dia_da_semana(dia) -> str:
-    """Terça-feira, 13 de outubro · Tuesday, 13 October · Mardi 13 octobre"""
+    """Terça-feira, 13 de Outubro · Tuesday, 13 October · Mardi 13 octobre"""
     dia = pd.Timestamp(dia)
     nome = _DIAS[lingua()][dia.weekday()]
     texto = f"{nome} {dia_mes(dia)}" if lingua() == "fr" else f"{nome}, {dia_mes(dia)}"
@@ -145,7 +145,7 @@ def dia_da_semana(dia) -> str:
 
 
 def data_longa(dia) -> str:
-    """terça-feira, 13 de outubro de 2026 · Tuesday, 13 October 2026 · mardi 13 octobre 2026"""
+    """terça-feira, 13 de Outubro de 2026 · Tuesday, 13 October 2026 · mardi 13 octobre 2026"""
     dia = pd.Timestamp(dia)
     nome = _DIAS[lingua()][dia.weekday()]
     if lingua() == "pt":
