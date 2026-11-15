@@ -1,0 +1,1644 @@
+{
+ "lado_m": 6000,
+ "resolucao_m": 30,
+ "antes": {
+  "data": "2025-10-23",
+  "satelite": "Sentinel-2"
+ },
+ "lugares": [
+  {
+   "id": 0,
+   "lugar": "Machavo",
+   "lon": 32.86667,
+   "lat": -25.51667,
+   "ficheiros": {
+    "antes": "lugares/00_antes.jpg",
+    "cheia": "lugares/00_cheia.jpg",
+    "zonas": "lugares/00_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.61
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 3560
+  },
+  {
+   "id": 1,
+   "lugar": "Macanda",
+   "lon": 32.86667,
+   "lat": -25.51667,
+   "ficheiros": {
+    "antes": "lugares/01_antes.jpg",
+    "cheia": "lugares/01_cheia.jpg",
+    "zonas": "lugares/01_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.61
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 3560
+  },
+  {
+   "id": 2,
+   "lugar": "Macanda",
+   "lon": 32.87278,
+   "lat": -25.5175,
+   "ficheiros": {
+    "antes": "lugares/02_antes.jpg",
+    "cheia": "lugares/02_cheia.jpg",
+    "zonas": "lugares/02_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.51
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 4170
+  },
+  {
+   "id": 3,
+   "lugar": "Machubo",
+   "lon": 32.87516,
+   "lat": -25.50602,
+   "ficheiros": {
+    "antes": "lugares/03_antes.jpg",
+    "cheia": "lugares/03_cheia.jpg",
+    "zonas": "lugares/03_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.67
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 4570
+  },
+  {
+   "id": 4,
+   "lugar": "Mecaline",
+   "lon": 32.66667,
+   "lat": -25.71667,
+   "ficheiros": {
+    "antes": "lugares/04_antes.jpg",
+    "cheia": "lugares/04_cheia.jpg",
+    "zonas": "lugares/04_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.05
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1220
+  },
+  {
+   "id": 5,
+   "lugar": "Aldeia Verde",
+   "lon": 32.69361,
+   "lat": -25.71306,
+   "ficheiros": {
+    "antes": "lugares/05_antes.jpg",
+    "cheia": "lugares/05_cheia.jpg",
+    "zonas": "lugares/05_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.01
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 180
+  },
+  {
+   "id": 6,
+   "lugar": "M. Pateque",
+   "lon": 32.6975,
+   "lat": -25.59944,
+   "ficheiros": {
+    "antes": "lugares/06_antes.jpg",
+    "cheia": "lugares/06_cheia.jpg",
+    "zonas": "lugares/06_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.2
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1070
+  },
+  {
+   "id": 7,
+   "lugar": "Incanine",
+   "lon": 32.72417,
+   "lat": -25.66722,
+   "ficheiros": {
+    "antes": "lugares/07_antes.jpg",
+    "cheia": "lugares/07_cheia.jpg",
+    "zonas": "lugares/07_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.09
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 440
+  },
+  {
+   "id": 8,
+   "lugar": "D’lhelo",
+   "lon": 32.7575,
+   "lat": -25.62806,
+   "ficheiros": {
+    "antes": "lugares/08_antes.jpg",
+    "cheia": "lugares/08_cheia.jpg",
+    "zonas": "lugares/08_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.13
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 2460
+  },
+  {
+   "id": 9,
+   "lugar": "Augusto Sa",
+   "lon": 32.69,
+   "lat": -25.73056,
+   "ficheiros": {
+    "antes": "lugares/09_antes.jpg",
+    "cheia": "lugares/09_cheia.jpg",
+    "zonas": "lugares/09_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 0
+  },
+  {
+   "id": 10,
+   "lugar": "Macaneta",
+   "lon": 32.73059,
+   "lat": -25.73911,
+   "ficheiros": {
+    "antes": "lugares/10_antes.jpg",
+    "cheia": "lugares/10_cheia.jpg",
+    "zonas": "lugares/10_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1650
+  },
+  {
+   "id": 11,
+   "lugar": "Pateque",
+   "lon": 32.70167,
+   "lat": -25.57722,
+   "ficheiros": {
+    "antes": "lugares/11_antes.jpg",
+    "cheia": "lugares/11_cheia.jpg",
+    "zonas": "lugares/11_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.12
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 520
+  },
+  {
+   "id": 12,
+   "lugar": "Marracuene Agricola",
+   "lon": 32.685,
+   "lat": -25.64111,
+   "ficheiros": {
+    "antes": "lugares/12_antes.jpg",
+    "cheia": "lugares/12_cheia.jpg",
+    "zonas": "lugares/12_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.2
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 2000
+  },
+  {
+   "id": 13,
+   "lugar": "Augusto Mota",
+   "lon": 32.79056,
+   "lat": -25.58917,
+   "ficheiros": {
+    "antes": "lugares/13_antes.jpg",
+    "cheia": "lugares/13_cheia.jpg",
+    "zonas": "lugares/13_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.29
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4290
+  },
+  {
+   "id": 14,
+   "lugar": "J. Campos",
+   "lon": 32.76278,
+   "lat": -25.63528,
+   "ficheiros": {
+    "antes": "lugares/14_antes.jpg",
+    "cheia": "lugares/14_cheia.jpg",
+    "zonas": "lugares/14_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.24
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 3410
+  },
+  {
+   "id": 15,
+   "lugar": "Duna Matimane",
+   "lon": 32.77139,
+   "lat": -25.63972,
+   "ficheiros": {
+    "antes": "lugares/15_antes.jpg",
+    "cheia": "lugares/15_cheia.jpg",
+    "zonas": "lugares/15_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.37
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4290
+  },
+  {
+   "id": 16,
+   "lugar": "Mecisa",
+   "lon": 32.78667,
+   "lat": -25.59889,
+   "ficheiros": {
+    "antes": "lugares/16_antes.jpg",
+    "cheia": "lugares/16_cheia.jpg",
+    "zonas": "lugares/16_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.24
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 3690
+  },
+  {
+   "id": 17,
+   "lugar": "Linchiça",
+   "lon": 32.85,
+   "lat": -25.53333,
+   "ficheiros": {
+    "antes": "lugares/17_antes.jpg",
+    "cheia": "lugares/17_cheia.jpg",
+    "zonas": "lugares/17_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.52
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 2600
+  },
+  {
+   "id": 18,
+   "lugar": "Augusto",
+   "lon": 32.66667,
+   "lat": -25.68333,
+   "ficheiros": {
+    "antes": "lugares/18_antes.jpg",
+    "cheia": "lugares/18_cheia.jpg",
+    "zonas": "lugares/18_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1150
+  },
+  {
+   "id": 19,
+   "lugar": "Marracuene",
+   "lon": 32.67633,
+   "lat": -25.73998,
+   "ficheiros": {
+    "antes": "lugares/19_antes.jpg",
+    "cheia": "lugares/19_cheia.jpg",
+    "zonas": "lugares/19_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.08
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 110
+  },
+  {
+   "id": 20,
+   "lugar": "Kushal Natha",
+   "lon": 32.6825,
+   "lat": -25.83278,
+   "ficheiros": {
+    "antes": "lugares/20_antes.jpg",
+    "cheia": "lugares/20_cheia.jpg",
+    "zonas": "lugares/20_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.05
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 1570
+  },
+  {
+   "id": 21,
+   "lugar": "Madambo",
+   "lon": 32.62222,
+   "lat": -25.61944,
+   "ficheiros": {
+    "antes": "lugares/21_antes.jpg",
+    "cheia": "lugares/21_cheia.jpg",
+    "zonas": "lugares/21_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.1
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 7020
+  },
+  {
+   "id": 22,
+   "lugar": "Magaia",
+   "lon": 32.66861,
+   "lat": -25.65861,
+   "ficheiros": {
+    "antes": "lugares/22_antes.jpg",
+    "cheia": "lugares/22_cheia.jpg",
+    "zonas": "lugares/22_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.12
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 810
+  },
+  {
+   "id": 23,
+   "lugar": "Xavier",
+   "lon": 32.67056,
+   "lat": -25.84194,
+   "ficheiros": {
+    "antes": "lugares/23_antes.jpg",
+    "cheia": "lugares/23_cheia.jpg",
+    "zonas": "lugares/23_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.13
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 2440
+  },
+  {
+   "id": 24,
+   "lugar": "Michafutene",
+   "lon": 32.5852,
+   "lat": -25.78434,
+   "ficheiros": {
+    "antes": "lugares/24_antes.jpg",
+    "cheia": "lugares/24_cheia.jpg",
+    "zonas": "lugares/24_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 10000
+  },
+  {
+   "id": 25,
+   "lugar": "Bachite",
+   "lon": 32.61053,
+   "lat": -25.59613,
+   "ficheiros": {
+    "antes": "lugares/25_antes.jpg",
+    "cheia": "lugares/25_cheia.jpg",
+    "zonas": "lugares/25_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.01
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 9640
+  },
+  {
+   "id": 26,
+   "lugar": "Moveja",
+   "lon": 32.6689,
+   "lat": -25.65107,
+   "ficheiros": {
+    "antes": "lugares/26_antes.jpg",
+    "cheia": "lugares/26_cheia.jpg",
+    "zonas": "lugares/26_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.14
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1190
+  },
+  {
+   "id": 27,
+   "lugar": "Uchaca",
+   "lon": 32.88444,
+   "lat": -25.5125,
+   "ficheiros": {
+    "antes": "lugares/27_antes.jpg",
+    "cheia": "lugares/27_cheia.jpg",
+    "zonas": "lugares/27_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.42
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 5370
+  },
+  {
+   "id": 28,
+   "lugar": "Romand",
+   "lon": 32.63333,
+   "lat": -25.76667,
+   "ficheiros": {
+    "antes": "lugares/28_antes.jpg",
+    "cheia": "lugares/28_cheia.jpg",
+    "zonas": "lugares/28_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.02
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 5140
+  },
+  {
+   "id": 29,
+   "lugar": "Pozemane",
+   "lon": 32.60417,
+   "lat": -25.68639,
+   "ficheiros": {
+    "antes": "lugares/29_antes.jpg",
+    "cheia": "lugares/29_cheia.jpg",
+    "zonas": "lugares/29_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 7190
+  },
+  {
+   "id": 30,
+   "lugar": "Manochovane",
+   "lon": 32.58111,
+   "lat": -25.79222,
+   "ficheiros": {
+    "antes": "lugares/30_antes.jpg",
+    "cheia": "lugares/30_cheia.jpg",
+    "zonas": "lugares/30_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 10460
+  },
+  {
+   "id": 31,
+   "lugar": "Mafôfo",
+   "lon": 32.88528,
+   "lat": -25.47778,
+   "ficheiros": {
+    "antes": "lugares/31_antes.jpg",
+    "cheia": "lugares/31_cheia.jpg",
+    "zonas": "lugares/31_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.19
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 6930
+  },
+  {
+   "id": 32,
+   "lugar": "Luiz",
+   "lon": 32.62778,
+   "lat": -25.76111,
+   "ficheiros": {
+    "antes": "lugares/32_antes.jpg",
+    "cheia": "lugares/32_cheia.jpg",
+    "zonas": "lugares/32_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.05
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 5420
+  },
+  {
+   "id": 33,
+   "lugar": "Chivingoane",
+   "lon": 32.58333,
+   "lat": -25.8,
+   "ficheiros": {
+    "antes": "lugares/33_antes.jpg",
+    "cheia": "lugares/33_cheia.jpg",
+    "zonas": "lugares/33_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.06
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 10350
+  },
+  {
+   "id": 34,
+   "lugar": "Cadjele",
+   "lon": 32.6,
+   "lat": -25.68333,
+   "ficheiros": {
+    "antes": "lugares/34_antes.jpg",
+    "cheia": "lugares/34_cheia.jpg",
+    "zonas": "lugares/34_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 7660
+  },
+  {
+   "id": 35,
+   "lugar": "Bana",
+   "lon": 32.6,
+   "lat": -25.78333,
+   "ficheiros": {
+    "antes": "lugares/35_antes.jpg",
+    "cheia": "lugares/35_cheia.jpg",
+    "zonas": "lugares/35_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.02
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 8520
+  },
+  {
+   "id": 36,
+   "lugar": "São Francisco Xavier",
+   "lon": 32.57917,
+   "lat": -25.7975,
+   "ficheiros": {
+    "antes": "lugares/36_antes.jpg",
+    "cheia": "lugares/36_cheia.jpg",
+    "zonas": "lugares/36_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.05
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 10720
+  },
+  {
+   "id": 37,
+   "lugar": "C. Dique",
+   "lon": 32.66389,
+   "lat": -25.66972,
+   "ficheiros": {
+    "antes": "lugares/37_antes.jpg",
+    "cheia": "lugares/37_cheia.jpg",
+    "zonas": "lugares/37_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.04
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1480
+  },
+  {
+   "id": 38,
+   "lugar": "Machubo",
+   "lon": 32.93472,
+   "lat": -25.49,
+   "ficheiros": {
+    "antes": "lugares/38_antes.jpg",
+    "cheia": "lugares/38_cheia.jpg",
+    "zonas": "lugares/38_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-24",
+    "nuvens": 0.0
+   },
+   "troco": "Q7",
+   "troco_nome": "Q7 Manhiça",
+   "distancia_ao_troco_m": 10810
+  },
+  {
+   "id": 39,
+   "lugar": "Rodrigues",
+   "lon": 32.66944,
+   "lat": -25.84806,
+   "ficheiros": {
+    "antes": "lugares/39_antes.jpg",
+    "cheia": "lugares/39_cheia.jpg",
+    "zonas": "lugares/39_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.13
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 2550
+  },
+  {
+   "id": 40,
+   "lugar": "Mateu",
+   "lon": 32.67667,
+   "lat": -25.81444,
+   "ficheiros": {
+    "antes": "lugares/40_antes.jpg",
+    "cheia": "lugares/40_cheia.jpg",
+    "zonas": "lugares/40_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.15
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 2370
+  },
+  {
+   "id": 41,
+   "lugar": "Lopes",
+   "lon": 32.58667,
+   "lat": -25.77111,
+   "ficheiros": {
+    "antes": "lugares/41_antes.jpg",
+    "cheia": "lugares/41_cheia.jpg",
+    "zonas": "lugares/41_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 9670
+  },
+  {
+   "id": 42,
+   "lugar": "Albazin",
+   "lon": 32.64361,
+   "lat": -25.84111,
+   "ficheiros": {
+    "antes": "lugares/42_antes.jpg",
+    "cheia": "lugares/42_cheia.jpg",
+    "zonas": "lugares/42_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.04
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 5140
+  },
+  {
+   "id": 43,
+   "lugar": "Sulemane Jafar",
+   "lon": 32.64583,
+   "lat": -25.83528,
+   "ficheiros": {
+    "antes": "lugares/43_antes.jpg",
+    "cheia": "lugares/43_cheia.jpg",
+    "zonas": "lugares/43_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.1
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 5010
+  },
+  {
+   "id": 44,
+   "lugar": "Bairro dos Pescadores",
+   "lon": 32.6618,
+   "lat": -25.84619,
+   "ficheiros": {
+    "antes": "lugares/44_antes.jpg",
+    "cheia": "lugares/44_cheia.jpg",
+    "zonas": "lugares/44_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.04
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 3300
+  },
+  {
+   "id": 45,
+   "lugar": "Guava",
+   "lon": 32.63279,
+   "lat": -25.82634,
+   "ficheiros": {
+    "antes": "lugares/45_antes.jpg",
+    "cheia": "lugares/45_cheia.jpg",
+    "zonas": "lugares/45_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.09
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 6530
+  },
+  {
+   "id": 46,
+   "lugar": "SARIFA LAND",
+   "lon": 32.6671,
+   "lat": -25.81545,
+   "ficheiros": {
+    "antes": "lugares/46_antes.jpg",
+    "cheia": "lugares/46_cheia.jpg",
+    "zonas": "lugares/46_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.3
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 3100
+  },
+  {
+   "id": 47,
+   "lugar": "Zibine",
+   "lon": 32.56667,
+   "lat": -25.61667,
+   "ficheiros": {
+    "antes": "lugares/47_antes.jpg",
+    "cheia": "lugares/47_cheia.jpg",
+    "zonas": "lugares/47_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.03
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 12000
+  },
+  {
+   "id": 48,
+   "lugar": "T’chale",
+   "lon": 32.63333,
+   "lat": -25.7,
+   "ficheiros": {
+    "antes": "lugares/48_antes.jpg",
+    "cheia": "lugares/48_cheia.jpg",
+    "zonas": "lugares/48_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.01
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4130
+  },
+  {
+   "id": 49,
+   "lugar": "Siema",
+   "lon": 32.63333,
+   "lat": -25.73333,
+   "ficheiros": {
+    "antes": "lugares/49_antes.jpg",
+    "cheia": "lugares/49_cheia.jpg",
+    "zonas": "lugares/49_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.12
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4460
+  },
+  {
+   "id": 50,
+   "lugar": "Santa Maria",
+   "lon": 32.66972,
+   "lat": -25.76333,
+   "ficheiros": {
+    "antes": "lugares/50_antes.jpg",
+    "cheia": "lugares/50_cheia.jpg",
+    "zonas": "lugares/50_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.07
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1850
+  },
+  {
+   "id": 51,
+   "lugar": "Muemesa",
+   "lon": 32.66667,
+   "lat": -25.8,
+   "ficheiros": {
+    "antes": "lugares/51_antes.jpg",
+    "cheia": "lugares/51_cheia.jpg",
+    "zonas": "lugares/51_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.27
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 2150
+  },
+  {
+   "id": 52,
+   "lugar": "Muambe",
+   "lon": 32.66389,
+   "lat": -25.75972,
+   "ficheiros": {
+    "antes": "lugares/52_antes.jpg",
+    "cheia": "lugares/52_cheia.jpg",
+    "zonas": "lugares/52_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.06
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 2140
+  },
+  {
+   "id": 53,
+   "lugar": "Mechise",
+   "lon": 32.595,
+   "lat": -25.735,
+   "ficheiros": {
+    "antes": "lugares/53_antes.jpg",
+    "cheia": "lugares/53_cheia.jpg",
+    "zonas": "lugares/53_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 8270
+  },
+  {
+   "id": 54,
+   "lugar": "Maluco",
+   "lon": 32.61667,
+   "lat": -25.78333,
+   "ficheiros": {
+    "antes": "lugares/54_antes.jpg",
+    "cheia": "lugares/54_cheia.jpg",
+    "zonas": "lugares/54_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.07
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 6850
+  },
+  {
+   "id": 55,
+   "lugar": "Mali",
+   "lon": 32.56667,
+   "lat": -25.73333,
+   "ficheiros": {
+    "antes": "lugares/55_antes.jpg",
+    "cheia": "lugares/55_cheia.jpg",
+    "zonas": "lugares/55_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.01
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 11120
+  },
+  {
+   "id": 56,
+   "lugar": "Madzela",
+   "lon": 32.58333,
+   "lat": -25.63333,
+   "ficheiros": {
+    "antes": "lugares/56_antes.jpg",
+    "cheia": "lugares/56_cheia.jpg",
+    "zonas": "lugares/56_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.1
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 9790
+  },
+  {
+   "id": 57,
+   "lugar": "Macumbine",
+   "lon": 32.61667,
+   "lat": -25.75,
+   "ficheiros": {
+    "antes": "lugares/57_antes.jpg",
+    "cheia": "lugares/57_cheia.jpg",
+    "zonas": "lugares/57_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.06
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 6170
+  },
+  {
+   "id": 58,
+   "lugar": "Jassua",
+   "lon": 32.63167,
+   "lat": -25.68917,
+   "ficheiros": {
+    "antes": "lugares/58_antes.jpg",
+    "cheia": "lugares/58_cheia.jpg",
+    "zonas": "lugares/58_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.17
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4420
+  },
+  {
+   "id": 59,
+   "lugar": "Jafar",
+   "lon": 32.65139,
+   "lat": -25.80639,
+   "ficheiros": {
+    "antes": "lugares/59_antes.jpg",
+    "cheia": "lugares/59_cheia.jpg",
+    "zonas": "lugares/59_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.23
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 3830
+  },
+  {
+   "id": 60,
+   "lugar": "Infulene",
+   "lon": 32.57361,
+   "lat": -25.81056,
+   "ficheiros": {
+    "antes": "lugares/60_antes.jpg",
+    "cheia": "lugares/60_cheia.jpg",
+    "zonas": "lugares/60_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.1
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 11500
+  },
+  {
+   "id": 61,
+   "lugar": "Habele",
+   "lon": 32.65806,
+   "lat": -25.795,
+   "ficheiros": {
+    "antes": "lugares/61_antes.jpg",
+    "cheia": "lugares/61_cheia.jpg",
+    "zonas": "lugares/61_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.18
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 2870
+  },
+  {
+   "id": 62,
+   "lugar": "Gundane",
+   "lon": 32.61667,
+   "lat": -25.7,
+   "ficheiros": {
+    "antes": "lugares/62_antes.jpg",
+    "cheia": "lugares/62_cheia.jpg",
+    "zonas": "lugares/62_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.01
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 5800
+  },
+  {
+   "id": 63,
+   "lugar": "Cimo",
+   "lon": 32.63667,
+   "lat": -25.66306,
+   "ficheiros": {
+    "antes": "lugares/63_antes.jpg",
+    "cheia": "lugares/63_cheia.jpg",
+    "zonas": "lugares/63_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.05
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4020
+  },
+  {
+   "id": 64,
+   "lugar": "Dique",
+   "lon": 32.63333,
+   "lat": -25.63333,
+   "ficheiros": {
+    "antes": "lugares/64_antes.jpg",
+    "cheia": "lugares/64_cheia.jpg",
+    "zonas": "lugares/64_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 5210
+  },
+  {
+   "id": 65,
+   "lugar": "Cumbeza",
+   "lon": 32.58333,
+   "lat": -25.75,
+   "ficheiros": {
+    "antes": "lugares/65_antes.jpg",
+    "cheia": "lugares/65_cheia.jpg",
+    "zonas": "lugares/65_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 9490
+  },
+  {
+   "id": 66,
+   "lugar": "Chinguize",
+   "lon": 32.59917,
+   "lat": -25.71361,
+   "ficheiros": {
+    "antes": "lugares/66_antes.jpg",
+    "cheia": "lugares/66_cheia.jpg",
+    "zonas": "lugares/66_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 7600
+  },
+  {
+   "id": 67,
+   "lugar": "Chibacuze",
+   "lon": 32.66917,
+   "lat": -25.63361,
+   "ficheiros": {
+    "antes": "lugares/67_antes.jpg",
+    "cheia": "lugares/67_cheia.jpg",
+    "zonas": "lugares/67_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.12
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 2880
+  },
+  {
+   "id": 68,
+   "lugar": "Chambeze",
+   "lon": 32.60278,
+   "lat": -25.64917,
+   "ficheiros": {
+    "antes": "lugares/68_antes.jpg",
+    "cheia": "lugares/68_cheia.jpg",
+    "zonas": "lugares/68_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.34
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 7490
+  },
+  {
+   "id": 69,
+   "lugar": "Canzemane",
+   "lon": 32.58333,
+   "lat": -25.65,
+   "ficheiros": {
+    "antes": "lugares/69_antes.jpg",
+    "cheia": "lugares/69_cheia.jpg",
+    "zonas": "lugares/69_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.17
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 9420
+  },
+  {
+   "id": 70,
+   "lugar": "Bitche",
+   "lon": 32.61417,
+   "lat": -25.80194,
+   "ficheiros": {
+    "antes": "lugares/70_antes.jpg",
+    "cheia": "lugares/70_cheia.jpg",
+    "zonas": "lugares/70_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.06
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 7340
+  },
+  {
+   "id": 71,
+   "lugar": "Bambate",
+   "lon": 32.65,
+   "lat": -25.65,
+   "ficheiros": {
+    "antes": "lugares/71_antes.jpg",
+    "cheia": "lugares/71_cheia.jpg",
+    "zonas": "lugares/71_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 2860
+  },
+  {
+   "id": 72,
+   "lugar": "Agostinho",
+   "lon": 32.63528,
+   "lat": -25.71889,
+   "ficheiros": {
+    "antes": "lugares/72_antes.jpg",
+    "cheia": "lugares/72_cheia.jpg",
+    "zonas": "lugares/72_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.03
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4160
+  },
+  {
+   "id": 73,
+   "lugar": "Santa Margarida",
+   "lon": 32.64972,
+   "lat": -25.80028,
+   "ficheiros": {
+    "antes": "lugares/73_antes.jpg",
+    "cheia": "lugares/73_cheia.jpg",
+    "zonas": "lugares/73_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.25
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 3790
+  },
+  {
+   "id": 74,
+   "lugar": "Rafael",
+   "lon": 32.65111,
+   "lat": -25.78861,
+   "ficheiros": {
+    "antes": "lugares/74_antes.jpg",
+    "cheia": "lugares/74_cheia.jpg",
+    "zonas": "lugares/74_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.1
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 3440
+  },
+  {
+   "id": 75,
+   "lugar": "Mememo",
+   "lon": 32.61778,
+   "lat": -25.76472,
+   "ficheiros": {
+    "antes": "lugares/75_antes.jpg",
+    "cheia": "lugares/75_cheia.jpg",
+    "zonas": "lugares/75_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.01
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 6500
+  },
+  {
+   "id": 76,
+   "lugar": "C. Boquisso",
+   "lon": 32.56889,
+   "lat": -25.73833,
+   "ficheiros": {
+    "antes": "lugares/76_antes.jpg",
+    "cheia": "lugares/76_cheia.jpg",
+    "zonas": "lugares/76_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.0
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 10880
+  },
+  {
+   "id": 77,
+   "lugar": "Mapulango",
+   "lon": 32.63306,
+   "lat": -25.72528,
+   "ficheiros": {
+    "antes": "lugares/77_antes.jpg",
+    "cheia": "lugares/77_cheia.jpg",
+    "zonas": "lugares/77_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.02
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4620
+  },
+  {
+   "id": 78,
+   "lugar": "V. Coelho",
+   "lon": 32.63972,
+   "lat": -25.69111,
+   "ficheiros": {
+    "antes": "lugares/78_antes.jpg",
+    "cheia": "lugares/78_cheia.jpg",
+    "zonas": "lugares/78_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.1
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 3590
+  },
+  {
+   "id": 79,
+   "lugar": "Magide",
+   "lon": 32.66833,
+   "lat": -25.80389,
+   "ficheiros": {
+    "antes": "lugares/79_antes.jpg",
+    "cheia": "lugares/79_cheia.jpg",
+    "zonas": "lugares/79_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "radar",
+    "mes": "2026-01",
+    "nuvens": 0.28
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 2190
+  },
+  {
+   "id": 80,
+   "lugar": "Dr. Gonçalves",
+   "lon": 32.67417,
+   "lat": -25.80194,
+   "ficheiros": {
+    "antes": "lugares/80_antes.jpg",
+    "cheia": "lugares/80_cheia.jpg",
+    "zonas": "lugares/80_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.18
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 1580
+  },
+  {
+   "id": 81,
+   "lugar": "Mabolana",
+   "lon": 32.67556,
+   "lat": -25.80472,
+   "ficheiros": {
+    "antes": "lugares/81_antes.jpg",
+    "cheia": "lugares/81_cheia.jpg",
+    "zonas": "lugares/81_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.17
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 1660
+  },
+  {
+   "id": 82,
+   "lugar": "Guamba",
+   "lon": 32.67333,
+   "lat": -25.78833,
+   "ficheiros": {
+    "antes": "lugares/82_antes.jpg",
+    "cheia": "lugares/82_cheia.jpg",
+    "zonas": "lugares/82_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.05
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 1240
+  },
+  {
+   "id": 83,
+   "lugar": "Neves",
+   "lon": 32.67139,
+   "lat": -25.76056,
+   "ficheiros": {
+    "antes": "lugares/83_antes.jpg",
+    "cheia": "lugares/83_cheia.jpg",
+    "zonas": "lugares/83_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.02
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 1670
+  },
+  {
+   "id": 84,
+   "lugar": "Zintaba",
+   "lon": 32.66444,
+   "lat": -25.76611,
+   "ficheiros": {
+    "antes": "lugares/84_antes.jpg",
+    "cheia": "lugares/84_cheia.jpg",
+    "zonas": "lugares/84_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.11
+   },
+   "troco": "Q9",
+   "troco_nome": "Q9 foz / estuário",
+   "distancia_ao_troco_m": 2260
+  },
+  {
+   "id": 85,
+   "lugar": "Sebastião Massibe",
+   "lon": 32.63917,
+   "lat": -25.76389,
+   "ficheiros": {
+    "antes": "lugares/85_antes.jpg",
+    "cheia": "lugares/85_cheia.jpg",
+    "zonas": "lugares/85_zonas.jpg"
+   },
+   "cheia": {
+    "tipo": "foto",
+    "data": "2026-01-27",
+    "nuvens": 0.05
+   },
+   "troco": "Q8",
+   "troco_nome": "Q8 Marracuene",
+   "distancia_ao_troco_m": 4480
+  }
+ ]
+}

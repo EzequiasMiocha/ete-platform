@@ -9,13 +9,15 @@ plataforma. Quando o perigo passa, recebe uma mensagem de fim de alerta.
 
 1. **Inscrição** (na plataforma): janela de convite na primeira visita, página **Alertas** e botão
    "Receber alertas no WhatsApp" na barra do topo. Pede o número, onde vive, a língua (PT, EN, FR),
-   o nome (opcional) e um "Aceito" obrigatório. Quem quer sair escreve o número na mesma página.
+   o nome completo (obrigatório: as mensagens tratam a pessoa pelo nome) e um "Aceito" obrigatório.
+   Quem tem conta na plataforma (plataforma/contas.py) encontra o formulário já preenchido. Quem quer sair escreve o número na mesma página.
 2. **Todas as manhãs**, depois do boletim, o pipeline diário corre `scripts/send_whatsapp_alerts.py`:
    - só com um boletim válido (nunca com dados antigos);
    - alerta laranja ou vermelho: mensagem de alerta a todos os inscritos;
    - se o nível subir, nova mensagem logo; se o alerta durar, um lembrete de 2 em 2 dias;
    - quando o nível desce abaixo de laranja: mensagem de fim de alerta;
-   - quem se inscreveu desde a véspera recebe as boas-vindas (e o alerta, se houver um em curso).
+   - quem se inscreveu desde a véspera e ainda não recebeu as boas-vindas recebe-as (e o alerta, se houver um em curso).
+     Com a API ligada também no Streamlit Cloud, as boas-vindas saem logo no momento da inscrição.
 3. O registo do que foi enviado fica em `plataforma/dados/boletim/avisos_whatsapp.json`: datas,
    níveis e quantidades, **nunca números de telefone**.
 
@@ -79,7 +81,7 @@ Tudo o que as pessoas escrevem no formulário vai para uma única tabela, **`sub
 |---|---|
 | `id` | identificador da inscrição |
 | `criado_utc` | quando a pessoa se inscreveu |
-| `nome` | nome (opcional) |
+| `nome` | nome completo (usado no início de cada mensagem) |
 | `telefone` | número de WhatsApp, formato internacional sem "+" (258841234567) |
 | `lugar` | bairro ou lugar escolhido (vazio = "outro lugar / não sei") |
 | `lingua` | pt, en ou fr |
@@ -119,126 +121,51 @@ a tabela todas as manhãs e mantém-no activo.
 
 Para retirar alguém à mão: no Table Editor, mudar `estado` para `removido`.
 
+## As mensagens (versão 2)
+
+Cada mensagem traz no topo o **cartão de situação** do dia (`plataforma/cartao_whatsapp.py`):
+uma imagem com o nível de cheia em grande, a **quantidade** de água (o caudal previsto para 10 dias,
+com o limite amarelo) e a **qualidade** (a cor da água prevista em Marracuene, um quadrado por dia).
+Por baixo, o texto, só com palavras (sem emojis), que começa pelo nome completo da pessoa («Olá, Ana Cossa!»,
+«Atenção, Ana Cossa: ALERTA LARANJA…», «Boas notícias, Ana Cossa: terminou o alerta…»; a quem se inscreveu
+antes de o nome ser pedido, «amigo(a)»), e dois botões: **Ver a previsão completa**, que abre a página
+do lugar da pessoa na plataforma (`?p=zona&lugar=...`), e **Deixar de receber**.
+
+| Mensagem | Quando | O que diz |
+|---|---|---|
+| Boas-vindas | **logo** depois da inscrição (com a API ligada; senão, na corrida da manhã seguinte) | cheias nos próximos 10 dias (em palavras, com as datas: «verde até 18/11, laranja de 19/11 a 24/11»), a cor da água, o que a cheia de 2026 fez ao lugar da pessoa e um conselho para o seu perfil |
+| Alerta | laranja ou vermelho; de 2 em 2 dias enquanto durar; logo se subir | nível e dia, pelo menos dois lugares que podem alagar (o da pessoa primeiro), o que fazer (com o conselho do perfil), os 10 dias em palavras, com as datas, a cor da água |
+| Fim do alerta | quando o nível desce abaixo de laranja | fim do alerta, a cor da água e o cuidado com a água depois de uma cheia |
+
+A página **Alertas** da plataforma mostra a mensagem de boas-vindas exactamente como chega, com os
+números de hoje. No envio assistido (sem API) o texto leva as ligações escritas no fim e a página
+da equipa mostra o cartão ao lado de cada mensagem, para o anexar à mão.
+
 ## Ligar o envio automático (WhatsApp Business Cloud API)
 
 O WhatsApp só deixa uma empresa escrever primeiro a alguém com **modelos de mensagem aprovados**.
 
 1. Criar uma conta Meta Business (business.facebook.com) e, em developers.facebook.com, uma app do tipo "Business" com o produto **WhatsApp**.
 2. Juntar um número de telefone do projecto que **não** esteja já a ser usado na aplicação WhatsApp normal (pode ser um cartão novo).
-3. Submeter os três modelos abaixo, na categoria **Utility**, nas línguas indicadas, com os nomes exactos.
+3. Submeter os três modelos de `docs/modelos_whatsapp.md` (gerado por `scripts/modelos_whatsapp.py`), categoria **Utility**,
+   nas três línguas, com os nomes exactos, o cabeçalho de imagem (exemplo: `plataforma/dados/modelos/exemplo_cartao_whatsapp.png`) e os dois botões.
 4. Criar um token permanente (System User) com a permissão `whatsapp_business_messaging`.
-5. Pôr nos segredos do GitHub e no `.env` do computador: `WHATSAPP_TOKEN` e `WHATSAPP_PHONE_ID` (o "Phone number ID", não o número).
-6. Preencher `publication.app_url` em `config/config.yaml` com o endereço da plataforma: é a ligação que vai nas mensagens.
+5. Pôr `WHATSAPP_TOKEN` e `WHATSAPP_PHONE_ID` (o "Phone number ID", não o número):
+   - nos **segredos do Streamlit Cloud** (share.streamlit.io > a app > Settings > Secrets), para a boas-vindas sair no momento da inscrição;
+   - nos **segredos do GitHub** (Settings > Secrets and variables > Actions), para os alertas da manhã;
+   - no `.env` do computador do projecto.
+6. O endereço da plataforma nas mensagens vem de `publication.app_url` em `config/config.yaml`.
 
-**Custos.** A Meta cobra cada mensagem de modelo enviada, com um preço por país e por categoria
-(Utility). Ver a tabela em vigor para Moçambique em developers.facebook.com/docs/whatsapp/pricing
-antes de abrir as inscrições ao público. O envio assistido não tem custo além dos dados do telefone.
-Cada envio usa poucos KB de internet.
-
-## Modelos para submeter à Meta
-
-Os textos abaixo são gerados a partir de `plataforma/alertas_whatsapp.py` (`TEXTOS_MENSAGEM`). Se
-um texto mudar no código, o modelo tem de ser submetido de novo com o mesmo texto.
-
-### `ete_alerta_cheia`
-
-Variáveis: `{{1}}` = nível (LARANJA), `{{2}}` = dia (18/10), `{{3}}` = lugares (Machubo, Macaneta, Pateque), `{{4}}` = o que fazer, `{{5}}` = ligação para a plataforma, `{{6}}` = ligação para deixar de receber
-
-**pt_PT**
-
-```
-⚠️ Eyes to Earth · ALERTA {{1}} de cheia no rio Incomáti, a partir de {{2}}.
-📍 Lugares que podem alagar: {{3}}.
-✅ O que fazer: {{4}}
-ℹ️ Mais informação: {{5}}
-Para deixar de receber: {{6}}
-Siga sempre as ordens do INGD e das autoridades.
-```
-
-**en**
-
-```
-⚠️ Eyes to Earth · {{1}} flood ALERT on the Incomati River, from {{2}}.
-📍 Places that may flood: {{3}}.
-✅ What to do: {{4}}
-ℹ️ More information: {{5}}
-To stop these messages: {{6}}
-Always follow the orders of INGD and the authorities.
-```
-
-**fr**
-
-```
-⚠️ Eyes to Earth · ALERTE {{1}} de crue sur le fleuve Incomati, à partir du {{2}}.
-📍 Lieux qui peuvent être inondés : {{3}}.
-✅ Que faire : {{4}}
-ℹ️ Plus d'informations : {{5}}
-Pour ne plus recevoir ces messages : {{6}}
-Suivez toujours les ordres de l'INGD et des autorités.
-```
-
-### `ete_fim_alerta`
-
-Variáveis: `{{1}}` = data (25/10), `{{2}}` = ligação para a plataforma
-
-**pt_PT**
-
-```
-🟢 Eyes to Earth · Fim do alerta de cheia no rio Incomáti ({{1}}). O boletim de hoje já não prevê cheia.
-Mais informação: {{2}}
-Continue atento às autoridades.
-```
-
-**en**
-
-```
-🟢 Eyes to Earth · End of the flood alert on the Incomati River ({{1}}). Today's bulletin no longer forecasts a flood.
-More information: {{2}}
-Keep listening to the authorities.
-```
-
-**fr**
-
-```
-🟢 Eyes to Earth · Fin de l'alerte de crue sur le fleuve Incomati ({{1}}). Le bulletin du jour ne prévoit plus de crue.
-Plus d'informations : {{2}}
-Restez attentifs aux autorités.
-```
-
-### `ete_boas_vindas`
-
-Variáveis: `{{1}}` = lugar da pessoa (Machubo), `{{2}}` = ligação para a plataforma, `{{3}}` = ligação para deixar de receber
-
-**pt_PT**
-
-```
-👋 Olá! Está inscrito nos alertas de cheia do Eyes to Earth para {{1}}. Só lhe escrevemos quando houver perigo de cheia no rio Incomáti (alerta laranja ou vermelho) e quando o perigo passar.
-Plataforma: {{2}}
-Para deixar de receber: {{3}}
-Obrigado!
-```
-
-**en**
-
-```
-👋 Hello! You are signed up for Eyes to Earth flood alerts for {{1}}. We only write when there is a danger of flooding on the Incomati River (orange or red alert) and when the danger is over.
-Platform: {{2}}
-To stop these messages: {{3}}
-Thank you!
-```
-
-**fr**
-
-```
-👋 Bonjour ! Vous êtes inscrit aux alertes de crue d'Eyes to Earth pour {{1}}. Nous n'écrivons qu'en cas de danger de crue sur le fleuve Incomati (alerte orange ou rouge) et quand le danger est passé.
-Plateforme : {{2}}
-Pour ne plus recevoir ces messages : {{3}}
-Merci !
-```
+**Custos.** A Meta cobra cada mensagem de modelo entregue, com um preço por região e por categoria.
+Moçambique está na região "Resto de África"; tabelas de terceiros indicam cerca de **0,004 USD por
+mensagem Utility** (e 5 a 6 vezes mais para Marketing). Com 1000 inscritos: cerca de 4 USD por cada
+alerta enviado a todos, mais 0,004 USD por cada boas-vindas. Confirmar na tabela oficial
+(developers.facebook.com/docs/whatsapp/pricing) antes de abrir as inscrições ao público. O envio
+assistido não tem custo além dos dados do telefone.
 
 ## Privacidade e boas práticas
 
-- Só se guarda o necessário: número, lugar, língua, nome (opcional) e a data do consentimento.
+- Só se guarda o necessário: número, lugar, língua, nome completo e a data do consentimento.
 - Os números nunca aparecem na plataforma, nunca vão para o GitHub e nunca ficam nos registos de envio.
 - Quem sai deixa de receber no envio seguinte. O pedido para sair é feito na página Alertas, com o número.
 - Não usar a lista para outro fim (por exemplo, publicidade). Só alertas de cheia.

@@ -15,7 +15,9 @@ What the numbers are, and are not
                 GLORIA global measurements. Wide uncertainty; no local Secchi readings yet.
   ndci          Sentinel-2 only. In this river it follows the sediment, so it is NOT reported
                 as chlorophyll.
-  vegetacao     share of the permanent water covered by green plants in the image.
+  vegetacao     share of the river core (20 m or more from the banks) covered by green plants in the
+                image. Sentinel-2 only (10 m): a 30 m Landsat pixel mixes the trees and reeds of the
+                banks into the river. The plants alert needs it in at least two images of the month.
   temp_c        Landsat surface temperature (100 m thermal pixel): only meaningful where the
                 river is wide.
 """
@@ -150,11 +152,12 @@ def monthly_dataset(cfg: dict) -> pd.DataFrame:
     wide = grouped[values].median().unstack("grupo")
     wide.columns = [f"{v}_{g}" for v, g in wide.columns]
     counts = grouped["ndti"].count().unstack("grupo").rename(columns=lambda g: f"n_imagens_{g}")
-    table = wide.join(counts).reset_index()
-    for col in [f"{v}_{g}" for v in values for g in ("landsat", "s2")] + ["n_imagens_landsat", "n_imagens_s2"]:
+    plants = grouped["vegetacao"].count().unstack("grupo").rename(columns=lambda g: f"n_plantas_{g}")
+    table = wide.join(counts).join(plants).reset_index()
+    for col in [f"{v}_{g}" for v in values for g in ("landsat", "s2")] + ["n_imagens_landsat", "n_imagens_s2", "n_plantas_s2"]:
         if col not in table:
             table[col] = np.nan
-    table = table.drop(columns=[c for c in ("ndci_landsat", "temp_c_s2") if c in table])
+    table = table.drop(columns=[c for c in ("ndci_landsat", "temp_c_s2", "n_plantas_landsat") if c in table])
 
     width = pd.read_csv(path(cfg, "sections", "largura_por_troco.csv", mkdir=False)).set_index("troco")
     # Landsat (30 m pixels) is used only where the river is at least three pixels wide on average;
@@ -164,13 +167,15 @@ def monthly_dataset(cfg: dict) -> pd.DataFrame:
     full = pd.MultiIndex.from_product([width.index, months], names=["troco", "month"]).to_frame(index=False)
     table = full.merge(table, how="left", on=["troco", "month"])
     table["landsat_utilizavel"] = table["troco"].map(usable).fillna(False)
-    for v in ("ndti", "turbidez_fnu", "tss_mg_l", "secchi_m", "vegetacao"):
+    for v in ("ndti", "turbidez_fnu", "tss_mg_l", "secchi_m"):
         table[v] = np.where(table["landsat_utilizavel"], table[f"{v}_landsat"], table[f"{v}_s2"])
+    # plants: Sentinel-2 everywhere (10 m pixels); Landsat's 30 m pixels mix the banks into the river
+    table["vegetacao"] = table["vegetacao_s2"]
     table["fonte"] = np.where(table["landsat_utilizavel"], "Landsat", "Sentinel-2")
     table["fonte"] = table["fonte"].where(table["ndti"].notna(), "")
     table["ndci"], table["temp_c"] = table["ndci_s2"], table["temp_c_landsat"]
     table.loc[table["troco"].map(width["largura_media_m"]).fillna(1000) < WIDE_RIVER_M, "temp_c"] = np.nan
-    table[["n_imagens_landsat", "n_imagens_s2"]] = table[["n_imagens_landsat", "n_imagens_s2"]].fillna(0).astype(int)
+    table[["n_imagens_landsat", "n_imagens_s2", "n_plantas_s2"]] = table[["n_imagens_landsat", "n_imagens_s2", "n_plantas_s2"]].fillna(0).astype(int)
 
     series = path(cfg, "series", mkdir=False)
     rain = pd.read_csv(series / "rain_monthly.csv").set_index("month")
@@ -409,7 +414,8 @@ def section_state(cfg: dict, data: pd.DataFrame | None = None, months_back: int 
         unexplained = bool(last["nao_explicada"]) if pd.notna(last["residuo"]) and pd.notna(last["nao_explicada"]) else False
         rows.append({"troco": section, "nome": name, "mes": last["month"], "fonte": last["fonte"], "fiabilidade": last["fiabilidade"], "ndti": float(last["ndti"]), "normal_do_mes": float(info["mediana"]) if pd.notna(info["mediana"]) else np.nan,
                      "classe": info["classe"], "turbidez_fnu_estimada": float(last["turbidez_fnu"]) if pd.notna(last["turbidez_fnu"]) else np.nan,
-                     "vegetacao": float(last["vegetacao"]) if pd.notna(last["vegetacao"]) else np.nan, "acima_do_explicado": unexplained,
+                     "vegetacao": float(last["vegetacao"]) if pd.notna(last["vegetacao"]) else np.nan,
+                     "imagens_plantas": int(last.get("n_plantas_s2", 0) or 0), "acima_do_explicado": unexplained,
                      "alerta_de_qualidade": bool(info["classe"] in ("elevada", "muito elevada") and unexplained and last["fiabilidade"] == "boa")})
     return pd.DataFrame(rows).set_index("troco")
 

@@ -245,7 +245,7 @@ publication:
   # Published on Streamlit Community Cloud + GitHub Pages (docs/guia_de_deploy.md; scripts/publicar_plataforma.py).
   # Later, with the own server and domain (servidor/, docs/guia_servidor_proprio.md):
   #   app_url "https://eyestoearth.co.mz" and page_url "https://eyestoearth.co.mz/leve/"
-  app_url: "https://ete-incomati.streamlit.app"                  # the application (Streamlit Community Cloud)
+  app_url: "https://ete-platform.streamlit.app"                  # the application (Streamlit Community Cloud)
   page_url: "https://ezequiasmiocha.github.io/ete-platform/"   # the light page of the bulletin (GitHub Pages)
   stale_after_hours: 36  # older than this, the page and the app say "previsão indisponível"
 

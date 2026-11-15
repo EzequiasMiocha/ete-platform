@@ -4,7 +4,7 @@
  "gerado_utc": "2026-11-15T11:03:14+00:00",
  "sistema_de_coordenadas": "EPSG:4326 (latitude, longitude)",
  "aviso": "Produto experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul.",
- "aplicacao": "https://ete-incomati.streamlit.app",
+ "aplicacao": "https://ete-platform.streamlit.app",
  "pagina_simples": "https://ezequiasmiocha.github.io/ete-platform/",
  "estado_da_previsao": {
   "estado": "ok",
@@ -355,6 +355,7 @@
     "2026-08",
     "2026-09"
    ],
+   "mapa_leve": "mapas/agua/leve_{mes}.png",
    "cantos": [
     [
      -25.918825,
@@ -460,7 +461,8 @@
     "cenarios_caudal": "boletim/cenarios_caudal.csv",
     "chuva_bacia": "boletim/chuva_bacia.csv",
     "turbidez": "boletim/turbidez.csv",
-    "turbidez_diaria": "boletim/turbidez_diaria.csv"
+    "turbidez_diaria": "boletim/turbidez_diaria.csv",
+    "cor_prevista": "boletim/cor_prevista.csv"
    },
    "cores_dos_alertas": {
     "verde": "#27ae60",
@@ -593,6 +595,178 @@
    "atualizacao": "quando os modelos são treinados de novo",
    "descricao": "Ficha de cada modelo treinado e as tabelas dos testes que o escolheram e validaram.",
    "limites": "Os modelos de cheias foram validados numa única cheia (janeiro de 2026). Os de qualidade da água não têm medições no rio para validação local."
+  },
+  {
+   "id": "cor_da_agua_mapa",
+   "titulo": "Cor da água do rio vista por satélite",
+   "tipo": "imagem",
+   "ficheiro": "mapas/cor_da_agua.png",
+   "recorte": "mapas/cor_da_agua_marracuene.png",
+   "foto_recorte": "mapas/cor_natural_marracuene.jpg",
+   "sobreposicao": "mapas/cor_da_agua_camada.png",
+   "cantos": [
+    [
+     -25.889925,
+     32.658585
+    ],
+    [
+     -25.453425,
+     32.846885
+    ]
+   ],
+   "data": "2026-11-05",
+   "satelite": "Sentinel-2",
+   "parte_legivel": 0.698,
+   "abaixo_do_minimo": false,
+   "resolucao_m": 10,
+   "legenda": [
+    {
+     "valor": 0,
+     "nome": "muito clara",
+     "cor": "#1D6B8F",
+     "de": null,
+     "ate": -0.099
+    },
+    {
+     "valor": 1,
+     "nome": "clara",
+     "cor": "#6FAFC9",
+     "de": -0.099,
+     "ate": -0.058
+    },
+    {
+     "valor": 2,
+     "nome": "habitual",
+     "cor": "#E3D5A8",
+     "de": -0.058,
+     "ate": -0.03
+    },
+    {
+     "valor": 3,
+     "nome": "turva",
+     "cor": "#C08A45",
+     "de": -0.03,
+     "ate": 0.002
+    },
+    {
+     "valor": 4,
+     "nome": "muito turva",
+     "cor": "#6F3B14",
+     "de": 0.002,
+     "ate": null
+    },
+    {
+     "valor": 5,
+     "nome": "sem leitura",
+     "cor": "#B4B9BE",
+     "de": null,
+     "ate": null
+    }
+   ],
+   "degraus_ndti": [
+    -0.099,
+    -0.058,
+    -0.03,
+    0.002
+   ],
+   "resumo": {
+    "Q7": {
+     "nome": "Manhiça",
+     "parte_legivel": 0.409,
+     "partes": {
+      "muito clara": 0.0,
+      "clara": 0.0,
+      "habitual": 0.0,
+      "turva": 0.002,
+      "muito turva": 0.998
+     },
+     "classe_dominante": "muito turva",
+     "classe_da_mediana": "muito turva",
+     "indice_mediano": 0.03
+    },
+    "Q8": {
+     "nome": "Marracuene",
+     "parte_legivel": 0.695,
+     "partes": {
+      "muito clara": 0.001,
+      "clara": 0.0,
+      "habitual": 0.0,
+      "turva": 0.069,
+      "muito turva": 0.93
+     },
+     "classe_dominante": "muito turva",
+     "classe_da_mediana": "muito turva",
+     "indice_mediano": 0.02
+    },
+    "Q9": {
+     "nome": "Foz",
+     "parte_legivel": 0.825,
+     "partes": {
+      "muito clara": 0.339,
+      "clara": 0.215,
+      "habitual": 0.124,
+      "turva": 0.163,
+      "muito turva": 0.159
+     },
+     "classe_dominante": "muito clara",
+     "classe_da_mediana": "clara",
+     "indice_mediano": -0.07
+    }
+   },
+   "atualizacao": "semanal, quando há uma imagem limpa",
+   "descricao": "O rio de Manhiça à foz pintado com a cor que o satélite lhe dá, de mais clara a mais barrenta, comparada com dez anos de imagens deste troço.",
+   "limites": "Índice de cor da água (NDTI), relativo: não mede a turbidez em unidades nem diz se a água é segura. Nunca contam as nuvens, as sombras de árvores, de nuvens e do relevo, as plantas e folhas, a areia e o píxel junto à margem (a cinzento, sem leitura)."
+  },
+  {
+   "id": "imagens_satelite",
+   "titulo": "Imagens de satélite",
+   "tipo": "imagens",
+   "atualizacao": "quando houver uma nova cheia fotografada",
+   "pares": [
+    {
+     "id": "cheia_2026",
+     "titulo": "A cheia de janeiro de 2026",
+     "antes": {
+      "ficheiro": "imagens/cheia_2026_antes.jpg",
+      "data": "2025-10-23",
+      "satelite": "Sentinel-2"
+     },
+     "depois": {
+      "ficheiro": "imagens/cheia_2026_cheia.jpg",
+      "data": "2026-01-24",
+      "satelite": "Sentinel-2"
+     },
+     "texto": "A 24 de janeiro de 2026 a água cobria pelo menos 246 km² do distrito; antes da cheia eram cerca de 31 km², o rio e as lagoas.",
+     "fonte": "Copernicus Sentinel-2 (ESA), cor natural. Medição da água: índice MNDWI acima de zero."
+    }
+   ],
+   "descricao": "Fotografias reais do satélite, em cor natural: a mesma zona antes e durante a cheia de 2026.",
+   "limites": "Cada fotografia é de um só dia e de uma só passagem do satélite; as nuvens tapam partes da imagem."
+  },
+  {
+   "id": "cor_da_agua_tempo",
+   "titulo": "A cor da água no passado e nas próximas semanas",
+   "tipo": "modelo",
+   "ficheiro": "modelos/mapa_cor_modelo.npz",
+   "fundo": "modelos/mapa_cor_fundo.png",
+   "letras": "modelos/mapa_cor_letras.png",
+   "tabelas": {
+    "meses_resumo": "modelos/meses_resumo.csv",
+    "teste_marracuene": "modelos/teste_modelo_marracuene.csv"
+   },
+   "meses": "modelos/mapa_cor_meses.npz",
+   "atualizacao": "semanal (meses) e diária (previsão)",
+   "descricao": "Mapas da cor da água de cada mês desde 2017 e o modelo que desenha os mapas previstos para as próximas 4 semanas.",
+   "limites": "Os mapas previstos são uma indicação: nos testes, a cor certa ou a do degrau ao lado saiu em 77-84 % das manhãs. Nas cheias grandes, a água mais barrenta pode ficar fora da leitura."
+  },
+  {
+   "id": "zona_lugares",
+   "titulo": "A sua zona: imagens de cada lugar",
+   "tipo": "lugares",
+   "ficheiro": "lugares/lugares.json",
+   "atualizacao": "quando houver uma nova cheia fotografada",
+   "descricao": "Para cada lugar, um quadrado de 6 km visto pelo satélite antes e durante a cheia de janeiro de 2026, e as zonas de aviso à sua volta.",
+   "limites": "Imagens de 30 m: mostram a zona, não cada casa. Onde as nuvens tapavam a cheia, a imagem da cheia é a do radar (o mês inteiro de janeiro de 2026)."
   }
  ]
 }

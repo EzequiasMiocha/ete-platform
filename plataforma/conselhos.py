@@ -181,6 +181,19 @@ FONTES = ("Conselhos baseados nas orientações da Organização Mundial da Saú
 
 
 # ----------------------------------------------------------------------------- what the data show today
+PLANTAS_PARTE = 0.30         # share of the river core covered by plants that counts as "plants covering the river"
+PLANTAS_IMAGENS = 2          # ... seen in at least this many images of the month (one image can be a passing mat or a bad image)
+MESES_RECENTES = 1           # a section's colour counts for "today" only if measured this month or the month before
+
+
+def _recentes(estado_q: pd.DataFrame, hoje: pd.Timestamp) -> pd.DataFrame:
+    """Sections measured recently enough to speak about today (never an old month presented as today)."""
+    if "mes" not in estado_q:
+        return estado_q.iloc[0:0]
+    primeiro = (hoje.to_period("M") - MESES_RECENTES).strftime("%Y-%m")
+    return estado_q[estado_q["mes"].astype(str) >= primeiro]
+
+
 def detectar(boletim: dict, turbidez: pd.DataFrame | None, estado_q: pd.DataFrame | None, historico: pd.DataFrame | None,
              turbidez_diaria: pd.DataFrame | None = None) -> list[dict]:
     """Active situations, most serious first: [{chave, titulo, texto, nivel, porque: [(template, values)]}].
@@ -214,8 +227,10 @@ def detectar(boletim: dict, turbidez: pd.DataFrame | None, estado_q: pd.DataFram
             nome = str(linha.get("troco", "")).split(" ", 1)[-1]           # "2 troço médio" -> "troço médio"
             porque.append(("Marracuene, {troco}: turbidez {estado} nos últimos 20 dias.", {"troco": nome, "estado": linha["estado"]}))
             muito |= linha["estado"] == "muito elevada"
-    if estado_q is not None and len(estado_q):
-        q = estado_q[estado_q["troco"].isin(TROCOS_MARRACUENE) & estado_q["classe"].isin(["elevada", "muito elevada"])]
+    hoje = pd.Timestamp(boletim.get("estado", {}).get("data_da_previsao") or pd.Timestamp.now().date())
+    recentes = _recentes(estado_q, hoje) if estado_q is not None and len(estado_q) else None
+    if recentes is not None and len(recentes):
+        q = recentes[recentes["troco"].isin(TROCOS_MARRACUENE) & recentes["classe"].isin(["elevada", "muito elevada"])]
         for _, linha in q.iterrows():
             porque.append(("{nome}: turbidez {classe} face ao costume da época ({mes}).", {"nome": linha["nome"], "classe": linha["classe"], "mes": str(linha.get("mes", ""))}))
             muito |= linha["classe"] == "muito elevada"
@@ -227,9 +242,12 @@ def detectar(boletim: dict, turbidez: pd.DataFrame | None, estado_q: pd.DataFram
         if maximo >= 0.5:
             juntar("turbidez_prevista", [("Probabilidade de água mais turva do que o habitual numa das próximas manhãs: {p} %.", {"p": f"{100 * maximo:.0f}"})])
 
-    # plants on the water: share of the channel covered, in a section measured with good reliability
-    if estado_q is not None and "vegetacao" in estado_q:
-        plantas = estado_q[(estado_q["vegetacao"] >= 0.30) & (estado_q["fiabilidade"] == "boa")]
+    # plants on the water: share of the river core covered (leaves and reeds of the banks are left out),
+    # in a section measured with good reliability, seen in at least two images of a recent month
+    if recentes is not None and "vegetacao" in recentes:
+        plantas = recentes[(recentes["vegetacao"] >= PLANTAS_PARTE) & (recentes["fiabilidade"] == "boa")]
+        if "imagens_plantas" in plantas:
+            plantas = plantas[plantas["imagens_plantas"] >= PLANTAS_IMAGENS]
         if len(plantas):
             juntar("plantas", [("{nome}: plantas em cerca de {p} % do canal ({mes}).", {"nome": linha["nome"], "p": f"{100 * linha['vegetacao']:.0f}", "mes": str(linha.get("mes", ""))})
                                for _, linha in plantas.iterrows()])

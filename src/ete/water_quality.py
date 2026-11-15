@@ -199,12 +199,15 @@ def extract_scene_series(cfg: dict, sensor: str, start_year: int, end_year: int)
     region = ee_geometry(polygons)
     a, c = TURBIDITY_A, TURBIDITY_C
 
+    from .module_q import SHADOW_GREEN
+
     def indices(sr, has_red_edge):
         green, red, nir, swir = sr.select("green"), sr.select("red"), sr.select("nir"), sr.select("swir1")
-        # open water only: MNDWI above 0, no floating plants (NDVI below 0.1), and dark in the short-wave
-        # infrared (water reflects almost nothing there; haze, thin cloud and sun glint do)
+        # open water only: MNDWI above 0, no floating plants (NDVI below 0.1), dark in the short-wave
+        # infrared (water reflects almost nothing there; haze, thin cloud and sun glint do), and not in
+        # the shadow of trees, clouds or relief (too dark for its colour to mean anything)
         water = (green.subtract(swir).divide(green.add(swir)).gt(0).And(nir.subtract(red).divide(nir.add(red)).lt(0.1))
-                 .And(swir.lt(0.05)))
+                 .And(swir.lt(0.05)).And(green.gte(SHADOW_GREEN)))
         # what is left in the short-wave infrared is residual haze or glint, about the same in the
         # near infrared: it is subtracted before the turbidity formula (the idea of the two-band
         # version of the algorithm in Dogliotti et al., 2011)

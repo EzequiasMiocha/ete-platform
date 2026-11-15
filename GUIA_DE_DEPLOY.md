@@ -77,7 +77,7 @@ que mudou. Para ver se está tudo bem sem enviar: `--verificar`. Para uma mensag
 3. *Repository*: `<conta>/ete-platform`. *Branch*: `main`. *Main file path*: `plataforma/app.py`.
 4. Em **Advanced settings**, escolher Python 3.12 ou mais recente (a aplicação só precisa
    das bibliotecas de `plataforma/requirements.txt`, que não dependem dos modelos).
-5. *App URL*: escolher um nome, por exemplo `ete-incomati`. **Deploy**.
+5. *App URL*: escolher um nome, por exemplo `ete-platform` (o que está publicado). **Deploy**.
 
 ### 6. Dizer à plataforma os seus endereços
 
@@ -85,7 +85,7 @@ No projecto principal, em `config/config.yaml`, secção `publication`:
 
 ```yaml
 publication:
-  app_url: "https://ete-incomati.streamlit.app"
+  app_url: "https://ete-platform.streamlit.app"
   page_url: "https://<conta>.github.io/ete-platform/"
 ```
 
@@ -98,7 +98,8 @@ ligação para a aplicação, e a aplicação para a página leve.
 |---|---|---|
 | Boletim, mensagem, página | todos os dias | automático (GitHub) |
 | Ver se o boletim correu | todos os dias, de relance | separador **Actions**: verde = correu. O GitHub envia um email quando falha |
-| Imagens de cor da água | uma vez por semana | no computador do projecto: `scripts/update_water_quality_scenes.py`, e enviar |
+| Imagens de cor da água, o mapa da cor da água e a fotografia do satélite | uma vez por semana | no computador do projecto: `scripts/update_water_quality_scenes.py` (1 a 2 MB; também põe o mapa e a fotografia no pacote e actualiza a cor de Marracuene, o ponto de partida da previsão a 30 dias), e enviar |
+| Previsão da cor da água a 30 dias | todos os dias | automático (GitHub): `boletim/cor_prevista.csv`; a aplicação desenha os mapas das 4 semanas |
 | Módulo Q e mapa de radar do mês | uma vez por mês | `scripts/update_module_q_series.py`, `scripts/export_platform_package.py`, e enviar |
 | Acordar a aplicação | antes de uma demonstração | abrir o endereço; se estiver adormecida, carregar no botão e esperar |
 
@@ -127,9 +128,11 @@ O comando traz primeiro os boletins que o GitHub guardou, por isso o envio não 
 
 ## O que este desenho não resolve
 
-- **A turbidez prevista depende das imagens semanais.** Se ninguém as actualizar durante mais
-  de 30 dias, a previsão de turbidez continua, com menos acerto, e a plataforma diz de quando
-  é a última medição.
+- **A turbidez prevista e o mapa da cor da água dependem das imagens semanais.** Se ninguém as
+  actualizar durante mais de 30 dias, a previsão de turbidez continua, com menos acerto, e a
+  plataforma diz de quando é a última medição e a data da imagem do mapa.
+- **Os logótipos vão dentro da própria página.** O Streamlit Cloud respondeu "erro interno" aos
+  ficheiros de `app/static` (14/11/2026); por isso a plataforma não depende desse serviço.
 - **Sem garantia de serviço.** São serviços gratuitos: podem estar lentos ou em baixo, sobretudo
   com muitas visitas ao mesmo tempo. Por isso a mensagem para os líderes e a página leve
   existem ao lado da aplicação.

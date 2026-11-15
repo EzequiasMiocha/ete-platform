@@ -4,6 +4,8 @@
 
 Sentinel-2 desde 2017 e Landsat 8/9 desde 2013. As respostas são tabelas pequenas (centenas de KB).
 Os anos já completos em disco não são pedidos de novo; o ano corrente é sempre atualizado.
+No fim, descarrega o mapa da cor da água do dia mais recente com o rio legível (0,2 a 0,5 MB)
+e põe-no no pacote da plataforma. Depois é só enviar: .venv/bin/python scripts/publicar_plataforma.py
 """
 
 import sys
@@ -28,4 +30,16 @@ for sensor, first in (("sentinel2", 2017), ("landsat89", 2013)):
         table = W.extract_scene_series(cfg, sensor, year, year)
         table.to_csv(out, index=False)
         print(f"{sensor} {year}: {len(table)} linhas", flush=True)
+
+# O mapa da cor da água (o dia mais recente com o rio legível): cerca de 0,2 a 0,5 MB
+try:
+    from ete import platform, turbidity_map
+    turbidity_map.update(cfg, log=lambda m: print(m, flush=True))
+    platform.refresh_water_colour(cfg)          # o mapa novo entra no pacote da plataforma: depois é só enviar
+    from ete import water_colour_model           # a cor de Marracuene nos dias novos: o ponto de partida da previsão a 30 dias
+    water_colour_model.update_driver_values(cfg, log=lambda m: print(m, flush=True))
+    water_colour_model.monthly_maps(cfg, log=lambda m: print(m, flush=True))      # o mapa do mês que acabou (cerca de 25 KB)
+    platform.refresh_water_colour(cfg)
+except Exception as erro:                       # o mapa nunca impede a actualização das séries
+    print(f"mapa da cor da água: não foi possível actualizar ({erro})", flush=True)
 print("concluído")

@@ -5,9 +5,11 @@ projecto, nem o Earth Engine, nem os modelos.
 
 | O quê | Onde |
 |---|---|
-| Dados (cerca de 4 MB) | `dados/` |
+| Dados (cerca de 11 MB, dos quais 3 MB são as imagens dos lugares) | `dados/` |
 | Funções de leitura, testadas | `leitor.py` |
-| Aplicação Streamlit (Início, O projecto, Cheias, Mapa, Água do rio, Histórico, Lugares, Modelos, Como funciona) | `app.py` (páginas), `tema.py` (sistema de desenho "Incomáti": paleta, tipografia Fraunces e Plus Jakarta Sans, barra de navegação fixa, cartões, tabelas em HTML, botões de anterior e seguinte), `graficos.py` (gráficos); teste sem navegador: `testar_app.py` |
+| Aplicação Streamlit: cinco páginas lidas de cima para baixo, sem separadores (Início, Qualidade da água, Cheias, Alertas, O projecto), mais a página de cada lugar («A sua zona», `?p=zona&lugar=Machubo`), aberta pela barra de pesquisa que está em todas as páginas; os endereços antigos (`?p=mapa`, `?p=conselhos`...) abrem a página que agora tem esse conteúdo | `app.py` (páginas), `tema.py` (sistema de desenho com as cores do copernicus.eu: roxo #615C9F, fundo claro, sem emojis; tipografia Fraunces e Plus Jakarta Sans, barra de navegação fixa, cartões, tabelas em HTML, botões de anterior e seguinte), `graficos.py` (gráficos); teste sem navegador: `testar_app.py` |
+| Pesquisa (lugares e perguntas, sem ligar a acentos nem a pequenos erros) e curiosidades (com as fontes; os números vêm do pacote) | `pesquisa.py`, `curiosidades.py` |
+| Contas opcionais (nome de utilizador e senha; a senha só como impressão digital scrypt; 5 tentativas e 10 minutos fechada; código de recuperação; sessão de 30 dias num cookie; tabelas `contas` e `sessoes` na base das inscrições, no Supabase com `docs/contas.sql`); página `?p=conta`; teste: `testar_contas.py` | `contas.py` |
 | Línguas (português, inglês, francês) | `idioma.py` (troca de língua, datas, números) e `textos.py` (as traduções, português → inglês, francês) |
 | Logótipos (ETE, IAU-OAD, DARA) nas cores da paleta | `static/`, feitos a partir de `logos/` por `scripts/build_platform_logos.py` |
 | Versões anteriores da aplicação | `arquivo/` |
@@ -32,8 +34,10 @@ python testar_app.py                 # corre todas as páginas nas três língua
 | `exposicao/` | o que está em cada zona de aviso; lugares por ordem de alagamento | raramente |
 | `vetores/` | zonas de aviso, lugares, distrito, troços do rio (GeoJSON) | raramente |
 | `mapas/` | suscetibilidade e água por mês (PNG transparente + cantos no catálogo) | mensal |
+| `mapas/cor_da_agua*.png` | cor da água (turbidez) da imagem limpa mais recente: mapa leve, recorte de Marracuene e camada transparente; leitura por troço em `catalogo.json` (`cor_da_agua_mapa`) | semanal |
 | `qualidade/` | Módulo Q: estado por troço, série mensal desde 2006, normais, tendências, meses invulgares, resumo | mensal |
 | `modelos/` | fichas dos modelos de machine learning e tabelas dos testes | quando os modelos mudam |
+| `lugares/` | para cada lugar, três imagens de um quadrado de 6 km (antes da cheia de 2026, durante a cheia ou o radar onde havia nuvens, zonas de aviso) e `lugares.json` com o troço do rio mais perto; feitas por `src/ete/place_images.py`, sem descarregar nada (cerca de 3 MB) | quando houver uma nova cheia fotografada |
 | `pipeline.json` | resumo da última execução do pipeline diário | todos os dias |
 
 Tudo está em latitude/longitude (EPSG:4326). Os mapas em PNG põem-se sobre o mapa de base com
@@ -87,8 +91,8 @@ nunca vão para o pacote `dados/` nem para o repositório.
 
 ## Conselhos sobre a água
 
-A página **Conselhos** (e o resumo na primeira página e na página da qualidade da água) diz o que
-fazer, para cada público: famílias, agricultores e criadores, pescadores, escolas, unidades de
+A secção **O que fazer com a água**, na página da qualidade da água (e o resumo na primeira página),
+diz o que fazer, para cada público: famílias, agricultores e criadores, pescadores, escolas, unidades de
 saúde, quem trata e distribui água, autoridades e líderes. `conselhos.py` detecta as situações a
 partir dos dados do dia (água mais turva, água turva prevista, alerta de cheia, depois da cheia,
 rio com pouca água para a época, plantas sobre a água) e escolhe os conselhos. Os textos seguem as

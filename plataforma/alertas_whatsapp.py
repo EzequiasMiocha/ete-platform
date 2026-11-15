@@ -45,7 +45,6 @@ DADOS = AQUI / "dados"
 ESTADO = DADOS / "boletim" / "avisos_whatsapp.json"
 CAIXA = inscricoes.RAIZ / "data" / "private" / "caixa_de_saida"
 ORDEM = ["verde", "amarelo", "laranja", "vermelho"]
-EMOJI = {"verde": "🟢", "amarelo": "🟡", "laranja": "🟠", "vermelho": "🔴"}
 NIVEIS = {"pt": {"amarelo": "AMARELO", "laranja": "LARANJA", "vermelho": "VERMELHO", "verde": "VERDE"},
           "en": {"amarelo": "YELLOW", "laranja": "ORANGE", "vermelho": "RED", "verde": "GREEN"},
           "fr": {"amarelo": "JAUNE", "laranja": "ORANGE", "vermelho": "ROUGE", "verde": "VERTE"}}
@@ -54,25 +53,56 @@ CODIGO_META = {"pt": "pt_PT", "en": "en", "fr": "fr"}            # language code
 # The texts below are the WhatsApp templates. If one changes here, the template submitted to Meta must change too.
 TEXTOS_MENSAGEM = {
     "alerta": {
-        "pt": "⚠️ Eyes to Earth · ALERTA {nivel} de cheia no rio Incomáti, a partir de {dia}.\n📍 Lugares que podem alagar: {lugares}.\n✅ O que fazer: {conselho}\n"
-              "ℹ️ Mais informação: {link}\nPara deixar de receber: {sair}\nSiga sempre as ordens do INGD e das autoridades.",
-        "en": "⚠️ Eyes to Earth · {nivel} flood ALERT on the Incomati River, from {dia}.\n📍 Places that may flood: {lugares}.\n✅ What to do: {conselho}\n"
-              "ℹ️ More information: {link}\nTo stop these messages: {sair}\nAlways follow the orders of INGD and the authorities.",
-        "fr": "⚠️ Eyes to Earth · ALERTE {nivel} de crue sur le fleuve Incomati, à partir du {dia}.\n📍 Lieux qui peuvent être inondés : {lugares}.\n✅ Que faire : {conselho}\n"
-              "ℹ️ Plus d'informations : {link}\nPour ne plus recevoir ces messages : {sair}\nSuivez toujours les ordres de l'INGD et des autorités."},
+        "pt": "Atenção, {nome}: ALERTA {nivel} de cheia no rio Incomáti, a partir de {dia}.\n\nLugares que podem alagar: {lugares}.\nO que fazer: {conselho}\n"
+              "Próximos 10 dias: {linha_cheia}.\nÁgua do rio: {agua}\n\nSiga sempre as ordens do INGD e das autoridades. Detalhes e mapa na plataforma.",
+        "en": "Attention, {nome}: FLOOD ALERT {nivel} on the Incomati River, from {dia}.\n\nPlaces that may flood: {lugares}.\nWhat to do: {conselho}\n"
+              "Next 10 days: {linha_cheia}.\nRiver water: {agua}\n\nAlways follow the orders of INGD and the authorities. Details and map on the platform.",
+        "fr": "Attention, {nome} : ALERTE {nivel} de crue sur le fleuve Incomati, à partir du {dia}.\n\nLieux qui peuvent être inondés : {lugares}.\nQue faire : {conselho}\n"
+              "10 prochains jours : {linha_cheia}.\nEau du fleuve : {agua}\n\nSuivez toujours les ordres de l'INGD et des autorités. Détails et carte sur la plateforme."},
     "fim": {
-        "pt": "🟢 Eyes to Earth · Fim do alerta de cheia no rio Incomáti ({data}). O boletim de hoje já não prevê cheia.\nMais informação: {link}\nContinue atento às autoridades.",
-        "en": "🟢 Eyes to Earth · End of the flood alert on the Incomati River ({data}). Today's bulletin no longer forecasts a flood.\nMore information: {link}\nKeep listening to the authorities.",
-        "fr": "🟢 Eyes to Earth · Fin de l'alerte de crue sur le fleuve Incomati ({data}). Le bulletin du jour ne prévoit plus de crue.\nPlus d'informations : {link}\nRestez attentifs aux autorités."},
+        "pt": "Boas notícias, {nome}: terminou o alerta de cheia no rio Incomáti ({data}). O boletim de hoje já não prevê cheia.\n\nÁgua do rio: {agua}\n"
+              "Depois de uma cheia a água fica mais suja durante semanas: trate-a sempre antes de beber.\n\nContinue atento às autoridades.",
+        "en": "Good news, {nome}: the flood alert on the Incomati River has ended ({data}). Today's bulletin no longer forecasts a flood.\n\nRiver water: {agua}\n"
+              "After a flood the water stays dirtier for weeks: always treat it before drinking.\n\nKeep listening to the authorities.",
+        "fr": "Bonne nouvelle, {nome} : l'alerte de crue sur le fleuve Incomati est terminée ({data}). Le bulletin du jour ne prévoit plus de crue.\n\nEau du fleuve : {agua}\n"
+              "Après une crue, l'eau reste plus sale pendant des semaines : traitez-la toujours avant de la boire.\n\nRestez attentifs aux autorités."},
     "boas_vindas": {
-        "pt": "👋 Olá! Está inscrito nos alertas de cheia do Eyes to Earth para {lugar}. Só lhe escrevemos quando houver perigo de cheia no rio Incomáti (alerta laranja ou vermelho) "
-              "e quando o perigo passar.\nPlataforma: {link}\nPara deixar de receber: {sair}\nObrigado!",
-        "en": "👋 Hello! You are signed up for Eyes to Earth flood alerts for {lugar}. We only write when there is a danger of flooding on the Incomati River (orange or red alert) "
-              "and when the danger is over.\nPlatform: {link}\nTo stop these messages: {sair}\nThank you!",
-        "fr": "👋 Bonjour ! Vous êtes inscrit aux alertes de crue d'Eyes to Earth pour {lugar}. Nous n'écrivons qu'en cas de danger de crue sur le fleuve Incomati (alerte orange ou rouge) "
-              "et quand le danger est passé.\nPlateforme : {link}\nPour ne plus recevoir ces messages : {sair}\nMerci !"},
+        "pt": "Olá, {nome}! A sua inscrição nos alertas do rio Incomáti para {lugar} está feita.\n\nCheias nos próximos 10 dias: {cheia}\nÁgua do rio em Marracuene: {agua}\n"
+              "{pessoal}\n\nVamos escrever-lhe sempre que houver perigo de cheia, e quando o perigo passar. Para deixar de receber, use o botão em baixo.",
+        "en": "Hello, {nome}! You are now signed up for the Incomati River alerts for {lugar}.\n\nFloods in the next 10 days: {cheia}\nRiver water at Marracuene: {agua}\n"
+              "{pessoal}\n\nWe will write to you whenever there is a danger of flooding, and when the danger is over. To stop these messages, use the button below.",
+        "fr": "Bonjour, {nome} ! Votre inscription aux alertes du fleuve Incomati pour {lugar} est faite.\n\nCrues dans les 10 prochains jours : {cheia}\nEau du fleuve à Marracuene : {agua}\n"
+              "{pessoal}\n\nNous vous écrirons à chaque danger de crue, et quand le danger sera passé. Pour ne plus recevoir ces messages, utilisez le bouton ci-dessous."},
 }
-PARAMETROS = {"alerta": ["nivel", "dia", "lugares", "conselho", "link", "sair"], "fim": ["data", "link"], "boas_vindas": ["lugar", "link", "sair"]}
+PARAMETROS = {"alerta": ["nome", "nivel", "dia", "lugares", "conselho", "linha_cheia", "agua"], "fim": ["nome", "data", "agua"],
+              "boas_vindas": ["nome", "lugar", "cheia", "agua", "pessoal"]}
+# Every message speaks to the person by the full name given at sign-up. For someone who signed up before the name
+# was asked (a template parameter can never be empty):
+SEM_NOME = {"pt": "amigo(a)", "en": "friend", "fr": "ami(e)"}
+# the footer and the two buttons of every template (approved together with the text)
+RODAPE = {"pt": "Eyes to Earth · não substitui os avisos do INGD", "en": "Eyes to Earth · does not replace INGD warnings",
+          "fr": "Eyes to Earth · ne remplace pas les alertes de l'INGD"}
+BOTOES = {"pt": ("Ver a previsão completa", "Deixar de receber"), "en": ("See the full forecast", "Stop these messages"),
+          "fr": ("Voir la prévision complète", "Ne plus recevoir")}
+# the next ten days in words, without symbols: days in a row with the same level make one period
+PERIODO = {"pt": ("{nome} até {fim}", "{nome} de {inicio} a {fim}", "{nome} a {dia}"),
+           "en": ("{nome} until {fim}", "{nome} from {inicio} to {fim}", "{nome} on {dia}"),
+           "fr": ("{nome} jusqu'au {fim}", "{nome} du {inicio} au {fim}", "{nome} le {dia}")}
+CATEGORIAS_DO_LUGAR = {
+    "alaga primeiro": {"pt": "{lugar} foi dos primeiros lugares a alagar na cheia de 2026.", "en": "{lugar} was among the first places to flood in 2026.",
+                       "fr": "{lugar} a été parmi les premiers lieux inondés en 2026."},
+    "alaga em cheia grande": {"pt": "{lugar} alagou na cheia grande de 2026.", "en": "{lugar} flooded in the big flood of 2026.", "fr": "{lugar} a été inondé lors de la grande crue de 2026."},
+    "na margem da cheia": {"pt": "{lugar} ficou na margem da cheia de 2026.", "en": "{lugar} was at the edge of the 2026 flood.", "fr": "{lugar} était au bord de la crue de 2026."},
+    "fora das zonas de aviso": {"pt": "{lugar} ficou fora das zonas de aviso em 2026.", "en": "{lugar} was outside the warning zones in 2026.",
+                                "fr": "{lugar} était hors des zones d'alerte en 2026."},
+}
+SE_HOUVER_ALERTA = {"pt": "Se houver alerta: {dica}", "en": "If there is an alert: {dica}", "fr": "En cas d'alerte : {dica}"}
+SEM_PERFIL = {"pt": "Guarde este número: é por aqui que avisamos.", "en": "Save this number: this is where we will warn you.",
+              "fr": "Enregistrez ce numéro : c'est par ici que nous vous préviendrons."}
+BOTAO_SAIR = {"pt": " Para deixar de receber, use o botão em baixo.", "en": " To stop these messages, use the button below.",
+              "fr": " Pour ne plus recevoir ces messages, utilisez le bouton ci-dessous."}           # only true in the approved template, which has the buttons
+LIGACOES_TEXTO = {"pt": "Mais detalhes e o mapa: {link}\nPara deixar de receber: {sair}", "en": "More details and the map: {link}\nTo stop these messages: {sair}",
+                  "fr": "Plus de détails et la carte : {link}\nPour ne plus recevoir ces messages : {sair}"}
 # one extra piece of advice in the alert, chosen from the person's age group first, then occupation
 DICAS = {
     "60_mais": {"pt": "Se precisar de ajuda para sair de casa, combine já com um vizinho ou familiar.",
@@ -113,15 +143,23 @@ def traduzir(texto: str, lingua: str) -> str:
 
 
 # ----------------------------------------------------------------------------- what to say
-def ligacoes(lingua: str) -> tuple[str, str]:
-    """Link to the platform (in the person's language) and to the page where one can stop the messages."""
+def _do_lugar(lugar: str) -> str:
+    """The part of an address that opens the page of a place on the platform (nothing when no place was chosen)."""
+    from urllib.parse import quote
+
+    return f"p=zona&lugar={quote(lugar)}&" if lugar else ""
+
+
+def ligacoes(lingua: str, lugar: str = "") -> tuple[str, str]:
+    """Link to the platform (in the person's language; the page of their place, if they chose one) and to the
+    page where one can stop the messages."""
     catalogo = json.loads((DADOS / "catalogo.json").read_text())
     base = (os.environ.get("ETE_APP_URL") or catalogo.get("aplicacao") or catalogo.get("pagina_simples") or "").rstrip("/")
     if not base:
         return "", ""
     if not catalogo.get("aplicacao") and not os.environ.get("ETE_APP_URL"):            # only the light page exists
         return base, base
-    return f"{base}/?lang={lingua}", f"{base}/?p=alertas&lang={lingua}"
+    return f"{base}/?{_do_lugar(lugar)}lang={lingua}", f"{base}/?p=alertas&lang={lingua}"
 
 
 def lugares_em_risco(boletim: dict, lugares: pd.DataFrame, lugar_da_pessoa: str = "", minimo: int = 2, maximo: int = 3) -> list[str]:
@@ -150,23 +188,112 @@ def primeiro_dia(boletim: dict, nivel: str) -> str:
     return pd.Timestamp(boletim.get("dia_mais_critico", datetime.now())).strftime("%d/%m")
 
 
-def mensagem(tipo: str, pessoa: dict, boletim: dict, lugares: pd.DataFrame, conselhos: dict) -> tuple[str, list[str]]:
-    """The message for one person: (full text, template parameters in order)."""
-    lingua = pessoa.get("lingua") if pessoa.get("lingua") in CODIGO_META else "pt"
-    link, sair = ligacoes(lingua)
+def passos_de_cor() -> list[float]:
+    """The four limits of the colour steps of the maps (the same everywhere: dados/modelos/mapa_cor_modelo.npz)."""
+    import numpy as np
+
+    ficheiro = DADOS / "modelos" / "mapa_cor_modelo.npz"
+    return [float(v) for v in np.load(ficheiro)["steps"]] if ficheiro.exists() else [-0.099, -0.058, -0.030, 0.002]
+
+
+def prevista_da_cor() -> pd.DataFrame | None:
+    """The 30-day forecast of the water colour at Marracuene (boletim/cor_prevista.csv), or None."""
+    ficheiro = DADOS / "boletim" / "cor_prevista.csv"
+    if not ficheiro.exists():
+        return None
+    tabela = pd.read_csv(ficheiro, index_col=0, parse_dates=True)
+    return tabela if len(tabela) else None
+
+
+def periodos(serie: pd.Series, nomes: dict, lingua: str) -> str:
+    """Days in a row with the same value, in words: «verde até 18/11, laranja de 19/11 a 24/11»."""
+    from itertools import groupby
+
+    ate, de_a, so = PERIODO.get(lingua, PERIODO["pt"])
+    blocos = []
+    for valor, grupo in groupby(serie.items(), key=lambda par: par[1]):
+        datas = [d for d, _ in grupo]
+        blocos.append((nomes.get(valor, str(valor)), datas[0], datas[-1]))
+    partes = []
+    for n, (nome, inicio, fim) in enumerate(blocos):
+        if n == 0:
+            partes.append(ate.format(nome=nome, fim=f"{fim:%d/%m}"))
+        elif inicio == fim:
+            partes.append(so.format(nome=nome, dia=f"{inicio:%d/%m}"))
+        else:
+            partes.append(de_a.format(nome=nome, inicio=f"{inicio:%d/%m}", fim=f"{fim:%d/%m}"))
+    return ", ".join(partes)
+
+
+def situacao(boletim: dict, prevista: pd.DataFrame | None, lingua: str) -> dict:
+    """The next 10 days in words (the card that goes with the message shows them in colour):
+    cheia (level, until when, what it means, the flow, and the periods when the level changes),
+    linha_cheia (the periods alone), agua (the colour of the water and the advice)."""
+    import cartao_whatsapp as C
+
+    tx = C.TEXTOS.get(lingua, C.TEXTOS["pt"])
+    dias = C.dias(boletim, prevista)
+    if not boletim.get("seguro_mostrar") or dias.empty:
+        return {"cheia": tx["indisponivel"], "linha_cheia": tx["indisponivel"], "agua": tx["beber"]}
     nivel = boletim.get("nivel_maximo_provavel", "verde")
-    valores = {"link": link or "—", "sair": sair or "—", "emoji": EMOJI.get(nivel, "⚠️"), "nivel": NIVEIS[lingua].get(nivel, nivel.upper()),
-               "dia": primeiro_dia(boletim, nivel), "data": pd.Timestamp(boletim.get("emitido_utc", datetime.now(timezone.utc))).strftime("%d/%m"),
-               "conselho": traduzir(conselhos.get(nivel, ""), lingua), "lugar": pessoa.get("lugar") or "Marracuene"}
+    nomes = {k: v.lower() for k, v in tx["niveis"].items()}
+    linha_cheia = periodos(dias["alerta"], nomes, lingua)
+    caudal = {"pt": "caudal de {a} a {b} m³/s", "en": "flow {a} to {b} m³/s", "fr": "débit de {a} à {b} m³/s"}[lingua].format(
+        a=f"{dias['caudal_mediana_m3s'].min():.0f}", b=f"{dias['caudal_mediana_m3s'].max():.0f}")
+    ate = {"pt": "até", "en": "until", "fr": "jusqu'au"}[lingua]
+    cheia = f"{tx['niveis'][nivel].lower()} {ate} {dias.index[-1]:%d/%m}, {tx['frases'][nivel].lower()} ({caudal})"
+    if dias["alerta"].nunique() > 1:                     # the level changes: say when
+        cheia += f": {linha_cheia}"
+    cheia += "."
+    agua = tx["beber"]
+    if "indice_agua" in dias and dias["indice_agua"].notna().any():
+        geral = C.degrau(float(dias["indice_agua"].mean()), passos_de_cor())
+        agua = f"{tx['agua_frases'][geral].lower()}. {tx['beber']}"
+    return {"cheia": cheia, "linha_cheia": linha_cheia, "agua": agua}
+
+
+def pessoal(pessoa: dict, lugares: pd.DataFrame, lingua: str) -> str:
+    """What the 2026 flood did to the person's place, and the advice for their age or occupation."""
+    partes = []
+    lugar = pessoa.get("lugar") or ""
+    if lugar and lugares is not None and len(lugares) and lugar in set(lugares["lugar"]):
+        categoria = lugares.loc[lugares["lugar"] == lugar, "categoria"].iloc[0]
+        if categoria in CATEGORIAS_DO_LUGAR:
+            partes.append(CATEGORIAS_DO_LUGAR[categoria][lingua].format(lugar=lugar))
+    extra = dica(pessoa, lingua)
+    if extra:
+        partes.append(SE_HOUVER_ALERTA[lingua].format(dica=extra[:1].lower() + extra[1:]))
+    return " ".join(partes) or SEM_PERFIL[lingua]
+
+
+def sufixos(lingua: str, lugar: str = "") -> list[str]:
+    """The end of the two button addresses: the platform (the page of the person's place, if they chose one)
+    and the page to stop the messages. The approved templates take any ending (https://.../{{1}})."""
+    return [f"?{_do_lugar(lugar)}lang={lingua}" if lugar else f"?p=inicio&lang={lingua}", f"?p=alertas&lang={lingua}"]
+
+
+def mensagem(tipo: str, pessoa: dict, boletim: dict, lugares: pd.DataFrame, conselhos: dict, prevista: pd.DataFrame | None = None,
+             como_no_modelo: bool = False) -> tuple[str, list[str]]:
+    """The message for one person: (full text, with the links at the end, for sending by hand; template
+    parameters in order, for the approved template, whose buttons carry the links). With
+    `como_no_modelo` the text is the one the approved template shows (buttons instead of links)."""
+    lingua = pessoa.get("lingua") if pessoa.get("lingua") in CODIGO_META else "pt"
+    link, sair = ligacoes(lingua, pessoa.get("lugar") or "")
+    nivel = boletim.get("nivel_maximo_provavel", "verde")
+    nome = " ".join(str(pessoa.get("nome") or "").split())[:60] or SEM_NOME[lingua]
+    valores = {"nome": nome, "nivel": NIVEIS[lingua].get(nivel, nivel.upper()), "dia": primeiro_dia(boletim, nivel), "lugar": pessoa.get("lugar") or "Marracuene",
+               "data": pd.Timestamp(boletim.get("emitido_utc", datetime.now(timezone.utc))).strftime("%d/%m"),
+               "conselho": traduzir(conselhos.get(nivel, ""), lingua), **situacao(boletim, prevista, lingua)}
     if tipo == "alerta":
         extra = dica(pessoa, lingua)
         valores["conselho"] = f"{valores['conselho']} {extra}".strip()
         nomes = lugares_em_risco(boletim, lugares, pessoa.get("lugar", ""))
         valores["lugares"] = ", ".join(f"{n} ({ONDE_VIVE[lingua]})" if n == pessoa.get("lugar") else n for n in nomes)
+    if tipo == "boas_vindas":
+        valores["pessoal"] = pessoal(pessoa, lugares, lingua)
     texto = TEXTOS_MENSAGEM[tipo][lingua].format(**valores)
-    if not link:                                          # no public address yet: leave the link sentences out rather than show a dash
-        texto = "\n".join(linha for linha in texto.split("\n") if not linha.rstrip().endswith("—"))
-        texto = re.sub(r"\n{2,}", "\n", texto).strip()
+    if link and not como_no_modelo:                       # sent by hand there are no buttons: the links go at the end
+        texto = texto.replace(BOTAO_SAIR[lingua], "") + "\n\n" + LIGACOES_TEXTO[lingua].format(link=link, sair=sair)
     # template parameters cannot contain line breaks
     parametros = [" ".join(str(valores[p]).split()) for p in PARAMETROS[tipo]]
     return texto, parametros
@@ -198,20 +325,42 @@ def decidir(boletim: dict, estado: dict, niveis: list[str], lembrar_dias: float)
 
 # ----------------------------------------------------------------------------- how to send it
 class EnvioAPI:
-    """WhatsApp Business Cloud API (Meta): one approved template message per person."""
+    """WhatsApp Business Cloud API (Meta): one approved template message per person, with the situation
+    card as header image and two link buttons (the platform; stop the messages)."""
 
     def __init__(self, token: str, phone_id: str, versao: str = "v21.0", modelos: dict | None = None):
         import requests
 
-        self.requests, self.url = requests, f"https://graph.facebook.com/{versao}/{phone_id}/messages"
+        self.requests, self.base = requests, f"https://graph.facebook.com/{versao}/{phone_id}"
+        self.url = self.base + "/messages"
         self.cabecalho = {"Authorization": f"Bearer {token}"}
-        self.modelos = modelos or {"alerta": "ete_alerta_cheia", "fim": "ete_fim_alerta", "boas_vindas": "ete_boas_vindas"}
+        self.modelos = modelos or {"alerta": "ete_alerta_cheia_v2", "fim": "ete_fim_alerta_v2", "boas_vindas": "ete_boas_vindas_v2"}
         self.modo = "api"
+        self._imagens = {}
 
-    def enviar(self, numero: str, tipo: str, lingua: str, texto: str, parametros: list[str]) -> tuple[bool, str]:
+    def carregar_imagem(self, png: bytes, chave: str) -> str | None:
+        """Send the card to Meta once (it keeps it 30 days) and remember its id for this run."""
+        if chave in self._imagens:
+            return self._imagens[chave]
+        try:
+            resposta = self.requests.post(self.base + "/media", headers=self.cabecalho, files={"file": ("situacao.png", png, "image/png")},
+                                          data={"messaging_product": "whatsapp", "type": "image/png"}, timeout=60)
+            self._imagens[chave] = resposta.json().get("id") if resposta.ok else None
+        except Exception:
+            self._imagens[chave] = None
+        return self._imagens[chave]
+
+    def enviar(self, numero: str, tipo: str, lingua: str, texto: str, parametros: list[str], imagem: bytes | None = None,
+               chave_imagem: str = "", botoes: list[str] | None = None) -> tuple[bool, str]:
+        componentes = []
+        imagem_id = self.carregar_imagem(imagem, chave_imagem or lingua) if imagem else None
+        if imagem_id:
+            componentes.append({"type": "header", "parameters": [{"type": "image", "image": {"id": imagem_id}}]})
+        componentes.append({"type": "body", "parameters": [{"type": "text", "text": p} for p in parametros]})
+        for i, sufixo in enumerate(botoes or []):
+            componentes.append({"type": "button", "sub_type": "url", "index": str(i), "parameters": [{"type": "text", "text": sufixo}]})
         corpo = {"messaging_product": "whatsapp", "to": numero, "type": "template",
-                 "template": {"name": self.modelos[tipo], "language": {"code": CODIGO_META.get(lingua, "pt_PT")},
-                              "components": [{"type": "body", "parameters": [{"type": "text", "text": p} for p in parametros]}]}}
+                 "template": {"name": self.modelos[tipo], "language": {"code": CODIGO_META.get(lingua, "pt_PT")}, "components": componentes}}
         try:
             resposta = self.requests.post(self.url, headers=self.cabecalho, json=corpo, timeout=30)
         except Exception as erro:
@@ -228,27 +377,34 @@ class EnvioAPI:
 
 
 class EnvioAssistido:
-    """No API yet: a page with one button per person that opens WhatsApp with the message written."""
+    """No API yet: a page with one button per person that opens WhatsApp with the message written,
+    and the situation card beside it (to attach by hand: a link cannot carry a picture)."""
 
     def __init__(self, pasta: Path = CAIXA):
         self.pasta, self.linhas, self.modo = pasta, [], "assistido"
 
-    def enviar(self, numero: str, tipo: str, lingua: str, texto: str, parametros: list[str]) -> tuple[bool, str]:
-        self.linhas.append((numero, tipo, texto))
+    def enviar(self, numero: str, tipo: str, lingua: str, texto: str, parametros: list[str], imagem: bytes | None = None,
+               chave_imagem: str = "", botoes: list[str] | None = None) -> tuple[bool, str]:
+        self.linhas.append((numero, tipo, texto, imagem))
         return True, ""
 
     def concluir(self) -> str:
+        import base64
+
         if not self.linhas:
             return ""
         self.pasta.mkdir(parents=True, exist_ok=True)
         ficheiro = self.pasta / f"{datetime.now():%Y-%m-%d_%H%M}_mensagens.html"
+        imagem = lambda png: (f"<img src='data:image/png;base64,{base64.b64encode(png).decode()}' alt='cartão'>"
+                              "<div class='d'>Guarde esta imagem e envie-a primeiro, depois a mensagem.</div>") if png else ""
         cartoes = "".join(
-            f"<div class='c'><div class='n'>{inscricoes.mostrar_telefone(n)} · {html.escape(tipo)}</div><pre>{html.escape(texto)}</pre>"
-            f"<a href='https://wa.me/{n}?text={quote(texto)}' target='_blank'>Abrir no WhatsApp e enviar</a></div>" for n, tipo, texto in self.linhas)
+            f"<div class='c'><div class='n'>{inscricoes.mostrar_telefone(n)} · {html.escape(tipo)}</div>{imagem(png)}<pre>{html.escape(texto)}</pre>"
+            f"<a href='https://wa.me/{n}?text={quote(texto)}' target='_blank'>Abrir no WhatsApp e enviar</a></div>" for n, tipo, texto, png in self.linhas)
         ficheiro.write_text("<!doctype html><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>ETE · mensagens para enviar</title>"
                             "<style>body{font-family:system-ui,sans-serif;background:#F7F3EA;color:#10231F;margin:0;padding:20px;max-width:720px;margin:auto}"
                             "h1{font-size:1.3rem}.c{background:#fff;border:1px solid #E8E1D2;border-radius:16px;padding:14px 16px;margin:12px 0}"
-                            ".n{font-weight:700;margin-bottom:6px}pre{white-space:pre-wrap;font:inherit;background:#E9F7EF;border-radius:6px 16px 16px 16px;padding:10px 12px}"
+                            ".n{font-weight:700;margin-bottom:6px}img{width:100%;border-radius:10px;border:1px solid #E8E1D2}.d{font-size:.8rem;color:#5C6B66;margin:4px 0 8px}"
+                            "pre{white-space:pre-wrap;font:inherit;background:#E9F7EF;border-radius:6px 16px 16px 16px;padding:10px 12px}"
                             "a{display:inline-block;background:#10231F;color:#fff;text-decoration:none;border-radius:999px;padding:9px 16px;font-weight:600}</style>"
                             f"<h1>Mensagens para enviar ({len(self.linhas)})</h1><p>Carregue em cada botão: o WhatsApp abre com a mensagem já escrita; confirme o envio. "
                             "Esta página tem números de telefone: não a partilhe e apague-a depois de enviar.</p>" + cartoes, encoding="utf-8")
@@ -256,11 +412,22 @@ class EnvioAssistido:
         return str(ficheiro)
 
 
+def cartao(boletim: dict, prevista: pd.DataFrame | None, lingua: str) -> bytes | None:
+    """The situation card of the day in a language (None if it cannot be drawn: the text goes alone)."""
+    try:
+        import cartao_whatsapp as C
+
+        link, _ = ligacoes(lingua)
+        return C.desenhar(boletim, prevista, passos_de_cor(), lingua, link.split("/?")[0] if link else "")
+    except Exception:
+        return None
+
+
 def remetente():
     token, telefone = os.environ.get("WHATSAPP_TOKEN", ""), os.environ.get("WHATSAPP_PHONE_ID", "")
     if token and telefone:
-        modelos = {"alerta": os.environ.get("ETE_WA_MODELO_ALERTA", "ete_alerta_cheia"), "fim": os.environ.get("ETE_WA_MODELO_FIM", "ete_fim_alerta"),
-                   "boas_vindas": os.environ.get("ETE_WA_MODELO_BOAS_VINDAS", "ete_boas_vindas")}
+        modelos = {"alerta": os.environ.get("ETE_WA_MODELO_ALERTA", "ete_alerta_cheia_v2"), "fim": os.environ.get("ETE_WA_MODELO_FIM", "ete_fim_alerta_v2"),
+                   "boas_vindas": os.environ.get("ETE_WA_MODELO_BOAS_VINDAS", "ete_boas_vindas_v2")}
         return EnvioAPI(token, telefone, os.environ.get("WHATSAPP_API_VERSION", "v21.0"), modelos)
     if os.environ.get("GITHUB_ACTIONS") == "true":
         return None                                       # never write phone numbers on a shared server
@@ -289,6 +456,13 @@ def executar(niveis: list[str] | None = None, lembrar_dias: float = 2, loja=None
     loja = loja or inscricoes.loja()
     pessoas = inscricoes.activas(loja.listar())
     alerta_em_curso = decisao == "alerta" or (decisao is None and estado.get("activo") and boletim.get("seguro_mostrar"))
+    prevista = prevista_da_cor()
+    cartoes = {}                                          # one card per language, drawn once for everybody
+
+    def cartao_de(lingua):
+        if lingua not in cartoes:
+            cartoes[lingua] = cartao(boletim, prevista, lingua)
+        return cartoes[lingua]
 
     for pessoa in pessoas:
         nova = not pessoa.get("boas_vindas_utc")
@@ -297,8 +471,10 @@ def executar(niveis: list[str] | None = None, lembrar_dias: float = 2, loja=None
         else:
             tipos = [decisao] if decisao else []
         for tipo in tipos:
-            texto, parametros = mensagem(tipo, pessoa, boletim, lugares, conselhos)
-            ok, erro = envio.enviar(pessoa["telefone"], tipo, pessoa.get("lingua", "pt"), texto, parametros)
+            lingua = pessoa.get("lingua") if pessoa.get("lingua") in CODIGO_META else "pt"
+            texto, parametros = mensagem(tipo, pessoa, boletim, lugares, conselhos, prevista)
+            ok, erro = envio.enviar(pessoa["telefone"], tipo, lingua, texto, parametros, imagem=cartao_de(lingua), chave_imagem=f"{lingua}-{boletim.get('emitido_utc', '')}",
+                                    botoes=sufixos(lingua, pessoa.get("lugar") or ""))
             if tipo == "boas_vindas":
                 resumo["boas_vindas"] += ok
                 if ok:
@@ -321,3 +497,29 @@ def executar(niveis: list[str] | None = None, lembrar_dias: float = 2, loja=None
                                                                "pessoas": len(pessoas), "enviadas": resumo["enviadas"], "modo": envio.modo}]
         ESTADO.write_text(json.dumps({**novo, "historico": historico}, indent=1, ensure_ascii=False))
     return resumo
+
+
+# ----------------------------------------------------------------------------- the welcome, at once
+def boas_vindas_agora(numero: str, loja=None, envio=None, boletim: dict | None = None) -> tuple[bool, str]:
+    """Send the welcome (with the situation of the next 10 days) to someone who has just signed up.
+    Only through the official API: by hand, or with WhatsApp not configured, the daily run sends it.
+    Returns (sent, reason); never writes the phone number anywhere."""
+    import leitor
+
+    envio = envio if envio is not None else remetente()
+    if not isinstance(envio, EnvioAPI) and getattr(envio, "modo", "") != "teste":
+        return False, "não configurado"
+    loja = loja or inscricoes.loja()
+    pessoa = next((p for p in inscricoes.activas(loja.listar()) if p["telefone"] == numero), None)
+    if pessoa is None or pessoa.get("boas_vindas_utc"):
+        return False, "já recebeu" if pessoa else "não encontrado"
+    boletim = boletim or leitor.boletim()
+    catalogo = json.loads((DADOS / "catalogo.json").read_text())
+    prevista = prevista_da_cor()
+    lingua = pessoa.get("lingua") if pessoa.get("lingua") in CODIGO_META else "pt"
+    texto, parametros = mensagem("boas_vindas", pessoa, boletim, leitor.serie("lugares_por_ordem"), catalogo.get("conselhos", {}), prevista)
+    ok, erro = envio.enviar(numero, "boas_vindas", lingua, texto, parametros, imagem=cartao(boletim, prevista, lingua),
+                            chave_imagem=f"{lingua}-{boletim.get('emitido_utc', '')}", botoes=sufixos(lingua, pessoa.get("lugar") or ""))
+    if ok:
+        loja.actualizar(pessoa["id"], {"boas_vindas_utc": inscricoes.agora_utc()})
+    return ok, erro

@@ -24,5 +24,11 @@ jobs:
       - name: Todas as páginas da aplicação
         working-directory: plataforma
         run: python testar_app.py
+      - name: Contas (senhas, sessões, recuperação)
+        working-directory: plataforma
+        run: python testar_contas.py
+      - name: Alertas no WhatsApp
+        working-directory: plataforma
+        run: python testar_alertas.py
       - name: Mensagem de alerta de ponta a ponta
         run: python scripts/test_alert_end_to_end.py

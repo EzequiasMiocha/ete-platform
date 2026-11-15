@@ -214,6 +214,16 @@ def pure_water(cfg: dict, sensor: str):
 REGIONS_TOLERANCE_M = 8
 LANDSAT57_END = "2014-01-01"     # Landsat 5/7 are used up to 2013; Landsat 8 takes over (plan, Part I)
 VEGETATION_NDVI = 0.4
+# Shadows. Water darker than this in the green band is in the shadow of trees, clouds or relief: its
+# colour is mostly noise (two tiny numbers divided), so it never counts. Measured on Sentinel-2 images
+# of October-November 2026: in a narrow part of Manhica a third of the water pixels were this dark and
+# looked clearer than the sunlit water next to them; in Marracuene almost none are.
+SHADOW_GREEN = 0.02
+# Leaves and banks. Plants are counted only this far inside the permanent water. Nearer the bank a
+# pixel mixes water with the trees, reeds and fields of the bank: in the same images, 25-40 % of the
+# Manhica section looked "covered by plants", but only 2-10 % at 20 m from the banks.
+CORE_M = 20
+MASK_VERSION = 2                 # version of these pixel rules; tables written with an older one are extracted again
 
 
 def regions_asset(cfg: dict) -> str:
@@ -256,30 +266,54 @@ def upload_regions(cfg: dict, wait_minutes: float = 20) -> str:
     return asset
 
 
+def ndvi(sr):
+    """NDVI of an Earth Engine image with the bands red and nir."""
+    return sr.select("nir").subtract(sr.select("red")).divide(sr.select("nir").add(sr.select("red")))
+
+
+def pure_water(sr):
+    """1 where a pixel of this image can be trusted for the colour of the water, else 0. The same rules
+    for the per-section series and for the map of the water colour:
+      - open water: MNDWI above 0, no plants on it (NDVI below 0.1), dark in the short-wave infrared;
+      - pure: one pixel away from anything that is not water in this image (banks, sand, plants, leaves);
+      - lit: not in the shadow of trees, clouds or relief (green reflectance at least SHADOW_GREEN)."""
+    green, swir = sr.select("green"), sr.select("swir1")
+    water = green.subtract(swir).divide(green.add(swir)).gt(0).And(ndvi(sr).lt(0.1)).And(swir.lt(0.05))
+    return water.unmask(0).focal_min(radius=1, kernelType="square", units="pixels").eq(1).And(green.gte(SHADOW_GREEN))
+
+
+def s2_clear(img):
+    """1 where a Sentinel-2 pixel is free of clouds and cloud shadows (Scene Classification and Cloud
+    Score+, needs the band cs_cdf linked from GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED)."""
+    return img.select("SCL").remap([0, 1, 3, 8, 9, 10, 11], [0] * 7, 1).And(img.select("cs_cdf").gte(0.65))
+
+
+def s2_reflectance(img):
+    return img.select(["B3", "B4", "B5", "B8A", "B11"], ["green", "red", "red_edge1", "nir", "swir1"]).multiply(0.0001)
+
+
 def _collection(cfg: dict, sensor: str, regions):
     """(collection, prepare(image) -> image with the bands to reduce, scale in metres)."""
     import ee
 
+    # the river core: permanent water at least CORE_M from its edge (leaves and reeds of the banks left out)
+    core = ee.Image(0).paint(regions, 1).focal_min(radius=CORE_M, kernelType="square", units="meters").eq(1)
+
     def finish(sr, clear, extra):
-        green, red, nir, swir = sr.select("green"), sr.select("red"), sr.select("nir"), sr.select("swir1")
-        ndvi = nir.subtract(red).divide(nir.add(red))
-        # open water in this image: MNDWI above 0, no plants on it, dark in the short-wave infrared
-        water = green.subtract(swir).divide(green.add(swir)).gt(0).And(ndvi.lt(0.1)).And(swir.lt(0.05))
-        # pure water: one pixel away from anything that is not water in this image (banks, sand, plants)
-        pure = water.unmask(0).focal_min(radius=1, kernelType="square", units="pixels").eq(1)
+        green, red = sr.select("green"), sr.select("red")
         out = sr.select(["green", "red", "nir"]).addBands(red.subtract(green).divide(red.add(green)).rename("ndti"))
         for band in extra:
             out = out.addBands(band)
-        vegetation = ndvi.gt(VEGETATION_NDVI).rename("veg").updateMask(clear)       # share of the permanent water covered by plants
-        return out.updateMask(clear).updateMask(pure).addBands(vegetation)
+        vegetation = ndvi(sr).gt(VEGETATION_NDVI).rename("veg").updateMask(clear).updateMask(core)   # share of the river core covered by plants
+        return out.updateMask(clear).updateMask(pure_water(sr)).addBands(vegetation)
 
     if sensor == "sentinel2":
         score = ee.ImageCollection("GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED")
         collection = ee.ImageCollection(cfg["datasets"]["sentinel2"]["id"]).filterBounds(regions).linkCollection(score, ["cs_cdf"])
 
         def prepare(img):
-            clear = img.select("SCL").remap([0, 1, 3, 8, 9, 10, 11], [0] * 7, 1).And(img.select("cs_cdf").gte(0.65))
-            sr = img.select(["B3", "B4", "B5", "B8A", "B11"], ["green", "red", "red_edge1", "nir", "swir1"]).multiply(0.0001)
+            clear = s2_clear(img)
+            sr = s2_reflectance(img)
             re, red = sr.select("red_edge1"), sr.select("red")
             return finish(sr, clear, [re.subtract(red).divide(re.add(red)).rename("ndci")])
 
@@ -305,8 +339,9 @@ def _collection(cfg: dict, sensor: str, regions):
 
 def extract_period(cfg: dict, sensor: str, start: str, end: str) -> pd.DataFrame:
     """One row per image and section between two dates: median green, red, near-infrared, NDTI
-    (plus NDCI for Sentinel-2, water temperature for Landsat) of the pure-water pixels, how many
-    there were, and the share of the permanent water covered by plants."""
+    (plus NDCI for Sentinel-2, water temperature for Landsat) of the pure-water pixels (clear, away
+    from the banks, not in shadow), how many there were, and the share of the river core (CORE_M
+    from the banks) covered by plants, with the number of clear core pixels it was measured on."""
     import ee
 
     from .gee import init, retry
@@ -320,7 +355,7 @@ def extract_period(cfg: dict, sensor: str, start: str, end: str) -> pd.DataFrame
 
     def per_image(img):
         stats = prepare(img).reduceRegions(regions, reducer, scale)
-        stats = stats.filter(ee.Filter.gt("veg_count", 0))
+        stats = stats.filter(ee.Filter.Or(ee.Filter.gt("veg_count", 0), ee.Filter.gt("ndti_count", 0)))     # the image saw some of the section
         return stats.map(lambda f: ee.Feature(None, f.set("date", img.date().format("YYYY-MM-dd"), "image", img.get("system:index")).toDictionary(keep)))
 
     features = retry(lambda: collection.filterDate(start, end).map(per_image).flatten().getInfo())["features"]
@@ -330,13 +365,21 @@ def extract_period(cfg: dict, sensor: str, start: str, end: str) -> pd.DataFrame
     table = table.rename(columns={"green_median": "green", "red_median": "red", "nir_median": "nir", "ndti_median": "ndti", "ndti_count": "pixeis",
                                   f"{extra}_median": extra, "veg_mean": "vegetacao", "veg_count": "pixeis_limpos"})
     table["sensor"] = sensor
+    table["versao_mascara"] = MASK_VERSION
     return table
+
+
+def _mask_version(file) -> int:
+    """The pixel-rule version a per-image table was written with (1 = before the version column)."""
+    head = pd.read_csv(file, nrows=1)
+    return int(head["versao_mascara"].iloc[0]) if "versao_mascara" in head and len(head) else (MASK_VERSION if "versao_mascara" in head else 1)
 
 
 def update_series(cfg: dict, sensors=None, log=print) -> None:
     """Create or extend the per-image files in data/raw/water_quality/modulo_q/ (one per sensor and
     year). Complete past years are not asked again; the current year always is. Sentinel-2 is
-    asked in quarters, because a full year is too much for one request."""
+    asked in quarters, because a full year is too much for one request. Files written with older
+    pixel rules (MASK_VERSION) are asked again, so the whole record follows the same rules."""
     from datetime import date
 
     folder = path(cfg, "module_q_raw")
@@ -345,11 +388,11 @@ def update_series(cfg: dict, sensors=None, log=print) -> None:
         last_year = min(this_year, 2013) if sensor == "landsat57" else this_year
         for year in range(SENSORS[sensor], last_year + 1):
             out = folder / f"{sensor}_{year}.csv"
-            if out.exists() and (year < this_year or sensor == "landsat57"):
+            if out.exists() and (year < this_year or sensor == "landsat57") and _mask_version(out) >= MASK_VERSION:
                 continue
             cuts = [f"{year}-01-01", f"{year}-04-01", f"{year}-07-01", f"{year}-10-01", f"{year + 1}-01-01"] if sensor == "sentinel2" else [f"{year}-01-01", f"{year + 1}-01-01"]
             parts = [extract_period(cfg, sensor, a, b) for a, b in zip(cuts[:-1], cuts[1:])]
             parts = [p for p in parts if len(p)]
-            table = pd.concat(parts, ignore_index=True) if parts else pd.DataFrame(columns=["troco", "date", "image", "sensor"])
+            table = pd.concat(parts, ignore_index=True) if parts else pd.DataFrame(columns=["troco", "date", "image", "sensor", "versao_mascara"])
             table.to_csv(out, index=False)
             log(f"{sensor} {year}: {len(table)} linhas")

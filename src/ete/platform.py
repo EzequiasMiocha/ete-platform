@@ -98,17 +98,12 @@ def _save_light(fig, plt, file) -> None:
     Image.open(file).convert("P", palette=Image.ADAPTIVE, colors=64).save(file, optimize=True)        # a few tens of KB
 
 
-def _light_zone_map(cfg: dict, zones, places, water, grid, file) -> None:
-    """Small picture of the warning zones with the names of the places, for phones on little data."""
-    import matplotlib.colors as mcolors
+def _district_and_places(ax, cfg: dict, places, crs) -> None:
+    """The district line and the 16 places that flood first, with their names; the frame is the district.
+    Shared by the light maps (warning zones, radar months), so they all look at the same place."""
     import matplotlib.patheffects as effects
 
-    fig, ax, plt = _figure()
-    district = load_aoi(cfg, "district").to_crs(grid.crs)
-    west, south, east, north = grid.bounds
-    ax.imshow(water, extent=[west, east, south, north], cmap=mcolors.ListedColormap(["#7fb3d5"]), interpolation="nearest", zorder=2)
-    for value, colour in ZONE_COLOURS.items():
-        zones[zones["zona"] == value].plot(ax=ax, color=colour, alpha=0.75, zorder=3)
+    district = load_aoi(cfg, "district").to_crs(crs)
     district.boundary.plot(ax=ax, color="black", linewidth=1.1, zorder=5)
     inside = places[places.within(district.union_all().buffer(1000)) & places["categoria"].isin(["alaga primeiro", "alaga em cheia grande"])]
     inside = inside.sort_values("parte_alagada", ascending=False).head(16)
@@ -119,6 +114,31 @@ def _light_zone_map(cfg: dict, zones, places, water, grid, file) -> None:
     bounds = district.total_bounds
     ax.set_xlim(bounds[0] - 2000, bounds[2] + 2000), ax.set_ylim(bounds[1] - 2000, bounds[3] + 2000)
     ax.set_xlabel(""), ax.set_ylabel("")
+
+
+def _light_zone_map(cfg: dict, zones, places, water, grid, file) -> None:
+    """Small picture of the warning zones with the names of the places, for phones on little data."""
+    import matplotlib.colors as mcolors
+
+    fig, ax, plt = _figure()
+    west, south, east, north = grid.bounds
+    ax.imshow(water, extent=[west, east, south, north], cmap=mcolors.ListedColormap(["#7fb3d5"]), interpolation="nearest", zorder=2)
+    for value, colour in ZONE_COLOURS.items():
+        zones[zones["zona"] == value].plot(ax=ax, color=colour, alpha=0.75, zorder=3)
+    _district_and_places(ax, cfg, places, grid.crs)
+    _save_light(fig, plt, file)
+
+
+def _light_water_map(cfg: dict, classes, grid, places, file) -> None:
+    """Small picture of one month seen by the radar (blue: the usual water; red: water out of its usual
+    place), in the same frame and with the same places as the zone map. About 50 KB, for phones."""
+    import matplotlib.colors as mcolors
+
+    fig, ax, plt = _figure()
+    west, south, east, north = grid.bounds
+    ax.imshow(classes[::3, ::3], extent=[west, east, south, north], cmap=mcolors.ListedColormap([WATER[1][1], WATER[2][1]]), vmin=1, vmax=2,
+              interpolation="nearest", zorder=2)            # 30 m is finer than the picture (about 60 m a dot)
+    _district_and_places(ax, cfg, places, grid.crs)
     _save_light(fig, plt, file)
 
 
@@ -199,27 +219,40 @@ def export_water_maps(cfg: dict, folder) -> list[dict]:
     """The latest monthly water maps of Model B (10 m, drawn at about 20 m)."""
     from .rasters import read_bands
 
+    import geopandas as gpd
+
     grid = load_grid(cfg, 10)
     out = folder / "mapas" / "agua"
     out.mkdir(parents=True, exist_ok=True)
     files = sorted(path(cfg, "maps", "modelo_b", mkdir=False).glob("agua_*_10m.tif"))[-WATER_MAP_MONTHS:]
+    places = gpd.read_file(path(cfg, "maps", "zonas_de_aviso", f"lugares_{cfg['project']['aoi_name']}.gpkg", mkdir=False))
     keep, months, corners = set(), [], None
     for file in files:
         month = file.stem.split("_")[-2]
-        target = out / f"agua_{month}.png"
-        keep.add(target.name)
-        if not target.exists() or target.stat().st_mtime < file.stat().st_mtime or corners is None:
+        target, light = out / f"agua_{month}.png", out / f"leve_{month}.png"         # the overlay of the web map, and a small picture with the places
+        keep.update({target.name, light.name})
+        stale = lambda f: not f.exists() or f.stat().st_mtime < file.stat().st_mtime
+        if stale(target) or stale(light) or corners is None:
             b = read_bands(file, ["agua", "cheia"])
             classes = np.where(b["cheia"] == 1, 2.0, np.where(b["agua"] == 1, 1.0, np.nan))
             corners = write_overlay(classes, grid, WATER, target, 0.00018)
+            if stale(light):
+                _light_water_map(cfg, classes, grid, places, light)
         months.append(month)
-    for old in out.glob("agua_*.png"):
+    for old in list(out.glob("agua_*.png")) + list(out.glob("leve_*.png")):
         if old.name not in keep:
             old.unlink()
     return [{"id": "agua_mensal", "titulo": "Água e cheia vistas por radar, por mês", "tipo": "imagem_mensal", "ficheiro": "mapas/agua/agua_{mes}.png", "meses": months,
+             "mapa_leve": "mapas/agua/leve_{mes}.png",
              "cantos": corners, "legenda": _legend(WATER), "resolucao_m": 20, "atualizacao": "mensal (precisa de descarregar o Sentinel-1 do mês)",
              "descricao": "Onde o radar Sentinel-1 viu água em cada mês (Modelo B). A vermelho, a água fora do sítio habitual.",
              "limites": "É a imagem de um mês inteiro, não de um dia. Em zonas construídas o modelo marca água a mais."}]
+
+
+def refresh_water_maps(cfg: dict) -> dict:
+    """Put the radar months (web overlay and light picture) in the package (after a new month of Model B)."""
+    folder = path(cfg, "platform")
+    return _write_catalogue(cfg, folder, export_water_maps(cfg, folder))
 
 
 # ----------------------------------------------------------------------------- series and daily products
@@ -285,7 +318,7 @@ def export_daily(cfg: dict, folder) -> list[dict]:
         {"id": "boletim", "titulo": "Boletim de hoje", "tipo": "boletim", "ficheiro": "boletim/boletim.json", "texto": "boletim/boletim.md", "estado": "boletim/estado.json",
          "mensagem": "boletim/mensagem_whatsapp.txt",
          "tabelas": {"previsao_alertas": "boletim/previsao_alertas.csv", "cenarios_caudal": "boletim/cenarios_caudal.csv", "chuva_bacia": "boletim/chuva_bacia.csv",
-                     "turbidez": "boletim/turbidez.csv", "turbidez_diaria": "boletim/turbidez_diaria.csv"},
+                     "turbidez": "boletim/turbidez.csv", "turbidez_diaria": "boletim/turbidez_diaria.csv", "cor_prevista": "boletim/cor_prevista.csv"},
          "cores_dos_alertas": ALERT_COLOURS, "atualizacao": "diária",
          "descricao": "Nível de alerta de cheia para os próximos 10 dias e previsão de turbidez para as manhãs.",
          "limites": "Se `estado.json` disser `previsao_indisponivel` ou `desatualizado: true`, a aplicação deve dizê-lo e nunca mostrar verde."},
@@ -356,6 +389,36 @@ def export_quality(cfg: dict, folder) -> list[dict]:
         {"id": "qualidade_tendencias", "titulo": "Tendências por troço", "tipo": "tabela", "ficheiro": "qualidade/tendencias.csv", "atualizacao": "anual",
          "descricao": "Teste de Mann-Kendall sazonal por parâmetro e troço, para o registo completo e para cada era de satélites.",
          "limites": "Uma tendência que só aparece no registo completo pode vir da mudança de satélite em 2013."}]
+
+
+def export_water_colour(cfg: dict, folder) -> list[dict]:
+    """The map of the colour of the water (turbidity) of the lower river, from the latest clear
+    Sentinel-2 day downloaded by turbidity_map.update (weekly, on the project computer). Nothing is
+    written when no map has been downloaded yet (for example on GitHub, which has no Earth Engine)."""
+    from . import turbidity_map as tm
+
+    found = tm.latest(cfg)
+    if not found:
+        return []
+    file, notes = found
+    maps = folder / "mapas"
+    maps.mkdir(parents=True, exist_ok=True)
+    tm.render(cfg, file, maps / "cor_da_agua.png")
+    tm.render(cfg, file, maps / "cor_da_agua_marracuene.png", width_px=760, north_lat=tm.HOME_NORTH_LAT)
+    corners = tm.overlay(file, maps / "cor_da_agua_camada.png")
+    photo = file.parent / f"cor_natural_{notes['data']}.jpg"           # the satellite photograph of the same day, same frame
+    photos = {}
+    if photo.exists():
+        tm.render(cfg, file, maps / "cor_natural_marracuene.jpg", width_px=760, north_lat=tm.HOME_NORTH_LAT, natural=photo)
+        photos = {"foto_recorte": "mapas/cor_natural_marracuene.jpg"}
+        (maps / "cor_natural.jpg").unlink(missing_ok=True)          # the whole frame is no longer shown (the weekly photograph covers the picture only)
+    return [{"id": "cor_da_agua_mapa", "titulo": "Cor da água do rio vista por satélite", "tipo": "imagem", "ficheiro": "mapas/cor_da_agua.png", "recorte": "mapas/cor_da_agua_marracuene.png", **photos,
+             "sobreposicao": "mapas/cor_da_agua_camada.png", "cantos": corners, "data": notes["data"], "satelite": notes.get("satelite", "Sentinel-2"),
+             "parte_legivel": notes.get("parte_legivel"), "abaixo_do_minimo": bool(notes.get("abaixo_do_minimo", False)), "resolucao_m": tm.RES_M,
+             "legenda": tm.legend(), "degraus_ndti": list(tm.STEPS), "resumo": tm.summary(cfg, file), "atualizacao": "semanal, quando há uma imagem limpa",
+             "descricao": "O rio de Manhiça à foz pintado com a cor que o satélite lhe dá, de mais clara a mais barrenta, comparada com dez anos de imagens deste troço.",
+             "limites": ("Índice de cor da água (NDTI), relativo: não mede a turbidez em unidades nem diz se a água é segura. Nunca contam as nuvens, as sombras "
+                         "de árvores, de nuvens e do relevo, as plantas e folhas, a areia e o píxel junto à margem (a cinzento, sem leitura).")}]
 
 
 MODEL_TABLES = {      # name in the package: (week folder of the report, file)
@@ -479,6 +542,39 @@ if ((Date.now() - emitido.getTime()) / 36e5 > {stale}) {{
 """
 
 
+def _water_colour_sentence(cfg: dict) -> str:
+    """The map of the water colour in one line for the light page (no picture: it must stay light)."""
+    import html
+
+    from .turbidity_map import SENTENCES
+
+    file = path(cfg, "platform", "catalogo.json", mkdir=False)
+    layer = next((c for c in json.loads(file.read_text())["camadas"] if c["id"] == "cor_da_agua_mapa"), None) if file.exists() else None
+    if not layer:
+        return ""
+    parts = [f"{html.escape(r['nome'])}: {SENTENCES[r['classe_da_mediana']]}" for r in layer.get("resumo", {}).values() if r.get("classe_da_mediana")]
+    if not parts:
+        return ""
+    return f"<p><b>Cor da água no satélite, a {pd.Timestamp(layer['data']).strftime('%d/%m')}:</b> " + "; ".join(parts) + ".</p>"
+
+
+def _colour_forecast_line(latest) -> str:
+    """The 4-week forecast of the water colour at Marracuene in one line (light page)."""
+    import numpy as np
+
+    from .turbidity_map import CLASSES, STEPS
+
+    file = latest / "cor_prevista.csv"
+    if not file.exists():
+        return ""
+    table = pd.read_csv(file, index_col=0, parse_dates=True)
+    column = "ndti_semana" if "ndti_semana" in table else "ndti_q8"
+    if len(table) < 28:
+        return ""
+    weeks = [f"{table.index[i * 7]:%d/%m} {CLASSES[int(np.digitize(table[column].iloc[i * 7:(i + 1) * 7].mean(), STEPS))][0]}" for i in range(4)]
+    return "<p><b>Próximas semanas em Marracuene (previsão):</b> " + " · ".join(weeks) + ".</p>"
+
+
 def write_static_page(cfg: dict) -> "Path":
     """Write the light page of the bulletin: one small HTML file with no external files, readable
     on any phone with very little network. It is the fallback when the application is asleep,
@@ -501,8 +597,10 @@ def write_static_page(cfg: dict) -> "Path":
         days = "".join(f"<tr><td>{day(d['data'])}</td><td><span class='ponto' style='background:{ALERT_COLOURS[d['alerta']]}'></span>{d['alerta']}</td><td>{d['caudal_mediana_m3s']:.0f}</td></tr>"
                        for d in data["previsao_diaria"])
     rows = "".join(f"<tr><td>{esc(str(t['troco']))}</td><td>{esc(str(t.get('estado', '')))}</td><td>{esc(str(t.get('previsao', '')))}</td></tr>" for t in data.get("turbidez", []))
-    water = (f"<div class='caixa'><h2 style='margin-top:0'>Água do rio</h2><table><tr><th>Troço</th><th>Últimos 20 dias</th><th>Mais turva nos próximos dias?</th></tr>{rows}</table>"
-             "<p class='nota'>A água do rio deve ser sempre tratada antes de beber. O satélite vê a cor da água; não mede se é segura.</p></div>") if rows else ""
+    colour_line = _water_colour_sentence(cfg) + _colour_forecast_line(latest)
+    water = (f"<div class='caixa'><h2 style='margin-top:0'>Água do rio</h2>{colour_line}"
+             + (f"<table><tr><th>Troço</th><th>Últimos 20 dias</th><th>Mais turva nos próximos dias?</th></tr>{rows}</table>" if rows else "")
+             + "<p class='nota'>A água do rio deve ser sempre tratada antes de beber. O satélite vê a cor da água; não mede se é segura.</p></div>") if rows or colour_line else ""
     app = publication.get("app_url", "")
     page = PAGE.format(text="black" if level == "AMARELO" else "white", colour=colour, level=level, headline=headline, advice=advice, places=places, days=days, water=water,
                        issued=pd.Timestamp(status["emitido_utc"]).strftime("%d/%m/%Y, %H:%M UTC"), issued_iso=status["emitido_utc"], stale=int(publication.get("stale_after_hours", 36)),
@@ -516,8 +614,40 @@ def write_static_page(cfg: dict) -> "Path":
 def export_package(cfg: dict) -> dict:
     """Rebuild the whole package (about a minute)."""
     folder = path(cfg, "platform")
-    entries = export_static(cfg, folder) + export_water_maps(cfg, folder) + export_series(cfg, folder) + export_quality(cfg, folder) + export_models(cfg, folder) + export_daily(cfg, folder)
+    from . import place_images, satellite_images
+
+    entries = (export_static(cfg, folder) + export_water_maps(cfg, folder) + export_series(cfg, folder) + export_quality(cfg, folder) + export_water_colour(cfg, folder)
+               + export_water_colour_models(cfg, folder) + satellite_images.export(cfg, folder) + export_models(cfg, folder) + export_daily(cfg, folder))
+    entries += place_images.export(cfg, folder)          # after export_static: it needs the river sections of the package
     return _write_catalogue(cfg, folder, entries)
+
+
+def export_water_colour_models(cfg: dict, folder) -> list[dict]:
+    """What the pages need to draw the water colour of the past months and of the next weeks: the map
+    model cut to the picture, its land and names, the months since 2017, and the tests of the models."""
+    from . import water_colour_model as wm
+
+    source, out = wm.folder(cfg), folder / "modelos"
+    if not (source / "modelo_mapa.tif").exists():
+        return []
+    wm.prepare_map_layers(cfg, out)
+    if (source / "mapa_cor_meses.npz").exists():
+        wm.monthly_summary(cfg)
+    for name in ("teste_modelo_marracuene.csv", "teste_modelo_mapa.json", "mapa_cor_meses.npz", "meses_resumo.csv"):
+        if (source / name).exists():
+            shutil.copy2(source / name, out / name)
+    tables = {k: f"modelos/{f}" for k, f in (("meses_resumo", "meses_resumo.csv"), ("teste_marracuene", "teste_modelo_marracuene.csv")) if (out / f).exists()}
+    return [{"id": "cor_da_agua_tempo", "titulo": "A cor da água no passado e nas próximas semanas", "tipo": "modelo", "ficheiro": "modelos/mapa_cor_modelo.npz",
+             "fundo": "modelos/mapa_cor_fundo.png", "letras": "modelos/mapa_cor_letras.png", "tabelas": tables,
+             **({"meses": "modelos/mapa_cor_meses.npz"} if (out / "mapa_cor_meses.npz").exists() else {}), "atualizacao": "semanal (meses) e diária (previsão)",
+             "descricao": "Mapas da cor da água de cada mês desde 2017 e o modelo que desenha os mapas previstos para as próximas 4 semanas.",
+             "limites": "Os mapas previstos são uma indicação: nos testes, a cor certa ou a do degrau ao lado saiu em 77-84 % das manhãs. Nas cheias grandes, a água mais barrenta pode ficar fora da leitura."}]
+
+
+def refresh_water_colour(cfg: dict) -> dict:
+    """Put the latest map of the water colour, the past months and the forecast model in the package (weekly, after turbidity_map.update)."""
+    folder = path(cfg, "platform")
+    return _write_catalogue(cfg, folder, export_water_colour(cfg, folder) + export_water_colour_models(cfg, folder))
 
 
 def refresh_daily(cfg: dict) -> dict:
@@ -530,4 +660,9 @@ def refresh_daily(cfg: dict) -> dict:
     state = folder / "qualidade" / "estado_por_troco.csv"
     if raw and (not state.exists() or state.stat().st_mtime < max(f.stat().st_mtime for f in raw)):     # new Module Q images since the last export
         entries += export_quality(cfg, folder)
+    from . import turbidity_map as tm
+
+    found, drawn = tm.latest(cfg), folder / "mapas" / "cor_da_agua.png"
+    if found and (not drawn.exists() or drawn.stat().st_mtime < found[0].stat().st_mtime):              # a new map of the water colour
+        entries += export_water_colour(cfg, folder)
     return _write_catalogue(cfg, folder, entries)

@@ -17,9 +17,11 @@ import pandas as pd
 import idioma as L
 from idioma import t
 
-SERIES = ["#0F766E", "#5B55C9", "#C2457A"]        # fixed order; never more than three series at once
-INK, MUTED, GRID, BAND = "#10231F", "#5C6B66", "#EEE9DD", "#E3DDCF"
-SURFACE, QUIET, SOFT_SERIES = "#FFFFFF", "#C5D3CE", "#8FCFC4"
+# Fixed order; never more than three series at once. Marine blue first (the water; close to the Copernicus marine service),
+# then pink and violet: checked with the data-viz validator (light mode, all pairs, colour-blind safe; the pink needs the legend).
+SERIES = ["#1F5F8F", "#E07A9F", "#8C6BB1"]
+INK, MUTED, GRID, BAND = "#212529", "#6C6E74", "#ECECF2", "#E4E3EC"
+SURFACE, QUIET, SOFT_SERIES = "#FFFFFF", "#C9CBD6", "#A9C4DC"
 FONT = "'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif"
 _AXIS = dict(grid=True, gridColor=GRID, domainColor=GRID, tickColor=GRID, labelColor=MUTED, titleColor=MUTED, labelFontSize=11, titleFontSize=11, titlePadding=10,
              titleFontWeight=600, labelPadding=6, tickSize=4)
@@ -119,7 +121,7 @@ def alert_days(yearly: pd.DataFrame, colours: dict):
     long["nivel"] = long["alerta"].map(order.index)
     long["alerta"] = long["alerta"].map(t)
     chart = alt.Chart(long).mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3, stroke="white", strokeWidth=1).encode(
-        x=alt.X("ano:O", title=t("Ano hidrológico (de outubro a setembro)"), axis=alt.Axis(labelAngle=0)), y=alt.Y("dias:Q", title=t("Dias")),
+        x=alt.X("ano:O", title=t("Ano hidrológico (de outubro a setembro)"), axis=alt.Axis(labelAngle=0, labelOverlap="parity")), y=alt.Y("dias:Q", title=t("Dias")),   # on a phone every other year
         color=alt.Color("alerta:N", scale=_levels(colours, order), sort=[t(k) for k in order]),
         order=alt.Order("nivel:Q"), tooltip=[alt.Tooltip("ano:O", title=t("Ano")), alt.Tooltip("alerta:N", title=t("Alerta")), alt.Tooltip("dias:Q", title=t("Dias"))])
     return _base(chart, 270)
@@ -153,7 +155,7 @@ def turbidity_heatmap(daily: pd.DataFrame):
     order = list(dict.fromkeys(long["dia"]))
     base = alt.Chart(long).encode(x=alt.X("dia:O", sort=order, title=None, axis=alt.Axis(labelAngle=0, orient="top")), y=alt.Y("troco:N", title=None))
     cells = base.mark_rect(stroke="white", strokeWidth=2, cornerRadius=4).encode(
-        color=alt.Color("prob:Q", scale=alt.Scale(domain=[0, 1], range=["#E3F1EC", "#0B4F4A"]), legend=None),
+        color=alt.Color("prob:Q", scale=alt.Scale(domain=[0, 1], range=["#EEEDF6", "#4E4A8C"]), legend=None),
         tooltip=[alt.Tooltip("troco:N", title=t("Troço")), alt.Tooltip("dia:O", title=t("Dia")), alt.Tooltip("pct:Q", title=t("Probabilidade (%)"))])
     text = base.mark_text(fontSize=11, fontWeight="bold").encode(text=alt.Text("pct:Q", format=".0f"), color=alt.condition("datum.prob > 0.5", alt.value("white"), alt.value(INK)))
     return _base(alt.layer(cells, text), 46 * daily.shape[1] + 44).configure_axis(grid=False, domain=False, ticks=False, labelColor=MUTED, labelFontSize=11)
@@ -207,9 +209,9 @@ def buildings_by_place(places: pd.DataFrame, colours: dict):
     data["categoria"] = data["categoria"].map(t)
     chart = alt.Chart(data).mark_bar(cornerRadiusTopRight=4, cornerRadiusBottomRight=4).encode(
         y=alt.Y("lugar:N", sort="-x", title=None), x=alt.X("edificios_alagados:Q", title=t("Edifícios dentro da zona de aviso (raio de 500 m)")),
-        color=alt.Color("categoria:N", scale=alt.Scale(domain=[t(k) for k in colours], range=list(colours.values()))),
+        color=alt.Color("categoria:N", scale=alt.Scale(domain=[t(k) for k in colours], range=list(colours.values())), legend=alt.Legend(columns=1)),   # one per line: fits a phone
         tooltip=[alt.Tooltip("lugar:N", title=t("Lugar")), alt.Tooltip("categoria:N", title=t("Situação")), alt.Tooltip("edificios_alagados:Q", title=t("Edifícios na zona"))])
-    return _base(chart, 26 * len(data) + 60)
+    return _base(chart, 26 * len(data) + 60 + 18 * max(len(colours) - 1, 0))
 
 
 # ----------------------------------------------------------------------------- machine learning and monitoring
@@ -258,7 +260,7 @@ def monitoring_matrix(year: pd.DataFrame, colours: dict, order: list[str]):
     chart = alt.Chart(data).mark_rect(stroke="white", strokeWidth=4, cornerRadius=7).encode(
         x=alt.X("mes_nome:O", sort=L.meses(), title=None, axis=alt.Axis(labelAngle=0, orient="top")),
         y=alt.Y("nome:N", sort=[L.troco(o) for o in order], title=None, axis=alt.Axis(labelLimit=220)),
-        color=alt.Color("classe:N", scale=alt.Scale(domain=[t(c) for c in classes], range=[colours[c] for c in classes]), legend=alt.Legend(title=None, orient="bottom")),
+        color=alt.Color("classe:N", scale=alt.Scale(domain=[t(c) for c in classes], range=[colours[c] for c in classes]), legend=alt.Legend(title=None, orient="bottom", columns=2)),
         tooltip=[alt.Tooltip("nome:N", title=t("Troço")), alt.Tooltip("month:N", title=t("Mês")), alt.Tooltip("classe:N", title=t("Estado")),
                  alt.Tooltip("ndti:Q", title=t("Índice de cor"), format=".3f"), alt.Tooltip("fonte:N", title=t("Satélite")),
                  alt.Tooltip("caudal_m3s:Q", title=t("Caudal do mês (m³/s)"), format=".0f")])
@@ -276,3 +278,65 @@ def river_profile(profile: pd.DataFrame, order: list[str]):
         tooltip=[alt.Tooltip("nome:N", title=t("Troço")), alt.Tooltip("epoca:N", title=" "), alt.Tooltip("ndti:Q", title=t("Índice de cor (mediana)"), format=".3f"),
                  alt.Tooltip("meses:Q", title=t("Meses medidos"))])
     return _base(chart, 260)
+
+
+def colour_forecast(forecast: pd.DataFrame, steps: list[float], colours: list[str], names: list[str], chosen: tuple | None = None):
+    """The colour of the river at Marracuene in the coming 30 mornings: the most likely value (line), the
+    band where 8 days out of 10 fell in the tests, over the five colour steps of the map (background).
+    `chosen` = (first day, last day) of the week shown on the map, marked."""
+    data = forecast.reset_index().rename(columns={"index": "date"})
+    data["date"] = pd.to_datetime(data["date"])
+    low = float(min(data["p10"].min(), steps[0]) - 0.03)
+    high = float(max(data["p90"].max(), steps[-1]) + 0.03)
+    edges = [low] + list(steps) + [high]
+    first, last = data["date"].min() - pd.Timedelta(hours=12), data["date"].max() + pd.Timedelta(hours=12)
+    bands = pd.DataFrame({"de": edges[:-1], "ate": edges[1:], "degrau": [t(n) for n in names], "x0": first, "x1": last})
+    background = alt.Chart(bands).mark_rect(opacity=0.30).encode(
+        x=alt.X("x0:T", title=None, axis=alt.Axis(format="%d/%m", labelOverlap="parity")), x2="x1:T",
+        y=alt.Y("de:Q", scale=alt.Scale(domain=[low, high], nice=False), title=t("Cor da água em Marracuene (índice)")), y2="ate:Q",
+        color=alt.Color("degrau:N", scale=alt.Scale(domain=[t(n) for n in names], range=colours), legend=None))
+    labels = alt.Chart(bands.assign(meio=(bands["de"] + bands["ate"]) / 2)).mark_text(align="right", dx=-6, fontSize=10, fontWeight=600, color=INK).encode(
+        x="x1:T", y="meio:Q", text="degrau:N")
+    band = alt.Chart(data).mark_area(opacity=0.22, color=INK).encode(x="date:T", y="p10:Q", y2="p90:Q")
+    line = alt.Chart(data).mark_line(color=INK, strokeWidth=2.2).encode(
+        x="date:T", y="ndti_q8:Q",
+        tooltip=[alt.Tooltip("date:T", title=t("Dia"), format="%d/%m"), alt.Tooltip("classe:N", title=t("Cor prevista")),
+                 alt.Tooltip("ndti_q8:Q", title=t("Índice"), format=".3f")])
+    layers = [background, labels, band, line]
+    if chosen:
+        week = pd.DataFrame({"de": [pd.Timestamp(chosen[0]) - pd.Timedelta(hours=12)], "ate": [pd.Timestamp(chosen[1]) + pd.Timedelta(hours=12)]})
+        layers.append(alt.Chart(week).mark_rect(fillOpacity=0, stroke=INK, strokeWidth=1.6, strokeDash=[4, 3]).encode(x="de:T", x2="ate:T"))
+    return _base(alt.layer(*layers), 250)
+
+
+def same_month(summary: pd.DataFrame, month: int, chosen: str, steps: list[float], colours: list[str], names: list[str], forecast: float | None = None,
+               forecast_year: int | None = None):
+    """The colour of the river at Marracuene in the same month of every year (one point per year, in the
+    colour of its step), the chosen year ringed, and this year's forecast as a hollow point."""
+    data = summary[summary.index.str[5:7].astype(int) == month].dropna(subset=["ndti_marracuene"]).copy()
+    data["ano"] = data.index.str[:4].astype(int)
+    data["degrau"] = [t(names[int(sum(v >= s for s in steps))]) for v in data["ndti_marracuene"]]
+    data["escolhido"] = data.index == chosen
+    values = list(data["ndti_marracuene"]) + ([forecast] if forecast is not None else [])
+    low, high = min(values + [steps[0]]) - 0.03, max(values + [steps[-1]]) + 0.03
+    edges = [low] + list(steps) + [high]
+    years = list(range(int(data["ano"].min()) if len(data) else 2017, max(int(data["ano"].max()) if len(data) else 2026, forecast_year or 0) + 1))
+    bands = pd.DataFrame({"de": edges[:-1], "ate": edges[1:], "nome": [t(n) for n in names], "x0": years[0] - 0.5, "x1": years[-1] + 0.5})
+    scale_x = alt.Scale(domain=[years[0] - 0.5, years[-1] + 0.5], nice=False)
+    background = alt.Chart(bands).mark_rect(opacity=0.28).encode(
+        x=alt.X("x0:Q", scale=scale_x, title=None, axis=alt.Axis(values=years, format="d", labelOverlap="parity")), x2="x1:Q",
+        y=alt.Y("de:Q", scale=alt.Scale(domain=[low, high], nice=False), title=t("Cor da água em Marracuene (índice)")), y2="ate:Q",
+        color=alt.Color("nome:N", scale=alt.Scale(domain=[t(n) for n in names], range=colours), legend=None))
+    points = alt.Chart(data).mark_circle(size=150, stroke="white", strokeWidth=1.5, opacity=1).encode(
+        x=alt.X("ano:Q", scale=scale_x), y="ndti_marracuene:Q",
+        color=alt.Color("degrau:N", scale=alt.Scale(domain=[t(n) for n in names], range=colours), legend=None),
+        tooltip=[alt.Tooltip("ano:Q", title=t("Ano"), format="d"), alt.Tooltip("degrau:N", title=t("Cor da água")),
+                 alt.Tooltip("caudal_m3s:Q", title=t("Caudal médio (m³/s)"), format=".0f")])
+    ring = alt.Chart(data[data["escolhido"]]).mark_point(size=420, shape="circle", filled=False, color=INK, strokeWidth=2.2).encode(x=alt.X("ano:Q", scale=scale_x), y="ndti_marracuene:Q")
+    layers = [background, points, ring]
+    if forecast is not None and forecast_year:
+        guess = pd.DataFrame({"ano": [forecast_year], "valor": [forecast], "texto": [t("previsão")]})
+        layers.append(alt.Chart(guess).mark_point(size=260, shape="diamond", filled=False, color=INK, strokeWidth=2, strokeDash=[3, 2]).encode(
+            x=alt.X("ano:Q", scale=scale_x), y="valor:Q", tooltip=[alt.Tooltip("texto:N", title=" ")]))
+        layers.append(alt.Chart(guess).mark_text(dy=-16, fontSize=11, fontWeight=600, color=INK).encode(x=alt.X("ano:Q", scale=scale_x), y="valor:Q", text="texto:N"))
+    return _base(alt.layer(*layers), 230)

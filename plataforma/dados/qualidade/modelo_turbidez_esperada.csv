@@ -1,10 +1,10 @@
 troco,nome,imagens,anos,r2_chuva_caudal_mare,r2_epoca_do_ano,corr_com_caudal,modelo_fiavel
-Q1,Q1 fronteira / Ressano Garcia,416,10,0.028,-0.277,0.38,False
-Q2,Q2 km 37 a 74,425,10,0.212,0.011,0.524,False
-Q3,Q3 km 74 a 110,457,10,0.017,-0.177,-0.112,False
-Q4,Q4 Magude,424,10,0.199,0.05,0.456,False
-Q5,Q5 Xinavane,773,10,0.209,0.041,0.516,False
-Q6,Q6 km 184 a 221,772,10,-0.023,-0.036,0.132,False
-Q7,Q7 Manhiça,1129,21,-0.005,-0.019,0.089,False
-Q8,Q8 Marracuene,1303,21,0.005,-0.016,0.141,False
-Q9,Q9 foz / estuário,1310,21,0.518,0.12,0.416,True
+Q1,Q1 fronteira / Ressano Garcia,416,10,0.033,-0.275,0.382,False
+Q2,Q2 km 37 a 74,425,10,0.206,0.014,0.525,False
+Q3,Q3 km 74 a 110,457,10,0.018,-0.177,-0.111,False
+Q4,Q4 Magude,424,10,0.191,0.049,0.448,False
+Q5,Q5 Xinavane,770,10,0.208,0.042,0.516,False
+Q6,Q6 km 184 a 221,740,10,0.051,-0.03,0.072,False
+Q7,Q7 Manhiça,1118,21,0.004,-0.031,0.088,False
+Q8,Q8 Marracuene,1300,21,0.026,-0.02,0.144,False
+Q9,Q9 foz / estuário,1310,21,0.523,0.123,0.419,True

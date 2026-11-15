@@ -5,7 +5,9 @@
 Simula uma cheia do princípio ao fim (verde, laranja, laranja no dia seguinte, lembrete, vermelho,
 verde) com inscritos de teste, e verifica: quem recebe o quê e quando; que cada alerta diz pelo
 menos dois lugares, com o lugar da pessoa primeiro quando está em risco; que nada sai com um
-boletim antigo; e que nenhum número de telefone fica no registo dos envios.
+boletim antigo; que nenhum número de telefone fica no registo dos envios; e a versão 2: a boas-vindas
+com a situação dos próximos 10 dias (cheias e cor da água, dia a dia) e um conselho pessoal, o cartão
+de situação, o pedido exacto à API da Meta (imagem, texto, dois botões) e a boas-vindas imediata.
 """
 
 import json
@@ -34,8 +36,9 @@ class Gravador:
     def __init__(self):
         self.enviadas = []
 
-    def enviar(self, numero, tipo, lingua, texto, parametros):
+    def enviar(self, numero, tipo, lingua, texto, parametros, imagem=None, chave_imagem="", botoes=None):
         self.enviadas.append((numero, tipo, lingua, texto, parametros))
+        self.extras = getattr(self, "extras", []) + [(imagem, botoes)]
         return True, ""
 
     def concluir(self):
@@ -136,11 +139,16 @@ resumo, enviadas = correr("laranja")
 check("laranja: alerta a todos", [t for _, t, *_ in enviadas] == ["alerta", "alerta"], resumo["motivo"])
 texto_en = next(texto for _, _, l, texto, _ in enviadas if l == "en")
 # Mecaline floods only in a large flood: at orange it is not named; at red it comes first, marked as the person's place
-check("alerta laranja em inglês diz ORANGE e só lugares que alagam primeiro", "ORANGE" in texto_en and "Mecaline" not in texto_en, texto_en)
+linha_dos_lugares = next((l for l in texto_en.splitlines() if l.startswith("Places that may flood")), "")     # the link at the end opens the person's own place
+check("alerta laranja em inglês diz ORANGE e só lugares que alagam primeiro", "ORANGE" in texto_en and linha_dos_lugares and "Mecaline" not in linha_dos_lugares, texto_en)
+import re as _re
+check("as mensagens não têm emojis (só texto)", not any(_re.search("[\U0001F300-\U0001FAFF\u2600-\u27BF\u2B00-\u2BFF\uFE0F]", texto) for _, _, _, texto, _ in enviadas), texto_en)
+check("os 10 dias vêm em palavras, com as datas", "until" in linha_dos_lugares or "Next 10 days:" in texto_en, texto_en)
+check("a ligação da mensagem abre a página do lugar da pessoa", "?p=zona&lugar=" in texto_en or "—" in texto_en or "http" not in texto_en, texto_en)
 check("sem endereço da plataforma, a mensagem não mostra traços", "—" not in texto_en, texto_en)
 for _, _, _, texto, parametros in enviadas:
-    nomes = parametros[2].split(", ")
-    check("alerta com pelo menos dois lugares", len(nomes) >= 2, parametros[2])
+    nomes = parametros[3].split(", ")
+    check("alerta com pelo menos dois lugares", len(nomes) >= 2, parametros[3])
     check("parâmetros do modelo sem mudanças de linha", all("\n" not in p for p in parametros))
 base_dicas = I.BaseSQLite(pasta / "dicas.db")
 I.inscrever("84 777 0001", "Machubo", "pt", consentimento=True, destino=base_dicas, sexo="mulher", faixa_etaria="60_mais", profissao="agricultor")
@@ -174,6 +182,75 @@ registo = A.ESTADO.read_text()
 numeros = [r["telefone"] for r in loja.listar()]
 check("o registo dos envios não tem números de telefone", not any(n in registo or n[3:] in registo for n in numeros))
 check("o resumo não tem números de telefone", not any(n in json.dumps(resumo) for n in numeros))
+
+# ----------------------------------------------------------------------------- the welcome with the situation of the next 10 days (version 2)
+verde = boletim("verde")
+pessoa = {"lugar": "Machubo", "lingua": "pt", "profissao": "pescador"}
+texto, parametros = A.mensagem("boas_vindas", pessoa, verde, lugares, {}, A.prevista_da_cor())
+check("boas-vindas: diz as cheias dos próximos 10 dias, com a data", "Cheias nos próximos 10 dias: verde até " in texto, texto)
+import pandas as pd
+dias_teste = pd.Series(["verde", "verde", "laranja", "laranja", "vermelho"], index=pd.date_range("2026-11-16", periods=5))
+check("os 10 dias em palavras: períodos com as datas", A.periodos(dias_teste, {"verde": "verde", "laranja": "laranja", "vermelho": "vermelho"}, "pt")
+      == "verde até 17/11, laranja de 18/11 a 19/11, vermelho a 20/11", A.periodos(dias_teste, {}, "pt"))
+check("boas-vindas: diz a cor da água e para tratar a água", "Água do rio em Marracuene" in texto and "Trate sempre a água" in texto, texto)
+check("boas-vindas: conselho pessoal do pescador", "barco" in parametros[4], parametros[4])
+check("boas-vindas: 5 parâmetros sem mudanças de linha e nenhum vazio", len(parametros) == 5 and all(p and "\n" not in p for p in parametros), str(parametros))
+com_nome, parametros_com_nome = A.mensagem("boas_vindas", {**pessoa, "nome": "  Ana   Cossa "}, verde, lugares, {}, A.prevista_da_cor())
+check("boas-vindas: trata a pessoa pelo nome completo", com_nome.startswith("Olá, Ana Cossa!") and parametros_com_nome[0] == "Ana Cossa", com_nome[:40])
+check("sem nome (inscrições antigas), um tratamento neutro", texto.startswith("Olá, amigo(a)!") and parametros[0] == "amigo(a)", texto[:40])
+alerta_com_nome, _ = A.mensagem("alerta", {"lugar": "Machubo", "lingua": "en", "nome": "Ana Cossa"}, verde, lugares, {})
+check("o alerta começa pelo nome: «Attention, Ana Cossa: FLOOD ALERT…»", alerta_com_nome.startswith("Attention, Ana Cossa: FLOOD ALERT"), alerta_com_nome[:50])
+check("boas-vindas: o texto do modelo cabe no limite da Meta (1024)", all(len(A.TEXTOS_MENSAGEM[t_][l]) + sum(len(p) for p in parametros) < 1024
+                                                                          for t_ in A.TEXTOS_MENSAGEM for l in ("pt", "en", "fr")))
+check("modelos não começam nem acabam com uma variável", all(not v.strip().startswith("{") and not v.strip().endswith("}")
+                                                            for t_ in A.TEXTOS_MENSAGEM.values() for v in t_.values()))
+png = A.cartao(verde, A.prevista_da_cor(), "pt")
+check("o cartão de situação é uma imagem PNG", png is not None and png[:4] == b"\x89PNG" and len(png) < 300_000, str(len(png or b"")))
+
+
+class MetaFalsa:
+    """Answers like the WhatsApp Cloud API and keeps what it was asked."""
+
+    def __init__(self):
+        self.pedidos = []
+
+    class R:
+        ok, status_code = True, 200
+
+        def __init__(self, dados):
+            self.dados = dados
+
+        def json(self):
+            return self.dados
+
+    def post(self, url, headers=None, json=None, files=None, data=None, timeout=None):
+        self.pedidos.append((url, json, bool(files)))
+        return self.R({"id": "IMAGEM-123"} if url.endswith("/media") else {"messages": [{"id": "wamid.1"}]})
+
+
+meta = MetaFalsa()
+api = A.EnvioAPI("token-de-teste", "123456")
+api.requests = meta
+loja_nova = I.BaseSQLite(pasta / "agora.db")
+I.inscrever("84 999 1234", "Machubo", "pt", consentimento=True, destino=loja_nova, profissao="pescador")
+ok, erro = A.boas_vindas_agora("258849991234", loja=loja_nova, envio=api, boletim=verde)
+mensagens = [j for url, j, _ in meta.pedidos if url.endswith("/messages")]
+check("boas-vindas imediata: sai logo pela API", ok and len(mensagens) == 1, erro)
+if mensagens:
+    modelo = mensagens[0]["template"]
+    tipos = [c["type"] for c in modelo["components"]]
+    check("pela API: modelo v2 com a imagem no topo, o texto e os dois botões", modelo["name"] == "ete_boas_vindas_v2" and tipos == ["header", "body", "button", "button"], str(tipos))
+    check("pela API: a imagem foi carregada uma vez e usada pelo id", sum(1 for _, _, f in meta.pedidos if f) == 1
+          and modelo["components"][0]["parameters"][0]["image"]["id"] == "IMAGEM-123")
+    check("pela API: os botões levam à página do lugar da pessoa e à página para sair", [c["parameters"][0]["text"] for c in modelo["components"][2:]]
+          == ["?p=zona&lugar=Machubo&lang=pt", "?p=alertas&lang=pt"])
+check("sem lugar escolhido, o botão leva à primeira página", A.sufixos("pt") == ["?p=inicio&lang=pt", "?p=alertas&lang=pt"])
+check("um lugar com espaços e acentos fica bem escrito no endereço", A.sufixos("fr", "São Francisco Xavier")[0] == "?p=zona&lugar=S%C3%A3o%20Francisco%20Xavier&lang=fr")
+check("boas-vindas imediata: fica registada e não se repete", A.boas_vindas_agora("258849991234", loja=loja_nova, envio=api, boletim=verde) == (False, "já recebeu"))
+resumo, enviadas = None, None
+gravador = Gravador()
+A.executar(loja=loja_nova, envio=gravador, boletim=verde, gravar_estado=False)
+check("a corrida diária não repete a boas-vindas de quem já a recebeu", gravador.enviadas == [])
 
 print("ALERTAS SEM ERROS" if not failures else f"{failures} ERRO(S)")
 sys.exit(1 if failures else 0)

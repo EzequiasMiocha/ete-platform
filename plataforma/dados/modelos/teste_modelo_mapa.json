@@ -1,0 +1,27 @@
+{
+ "dias": 96,
+ "periodo": [
+  "2026-01-02",
+  "2026-11-13"
+ ],
+ "metodos": [
+  {
+   "metodo": "modelo do mapa",
+   "classe_certa": 46.8,
+   "classe_vizinha": 76.7,
+   "mae": 0.0518
+  },
+  {
+   "metodo": "mapa liso (a cor de Marracuene em todo o rio)",
+   "classe_certa": 38.3,
+   "classe_vizinha": 72.6,
+   "mae": 0.0549
+  },
+  {
+   "metodo": "a cor habitual de cada ponto",
+   "classe_certa": 26.7,
+   "classe_vizinha": 54.9,
+   "mae": 0.0773
+  }
+ ]
+}

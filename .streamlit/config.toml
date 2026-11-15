@@ -1,13 +1,13 @@
 # Aparência e servidor da aplicação ETE (as cores e a tipografia vêm de tema.py; aqui ficam
-# os valores de base, para os componentes do Streamlit nascerem já com a paleta "Incomáti")
+# os valores de base, para os componentes do Streamlit nascerem já com a paleta do Copernicus)
 [theme]
 base = "light"
-primaryColor = "#0F766E"
-backgroundColor = "#F7F3EA"
-secondaryBackgroundColor = "#F1ECDF"
-textColor = "#10231F"
-linkColor = "#0F766E"
-borderColor = "#E8E1D2"
+primaryColor = "#615C9F"
+backgroundColor = "#F6F6F9"
+secondaryBackgroundColor = "#EFEFF4"
+textColor = "#212529"
+linkColor = "#4E4A8C"
+borderColor = "#E2E1EA"
 baseRadius = "large"
 font = "sans-serif"
 

@@ -92,7 +92,7 @@ def _turbidity_skill_text(cfg: dict) -> str:
     return text + (f"; {num(other[0])} noutro satélite e noutros anos). " if other else "). ")
 
 
-ICONS = {"verde": "🟢", "amarelo": "🟡", "laranja": "🟠", "vermelho": "🔴"}
+# the message for community leaders is plain text: no emojis (one emoji makes a phone send an SMS in many more parts)
 
 
 def whatsapp_message(data: dict) -> str:
@@ -103,7 +103,7 @@ def whatsapp_message(data: dict) -> str:
                 "Siga os avisos do INGD, do INAM e da ARA-Sul.")
     day = lambda text: pd.Timestamp(text).strftime("%d/%m")
     level = data["nivel_maximo_provavel"]
-    lines = [f"{ICONS[level]} ETE - Rio Incomáti, Marracuene ({day(data['emitido_utc'][:10])})", f"ALERTA {level.upper()} até {day(data['valido_ate'])}"]
+    lines = [f"ETE - Rio Incomáti, Marracuene ({day(data['emitido_utc'][:10])})", f"ALERTA {level.upper()} até {day(data['valido_ate'])}"]
     if level != "verde":
         lines.append(f"Dia mais crítico: {day(data['dia_mais_critico'])}")
     if data.get("nivel_maximo_possivel") not in (None, level):
@@ -274,6 +274,12 @@ def run_daily(cfg: dict, offline: bool = False) -> dict:
         turbidity = forecast_models.turbidity_outlook(cfg, fc)
     except Exception as err:
         status["problemas"].append(f"previsão de turbidez indisponível: {type(err).__name__}")
+    colour = None
+    try:                                     # the colour of the water at Marracuene for 30 days (feeds the forecast maps of the page)
+        from . import water_colour_model
+        colour = water_colour_model.forecast_reach(cfg, fc)
+    except Exception as err:
+        status["problemas"].append(f"previsão da cor da água a 30 dias indisponível: {type(err).__name__}")
     status["estado"] = "ok" if not status["desatualizado"] else "desatualizado"
     data, text = build_bulletin(cfg, fc, outlook, turbidity, model_c, status)
 
@@ -281,6 +287,8 @@ def run_daily(cfg: dict, offline: bool = False) -> dict:
     table.round(3).to_csv(latest / "previsao_alertas.csv")
     fc["discharge"].round(2).rename_axis("date").to_csv(latest / "cenarios_caudal.csv")
     fc["rain"].round(2).rename_axis("date").to_csv(latest / "chuva_bacia.csv")
+    if colour is not None and len(colour):
+        colour.round(4).to_csv(latest / "cor_prevista.csv")
     if turbidity is not None and len(turbidity):
         turbidity.round(3).to_csv(latest / "turbidez.csv")
         if len(turbidity.attrs.get("daily", [])):

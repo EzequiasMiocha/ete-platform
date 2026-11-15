@@ -72,11 +72,30 @@ def imagem(identificador: str, mes: str | None = None) -> tuple[Path, list[list[
     return DADOS / ficheiro, entrada["cantos"]
 
 
+def imagem_leve(identificador: str, mes: str | None = None) -> Path | None:
+    """A imagem pequena de uma camada (com os nomes dos lugares), ou None se o pacote não a tiver.
+    Para camadas mensais, `mes` é "AAAA-MM" (por omissão, o mais recente)."""
+    entrada = camada(identificador)
+    leve = entrada.get("mapa_leve")
+    if not leve:
+        return None
+    ficheiro = DADOS / (leve.format(mes=mes or entrada["meses"][-1]) if entrada["tipo"] == "imagem_mensal" else leve)
+    return ficheiro if ficheiro.is_file() else None
+
+
 def verificar() -> list[str]:
     """Problemas encontrados no pacote (lista vazia = tudo certo)."""
     problemas = []
     for entrada in catalogo()["camadas"]:
-        ficheiros = [entrada["ficheiro"].format(mes=m) for m in entrada["meses"]] if entrada["tipo"] == "imagem_mensal" else [entrada["ficheiro"]]
+        if entrada["tipo"] == "imagem_mensal":
+            ficheiros = [entrada[k].format(mes=m) for m in entrada["meses"] for k in ("ficheiro", "mapa_leve") if entrada.get(k)]
+        else:                                  # every file an entry points to: the main one, pictures that go with it, pairs of photographs
+            ficheiros = [entrada[k] for k in ("ficheiro", "recorte", "sobreposicao", "foto", "foto_recorte", "mapa_leve", "imagem", "fundo", "letras", "meses") if entrada.get(k)]
+            ficheiros += [par[lado]["ficheiro"] for par in entrada.get("pares", []) for lado in ("antes", "depois")]
+            if entrada["tipo"] == "lugares" and (DADOS / entrada["ficheiro"]).is_file():       # the pictures of every place
+                ficheiros += [f for r in json.loads((DADOS / entrada["ficheiro"]).read_text())["lugares"] for f in r["ficheiros"].values()]
+            if not ficheiros:
+                problemas.append(f"{entrada['id']}: não diz que ficheiro usa")
         ficheiros += list(entrada.get("tabelas", {}).values())
         for f in ficheiros:
             if not (DADOS / f).exists():
