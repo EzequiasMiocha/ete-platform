@@ -1,0 +1,197 @@
+{
+ "emitido_utc": "2026-11-15T11:03:08+00:00",
+ "valido_ate": "2026-11-25",
+ "desatualizado": false,
+ "nivel_hoje": "verde",
+ "nivel_maximo_provavel": "verde",
+ "dia_mais_critico": "2026-11-21",
+ "nivel_maximo_possivel": "verde",
+ "titulo": "Nível VERDE nos próximos 10 dias: nenhum cenário prevê cheia no Incomáti em Marracuene.",
+ "mensagem_curta": "ETE Incomáti 15/11: alerta VERDE até 25/11. Sem sinais de cheia nos próximos dias. Não substitui avisos oficiais do INGD.",
+ "conselho": "Sem sinais de cheia nos próximos dias. Não é precisa nenhuma ação especial.",
+ "lugares_que_alagam_primeiro": [],
+ "lugares_em_cheia_grande": [],
+ "zona_a_avisar": null,
+ "previsao_diaria": [
+  {
+   "data": "2026-11-15",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 20.3,
+   "caudal_p10_m3s": 20.1,
+   "caudal_p90_m3s": 20.8,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 11.3
+  },
+  {
+   "data": "2026-11-16",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 16.9,
+   "caudal_p10_m3s": 16.3,
+   "caudal_p90_m3s": 17.8,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 22.5
+  },
+  {
+   "data": "2026-11-17",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 14.6,
+   "caudal_p10_m3s": 13.2,
+   "caudal_p90_m3s": 17.1,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 24.1
+  },
+  {
+   "data": "2026-11-18",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 14.1,
+   "caudal_p10_m3s": 11.4,
+   "caudal_p90_m3s": 25.3,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 25.0
+  },
+  {
+   "data": "2026-11-19",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 20.1,
+   "caudal_p10_m3s": 12.5,
+   "caudal_p90_m3s": 51.4,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 25.0
+  },
+  {
+   "data": "2026-11-20",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 30.4,
+   "caudal_p10_m3s": 17.0,
+   "caudal_p90_m3s": 62.4,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 25.1
+  },
+  {
+   "data": "2026-11-21",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 31.6,
+   "caudal_p10_m3s": 17.9,
+   "caudal_p90_m3s": 51.1,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 21.3
+  },
+  {
+   "data": "2026-11-22",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 27.1,
+   "caudal_p10_m3s": 15.6,
+   "caudal_p90_m3s": 43.5,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 15.6
+  },
+  {
+   "data": "2026-11-23",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 21.6,
+   "caudal_p10_m3s": 12.7,
+   "caudal_p90_m3s": 34.2,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 17.3
+  },
+  {
+   "data": "2026-11-24",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 18.0,
+   "caudal_p10_m3s": 10.6,
+   "caudal_p90_m3s": 27.7,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 22.2
+  },
+  {
+   "data": "2026-11-25",
+   "alerta": "verde",
+   "alerta_possivel": "verde",
+   "caudal_mediana_m3s": 16.3,
+   "caudal_p10_m3s": 9.1,
+   "caudal_p90_m3s": 26.4,
+   "prob_laranja": 0.0,
+   "chuva_7d_mm": 24.2
+  }
+ ],
+ "turbidez": [
+  {
+   "troco": "1 montante (norte)",
+   "estado": "sem medição recente",
+   "medicoes_em_20_dias": 0,
+   "ultima_medicao": "",
+   "fiabilidade": "reduzida",
+   "medicao_usada": "",
+   "dias_elevada": -1,
+   "prob_max": NaN,
+   "dia_prob_max": "",
+   "previsao": "sem previsão"
+  },
+  {
+   "troco": "2 troço médio",
+   "estado": "sem medição recente",
+   "medicoes_em_20_dias": 0,
+   "ultima_medicao": "",
+   "fiabilidade": "boa",
+   "medicao_usada": "",
+   "dias_elevada": 2,
+   "prob_max": 0.61,
+   "dia_prob_max": "2026-11-22",
+   "previsao": "provável"
+  },
+  {
+   "troco": "3 jusante",
+   "estado": "sem medição recente",
+   "medicoes_em_20_dias": 0,
+   "ultima_medicao": "",
+   "fiabilidade": "boa",
+   "medicao_usada": "",
+   "dias_elevada": 1,
+   "prob_max": 0.58,
+   "dia_prob_max": "2026-11-23",
+   "previsao": "provável"
+  },
+  {
+   "troco": "4 foz / estuário",
+   "estado": "sem medição recente",
+   "medicoes_em_20_dias": 0,
+   "ultima_medicao": "",
+   "fiabilidade": "boa",
+   "medicao_usada": "",
+   "dias_elevada": 1,
+   "prob_max": 0.59,
+   "dia_prob_max": "2026-11-23",
+   "previsao": "provável"
+  }
+ ],
+ "aviso": "Boletim experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. A turbidez é um indicador da cor da água visto por satélite: não mede se a água é segura.",
+ "fontes": "Caudal: GloFAS v4 (Copernicus EMS) via Open-Meteo. Chuva: ECMWF IFS via Open-Meteo. Turbidez: Sentinel-2 (Copernicus). Terreno: Copernicus DEM, MERIT Hydro, JRC.",
+ "estado": {
+  "emitido_utc": "2026-11-15T11:03:08+00:00",
+  "versao_codigo": "0.1.0",
+  "fonte": "online",
+  "problemas": [],
+  "data_da_previsao": "2026-11-15",
+  "dados_obtidos_utc": "2026-11-15T11:03:11+00:00",
+  "idade_dos_dados_horas": -0.0,
+  "desatualizado": false,
+  "cenarios": 51,
+  "limites_caudal": {
+   "amarelo": 163.8,
+   "laranja": 375.8,
+   "vermelho": 969.9
+  },
+  "limites_calculados_em": "2026-10-11T13:14:26+00:00",
+  "estado": "ok"
+ }
+}
