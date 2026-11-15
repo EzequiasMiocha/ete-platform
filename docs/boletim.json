@@ -8,7 +8,7 @@
  "nivel_maximo_possivel": "verde",
  "titulo": "Nível VERDE nos próximos 10 dias: nenhum cenário prevê cheia no Incomáti em Marracuene.",
  "mensagem_curta": "ETE Incomáti 15/11: alerta VERDE até 25/11. Sem sinais de cheia nos próximos dias. Não substitui avisos oficiais do INGD.",
- "conselho": "Sem sinais de cheia nos próximos dias. Não é precisa nenhuma ação especial.",
+ "conselho": "Sem sinais de cheia nos próximos dias. Não é preciso fazer nada de especial.",
  "lugares_que_alagam_primeiro": [],
  "lugares_em_cheia_grande": [],
  "zona_a_avisar": null,
@@ -174,7 +174,7 @@
    "previsao": "provável"
   }
  ],
- "aviso": "Boletim experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. A turbidez é um indicador da cor da água visto por satélite: não mede se a água é segura.",
+ "aviso": "Boletim experimental do projecto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. A turbidez é um indicador da cor da água visto por satélite: não mede se a água é segura.",
  "fontes": "Caudal: GloFAS v4 (Copernicus EMS) via Open-Meteo. Chuva: ECMWF IFS via Open-Meteo. Turbidez: Sentinel-2 (Copernicus). Terreno: Copernicus DEM, MERIT Hydro, JRC.",
  "estado": {
   "emitido_utc": "2026-11-15T11:03:08+00:00",

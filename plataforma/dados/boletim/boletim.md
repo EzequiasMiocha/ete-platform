@@ -4,7 +4,7 @@
 
 ## Nível VERDE nos próximos 10 dias: nenhum cenário prevê cheia no Incomáti em Marracuene.
 
-**O que fazer:** Sem sinais de cheia nos próximos dias. Não é precisa nenhuma ação especial.
+**O que fazer:** Sem sinais de cheia nos próximos dias. Não é preciso fazer nada de especial.
 
 ## Previsão para os próximos dias
 
@@ -37,7 +37,7 @@ Limites de caudal: amarelo 164, laranja 376, vermelho 970 m³/s. "Alerta" é o n
 
 Não há medição por satélite nos últimos 30 dias: a previsão usa só o caudal e a maré e é menos certa. É para a manhã (cerca das 9h30), a hora a que os satélites observam o rio. A cor da água muda com o caudal e também com a maré, por isso varia de dia para dia mesmo sem chuva. "Mais turva" quer dizer entre os 25 % de dias mais turvos desse troço.
 
-A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com turbidez elevada, deixe primeiro a água assentar e filtre-a por um pano limpo: a água barrenta é mais difícil de desinfetar.
+A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com turbidez elevada, deixe primeiro a água assentar e filtre-a por um pano limpo: a água barrenta é mais difícil de desinfectar.
 
 ## Confiança e limites
 
@@ -46,4 +46,4 @@ A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com tu
 - Turbidez: índice de cor da água (NDTI) medido por satélite; dois satélites independentes concordam (correlação 0,92 no mesmo dia). A previsão dá maior probabilidade ao dia turvo em mais de 8 de cada 10 comparações entre um dia turvo e um dia normal (AUC 0,87, em anos que o modelo não viu; 0,88 noutro satélite e noutros anos). É um indicador relativo: não há medições no rio para o converter em unidades de turbidez.
 - Os limites dos alertas foram calculados com dados até 2021 e testados em 2022-2026.
 
-*Boletim experimental do projeto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. A turbidez é um indicador da cor da água visto por satélite: não mede se a água é segura.*
+*Boletim experimental do projecto Eyes to Earth. Não substitui os avisos oficiais do INGD, do INAM e da ARA-Sul. A turbidez é um indicador da cor da água visto por satélite: não mede se a água é segura.*
