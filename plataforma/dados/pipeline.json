@@ -1,5 +1,5 @@
 {
- "executado_utc": "2026-11-20T11:48:30+00:00",
+ "executado_utc": "2026-11-21T11:13:48+00:00",
  "codigo_de_saida": 0,
  "passos": [
   {
@@ -18,7 +18,7 @@
    "passo": "previsao",
    "estado": "ok",
    "detalhe": "",
-   "segundos": 3.8
+   "segundos": 4.3
   },
   {
    "passo": "pacote",
