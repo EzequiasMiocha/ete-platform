@@ -1,0 +1,18 @@
+{
+ "emitido_utc": "2026-11-22T11:33:28+00:00",
+ "versao_codigo": "0.1.0",
+ "fonte": "online",
+ "problemas": [],
+ "data_da_previsao": "2026-11-22",
+ "dados_obtidos_utc": "2026-11-22T11:33:30+00:00",
+ "idade_dos_dados_horas": -0.0,
+ "desatualizado": false,
+ "cenarios": 51,
+ "limites_caudal": {
+  "amarelo": 163.8,
+  "laranja": 375.8,
+  "vermelho": 969.9
+ },
+ "limites_calculados_em": "2026-10-11T13:14:26+00:00",
+ "estado": "ok"
+}
