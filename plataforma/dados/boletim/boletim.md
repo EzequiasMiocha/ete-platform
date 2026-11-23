@@ -1,6 +1,6 @@
 # Boletim ETE - Rio Incomáti, Marracuene
 
-**Emitido:** 2026-11-22 11:33 UTC · **Válido até:** 02/12
+**Emitido:** 2026-11-23 12:57 UTC · **Válido até:** 02/12
 
 ## Nível VERDE nos próximos 10 dias: nenhum cenário prevê cheia no Incomáti em Marracuene.
 
@@ -41,7 +41,7 @@ A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com tu
 
 ## Confiança e limites
 
-- Previsão de caudal: 51 cenários do GloFAS; dados obtidos em 2026-11-22 11:33 UTC.
+- Previsão de caudal: 51 cenários do GloFAS; dados obtidos em 2026-11-23 12:57 UTC (cópia guardada: sem ligação no momento da emissão).
 - A chuva prevista só é usada como gatilho até 7 dias à frente.
 - Turbidez: índice de cor da água (NDTI) medido por satélite; dois satélites independentes concordam (correlação 0,92 no mesmo dia). A previsão dá maior probabilidade ao dia turvo em mais de 8 de cada 10 comparações entre um dia turvo e um dia normal (AUC 0,87, em anos que o modelo não viu; 0,88 noutro satélite e noutros anos). É um indicador relativo: não há medições no rio para o converter em unidades de turbidez.
 - Os limites dos alertas foram calculados com dados até 2021 e testados em 2022-2026.
