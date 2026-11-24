@@ -1,7 +1,7 @@
 # Eyes to Earth (ETE): water quality and flood alerts for the Incomati River, Marracuene
 
 **Machine learning and satellite data for water-quality monitoring and flood alerts on the lower Incomati River,
-Marracuene district, Mozambique.** Every morning the platform says, in plain language and in Portuguese, English and
+Marracuene district, Mozambique.** Every day the platform says, in plain language and in Portuguese, English and
 French, how the river water looks and whether the river is likely to flood in the next ten days. It runs on open data
 only, by itself, at no hosting cost.
 
@@ -43,7 +43,7 @@ stays on the project computer; the code that built everything is in `src/ete/`.
 | Trained models and their metadata | `models/` |
 | Daily pipeline and checks | `scripts/` |
 | Light bulletin page (GitHub Pages) | `docs/index.html` |
-| Daily bulletin, every day at 03:15 UTC | `.github/workflows/boletim_diario.yml` |
+| Daily bulletin, once a day (scheduled 03:15 UTC) | `.github/workflows/boletim_diario.yml` |
 | Tests on every change | `.github/workflows/testes.yml` |
 | Visit that keeps the application awake | `.github/workflows/manter_acordada.yml` |
 

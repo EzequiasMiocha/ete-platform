@@ -66,7 +66,7 @@ the ground.*
 ```mermaid
 sequenceDiagram
     autonumber
-    participant GH as GitHub Actions, every day at 03h15 UTC
+    participant GH as GitHub Actions, once a day
     participant OM as Open-Meteo
     participant E as src/ete (operations.run_daily)
     participant P as Data package and light page

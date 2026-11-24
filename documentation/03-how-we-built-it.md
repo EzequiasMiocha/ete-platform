@@ -176,7 +176,7 @@ Notebooks `34` to `38`, code `src/ete/water_quality.py`, `module_q.py`, `module_
 Code `src/ete/forecast.py`, `forecast_models.py`, `operations.py`; scripts `run_daily_forecast.py`,
 `check_forecast_system.py`; notebooks `40`, `41`. Full detail in [6. Flood forecast and alerts](06-forecast-and-alerts.md).
 
-- Every morning: the 51 GloFAS discharge scenarios for the Incomati at Marracuene and the ECMWF basin rain, both through
+- Every day: the 51 GloFAS discharge scenarios for the Incomati at Marracuene and the ECMWF basin rain, both through
   the free Open-Meteo service (a few KB).
 - The alert limits were **recomputed** on the service's own 1997-2021 history (164 / 376 / 970 m³/s), because the
   forecast must be compared with limits from the same model.
@@ -222,7 +222,8 @@ Script `scripts/build_deploy_repo.py` (in the research workspace) builds this re
 pulls, rebuilds, tests and pushes in one command. Full detail in [8. Platform architecture](08-platform-architecture.md).
 
 - **GitHub** holds the code, the package and three workflows:
-  - *Boletim diário* runs the forecast every day at 03:15 UTC (05:15 in Maputo) on GitHub's servers and commits the
+  - *Boletim diário* runs the forecast every day on GitHub's servers (scheduled for 03:15 UTC, 05:15 in Maputo;
+    GitHub often starts scheduled runs hours late, in November 2026 around 11:00-13:00 UTC) and commits the
     new bulletin, so no team computer has to stay on;
   - *Testes* checks the package, every page in three languages, the accounts and the alert messages on every change;
   - *Manter a plataforma acordada* opens the app every 4 hours so the free hosting does not put it to sleep.

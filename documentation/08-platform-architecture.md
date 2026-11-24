@@ -4,7 +4,7 @@
 
 The platform is designed to run **without any team computer switched on** and **without paid services**. Heavy work
 (satellite downloads, model training) happens rarely, on the project computer. Light work (the daily forecast and
-bulletin) happens every morning on GitHub's servers. The web application only reads a small data package.
+bulletin) happens every day on GitHub's servers. The web application only reads a small data package.
 
 ## The big picture
 
@@ -18,7 +18,7 @@ flowchart LR
     end
     subgraph GitHub["GitHub: EzequiasMiocha/ete-platform"]
         REPO["Repository<br/>code, models, data package"]
-        A1["Action: Boletim diário<br/>every day 03:15 UTC"]
+        A1["Action: Boletim diário<br/>once a day"]
         A2["Action: Testes<br/>on every change"]
         A3["Action: Manter acordada<br/>every 4 hours"]
         PAGES["GitHub Pages<br/>light bulletin page (docs/)"]
@@ -109,6 +109,11 @@ Rules the application must follow (they are tested):
 | 5 | WhatsApp alerts | small | Yes, once the secrets exist |
 
 Exit code: 0 = bulletin issued, 1 = forecast unavailable, 2 = error (the Action fails and GitHub sends an email).
+
+The workflow is scheduled for 03:15 UTC (05:15 in Maputo), but GitHub does not guarantee the time of scheduled runs:
+in November 2026 they started between about 11:00 and 13:00 UTC. A bulletin stays valid for 36 hours, so a late run
+does not make the platform say "forecast unavailable"; it only means the morning bulletin is the previous day's until
+the run finishes.
 
 The monthly radar maps (Model B) are not in the daily pipeline: each month needs about 120 MB of Sentinel-1 data.
 

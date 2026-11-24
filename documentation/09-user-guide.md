@@ -148,7 +148,7 @@ once; after that, a message only when the alert for your area is orange or red, 
 
 ![Alerts: sign up](figures/platform/alerts_sign_up.jpg)
 
-**Today's message for community leaders** is a short text, updated every morning, to forward by WhatsApp or SMS to
+**Today's message for community leaders** is a short text, updated every day, to forward by WhatsApp or SMS to
 people without internet. It is written to fit in an SMS and stays in Portuguese, the language of the communities.
 
 ![Alerts: message for community leaders](figures/platform/alerts_community_leaders.jpg)

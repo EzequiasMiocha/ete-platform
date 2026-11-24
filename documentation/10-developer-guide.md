@@ -97,7 +97,7 @@ rebuilds the package; runs the same checks as GitHub; and sends nothing if a che
 repository deploy key. Streamlit Cloud updates the application in one to two minutes.
 
 If you work directly on this repository instead (for example from a fork), keep in mind that the daily workflow
-commits to `main` every morning: pull before you push.
+commits to `main` every day: pull before you push.
 
 ## Rebuild the science (research workspace)
 

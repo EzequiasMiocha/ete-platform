@@ -2,10 +2,10 @@
 
 **Machine learning and satellite data for water-quality monitoring and flood alerts on the Incomati River, Marracuene, Mozambique.**
 
-Eyes to Earth is a public web platform that watches the lower Incomati River from space. Every morning it tells the
+Eyes to Earth is a public web platform that watches the lower Incomati River from space. Every day it tells the
 people of Marracuene district two things in plain language: **how the river water looks** (its colour, a proxy for
 how much mud it carries) and **whether the river is likely to flood in the next ten days**. It is built only on open
-satellite and climate data, runs by itself every day, and costs nothing to host.
+satellite and climate data, runs by itself, and costs nothing to host.
 
 | | |
 |---|---|

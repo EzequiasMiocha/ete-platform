@@ -28,7 +28,7 @@ estimate), the highest flow since 2006. Water covered about 239 km² of the dist
 | **1. Quality: watching the river water** | Is the water today more turbid than usual for this time of year? | The colour of the water seen by satellite in nine river sections from the border to the mouth, a forecast for the coming mornings and weeks, and advice on what to do with the water |
 | **2. Quantity: warning of floods** | Will the river flood in the next ten days, and where does the water arrive first? | A 10-day alert level (green, yellow, orange, red), the warning zones with the names of the places, satellite images of the 2026 flood, and twenty years of history |
 
-Both modules end in the same place: one plain sentence, one picture and one piece of advice, updated every morning,
+Both modules end in the same place: one plain sentence, one picture and one piece of advice, updated every day,
 in Portuguese, English and French, and readable on a cheap phone with little data.
 
 ## The study area
@@ -80,7 +80,7 @@ flowchart LR
         R["Alert rules: percentiles of 25 years"]
         Q["Water colour models<br/>(tide + latest measurement)"]
     end
-    subgraph Out["Every morning"]
+    subgraph Out["Every day"]
         P["Platform: 5 pages + a page per place"]
         L["Light page and leaders' message"]
         W["WhatsApp alerts (prepared)"]
@@ -124,6 +124,6 @@ flow and the colour of the water.*
 | Week 3 | Models A and B, alert rules, validation on the January 2026 flood; water-quality analysis and Module Q |
 | Week 4 | Daily forecast in production, data package, the web application |
 | 13-15 November | Published on GitHub and Streamlit Community Cloud; daily bulletin running on GitHub Actions |
-| Since then | The bulletin is issued every morning without anyone touching a computer |
+| Since then | The bulletin is issued every day without anyone touching a computer |
 
 The detailed story, with the decisions and the evidence behind them, is in [3. How we built it](03-how-we-built-it.md).
