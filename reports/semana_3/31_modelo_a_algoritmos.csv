@@ -1,0 +1,5 @@
+algoritmo,auc_validacao_2020_21,auc_cheia_2026,segundos
+Regressão logística,0.853,0.91,2
+Random Forest,0.959,0.95,9
+Gradient Boosting (HistGB),0.962,0.959,5
+XGBoost,0.962,0.96,3

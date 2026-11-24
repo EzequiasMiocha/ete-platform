@@ -1,0 +1,7 @@
+teste,amostras,r2_log,correlacao_log,fator_tipico,razao_mediana,nota
+"turbidez: Dogliotti 2015, banda vermelha",361,0.576,0.783,2.53,0.917,fórmula usada em `turbidez_fnu`
+"sólidos suspensos: Nechad 2010, 665 nm",1354,0.484,0.698,2.745,1.07,fórmula usada em `tss_mg_l`
+clorofila-a vs NDCI: águas pouco turvas (TSS < 20 mg/L),710,,0.393,,,no GLORIA as águas turvas são sobretudo lagos com algas; no Incomáti o NDCI segue o sedimento (notebook 34)
+clorofila-a vs NDCI: águas turvas (TSS >= 20 mg/L),224,,0.82,,,no GLORIA as águas turvas são sobretudo lagos com algas; no Incomáti o NDCI segue o sedimento (notebook 34)
+sólidos suspensos vs NDTI,1354,,0.524,,,o NDTI ordena as águas pela carga de sedimento?
+transparência (Secchi) a partir da reflectância no vermelho,1346,0.718,0.848,1.753,1.0,"relação ajustada aqui e usada em `secchi_m` (validação cruzada, 5 partes)"

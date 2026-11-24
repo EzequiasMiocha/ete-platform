@@ -1,0 +1,12 @@
+{
+ "ete": {"blob": "/_blob/ec6254c77a254a28f78201d25620df93", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/logo_ete.png", "largura": 600, "altura": 600},
+ "rotulos": {"blob": "/_blob/11b8eb0d55c1005b832c8e23c914bf73", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/rotulos_2026.png", "largura": 728, "altura": 1080},
+ "swir": {"blob": "/_blob/bd019281392da96b1f0e870ed5a56da9", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/swir_2026.png", "largura": 1354, "altura": 528},
+ "mapa": {"blob": "/_blob/dd06973c5e2f0018f97e8ce757decd16", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/mapa_2026.png", "largura": 728, "altura": 1080},
+ "votos": {"blob": "/_blob/344f8754ad7bb4db55b3c5f539a26ce5", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/votos_floresta.png", "largura": 1048, "altura": 303},
+ "regressao": {"blob": "/_blob/0f9aa33317828f191870579350040096", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/regressao_caudal.png", "largura": 969, "altura": 682},
+ "treino": {"blob": "/_blob/b1c82882a95fc4979bd385c550c5bffa", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/treino_caudal.png", "largura": 1570, "altura": 630},
+ "cheia26": {"blob": "/_blob/6c19cef544f40ca939a0d313c7189782", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/cheia_2026_previsao.png", "largura": 1298, "altura": 543},
+ "boosting": {"blob": "/_blob/d0e2ddb81229685aa7ac9534b65723e9", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/modulo2/boosting_caudal.png", "largura": 1571, "altura": 630},
+ "regr_estudo": {"blob": "/_blob/2937d79a63a53a3808c307dd7762bf67", "ficheiro": "Workshop_2/0_facilitadores/imagens_para_slides/ml_regressao.png", "largura": 902, "altura": 682}
+}

@@ -22,5 +22,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts      # só o script da visita: o repositório inteiro tem os workshops e os notebooks
       - name: Abrir a plataforma
         run: python3 scripts/manter_acordada.py --url "https://ete-platform.streamlit.app" --navegador chrome --minutos 10

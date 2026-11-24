@@ -1,0 +1,5 @@
+previsao,dias,r2,mae
+modelo de IA (gradient boosting),2211,0.221,0.069
+referência: época do ano,2211,0.207,0.07
+referência: reta sobre o caudal,2211,0.229,0.069
+"modelo de IA, dias do Landsat antes de 2017",128,0.271,0.099

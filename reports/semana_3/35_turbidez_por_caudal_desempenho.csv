@@ -1,0 +1,4 @@
+previsao,dias,auc,brier,bss
+tabela por caudal (ano deixado de fora),2214,0.643,0.164,0.036
+referência: época do ano,2214,0.696,0.17,
+"tabela, dias do Landsat antes de 2017",128,0.765,0.145,

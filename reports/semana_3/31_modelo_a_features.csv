@@ -1,0 +1,6 @@
+features,auc_validacao_2020_21,auc_cheia_2026
+terreno,0.959,0.95
+terreno sem distâncias à água,0.932,0.92
+"terreno + chuva, caudal e humidade",0.982,0.966
+só HAND (modelo),0.782,0.798
+"HAND sozinho, sem modelo",0.656,0.765

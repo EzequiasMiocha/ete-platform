@@ -1,0 +1,6 @@
+caudal_m3s,dias_medidos,turbidez_elevada,intervalo_min,intervalo_max
+abaixo de 20,1415,0.139,0.124,0.154
+20 a 60,339,0.363,0.321,0.407
+60 a 164,265,0.408,0.359,0.458
+164 a 376 (amarelo),139,0.604,0.535,0.67
+acima de 376 (laranja ou mais),56,0.786,0.683,0.862

@@ -1,0 +1,81 @@
+coluna,grupo,descricao,unidade,tipo,em_falta_pct
+month,metadados,"Data do registo (mês, ano, época chuvosa/seca)",,category,0.0
+year,metadados,"Data do registo (mês, ano, época chuvosa/seca)",,int16,0.0
+month_num,metadados,"Data do registo (mês, ano, época chuvosa/seca)",,int8,0.0
+season,metadados,"Data do registo (mês, ano, época chuvosa/seca)",,category,0.0
+row,metadados,Posição do píxel na grelha de 30 m,índice,int32,0.0
+col,metadados,Posição do píxel na grelha de 30 m,índice,int32,0.0
+x,metadados,Coordenadas do centro do píxel (EPSG:32736),m,float32,0.0
+y,metadados,Coordenadas do centro do píxel (EPSG:32736),m,float32,0.0
+block_id,validacao,Bloco espacial de 3 km e grupo (fold) para validação cruzada espacial,,int32,0.0
+in_district,metadados,Verdadeiro se o píxel está dentro do distrito de Marracuene,,bool,0.0
+stratum,amostragem,Estrato de onde o píxel foi sorteado,,category,0.0
+weight,amostragem,Número de píxeis reais que esta linha representa,píxeis,float32,0.0
+fold,validacao,Bloco espacial de 3 km e grupo (fold) para validação cruzada espacial,,int8,0.0
+split,validacao,"Divisão temporal: train (até 2019), val (2020-2021), test (2022+)",,category,0.0
+label_water,rotulo,"1 = água nesse mês, 0 = não é água",,int8,0.0
+label_flood,rotulo,"1 = água fora da água permanente (cheia ou água sazonal), 0 = resto",,int8,0.0
+label_source,rotulo,"Origem do rótulo: jrc (JRC mensal), ems (mapa Copernicus EMS) ou manual (QGIS)",,category,0.0
+jrc_occurrence,rotulo_auxiliar,Frequência histórica de água (JRC). NÃO usar como feature: é quase o rótulo,%,float32,0.0
+elevation,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+slope,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+aspect,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+hand,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+log_upstream_area,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+twi,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+distance_to_river_m,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+distance_to_water_m,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+distance_to_stream_m,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+land_cover,terreno,Camada estática de terreno ou cobertura do solo,,float32,0.0
+blue,landsat,Refletância de superfície Landsat (mediana mensal),0-1,float32,24.3
+green,landsat,Refletância de superfície Landsat (mediana mensal),0-1,float32,24.3
+red,landsat,Refletância de superfície Landsat (mediana mensal),0-1,float32,24.3
+nir,landsat,Refletância de superfície Landsat (mediana mensal),0-1,float32,24.3
+swir1,landsat,Refletância de superfície Landsat (mediana mensal),0-1,float32,24.3
+swir2,landsat,Refletância de superfície Landsat (mediana mensal),0-1,float32,24.3
+ndwi,landsat,Índice espectral Landsat,,float32,24.4
+mndwi,landsat,Índice espectral Landsat,,float32,24.4
+ndvi,landsat,Índice espectral Landsat,,float32,24.4
+ndmi,landsat,Índice espectral Landsat,,float32,24.7
+awei_sh,landsat,Índice espectral Landsat,,float32,24.3
+awei_nsh,landsat,Índice espectral Landsat,,float32,24.3
+landsat_n_obs,landsat,Qualidade Landsat: nº de observações limpas / satélites usados,,float32,0.0
+landsat_sensors,landsat,Qualidade Landsat: nº de observações limpas / satélites usados,,str,0.0
+rain_basin_mm,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_basin_max_day,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_basin_max_p7,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_basin_pct,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_basin_p30_pct_max,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+imerg_basin_mm,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_district_mm,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_district_max_day,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_district_max_p7,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_district_pct,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+rain_district_p30_pct_max,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+imerg_district_mm,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.0
+sm_era5_l1_basin,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+sm_era5_l1_district,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+sm_era5_l2_basin,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+sm_era5_l2_district,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+runoff_mm_basin,hidrometeorologia,"Escoamento, evaporação e temperatura (ERA5-Land)",mm ou °C,float32,0.0
+runoff_mm_district,hidrometeorologia,"Escoamento, evaporação e temperatura (ERA5-Land)",mm ou °C,float32,0.0
+evap_mm_basin,hidrometeorologia,"Escoamento, evaporação e temperatura (ERA5-Land)",mm ou °C,float32,0.0
+evap_mm_district,hidrometeorologia,"Escoamento, evaporação e temperatura (ERA5-Land)",mm ou °C,float32,0.0
+temp_c_basin,hidrometeorologia,"Escoamento, evaporação e temperatura (ERA5-Land)",mm ou °C,float32,0.0
+temp_c_district,hidrometeorologia,"Escoamento, evaporação e temperatura (ERA5-Land)",mm ou °C,float32,0.0
+smap_surface_basin,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,52.0
+smap_surface_district,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,52.0
+smap_rootzone_basin,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,52.0
+smap_rootzone_district,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,52.0
+q_mean,caudal,"Caudal GloFAS em Marracuene: média, máximo, percentil",m3/s,float32,0.0
+q_max,caudal,"Caudal GloFAS em Marracuene: média, máximo, percentil",m3/s,float32,0.0
+q_pct,caudal,"Caudal GloFAS em Marracuene: média, máximo, percentil",m3/s,float32,0.0
+q_provisional,caudal,"Caudal GloFAS em Marracuene: média, máximo, percentil",m3/s,float32,0.0
+sm_cal_basin,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+sm_cal_district,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+sm_root_cal_basin,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+sm_root_cal_district,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.0
+rain_basin_mm_lag1,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.6
+rain_district_mm_lag1,chuva,"Chuva mensal: total, máximos e percentis (bacia e distrito)",mm ou percentil,float32,0.6
+sm_cal_basin_lag1,humidade_solo,"Humidade do solo (ERA5-Land, ERA5-Land calibrado, SMAP)",m3/m3,float32,0.6
+q_mean_lag1,caudal,"Caudal GloFAS em Marracuene: média, máximo, percentil",m3/s,float32,0.6

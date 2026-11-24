@@ -1,0 +1,581 @@
+month,troco,pixeis_de_agua,parte_do_troco_observada,ndti,ndci,red,n_obs,turbidez,clorofila_ind,possivel_sinal_de_algas
+2017-01,1 montante (norte),64797,0.82854,-0.02463,0.02714,0.0573,2.0,normal,normal,False
+2017-02,1 montante (norte),25894,0.3311,0.0813,0.02533,0.0311,1.0,muito elevado,normal,False
+2017-03,1 montante (norte),68947,0.88161,-0.00334,0.07166,0.0422,2.0,normal,muito elevado,True
+2017-04,1 montante (norte),71432,0.91338,0.04545,0.03717,0.046,1.0,muito elevado,normal,False
+2017-05,1 montante (norte),71145,0.90971,0.05115,-0.01651,0.0435,4.0,muito elevado,normal,False
+2017-06,1 montante (norte),71725,0.91713,-0.01709,0.06731,0.0472,9.0,normal,elevado,True
+2017-07,1 montante (norte),71795,0.91802,-0.07925,0.05108,0.0389,8.0,normal,normal,False
+2017-08,1 montante (norte),72148,0.92254,-0.04536,0.01438,0.0456,5.0,normal,normal,False
+2017-09,1 montante (norte),70376,0.89988,-0.07863,0.01263,0.0445,4.0,normal,normal,False
+2017-10,1 montante (norte),70040,0.89558,-0.06167,0.01007,0.0503,5.0,normal,normal,False
+2017-11,1 montante (norte),69580,0.8897,0.01871,0.01119,0.1128,2.0,elevado,normal,False
+2017-12,1 montante (norte),66764,0.85369,0.02104,0.00133,0.0716,1.0,muito elevado,normal,False
+2018-01,1 montante (norte),66595,0.85153,0.01598,0.01357,0.065,1.0,elevado,normal,False
+2018-02,1 montante (norte),1398,0.01788,-0.04722,0.03257,0.0816,1.0,normal,normal,False
+2018-03,1 montante (norte),59797,0.76461,-0.02426,0.03129,0.0528,1.0,normal,normal,False
+2018-04,1 montante (norte),54130,0.69215,0.015,0.01619,0.0604,2.0,elevado,normal,False
+2018-05,1 montante (norte),52075,0.66587,0.02148,-0.01362,0.0504,4.0,muito elevado,normal,False
+2018-06,1 montante (norte),53795,0.68786,0.01063,0.01754,0.0578,4.0,elevado,normal,False
+2018-07,1 montante (norte),59301,0.75827,0.00175,0.0009,0.0572,1.0,normal,normal,False
+2018-09,1 montante (norte),63304,0.80945,-0.09871,-0.04259,0.0412,5.0,normal,normal,False
+2018-10,1 montante (norte),66239,0.84698,-0.02742,0.00157,0.0748,3.0,normal,normal,False
+2018-11,1 montante (norte),65474,0.8372,-0.17822,-0.14286,0.0266,1.0,normal,normal,False
+2018-12,1 montante (norte),65916,0.84285,-0.0967,-0.02895,0.0387,4.0,normal,normal,False
+2019-01,1 montante (norte),66172,0.84612,-0.05541,0.01777,0.0744,5.0,normal,normal,False
+2019-02,1 montante (norte),68708,0.87855,-0.02316,0.03391,0.0634,4.0,normal,normal,False
+2019-03,1 montante (norte),62787,0.80284,-0.00514,0.06829,0.0592,7.0,normal,elevado,True
+2019-04,1 montante (norte),65343,0.83552,0.0156,0.0406,0.0448,7.0,elevado,normal,False
+2019-05,1 montante (norte),70437,0.90066,0.06211,0.02642,0.0453,11.0,muito elevado,normal,False
+2019-06,1 montante (norte),70072,0.89599,0.04541,0.02472,0.0579,11.0,muito elevado,normal,False
+2019-07,1 montante (norte),68601,0.87718,0.00214,0.00757,0.0536,11.0,elevado,normal,False
+2019-08,1 montante (norte),68455,0.87532,-0.05114,-0.01636,0.0459,7.0,normal,normal,False
+2019-09,1 montante (norte),70007,0.89516,-0.06562,-0.01067,0.0478,7.0,normal,normal,False
+2019-10,1 montante (norte),69801,0.89253,-0.06277,-0.00608,0.0567,7.0,normal,normal,False
+2019-11,1 montante (norte),67469,0.86271,-0.03054,0.00971,0.0911,4.0,normal,normal,False
+2019-12,1 montante (norte),60219,0.77,0.01094,0.08867,0.0742,7.0,elevado,muito elevado,False
+2020-01,1 montante (norte),60762,0.77695,0.04057,0.05769,0.076,6.0,muito elevado,elevado,False
+2020-02,1 montante (norte),59414,0.75971,0.04812,0.04188,0.0438,5.0,muito elevado,normal,False
+2020-03,1 montante (norte),70000,0.89507,0.00136,0.07942,0.0329,9.0,normal,muito elevado,True
+2020-04,1 montante (norte),68801,0.87974,-0.01278,0.07512,0.0588,6.0,normal,muito elevado,True
+2020-05,1 montante (norte),71084,0.90893,0.01867,0.04745,0.0486,11.0,elevado,normal,False
+2020-06,1 montante (norte),70906,0.90666,0.00391,0.05386,0.0552,10.0,elevado,normal,False
+2020-07,1 montante (norte),70419,0.90043,0.03176,0.04762,0.059,10.0,muito elevado,normal,False
+2020-08,1 montante (norte),71799,0.91808,0.01159,0.04405,0.0603,9.0,elevado,normal,False
+2020-09,1 montante (norte),70810,0.90543,-0.06094,0.00661,0.0657,4.0,normal,normal,False
+2020-10,1 montante (norte),69010,0.88241,-0.02026,0.01462,0.1034,3.0,normal,normal,False
+2020-11,1 montante (norte),70191,0.89751,-0.03178,0.01494,0.0994,4.0,normal,normal,False
+2020-12,1 montante (norte),65565,0.83836,-0.04769,0.00803,0.0595,6.0,normal,normal,False
+2021-01,1 montante (norte),67109,0.85811,-0.04123,0.04153,0.0735,4.0,normal,normal,False
+2021-02,1 montante (norte),73232,0.9364,0.01568,0.0148,0.0722,4.0,elevado,normal,False
+2021-03,1 montante (norte),72192,0.9231,-0.01034,0.03716,0.0325,11.0,normal,normal,False
+2021-04,1 montante (norte),71816,0.91829,-0.07293,0.0308,0.0361,7.0,normal,normal,False
+2021-05,1 montante (norte),72620,0.92857,-0.07514,0.08257,0.039,10.0,normal,muito elevado,True
+2021-06,1 montante (norte),72569,0.92792,-0.00182,0.04348,0.0485,9.0,normal,normal,False
+2021-07,1 montante (norte),72929,0.93252,-0.01859,0.03253,0.0579,10.0,normal,normal,False
+2021-08,1 montante (norte),73149,0.93534,-0.01043,0.04821,0.0647,9.0,normal,normal,False
+2021-09,1 montante (norte),72580,0.92806,-0.01657,0.03324,0.0642,8.0,normal,normal,False
+2021-10,1 montante (norte),72852,0.93154,-0.02612,0.02662,0.088,4.0,normal,normal,False
+2021-11,1 montante (norte),73221,0.93626,-0.02237,0.04111,0.087,6.0,normal,normal,False
+2021-12,1 montante (norte),72674,0.92926,-0.06355,0.05117,0.0552,3.0,normal,normal,False
+2022-01,1 montante (norte),61465,0.78594,0.01287,0.05714,0.0593,5.0,elevado,elevado,False
+2022-02,1 montante (norte),70099,0.89634,-0.02069,0.03308,0.039,7.0,normal,normal,False
+2022-03,1 montante (norte),72659,0.92907,-0.05458,0.06432,0.0457,8.0,normal,elevado,True
+2022-04,1 montante (norte),72216,0.92341,-0.04496,0.06435,0.0442,8.0,normal,elevado,True
+2022-05,1 montante (norte),72381,0.92552,-0.06821,0.01916,0.0356,7.0,normal,normal,False
+2022-06,1 montante (norte),70933,0.907,0.00826,-0.06763,0.0256,11.0,elevado,normal,False
+2022-07,1 montante (norte),72096,0.92187,-0.05114,0.01655,0.0346,9.0,normal,normal,False
+2022-08,1 montante (norte),72470,0.92666,-0.02092,0.03005,0.0567,10.0,normal,normal,False
+2022-09,1 montante (norte),72602,0.92834,-0.0075,0.03221,0.0661,9.0,normal,normal,False
+2022-10,1 montante (norte),69536,0.88914,-0.01557,0.04988,0.0978,2.0,normal,normal,False
+2022-11,1 montante (norte),71017,0.90808,-0.01209,0.06467,0.1023,4.0,normal,elevado,True
+2022-12,1 montante (norte),71103,0.90918,-0.00802,0.05307,0.1253,3.0,normal,normal,False
+2023-01,1 montante (norte),60174,0.76943,0.01263,0.05847,0.0531,6.0,elevado,elevado,False
+2023-02,1 montante (norte),70909,0.9067,0.0184,0.04323,0.0718,3.0,elevado,normal,False
+2023-03,1 montante (norte),73228,0.93635,-0.04348,0.02286,0.0299,6.0,normal,normal,False
+2023-04,1 montante (norte),72036,0.92111,-0.0731,0.04944,0.0301,10.0,normal,normal,False
+2023-05,1 montante (norte),72654,0.92901,-0.06154,0.05459,0.04,8.0,normal,elevado,True
+2023-06,1 montante (norte),72979,0.93316,-0.09787,0.06199,0.0353,11.0,normal,elevado,True
+2023-07,1 montante (norte),73080,0.93446,-0.1138,0.05019,0.0426,10.0,normal,normal,False
+2023-08,1 montante (norte),72996,0.93338,-0.10927,0.07417,0.0408,7.0,normal,muito elevado,True
+2023-09,1 montante (norte),73666,0.94195,-0.01481,0.0534,0.0705,8.0,normal,normal,False
+2023-10,1 montante (norte),73963,0.94575,-0.01691,0.05574,0.0764,3.0,normal,elevado,True
+2023-11,1 montante (norte),73512,0.93998,-0.02768,0.03969,0.08,6.0,normal,normal,False
+2023-12,1 montante (norte),71391,0.91286,-0.02681,0.0536,0.1107,4.0,normal,normal,False
+2024-01,1 montante (norte),63046,0.80615,0.0,0.04839,0.0309,7.0,normal,normal,False
+2024-02,1 montante (norte),72294,0.9244,-0.0257,0.06178,0.0567,6.0,normal,elevado,True
+2024-03,1 montante (norte),73272,0.93691,-0.05719,0.07552,0.0574,5.0,normal,muito elevado,True
+2024-04,1 montante (norte),70045,0.89565,0.02344,0.05381,0.0251,8.0,muito elevado,normal,False
+2024-05,1 montante (norte),72195,0.92314,-0.04116,0.09554,0.0384,9.0,normal,muito elevado,True
+2024-06,1 montante (norte),73119,0.93495,-0.05571,0.07832,0.0433,9.0,normal,muito elevado,True
+2024-07,1 montante (norte),73330,0.93765,-0.0565,0.06083,0.0546,11.0,normal,elevado,True
+2024-08,1 montante (norte),73598,0.94108,-0.02461,0.04989,0.0658,8.0,normal,normal,False
+2024-09,1 montante (norte),73594,0.94103,-0.01725,0.05723,0.071,6.0,normal,elevado,True
+2024-10,1 montante (norte),73609,0.94122,-0.02604,0.0462,0.0808,8.0,normal,normal,False
+2024-11,1 montante (norte),71354,0.91239,-0.01225,0.044,0.1224,5.0,normal,normal,False
+2024-12,1 montante (norte),72294,0.9244,-0.04686,0.0556,0.1069,4.0,normal,elevado,True
+2025-01,1 montante (norte),61363,0.78463,-0.0311,0.07755,0.0712,3.0,normal,muito elevado,True
+2025-02,1 montante (norte),60261,0.77054,0.01507,0.06324,0.0495,6.0,elevado,elevado,False
+2025-03,1 montante (norte),70955,0.90728,-0.03484,0.06559,0.0338,9.0,normal,elevado,True
+2025-04,1 montante (norte),72806,0.93095,-0.04949,0.08415,0.0409,8.0,normal,muito elevado,True
+2025-05,1 montante (norte),72541,0.92756,-0.03763,0.09657,0.038,11.0,normal,muito elevado,True
+2025-06,1 montante (norte),72743,0.93015,-0.02068,0.05441,0.0512,11.0,normal,normal,False
+2025-07,1 montante (norte),72892,0.93205,-0.02113,0.04139,0.0577,12.0,normal,normal,False
+2025-08,1 montante (norte),72718,0.92983,-0.02275,0.03651,0.0624,7.0,normal,normal,False
+2025-09,1 montante (norte),72229,0.92357,0.00452,0.04545,0.065,5.0,elevado,normal,False
+2025-10,1 montante (norte),73055,0.93414,-0.02284,0.03978,0.072,9.0,normal,normal,False
+2025-11,1 montante (norte),71000,0.90786,-0.0223,0.03701,0.1149,3.0,normal,normal,False
+2025-12,1 montante (norte),68193,0.87197,-0.01103,0.04995,0.074,4.0,normal,normal,False
+2026-01,1 montante (norte),75259,0.96232,0.02811,0.01826,0.0987,5.0,muito elevado,normal,False
+2026-02,1 montante (norte),73781,0.94342,-0.04531,0.016,0.0284,9.0,normal,normal,False
+2026-03,1 montante (norte),71913,0.91953,-0.05031,0.03103,0.0371,5.0,normal,normal,False
+2026-04,1 montante (norte),73543,0.94038,-0.04242,0.01734,0.0384,8.0,normal,normal,False
+2026-05,1 montante (norte),73414,0.93873,-0.01582,-0.06316,0.0294,11.0,normal,normal,False
+2026-06,1 montante (norte),73341,0.93779,-0.0359,-0.05455,0.0394,11.0,normal,normal,False
+2026-07,1 montante (norte),73698,0.94236,-0.03343,-0.03414,0.0512,14.0,normal,normal,False
+2026-08,1 montante (norte),73727,0.94273,-0.01546,-0.02757,0.0573,11.0,normal,normal,False
+2026-09,1 montante (norte),73942,0.94548,-0.01224,0.00432,0.0686,7.0,normal,normal,False
+2017-01,2 troço médio,74673,0.95128,-0.09983,-0.03683,0.0548,2.0,normal,normal,False
+2017-02,2 troço médio,71405,0.90965,-0.02174,0.10631,0.0434,1.0,normal,muito elevado,True
+2017-03,2 troço médio,77416,0.98623,0.03158,0.06636,0.0627,2.0,muito elevado,muito elevado,False
+2017-04,2 troço médio,77175,0.98316,-0.03563,-0.02926,0.0473,1.0,normal,normal,False
+2017-05,2 troço médio,77797,0.99108,-0.02669,0.01036,0.0456,4.0,normal,normal,False
+2017-06,2 troço médio,77537,0.98777,-0.08325,-0.01129,0.0432,9.0,normal,normal,False
+2017-07,2 troço médio,77742,0.99038,-0.16,-0.0816,0.0314,8.0,normal,normal,False
+2017-08,2 troço médio,77782,0.99089,-0.13271,-0.08333,0.04,5.0,normal,normal,False
+2017-09,2 troço médio,77774,0.99079,-0.11686,-0.04789,0.0466,4.0,normal,normal,False
+2017-10,2 troço médio,77839,0.99162,-0.06547,-0.02288,0.0604,5.0,normal,normal,False
+2017-11,2 troço médio,76688,0.97695,0.00132,0.00441,0.1189,2.0,elevado,normal,False
+2017-12,2 troço médio,75926,0.96725,-0.02201,0.00584,0.0644,1.0,normal,normal,False
+2018-01,2 troço médio,75954,0.9676,-0.00778,0.00635,0.0626,1.0,elevado,normal,False
+2018-02,2 troço médio,212,0.0027,,,,,sem dados,sem dados,False
+2018-03,2 troço médio,75187,0.95783,-0.05487,-0.01088,0.0494,1.0,normal,normal,False
+2018-04,2 troço médio,77772,0.99076,-0.05419,-0.03047,0.0542,3.0,normal,normal,False
+2018-05,2 troço médio,77694,0.98977,-0.06473,-0.08738,0.0371,4.0,normal,normal,False
+2018-06,2 troço médio,77346,0.98534,-0.08197,-0.04478,0.045,4.0,normal,normal,False
+2018-07,2 troço médio,76413,0.97345,-0.10537,-0.08671,0.0402,1.0,normal,normal,False
+2018-09,2 troço médio,77943,0.99294,-0.09252,-0.06233,0.0472,4.0,normal,normal,False
+2018-10,2 troço médio,77777,0.99083,-0.02245,-0.00224,0.0882,3.0,normal,normal,False
+2018-11,2 troço médio,77280,0.9845,-0.29154,-0.15581,0.0229,1.0,normal,normal,False
+2018-12,2 troço médio,76609,0.97595,-0.25926,-0.08475,0.0348,4.0,normal,normal,False
+2019-01,2 troço médio,77582,0.98834,-0.067,0.00183,0.0896,6.0,normal,normal,False
+2019-02,2 troço médio,77891,0.99228,-0.07165,-0.01519,0.063,5.0,normal,normal,False
+2019-03,2 troço médio,77897,0.99236,-0.04923,0.03195,0.0632,7.0,normal,elevado,True
+2019-04,2 troço médio,76110,0.96959,0.03151,0.04367,0.0628,7.0,muito elevado,muito elevado,False
+2019-05,2 troço médio,77685,0.98966,0.01082,-0.00899,0.0544,12.0,elevado,normal,False
+2019-06,2 troço médio,77802,0.99115,-0.09136,-0.07124,0.0383,12.0,normal,normal,False
+2019-07,2 troço médio,77854,0.99181,-0.17241,-0.09584,0.034,11.0,normal,normal,False
+2019-08,2 troço médio,77872,0.99204,-0.15137,-0.07082,0.0401,8.0,normal,normal,False
+2019-09,2 troço médio,77939,0.99289,-0.09189,-0.04247,0.0511,7.0,normal,normal,False
+2019-10,2 troço médio,77868,0.99199,-0.07254,-0.01587,0.0697,7.0,normal,normal,False
+2019-11,2 troço médio,77324,0.98506,-0.0759,-0.01678,0.083,4.0,normal,normal,False
+2019-12,2 troço médio,77427,0.98637,-0.04591,0.00366,0.0691,5.0,normal,normal,False
+2020-01,2 troço médio,77262,0.98427,-0.00432,0.02169,0.0638,7.0,elevado,elevado,False
+2020-02,2 troço médio,76896,0.9796,0.06899,0.03317,0.0724,6.0,muito elevado,elevado,False
+2020-03,2 troço médio,77844,0.99168,0.02876,0.042,0.0436,11.0,muito elevado,muito elevado,False
+2020-04,2 troço médio,77903,0.99243,-0.03158,-0.00206,0.0516,7.0,normal,normal,False
+2020-05,2 troço médio,77895,0.99233,-0.03693,-0.04878,0.0403,11.0,normal,normal,False
+2020-06,2 troço médio,77817,0.99134,-0.07202,-0.0497,0.0405,10.0,normal,normal,False
+2020-07,2 troço médio,77707,0.98994,-0.06178,-0.06832,0.0414,9.0,normal,normal,False
+2020-08,2 troço médio,77793,0.99103,-0.11185,-0.07151,0.0403,10.0,normal,normal,False
+2020-09,2 troço médio,77737,0.99032,-0.13386,-0.06893,0.0486,6.0,normal,normal,False
+2020-10,2 troço médio,77708,0.98995,-0.02545,0.00342,0.1144,3.0,normal,normal,False
+2020-11,2 troço médio,77518,0.98753,-0.05625,-0.00247,0.0896,5.0,normal,normal,False
+2020-12,2 troço médio,74469,0.94869,-0.21534,-0.07766,0.0363,4.0,normal,normal,False
+2021-01,2 troço médio,77549,0.98792,-0.10522,-0.01609,0.0606,6.0,normal,normal,False
+2021-02,2 troço médio,77634,0.98901,0.03178,0.02558,0.0817,5.0,muito elevado,elevado,False
+2021-03,2 troço médio,77758,0.99059,-0.01136,0.04639,0.0373,11.0,elevado,muito elevado,False
+2021-04,2 troço médio,77980,0.99341,-0.06268,0.00974,0.0468,7.0,normal,normal,False
+2021-05,2 troço médio,77931,0.99279,-0.08873,-0.02879,0.0381,11.0,normal,normal,False
+2021-06,2 troço médio,77832,0.99153,-0.11888,-0.05709,0.0345,9.0,normal,normal,False
+2021-07,2 troço médio,77954,0.99308,-0.12974,-0.07862,0.0386,11.0,normal,normal,False
+2021-08,2 troço médio,77975,0.99335,-0.14894,-0.05611,0.0361,8.0,normal,normal,False
+2021-09,2 troço médio,77786,0.99094,-0.16084,-0.07627,0.0379,7.0,normal,normal,False
+2021-10,2 troço médio,77822,0.9914,-0.10483,-0.02431,0.0614,6.0,normal,normal,False
+2021-11,2 troço médio,76505,0.97462,-0.0312,0.007,0.1086,6.0,normal,normal,False
+2021-12,2 troço médio,76709,0.97722,-0.07549,-0.01194,0.053,3.0,normal,normal,False
+2022-01,2 troço médio,76953,0.98033,0.00307,0.06594,0.0695,6.0,elevado,muito elevado,False
+2022-02,2 troço médio,77961,0.99317,-0.02419,0.05256,0.057,9.0,normal,muito elevado,True
+2022-03,2 troço médio,78049,0.99429,-0.03165,0.02688,0.055,9.0,normal,elevado,True
+2022-04,2 troço médio,77651,0.98922,0.01657,0.03079,0.0632,8.0,muito elevado,elevado,False
+2022-05,2 troço médio,77835,0.99157,0.01355,0.02222,0.0508,7.0,elevado,elevado,False
+2022-06,2 troço médio,77761,0.99062,0.01957,-0.0134,0.0438,10.0,muito elevado,normal,False
+2022-07,2 troço médio,77699,0.98983,-0.03614,-0.04604,0.0454,9.0,normal,normal,False
+2022-08,2 troço médio,77928,0.99275,-0.0738,-0.04553,0.0505,10.0,normal,normal,False
+2022-09,2 troço médio,77953,0.99307,-0.09431,-0.03855,0.0491,9.0,normal,normal,False
+2022-10,2 troço médio,76580,0.97558,-0.06047,0.0006,0.0742,3.0,normal,normal,False
+2022-11,2 troço médio,77777,0.99083,-0.03787,0.01442,0.0722,4.0,normal,normal,False
+2022-12,2 troço médio,77066,0.98177,-0.02292,0.00789,0.1056,3.0,normal,normal,False
+2023-01,2 troço médio,76895,0.97959,0.0238,0.04343,0.0948,9.0,muito elevado,muito elevado,False
+2023-02,2 troço médio,77479,0.98703,0.0087,0.05344,0.0762,5.0,elevado,muito elevado,False
+2023-03,2 troço médio,77298,0.98473,-0.00931,0.02542,0.0287,8.0,elevado,elevado,False
+2023-04,2 troço médio,77460,0.98679,-0.03297,0.05604,0.0345,9.0,normal,muito elevado,True
+2023-05,2 troço médio,77215,0.98367,-0.04632,0.07134,0.0436,6.0,normal,muito elevado,True
+2023-06,2 troço médio,77816,0.99132,-0.06829,0.01532,0.0459,11.0,normal,elevado,True
+2023-07,2 troço médio,77973,0.99332,-0.09251,-0.0532,0.0496,11.0,normal,normal,False
+2023-08,2 troço médio,77884,0.99219,-0.07754,-0.05384,0.0473,7.0,normal,normal,False
+2023-09,2 troço médio,77915,0.99259,-0.07286,-0.02716,0.0551,8.0,normal,normal,False
+2023-10,2 troço médio,77914,0.99257,-0.04754,-0.00706,0.0657,4.0,normal,normal,False
+2023-11,2 troço médio,76578,0.97555,-0.03218,-0.01106,0.0707,7.0,normal,normal,False
+2023-12,2 troço médio,77849,0.99174,-0.04902,-0.02398,0.0683,3.0,normal,normal,False
+2024-01,2 troço médio,77632,0.98898,-0.00258,0.02462,0.053,7.0,elevado,elevado,False
+2024-02,2 troço médio,77626,0.9889,-0.02991,0.02381,0.0624,8.0,normal,elevado,True
+2024-03,2 troço médio,77798,0.9911,-0.01473,0.01372,0.0641,5.0,elevado,normal,False
+2024-04,2 troço médio,77506,0.98738,0.06595,0.01314,0.0462,9.0,muito elevado,normal,False
+2024-05,2 troço médio,77379,0.98576,0.02237,0.01019,0.0534,10.0,muito elevado,normal,False
+2024-06,2 troço médio,77829,0.99149,-0.03568,-0.05545,0.0496,9.0,normal,normal,False
+2024-07,2 troço médio,77958,0.99313,-0.0664,-0.05906,0.0516,11.0,normal,normal,False
+2024-08,2 troço médio,77913,0.99256,-0.1016,-0.06387,0.0466,9.0,normal,normal,False
+2024-09,2 troço médio,77818,0.99135,-0.02114,-0.01976,0.0676,6.0,normal,normal,False
+2024-10,2 troço médio,77710,0.98997,-0.03504,-0.00067,0.0759,8.0,normal,normal,False
+2024-11,2 troço médio,75387,0.96038,-0.02104,0.01853,0.1186,7.0,normal,elevado,True
+2024-12,2 troço médio,76916,0.97986,-0.0782,-0.00623,0.0738,5.0,normal,normal,False
+2025-01,2 troço médio,76917,0.97987,0.01356,0.02931,0.0751,4.0,elevado,elevado,False
+2025-02,2 troço médio,77044,0.98149,0.0444,0.05296,0.0596,6.0,muito elevado,muito elevado,False
+2025-03,2 troço médio,77629,0.98894,0.00497,0.03586,0.0521,9.0,elevado,elevado,False
+2025-04,2 troço médio,77707,0.98994,0.00716,0.00681,0.056,8.0,elevado,normal,False
+2025-05,2 troço médio,77047,0.98153,0.0165,0.00358,0.0562,10.0,elevado,normal,False
+2025-06,2 troço médio,77656,0.98929,-0.029,-0.05677,0.0503,11.0,normal,normal,False
+2025-07,2 troço médio,77719,0.99009,-0.12167,-0.09091,0.0404,13.0,normal,normal,False
+2025-08,2 troço médio,77664,0.98939,-0.11111,-0.06182,0.0456,8.0,normal,normal,False
+2025-09,2 troço médio,77451,0.98667,-0.08483,-0.01333,0.0516,6.0,normal,normal,False
+2025-10,2 troço médio,77328,0.98511,-0.06739,-0.02538,0.0534,9.0,normal,normal,False
+2025-11,2 troço médio,76360,0.97278,-0.04524,0.00366,0.1014,5.0,normal,normal,False
+2025-12,2 troço médio,76712,0.97726,-0.00719,0.01493,0.0818,5.0,elevado,normal,False
+2026-01,2 troço médio,77879,0.99213,0.04936,0.01812,0.0982,6.0,muito elevado,elevado,False
+2026-02,2 troço médio,77350,0.98539,-0.0254,0.03053,0.0296,9.0,normal,elevado,True
+2026-03,2 troço médio,76427,0.97363,-0.03037,0.03822,0.0398,4.0,normal,elevado,True
+2026-04,2 troço médio,77196,0.98343,-0.03316,0.01078,0.0397,9.0,normal,normal,False
+2026-05,2 troço médio,77596,0.98852,-0.02669,-0.04839,0.0298,14.0,normal,normal,False
+2026-06,2 troço médio,76848,0.97899,-0.03722,-0.0475,0.0426,10.0,normal,normal,False
+2026-07,2 troço médio,77942,0.99293,-0.03382,-0.04115,0.0541,13.0,normal,normal,False
+2026-08,2 troço médio,77985,0.99348,-0.023,-0.05291,0.0612,11.0,normal,normal,False
+2026-09,2 troço médio,76951,0.9803,-0.0046,-0.01306,0.0748,6.0,elevado,normal,False
+2017-01,3 jusante,77798,0.99565,-0.14557,-0.04988,0.0582,2.0,normal,normal,False
+2017-02,3 jusante,74724,0.95631,-0.18391,-0.04286,0.03,1.0,normal,normal,False
+2017-03,3 jusante,76616,0.98052,0.02871,0.0506,0.0716,2.0,muito elevado,muito elevado,False
+2017-04,3 jusante,77934,0.99739,-0.0416,-0.03311,0.0587,1.0,normal,normal,False
+2017-05,3 jusante,77838,0.99616,-0.18075,-0.08059,0.0288,4.0,normal,normal,False
+2017-06,3 jusante,76272,0.97612,-0.17123,-0.05913,0.0393,9.0,normal,normal,False
+2017-07,3 jusante,77575,0.99279,-0.26952,-0.10927,0.0295,8.0,normal,normal,False
+2017-08,3 jusante,77408,0.99066,-0.05801,-0.05066,0.0549,5.0,normal,normal,False
+2017-09,3 jusante,77884,0.99675,-0.09677,-0.04176,0.0564,4.0,normal,normal,False
+2017-10,3 jusante,77330,0.98966,-0.04459,-0.0151,0.0698,5.0,normal,normal,False
+2017-11,3 jusante,70079,0.89686,0.01373,0.01496,0.1284,2.0,muito elevado,elevado,False
+2017-12,3 jusante,71431,0.91416,-0.03898,0.00221,0.0664,1.0,normal,normal,False
+2018-01,3 jusante,71639,0.91683,-0.03767,0.00368,0.0584,1.0,normal,normal,False
+2018-02,3 jusante,62,0.00079,,,,,sem dados,sem dados,False
+2018-03,3 jusante,72532,0.92826,-0.06007,-0.00093,0.0554,1.0,normal,normal,False
+2018-04,3 jusante,77823,0.99597,-0.11053,-0.04275,0.0494,3.0,normal,normal,False
+2018-05,3 jusante,77827,0.99602,-0.25522,-0.12323,0.0246,4.0,normal,normal,False
+2018-06,3 jusante,77014,0.98562,-0.18659,-0.08108,0.0366,4.0,normal,normal,False
+2018-07,3 jusante,73206,0.93688,-0.07491,-0.04762,0.0487,1.0,normal,normal,False
+2018-09,3 jusante,77476,0.99153,-0.0733,-0.03729,0.0548,5.0,normal,normal,False
+2018-10,3 jusante,75896,0.97131,-0.00168,0.01487,0.1015,3.0,elevado,elevado,False
+2018-11,3 jusante,77501,0.99185,-0.2759,-0.11312,0.0324,1.0,normal,normal,False
+2018-12,3 jusante,77703,0.99443,-0.21251,-0.07728,0.0428,3.0,normal,normal,False
+2019-01,3 jusante,77536,0.9923,-0.06364,0.0,0.1004,5.0,normal,normal,False
+2019-02,3 jusante,77621,0.99338,-0.07083,-0.01297,0.0694,5.0,normal,normal,False
+2019-03,3 jusante,77364,0.99009,-0.10201,-0.01025,0.0558,7.0,normal,normal,False
+2019-04,3 jusante,77471,0.99146,-0.09244,-0.02964,0.0456,6.0,normal,normal,False
+2019-05,3 jusante,77226,0.98833,-0.07436,-0.04329,0.0478,12.0,normal,normal,False
+2019-06,3 jusante,77349,0.9899,-0.14286,-0.06753,0.0408,12.0,normal,normal,False
+2019-07,3 jusante,77701,0.99441,-0.19834,-0.08578,0.0382,11.0,normal,normal,False
+2019-08,3 jusante,77428,0.99091,-0.13691,-0.05015,0.0476,8.0,normal,normal,False
+2019-09,3 jusante,77287,0.98911,-0.06646,-0.0251,0.0599,7.0,normal,normal,False
+2019-10,3 jusante,76994,0.98536,-0.04657,0.00251,0.0807,7.0,normal,normal,False
+2019-11,3 jusante,77272,0.98892,-0.08744,-0.02922,0.0702,3.0,normal,normal,False
+2019-12,3 jusante,76090,0.97379,-0.0462,0.01121,0.0787,5.0,normal,elevado,True
+2020-01,3 jusante,77549,0.99246,-0.08661,-0.01536,0.0571,8.0,normal,normal,False
+2020-02,3 jusante,77615,0.99331,-0.00146,0.00842,0.0683,6.0,elevado,elevado,False
+2020-03,3 jusante,77593,0.99303,0.0099,0.03097,0.0475,10.0,muito elevado,elevado,False
+2020-04,3 jusante,77521,0.9921,-0.08376,-0.01389,0.0493,7.0,normal,normal,False
+2020-05,3 jusante,77436,0.99102,-0.14456,-0.07317,0.0363,12.0,normal,normal,False
+2020-06,3 jusante,77191,0.98788,-0.1644,-0.06961,0.0378,10.0,normal,normal,False
+2020-07,3 jusante,77007,0.98553,-0.13572,-0.07973,0.0396,10.0,normal,normal,False
+2020-08,3 jusante,77810,0.9958,-0.14625,-0.07521,0.0473,10.0,normal,normal,False
+2020-09,3 jusante,77669,0.994,-0.13695,-0.06386,0.0561,6.0,normal,normal,False
+2020-10,3 jusante,76798,0.98285,-0.02349,0.00402,0.1202,3.0,normal,normal,False
+2020-11,3 jusante,77194,0.98792,-0.06226,-0.00248,0.091,5.0,normal,normal,False
+2020-12,3 jusante,76677,0.9813,-0.20654,-0.06707,0.0426,4.0,normal,normal,False
+2021-01,3 jusante,77821,0.99594,-0.12019,-0.02795,0.0588,7.0,normal,normal,False
+2021-02,3 jusante,76797,0.98284,0.03188,0.03461,0.0874,5.0,muito elevado,muito elevado,False
+2021-03,3 jusante,77387,0.99039,0.01318,0.03981,0.0485,10.0,muito elevado,muito elevado,False
+2021-04,3 jusante,77577,0.99282,-0.06867,0.00331,0.0512,7.0,normal,normal,False
+2021-05,3 jusante,76395,0.97769,-0.08657,-0.04733,0.0369,9.0,normal,normal,False
+2021-06,3 jusante,77213,0.98816,-0.13174,-0.07282,0.0359,9.0,normal,normal,False
+2021-07,3 jusante,77573,0.99277,-0.16117,-0.09158,0.039,10.0,normal,normal,False
+2021-08,3 jusante,77807,0.99576,-0.15052,-0.05709,0.042,8.0,normal,normal,False
+2021-09,3 jusante,77529,0.99221,-0.15854,-0.06998,0.0448,8.0,normal,normal,False
+2021-10,3 jusante,77461,0.99134,-0.06741,-0.012,0.0752,6.0,normal,normal,False
+2021-11,3 jusante,74800,0.95728,-0.01538,0.00827,0.1034,4.0,elevado,elevado,False
+2021-12,3 jusante,76441,0.97828,-0.12817,-0.00867,0.0626,4.0,normal,normal,False
+2022-01,3 jusante,76837,0.98335,-0.02266,0.05333,0.0656,6.0,normal,muito elevado,True
+2022-02,3 jusante,77922,0.99724,-0.02843,0.03531,0.0551,8.0,normal,muito elevado,True
+2022-03,3 jusante,77578,0.99283,-0.04167,-0.00706,0.0552,9.0,normal,normal,False
+2022-04,3 jusante,77245,0.98857,-0.01254,0.00517,0.063,8.0,elevado,normal,False
+2022-05,3 jusante,77575,0.99279,0.00917,-0.00087,0.0545,6.0,muito elevado,normal,False
+2022-06,3 jusante,77362,0.99007,-0.00967,-0.03318,0.0455,10.0,elevado,normal,False
+2022-07,3 jusante,76859,0.98363,-0.09155,-0.07046,0.0405,10.0,normal,normal,False
+2022-08,3 jusante,77608,0.99322,-0.08426,-0.05749,0.053,10.0,normal,normal,False
+2022-09,3 jusante,77622,0.9934,-0.07798,-0.03639,0.0593,9.0,normal,normal,False
+2022-10,3 jusante,77160,0.98748,-0.08266,-0.01004,0.0716,3.0,normal,normal,False
+2022-11,3 jusante,77235,0.98844,-0.06425,-0.00607,0.0714,5.0,normal,normal,False
+2022-12,3 jusante,77486,0.99166,-0.08623,-0.01359,0.069,4.0,normal,normal,False
+2023-01,3 jusante,77546,0.99242,0.00139,0.01237,0.0998,9.0,elevado,elevado,False
+2023-02,3 jusante,76680,0.98134,0.01109,0.05538,0.0795,6.0,muito elevado,muito elevado,False
+2023-03,3 jusante,77442,0.99109,0.00999,0.04122,0.0438,8.0,muito elevado,muito elevado,False
+2023-04,3 jusante,76934,0.98459,0.01378,0.06804,0.0506,9.0,muito elevado,muito elevado,False
+2023-05,3 jusante,76232,0.97561,-0.01504,0.05119,0.0574,8.0,elevado,muito elevado,False
+2023-06,3 jusante,77322,0.98956,-0.0935,-0.05166,0.0439,11.0,normal,normal,False
+2023-07,3 jusante,77486,0.99166,-0.13514,-0.0617,0.043,11.0,normal,normal,False
+2023-08,3 jusante,77720,0.99465,-0.12033,-0.0654,0.0434,6.0,normal,normal,False
+2023-09,3 jusante,77354,0.98997,-0.06223,-0.02587,0.0591,8.0,normal,normal,False
+2023-10,3 jusante,77589,0.99297,-0.05705,-0.0092,0.0713,4.0,normal,normal,False
+2023-11,3 jusante,73419,0.93961,-0.02755,0.00094,0.0689,7.0,normal,normal,False
+2023-12,3 jusante,77678,0.99411,-0.10667,-0.029,0.0566,3.0,normal,normal,False
+2024-01,3 jusante,77817,0.99589,-0.02641,0.0303,0.0473,7.0,normal,elevado,True
+2024-02,3 jusante,77856,0.99639,-0.04913,0.00352,0.0716,8.0,normal,normal,False
+2024-03,3 jusante,76863,0.98368,-0.01806,0.00964,0.0604,5.0,elevado,elevado,False
+2024-04,3 jusante,77822,0.99596,0.06445,0.0059,0.05465,9.0,muito elevado,normal,False
+2024-05,3 jusante,76701,0.98161,0.00691,-0.00457,0.0539,10.0,elevado,normal,False
+2024-06,3 jusante,77272,0.98892,-0.1467,-0.12346,0.0324,9.0,normal,normal,False
+2024-07,3 jusante,77886,0.99677,-0.14461,-0.0898,0.0396,11.0,normal,normal,False
+2024-08,3 jusante,77806,0.99575,-0.15625,-0.0715,0.0423,9.0,normal,normal,False
+2024-09,3 jusante,76094,0.97384,-0.02731,-0.02171,0.0691,6.0,normal,normal,False
+2024-10,3 jusante,75659,0.96827,-0.03343,0.00282,0.0814,8.0,normal,normal,False
+2024-11,3 jusante,72477,0.92755,-0.0223,0.01796,0.1133,6.0,elevado,elevado,False
+2024-12,3 jusante,77523,0.99213,-0.11811,-0.01348,0.0664,5.0,normal,normal,False
+2025-01,3 jusante,77432,0.99096,0.00516,0.02968,0.0796,5.0,elevado,elevado,False
+2025-02,3 jusante,77787,0.99551,0.02597,0.03355,0.0736,8.0,muito elevado,muito elevado,False
+2025-03,3 jusante,77026,0.98577,-0.01523,0.01596,0.0556,9.0,elevado,elevado,False
+2025-04,3 jusante,76579,0.98005,-0.02807,-0.03135,0.0506,8.0,normal,normal,False
+2025-05,3 jusante,76103,0.97396,0.00191,-0.01611,0.0532,11.0,elevado,normal,False
+2025-06,3 jusante,77347,0.98988,-0.11617,-0.08085,0.0388,11.0,normal,normal,False
+2025-07,3 jusante,77513,0.992,-0.1957,-0.10101,0.0346,14.0,normal,normal,False
+2025-08,3 jusante,76633,0.98074,-0.08748,-0.05503,0.0524,8.0,normal,normal,False
+2025-09,3 jusante,77568,0.99271,-0.07323,-0.01159,0.0652,7.0,normal,normal,False
+2025-10,3 jusante,75175,0.96208,-0.05671,-0.01513,0.0641,9.0,normal,normal,False
+2025-11,3 jusante,74692,0.9559,-0.06112,0.00693,0.1068,5.0,normal,elevado,True
+2025-12,3 jusante,76114,0.9741,-0.03303,0.00855,0.0892,5.0,normal,elevado,True
+2026-01,3 jusante,77898,0.99693,0.05517,0.01865,0.1073,6.0,muito elevado,elevado,False
+2026-02,3 jusante,77587,0.99295,0.00798,0.03436,0.0403,9.0,elevado,muito elevado,False
+2026-03,3 jusante,76763,0.9824,0.00115,0.03753,0.0504,4.0,elevado,muito elevado,False
+2026-04,3 jusante,76424,0.97806,-0.00412,0.02709,0.0468,9.0,elevado,elevado,False
+2026-05,3 jusante,77559,0.99259,-0.04867,-0.06436,0.0339,13.0,normal,normal,False
+2026-06,3 jusante,76880,0.9839,-0.03418,-0.02413,0.0467,11.0,normal,normal,False
+2026-07,3 jusante,77509,0.99195,-0.09633,-0.05959,0.0445,14.0,normal,normal,False
+2026-08,3 jusante,77850,0.99631,-0.10839,-0.0771,0.0473,11.0,normal,normal,False
+2026-09,3 jusante,73585,0.94173,-0.00281,0.00818,0.0731,6.0,elevado,elevado,False
+2017-01,4 foz / estuário,78344,0.99616,-0.11482,-0.04162,0.0652,1.0,normal,normal,False
+2017-02,4 foz / estuário,72139,0.91726,-0.22642,-0.07774,0.0294,1.0,normal,normal,False
+2017-03,4 foz / estuário,76169,0.9685,0.00423,0.03776,0.0704,2.0,muito elevado,muito elevado,False
+2017-04,4 foz / estuário,78143,0.9936,-0.01715,-0.01198,0.0681,1.0,elevado,normal,False
+2017-05,4 foz / estuário,78058,0.99252,-0.24284,-0.12474,0.0294,4.0,normal,normal,False
+2017-06,4 foz / estuário,76503,0.97275,-0.17002,-0.07073,0.0431,9.0,normal,normal,False
+2017-07,4 foz / estuário,77685,0.98778,-0.29608,-0.12405,0.0299,8.0,normal,normal,False
+2017-08,4 foz / estuário,77261,0.98239,-0.07468,-0.05489,0.0559,5.0,normal,normal,False
+2017-09,4 foz / estuário,77893,0.99043,-0.1134,-0.03891,0.0564,4.0,normal,normal,False
+2017-10,4 foz / estuário,77246,0.9822,-0.07982,-0.02219,0.068,5.0,normal,normal,False
+2017-11,4 foz / estuário,70350,0.89451,0.00459,0.0094,0.1275,2.0,muito elevado,elevado,False
+2017-12,4 foz / estuário,71453,0.90854,-0.04947,-0.00539,0.0701,1.0,normal,normal,False
+2018-01,4 foz / estuário,71875,0.91391,-0.0415,-0.00056,0.0608,1.0,normal,normal,False
+2018-02,4 foz / estuário,68,0.00086,,,,,sem dados,sem dados,False
+2018-03,4 foz / estuário,72844,0.92623,-0.09263,-0.01852,0.0534,1.0,normal,normal,False
+2018-04,4 foz / estuário,77527,0.98577,-0.10708,-0.04609,0.0531,3.0,normal,normal,False
+2018-05,4 foz / estuário,77892,0.99041,-0.31413,-0.13536,0.0229,4.0,normal,normal,False
+2018-06,4 foz / estuário,76628,0.97434,-0.20829,-0.08788,0.0368,4.0,normal,normal,False
+2018-07,4 foz / estuário,71875,0.91391,-0.09653,-0.0343,0.0458,1.0,normal,normal,False
+2018-09,4 foz / estuário,77295,0.98282,-0.1045,-0.0333,0.0527,5.0,normal,normal,False
+2018-10,4 foz / estuário,74850,0.95173,-0.01424,0.00819,0.1022,3.0,muito elevado,elevado,False
+2018-11,4 foz / estuário,77041,0.97959,-0.24053,-0.07865,0.0418,1.0,normal,normal,False
+2018-12,4 foz / estuário,77751,0.98862,-0.15532,-0.04857,0.0588,4.0,normal,normal,False
+2019-01,4 foz / estuário,77695,0.98791,-0.0668,-0.00454,0.1013,7.0,normal,normal,False
+2019-02,4 foz / estuário,77632,0.98711,-0.06676,-0.00617,0.0708,5.0,normal,normal,False
+2019-03,4 foz / estuário,76994,0.97899,-0.13069,-0.02294,0.0523,8.0,normal,normal,False
+2019-04,4 foz / estuário,77001,0.97908,-0.15902,-0.05972,0.0367,6.0,normal,normal,False
+2019-05,4 foz / estuário,76486,0.97254,-0.12477,-0.05806,0.0453,12.0,normal,normal,False
+2019-06,4 foz / estuário,77143,0.98089,-0.18883,-0.07711,0.0374,12.0,normal,normal,False
+2019-07,4 foz / estuário,77702,0.988,-0.20988,-0.08872,0.0371,11.0,normal,normal,False
+2019-08,4 foz / estuário,77486,0.98525,-0.18195,-0.04452,0.0453,8.0,normal,normal,False
+2019-09,4 foz / estuário,77104,0.98039,-0.08307,-0.02456,0.0586,8.0,normal,normal,False
+2019-10,4 foz / estuário,76722,0.97554,-0.06344,-0.00191,0.0787,8.0,normal,normal,False
+2019-11,4 foz / estuário,77054,0.97976,-0.08229,-0.02019,0.0744,3.0,normal,normal,False
+2019-12,4 foz / estuário,76210,0.96903,-0.0465,0.00942,0.0825,5.0,normal,elevado,True
+2020-01,4 foz / estuário,77295,0.98282,-0.10377,-0.03098,0.056,7.0,normal,normal,False
+2020-02,4 foz / estuário,77725,0.98829,-0.02826,-0.00077,0.0657,6.0,elevado,normal,False
+2020-03,4 foz / estuário,77439,0.98465,-0.02525,0.01173,0.0487,11.0,elevado,elevado,False
+2020-04,4 foz / estuário,77306,0.98296,-0.07845,-0.0138,0.0579,7.0,normal,normal,False
+2020-05,4 foz / estuário,77210,0.98174,-0.18346,-0.08239,0.0367,12.0,normal,normal,False
+2020-06,4 foz / estuário,77218,0.98184,-0.20218,-0.08767,0.0371,10.0,normal,normal,False
+2020-07,4 foz / estuário,76677,0.97496,-0.18102,-0.08752,0.0382,10.0,normal,normal,False
+2020-08,4 foz / estuário,77814,0.98942,-0.14085,-0.06533,0.0481,11.0,normal,normal,False
+2020-09,4 foz / estuário,77569,0.98631,-0.13545,-0.05852,0.06,6.0,normal,normal,False
+2020-10,4 foz / estuário,75905,0.96515,-0.04467,-0.00138,0.1133,3.0,normal,normal,False
+2020-11,4 foz / estuário,77155,0.98104,-0.08983,-0.01481,0.0796,5.0,normal,normal,False
+2020-12,4 foz / estuário,76892,0.9777,-0.20229,-0.05946,0.0447,4.0,normal,normal,False
+2021-01,4 foz / estuário,77671,0.9876,-0.14097,-0.04076,0.0563,7.0,normal,normal,False
+2021-02,4 foz / estuário,77413,0.98432,0.02614,0.031,0.0865,5.0,muito elevado,muito elevado,False
+2021-03,4 foz / estuário,77261,0.98239,-0.00655,0.02821,0.0524,10.0,muito elevado,muito elevado,False
+2021-04,4 foz / estuário,77603,0.98674,-0.07806,-0.00185,0.0551,7.0,normal,normal,False
+2021-05,4 foz / estuário,76700,0.97526,-0.12611,-0.0579,0.0382,10.0,normal,normal,False
+2021-06,4 foz / estuário,76883,0.97758,-0.14409,-0.07225,0.0386,9.0,normal,normal,False
+2021-07,4 foz / estuário,77478,0.98515,-0.16008,-0.08518,0.0412,10.0,normal,normal,False
+2021-08,4 foz / estuário,77434,0.98459,-0.17537,-0.07459,0.0409,8.0,normal,normal,False
+2021-09,4 foz / estuário,77318,0.98311,-0.14558,-0.06114,0.0478,8.0,normal,normal,False
+2021-10,4 foz / estuário,76865,0.97735,-0.06775,-0.00797,0.0778,6.0,normal,normal,False
+2021-11,4 foz / estuário,75466,0.95957,-0.03245,0.00595,0.1013,4.0,elevado,elevado,False
+2021-12,4 foz / estuário,76190,0.96877,-0.16893,-0.02686,0.0586,3.0,normal,normal,False
+2022-01,4 foz / estuário,76497,0.97268,-0.01823,0.03099,0.0782,6.0,elevado,muito elevado,False
+2022-02,4 foz / estuário,77667,0.98755,-0.04167,0.01244,0.0564,8.0,normal,elevado,True
+2022-03,4 foz / estuário,77020,0.97933,-0.04697,-0.00666,0.0574,9.0,normal,normal,False
+2022-04,4 foz / estuário,76481,0.97247,-0.03393,0.00078,0.0602,8.0,elevado,normal,False
+2022-05,4 foz / estuário,77013,0.97924,-0.03349,-0.02778,0.0483,6.0,elevado,normal,False
+2022-06,4 foz / estuário,76964,0.97861,-0.08072,-0.06424,0.0396,10.0,normal,normal,False
+2022-07,4 foz / estuário,76291,0.97006,-0.10596,-0.06683,0.0406,10.0,normal,normal,False
+2022-08,4 foz / estuário,77181,0.98137,-0.09726,-0.05263,0.0545,10.0,normal,normal,False
+2022-09,4 foz / estuário,77299,0.98287,-0.10227,-0.03755,0.0597,8.0,normal,normal,False
+2022-10,4 foz / estuário,77036,0.97953,-0.11313,-0.02101,0.0695,4.0,normal,normal,False
+2022-11,4 foz / estuário,77189,0.98147,-0.13553,-0.03616,0.0586,4.0,normal,normal,False
+2022-12,4 foz / estuário,77252,0.98228,-0.08128,-0.01335,0.0864,5.0,normal,normal,False
+2023-01,4 foz / estuário,77325,0.9832,-0.03476,0.00688,0.0964,10.0,elevado,elevado,False
+2023-02,4 foz / estuário,76755,0.97596,0.00215,0.03072,0.087,6.0,muito elevado,muito elevado,False
+2023-03,4 foz / estuário,76990,0.97894,0.00806,0.04606,0.0493,8.0,muito elevado,muito elevado,False
+2023-04,4 foz / estuário,75898,0.96506,0.00454,0.05379,0.0542,9.0,muito elevado,muito elevado,False
+2023-05,4 foz / estuário,76235,0.96934,-0.04552,0.035,0.0573,8.0,normal,muito elevado,True
+2023-06,4 foz / estuário,76545,0.97329,-0.08597,-0.04927,0.0454,11.0,normal,normal,False
+2023-07,4 foz / estuário,77329,0.98325,-0.15407,-0.05207,0.0452,11.0,normal,normal,False
+2023-08,4 foz / estuário,76872,0.97744,-0.17381,-0.08103,0.0383,5.0,normal,normal,False
+2023-09,4 foz / estuário,76720,0.97551,-0.07192,-0.02426,0.0607,8.0,normal,normal,False
+2023-10,4 foz / estuário,76762,0.97604,-0.06306,-0.00605,0.0828,5.0,normal,normal,False
+2023-11,4 foz / estuário,73614,0.93602,-0.017,0.00912,0.0731,7.0,elevado,elevado,False
+2023-12,4 foz / estuário,77007,0.97916,-0.08435,-0.01878,0.0662,4.0,normal,normal,False
+2024-01,4 foz / estuário,77488,0.98528,-0.02103,0.0314,0.0524,7.0,elevado,muito elevado,False
+2024-02,4 foz / estuário,77606,0.98678,-0.06601,0.0,0.07,8.0,normal,normal,False
+2024-03,4 foz / estuário,76011,0.9665,-0.05077,0.00936,0.0618,6.0,normal,elevado,True
+2024-04,4 foz / estuário,77336,0.98334,-0.03396,-0.02857,0.0443,8.0,elevado,normal,False
+2024-05,4 foz / estuário,76028,0.96671,-0.03114,-0.00789,0.0522,10.0,elevado,normal,False
+2024-06,4 foz / estuário,76723,0.97555,-0.16153,-0.10857,0.0355,9.0,normal,normal,False
+2024-07,4 foz / estuário,77463,0.98496,-0.19383,-0.09148,0.0375,11.0,normal,normal,False
+2024-08,4 foz / estuário,77326,0.98322,-0.14641,-0.07195,0.0454,9.0,normal,normal,False
+2024-09,4 foz / estuário,75304,0.95751,-0.01823,-0.00739,0.0714,5.0,elevado,normal,False
+2024-10,4 foz / estuário,75618,0.9615,-0.04011,0.00727,0.0818,8.0,elevado,elevado,False
+2024-11,4 foz / estuário,71324,0.9069,-0.03805,0.01607,0.1092,7.0,elevado,elevado,False
+2024-12,4 foz / estuário,76831,0.97692,-0.12021,-0.02249,0.0648,5.0,normal,normal,False
+2025-01,4 foz / estuário,77159,0.98109,-0.02054,0.03632,0.0739,6.0,elevado,muito elevado,False
+2025-02,4 foz / estuário,77266,0.98245,0.02346,0.02658,0.0699,6.0,muito elevado,elevado,False
+2025-03,4 foz / estuário,76415,0.97163,-0.04429,0.00683,0.0566,10.0,normal,elevado,True
+2025-04,4 foz / estuário,75868,0.96468,-0.05273,-0.02209,0.0506,8.0,normal,normal,False
+2025-05,4 foz / estuário,75347,0.95805,-0.09865,-0.06982,0.0434,11.0,normal,normal,False
+2025-06,4 foz / estuário,76422,0.97172,-0.14837,-0.08,0.0379,11.0,normal,normal,False
+2025-07,4 foz / estuário,76840,0.97704,-0.21219,-0.10345,0.0365,14.0,normal,normal,False
+2025-08,4 foz / estuário,76288,0.97002,-0.1198,-0.05025,0.0513,8.0,normal,normal,False
+2025-09,4 foz / estuário,76669,0.97486,-0.07261,-0.02266,0.0678,7.0,normal,normal,False
+2025-10,4 foz / estuário,74437,0.94648,-0.04996,-0.01131,0.0664,9.0,normal,normal,False
+2025-11,4 foz / estuário,74188,0.94332,-0.05947,0.00321,0.1198,6.0,normal,normal,False
+2025-12,4 foz / estuário,75414,0.9589,-0.05664,0.00519,0.0892,6.0,normal,elevado,True
+2026-01,4 foz / estuário,77533,0.98585,0.04234,0.02108,0.1177,6.0,muito elevado,elevado,False
+2026-02,4 foz / estuário,77190,0.98149,-0.00107,0.02709,0.0491,9.0,muito elevado,elevado,False
+2026-03,4 foz / estuário,76533,0.97313,-0.00891,0.02972,0.059,5.0,muito elevado,muito elevado,False
+2026-04,4 foz / estuário,75743,0.96309,-0.02458,0.03052,0.05,9.0,elevado,muito elevado,False
+2026-05,4 foz / estuário,77091,0.98023,-0.06283,-0.06722,0.0388,12.0,normal,normal,False
+2026-06,4 foz / estuário,76867,0.97738,-0.06595,-0.04429,0.0446,12.0,normal,normal,False
+2026-07,4 foz / estuário,76998,0.97905,-0.12552,-0.05128,0.043,14.0,normal,normal,False
+2026-08,4 foz / estuário,77377,0.98386,-0.13751,-0.06418,0.0437,10.0,normal,normal,False
+2026-09,4 foz / estuário,73885,0.93946,-0.04426,0.00879,0.0665,6.0,normal,elevado,True
+2017-01,rio inteiro,295612,0.94298,-0.10235,-0.03375,0.0589,2.0,normal,normal,False
+2017-02,rio inteiro,244162,0.77886,-0.1532,-0.01929,0.0322,1.0,normal,normal,False
+2017-03,rio inteiro,299148,0.95426,0.0175,0.05891,0.0641,2.0,muito elevado,muito elevado,False
+2017-04,rio inteiro,304684,0.97192,-0.01656,-0.01119,0.0535,1.0,elevado,normal,False
+2017-05,rio inteiro,304838,0.97241,-0.08154,-0.03828,0.0361,4.0,normal,normal,False
+2017-06,rio inteiro,302037,0.96348,-0.09991,-0.01639,0.0438,9.0,normal,normal,False
+2017-07,rio inteiro,304797,0.97228,-0.18248,-0.07666,0.0328,8.0,normal,normal,False
+2017-08,rio inteiro,304599,0.97165,-0.07838,-0.0479,0.0496,5.0,normal,normal,False
+2017-09,rio inteiro,303927,0.9695,-0.10545,-0.03606,0.0516,4.0,normal,normal,False
+2017-10,rio inteiro,302455,0.96481,-0.06389,-0.01452,0.0638,5.0,normal,normal,False
+2017-11,rio inteiro,286697,0.91454,0.00869,0.00985,0.1229,2.0,muito elevado,normal,False
+2017-12,rio inteiro,285574,0.91096,-0.01989,0.00141,0.0683,1.0,elevado,normal,False
+2018-01,rio inteiro,286063,0.91252,-0.01257,0.00667,0.0622,1.0,elevado,normal,False
+2018-02,rio inteiro,1740,0.00555,-0.05028,0.03598,0.0852,1.0,normal,muito elevado,True
+2018-03,rio inteiro,280360,0.89433,-0.0553,0.00452,0.0527,1.0,normal,normal,False
+2018-04,rio inteiro,287252,0.91631,-0.07172,-0.02922,0.0536,3.0,normal,normal,False
+2018-05,rio inteiro,285488,0.91069,-0.20528,-0.10413,0.029,4.0,normal,normal,False
+2018-06,rio inteiro,284783,0.90844,-0.13292,-0.05618,0.0412,4.0,normal,normal,False
+2018-07,rio inteiro,280795,0.89571,-0.05916,-0.03545,0.0476,1.0,normal,normal,False
+2018-09,rio inteiro,296018,0.94428,-0.09177,-0.04372,0.0498,5.0,normal,normal,False
+2018-10,rio inteiro,294762,0.94027,-0.01542,0.00519,0.0942,3.0,elevado,normal,False
+2018-11,rio inteiro,297296,0.94835,-0.24866,-0.11275,0.0313,1.0,normal,normal,False
+2018-12,rio inteiro,297979,0.95053,-0.18593,-0.06096,0.0433,4.0,normal,normal,False
+2019-01,rio inteiro,298985,0.95374,-0.06271,0.00302,0.0932,6.0,normal,normal,False
+2019-02,rio inteiro,301852,0.96289,-0.06105,-0.00281,0.0665,5.0,normal,normal,False
+2019-03,rio inteiro,295042,0.94116,-0.07807,0.0152,0.0575,7.0,normal,normal,False
+2019-04,rio inteiro,295925,0.94398,-0.0498,0.00903,0.0471,6.0,normal,normal,False
+2019-05,rio inteiro,301834,0.96283,-0.03216,-0.01235,0.0478,12.0,normal,normal,False
+2019-06,rio inteiro,302366,0.96452,-0.09336,-0.03794,0.0427,12.0,normal,normal,False
+2019-07,rio inteiro,301858,0.9629,-0.16539,-0.07731,0.0375,11.0,normal,normal,False
+2019-08,rio inteiro,301241,0.96094,-0.13826,-0.04604,0.0446,8.0,normal,normal,False
+2019-09,rio inteiro,302337,0.96443,-0.07865,-0.02824,0.0553,7.0,normal,normal,False
+2019-10,rio inteiro,301385,0.9614,-0.06231,-0.00643,0.0737,7.0,normal,normal,False
+2019-11,rio inteiro,299119,0.95417,-0.0688,-0.01419,0.0792,3.0,normal,normal,False
+2019-12,rio inteiro,289946,0.92491,-0.0367,0.01887,0.0768,5.0,normal,elevado,True
+2020-01,rio inteiro,292868,0.93423,-0.04957,0.00502,0.061,7.0,normal,normal,False
+2020-02,rio inteiro,291650,0.93034,0.0149,0.021,0.066,6.0,muito elevado,elevado,False
+2020-03,rio inteiro,302876,0.96615,0.00673,0.04274,0.0439,10.0,muito elevado,muito elevado,False
+2020-04,rio inteiro,301531,0.96186,-0.04856,0.00493,0.0542,7.0,normal,normal,False
+2020-05,rio inteiro,303625,0.96854,-0.07577,-0.04478,0.0402,12.0,normal,normal,False
+2020-06,rio inteiro,303132,0.96697,-0.10954,-0.04384,0.0413,10.0,normal,normal,False
+2020-07,rio inteiro,301810,0.96275,-0.07766,-0.04976,0.0429,10.0,normal,normal,False
+2020-08,rio inteiro,305216,0.97362,-0.10584,-0.05662,0.0479,10.0,normal,normal,False
+2020-09,rio inteiro,303785,0.96905,-0.1204,-0.05373,0.0569,6.0,normal,normal,False
+2020-10,rio inteiro,299421,0.95513,-0.02765,0.00439,0.1144,3.0,normal,normal,False
+2020-11,rio inteiro,302058,0.96354,-0.05821,0.0,0.09055,5.0,normal,normal,False
+2020-12,rio inteiro,293603,0.93657,-0.18221,-0.05318,0.044,4.0,normal,normal,False
+2021-01,rio inteiro,300150,0.95746,-0.10081,-0.01421,0.0616,6.0,normal,normal,False
+2021-02,rio inteiro,305076,0.97317,0.02683,0.02771,0.0829,5.0,muito elevado,elevado,False
+2021-03,rio inteiro,304598,0.97164,-0.00344,0.03926,0.0424,10.0,muito elevado,muito elevado,False
+2021-04,rio inteiro,304976,0.97285,-0.06981,0.01044,0.0471,7.0,normal,normal,False
+2021-05,rio inteiro,303646,0.96861,-0.0905,-0.01653,0.0383,10.0,normal,normal,False
+2021-06,rio inteiro,304497,0.97132,-0.10605,-0.03937,0.039,9.0,normal,normal,False
+2021-07,rio inteiro,305934,0.97591,-0.12362,-0.06021,0.0425,10.0,normal,normal,False
+2021-08,rio inteiro,306365,0.97728,-0.13024,-0.04043,0.0423,8.0,normal,normal,False
+2021-09,rio inteiro,305213,0.97361,-0.13551,-0.05723,0.0452,8.0,normal,normal,False
+2021-10,rio inteiro,305000,0.97293,-0.0688,-0.00638,0.0743,6.0,normal,normal,False
+2021-11,rio inteiro,299992,0.95695,-0.02498,0.01529,0.1012,5.0,normal,normal,False
+2021-12,rio inteiro,302014,0.9634,-0.09167,-0.00101,0.0558,3.0,normal,normal,False
+2022-01,rio inteiro,291752,0.93067,-0.00521,0.05352,0.0694,6.0,muito elevado,muito elevado,False
+2022-02,rio inteiro,303649,0.96862,-0.02797,0.03436,0.0536,8.0,normal,elevado,True
+2022-03,rio inteiro,305306,0.9739,-0.04269,0.01925,0.0541,9.0,normal,elevado,True
+2022-04,rio inteiro,303593,0.96844,-0.01616,0.0284,0.0591,8.0,elevado,elevado,False
+2022-05,rio inteiro,304804,0.9723,-0.01008,0.00448,0.0483,6.0,elevado,normal,False
+2022-06,rio inteiro,303020,0.96661,-0.00599,-0.03679,0.0407,10.0,elevado,normal,False
+2022-07,rio inteiro,302945,0.96637,-0.06553,-0.04058,0.0403,9.0,normal,normal,False
+2022-08,rio inteiro,305187,0.97352,-0.06862,-0.03823,0.0541,10.0,normal,normal,False
+2022-09,rio inteiro,305476,0.97445,-0.07021,-0.02554,0.0591,9.0,normal,normal,False
+2022-10,rio inteiro,300312,0.95797,-0.06864,0.00263,0.0756,3.0,normal,normal,False
+2022-11,rio inteiro,303218,0.96724,-0.0485,0.01078,0.0719,4.0,normal,normal,False
+2022-12,rio inteiro,302907,0.96625,-0.04793,0.00422,0.093,4.0,normal,normal,False
+2023-01,rio inteiro,291940,0.93127,0.00265,0.03008,0.0924,9.0,muito elevado,elevado,False
+2023-02,rio inteiro,301823,0.96279,0.00966,0.04628,0.0796,5.0,muito elevado,muito elevado,False
+2023-03,rio inteiro,304958,0.97279,-0.00544,0.03514,0.0376,8.0,elevado,muito elevado,False
+2023-04,rio inteiro,302328,0.9644,-0.02017,0.0566,0.0432,9.0,elevado,muito elevado,False
+2023-05,rio inteiro,302336,0.96443,-0.04412,0.05523,0.0503,7.0,normal,muito elevado,True
+2023-06,rio inteiro,304662,0.97185,-0.08686,-0.01327,0.0431,11.0,normal,normal,False
+2023-07,rio inteiro,305868,0.9757,-0.11619,-0.03823,0.0453,11.0,normal,normal,False
+2023-08,rio inteiro,305472,0.97443,-0.11321,-0.04563,0.0428,6.0,normal,normal,False
+2023-09,rio inteiro,305655,0.97502,-0.05193,-0.01498,0.0612,8.0,normal,normal,False
+2023-10,rio inteiro,306228,0.97684,-0.04222,0.00504,0.0746,4.0,normal,normal,False
+2023-11,rio inteiro,297123,0.9478,-0.02638,0.0108,0.0736,7.0,normal,normal,False
+2023-12,rio inteiro,303925,0.9695,-0.06754,-0.01325,0.0686,4.0,normal,normal,False
+2024-01,rio inteiro,295983,0.94416,-0.01422,0.0318,0.0491,7.0,elevado,elevado,False
+2024-02,rio inteiro,305382,0.97415,-0.04231,0.0169,0.0665,8.0,normal,elevado,True
+2024-03,rio inteiro,303944,0.96956,-0.03459,0.02479,0.0604,5.0,normal,elevado,True
+2024-04,rio inteiro,302709,0.96562,0.03825,0.00773,0.0451,8.0,muito elevado,normal,False
+2024-05,rio inteiro,302303,0.96432,-0.0081,0.01587,0.0502,10.0,elevado,elevado,False
+2024-06,rio inteiro,304943,0.97275,-0.08131,-0.0625,0.0411,9.0,normal,normal,False
+2024-07,rio inteiro,306637,0.97815,-0.09808,-0.05898,0.0459,11.0,normal,normal,False
+2024-08,rio inteiro,306643,0.97817,-0.10588,-0.05387,0.0486,9.0,normal,normal,False
+2024-09,rio inteiro,302810,0.96594,-0.02078,-0.00083,0.0695,6.0,elevado,normal,False
+2024-10,rio inteiro,302596,0.96526,-0.03375,0.01176,0.0804,8.0,normal,normal,False
+2024-11,rio inteiro,290542,0.92681,-0.02387,0.02449,0.1157,6.0,normal,elevado,True
+2024-12,rio inteiro,303564,0.96835,-0.08355,-0.00103,0.0747,5.0,normal,normal,False
+2025-01,rio inteiro,292871,0.93424,-0.00747,0.03929,0.0748,5.0,elevado,muito elevado,False
+2025-02,rio inteiro,292358,0.9326,0.02842,0.0427,0.0673,7.0,muito elevado,muito elevado,False
+2025-03,rio inteiro,302025,0.96344,-0.02012,0.0267,0.052,9.0,elevado,elevado,False
+2025-04,rio inteiro,302960,0.96642,-0.02713,0.0,0.0502,8.0,normal,normal,False
+2025-05,rio inteiro,301038,0.96029,-0.01998,-0.0008,0.0482,11.0,elevado,normal,False
+2025-06,rio inteiro,304168,0.97027,-0.07422,-0.05405,0.0449,11.0,normal,normal,False
+2025-07,rio inteiro,304964,0.97281,-0.14906,-0.07955,0.0405,13.0,normal,normal,False
+2025-08,rio inteiro,303303,0.96751,-0.08298,-0.04075,0.0523,8.0,normal,normal,False
+2025-09,rio inteiro,303917,0.96947,-0.05901,-0.00563,0.0636,6.0,normal,normal,False
+2025-10,rio inteiro,299995,0.95696,-0.0464,0.00161,0.0648,9.0,normal,normal,False
+2025-11,rio inteiro,296240,0.94498,-0.0485,0.01102,0.1118,5.0,normal,normal,False
+2025-12,rio inteiro,296433,0.9456,-0.02098,0.021,0.0824,5.0,normal,elevado,True
+2026-01,rio inteiro,308569,0.98431,0.04508,0.01918,0.1042,6.0,muito elevado,elevado,False
+2026-02,rio inteiro,305908,0.97582,-0.01708,0.02791,0.0357,9.0,elevado,elevado,False
+2026-03,rio inteiro,301636,0.9622,-0.02367,0.03464,0.0454,4.0,normal,muito elevado,True
+2026-04,rio inteiro,302906,0.96625,-0.0293,0.02067,0.0427,9.0,normal,elevado,True
+2026-05,rio inteiro,305660,0.97503,-0.03216,-0.06011,0.031,13.0,normal,normal,False
+2026-06,rio inteiro,303936,0.96953,-0.04019,-0.04397,0.0426,11.0,normal,normal,False
+2026-07,rio inteiro,306147,0.97659,-0.05294,-0.04302,0.0502,14.0,normal,normal,False
+2026-08,rio inteiro,306939,0.97911,-0.05612,-0.05432,0.054,11.0,normal,normal,False
+2026-09,rio inteiro,298363,0.95176,-0.0129,0.00191,0.0714,6.0,elevado,normal,False

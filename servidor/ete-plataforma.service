@@ -1,0 +1,22 @@
+# Serviço do sistema que mantém a plataforma ligada (arranca com o servidor e reinicia se cair).
+# Instalado por servidor/instalar.sh em /etc/systemd/system/ete-plataforma.service
+[Unit]
+Description=Eyes to Earth - plataforma (Streamlit)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=ete
+Group=ete
+WorkingDirectory=/opt/ete/plataforma
+EnvironmentFile=-/opt/ete/.env
+ExecStart=/opt/ete/.venv/bin/streamlit run app.py --server.address 127.0.0.1 --server.port 8501 --server.headless true
+Restart=always
+RestartSec=5
+# a little protection: the app only writes in its own data folders
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

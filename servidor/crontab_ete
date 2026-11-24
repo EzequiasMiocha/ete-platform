@@ -1,0 +1,7 @@
+# Tarefas diárias do utilizador ete (o servidor está na hora de Maputo).
+# Instalado por servidor/instalar.sh. Ver: crontab -l (como ete).
+SHELL=/bin/bash
+# 05:15 previsão, boletim, pacote da plataforma, página leve e alertas no WhatsApp
+15 5 * * * cd /opt/ete && set -a && . ./.env && set +a && .venv/bin/python scripts/run_daily_pipeline.py --sem-imagens >> data/metadata/pipeline_diario.log 2>&1
+# 03:30 cópia de segurança da base de dados dos subscritores
+30 3 * * * /opt/ete/servidor/copia_de_seguranca.sh >> /opt/ete/data/metadata/copias.log 2>&1

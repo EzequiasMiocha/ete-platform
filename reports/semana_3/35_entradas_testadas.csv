@@ -1,0 +1,6 @@
+entradas,r2,auc,brier
+modelo final,0.657,0.872,0.126
++ vento na foz,0.674,0.875,0.124
++ chuva local na foz,0.654,0.872,0.126
++ chuva por parte da bacia,0.656,0.874,0.124
+treinado com os dois satélites,0.664,0.874,0.122

@@ -29,6 +29,7 @@ The pages are numbered in reading order, but each one stands on its own. Pick th
 | Check the science: data, models, tests | [2](02-data-sources.md), [4](04-satellite-imagery.md), [5](05-flood-models.md), [6](06-forecast-and-alerts.md), [7](07-water-quality.md), [11](11-validation-and-limitations.md) |
 | Run, maintain or extend the software | [8. Platform architecture](08-platform-architecture.md), [10. Developer guide](10-developer-guide.md) |
 | Look up a term or a source | [12. Glossary and references](12-glossary-and-references.md) |
+| See the student workshops | [workshops/](../workshops/README.md) |
 
 ## Contents
 
@@ -44,6 +45,8 @@ The pages are numbered in reading order, but each one stands on its own. Pick th
 10. [Developer guide](10-developer-guide.md): install, run, test, update and publish.
 11. [Validation and limitations](11-validation-and-limitations.md): what is proven, what is not, and what was tested and rejected.
 12. [Glossary and references](12-glossary-and-references.md).
+
+Outside this folder: the [student workshops](../workshops/README.md), with their lessons, data, solutions and manuals.
 
 ## The project in five numbers
 
@@ -63,12 +66,12 @@ The pages are numbered in reading order, but each one stands on its own. Pick th
 
 ## About this repository
 
-This repository is the **published part** of the project: the web application, the small data package it reads,
-the code and models that produce the daily bulletin, and the automation that runs them on GitHub. The research
-workspace (about 43 GB of raw data and the analysis notebooks) stays on the project computer; the code that built
-everything is in [`src/ete/`](../src/ete). The figures of this documentation are drawn from the project's own data by
-`scripts/build_documentation.py` in the research workspace.
+This repository holds the whole project except its 43 GB of satellite data: the web application and the small data
+package it reads, the library that built everything ([`src/ete/`](../src/ete)), the trained models, every script, the
+research notebooks with their results, every figure and table ([`reports/`](../reports/README.md)), the two student
+workshops ([`workshops/`](../workshops/README.md)) and the automation that issues the bulletin every day. The map of the
+folders is in the [main README](../README.md). The figures of this documentation are drawn from the project's own data
+by `scripts/build_documentation.py`.
 
-Older guides in Portuguese are kept at the root of the repository: `MANUAL_DO_UTILIZADOR.md` (user manual),
-`GUIA_DE_DEPLOY.md` (publishing), `ALERTAS_WHATSAPP.md` (WhatsApp alerts), `GUIA_SERVIDOR_PROPRIO.md` and
-`GUIA_DOMINIO_CO_MZ.md` (own server and domain, prepared for later).
+Practical guides in Portuguese are in [`guias/`](../guias/README.md): user manual, publishing, WhatsApp alerts, own
+server and domain, plan status and the technical runbook.

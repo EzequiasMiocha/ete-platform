@@ -1,0 +1,63 @@
+{
+  "name": "train_recente",
+  "description": "Layer 2 (10 m): one row per sampled pixel and month, Sentinel-1 + Sentinel-2 + terrain + monthly drivers.",
+  "created_utc": "2026-10-10T12:02:12+00:00",
+  "code_version": "0.1.0",
+  "rows": 311413,
+  "columns": 96,
+  "months": [
+    "2015-04",
+    "2026-01"
+  ],
+  "rows_per_split": {
+    "train": 191514,
+    "val": 79899,
+    "test": 40000
+  },
+  "rows_per_stratum": {
+    "dry_low": 105916,
+    "flood": 96053,
+    "dry_other": 49150,
+    "ems": 40000,
+    "permanent": 20294
+  },
+  "processing": {
+    "dry_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "wet_months": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "permanent_water_occurrence": 75,
+    "low_hand_m": 5,
+    "calibration": {
+      "start": "2015-04-01",
+      "end": "2021-12-31"
+    },
+    "overlap": {
+      "start": "2017-01-01",
+      "end": "2021-12-31"
+    },
+    "splits": {
+      "train_end": 2019,
+      "val_end": 2021
+    },
+    "block_size_m": 3000,
+    "n_folds": 5,
+    "seed": 42,
+    "sampling": {
+      "flood": 1500,
+      "permanent": 300,
+      "dry_low": 1500,
+      "dry_other": 700
+    }
+  }
+}

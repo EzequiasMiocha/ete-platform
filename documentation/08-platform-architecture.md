@@ -60,9 +60,14 @@ ete-platform/
 │   └── dados/                  THE DATA PACKAGE (about 11 MB)
 ├── src/ete/                    the project library (download, processing, models, forecast, package)
 ├── models/                     trained models (.joblib) and their metadata (.json)
-├── scripts/                    daily pipeline, self-tests, weekly image update, keep-awake visit
+├── scripts/                    daily pipeline, data updates, notebook and workshop builders, publication
 ├── config/config.yaml          single source of truth: area, grids, periods, datasets, limits, addresses
-├── data/                       only what the daily bulletin needs (forecast history, latest runs, small series)
+├── notebooks/                  research notebooks, week by week (Portuguese), with their results
+├── reports/                    figures and tables of every stage, presentation figures, print maps
+├── workshops/                  the two student workshops: lessons, data, solutions, manuals
+├── guias/                      practical guides in Portuguese, the technical runbook
+├── qgis/, servidor/, logos/    QGIS project, own-server kit (not in use), logos
+├── data/                       only the small data (forecast history, latest runs, series, areas, places)
 ├── docs/                       the light bulletin page served by GitHub Pages
 ├── documentation/              this documentation
 └── .github/workflows/          boletim_diario.yml, testes.yml, manter_acordada.yml
@@ -128,7 +133,8 @@ The monthly radar maps (Model B) are not in the daily pipeline: each month needs
 | **Supabase** (planned) | Accounts and WhatsApp sign-ups in the cloud | Free tier |
 
 An own-server kit (Ubuntu, nginx, systemd, certificate, daily cron) and a domain checklist are prepared for later in
-`GUIA_SERVIDOR_PROPRIO.md` and `GUIA_DOMINIO_CO_MZ.md` (in Portuguese); they are not in use.
+`guias/guia_servidor_proprio.md` and `guias/guia_dominio_co_mz.md` (in Portuguese), with the files in `servidor/`; they
+are not in use.
 
 ## The application
 

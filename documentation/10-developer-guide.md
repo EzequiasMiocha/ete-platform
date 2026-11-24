@@ -84,8 +84,8 @@ The Earth Engine steps need the project's Earth Engine account, which is why the
 
 ## Publish a change
 
-The repository is **generated** from the research workspace by `scripts/build_deploy_repo.py`: changes are made in the
-workspace (`plataforma/`, `src/ete/`, `config/`, `documentation/`), never directly in the generated copy. Then:
+The repository is **generated** from the project folder by `scripts/build_deploy_repo.py`: changes are made in the
+project folder (`plataforma/`, `src/ete/`, `config/`, `documentation/`), never directly in the generated copy. Then:
 
 ```bash
 .venv/bin/python scripts/publicar_plataforma.py --verificar   # rebuild and check only, nothing is sent
@@ -99,10 +99,10 @@ repository deploy key. Streamlit Cloud updates the application in one to two min
 If you work directly on this repository instead (for example from a fork), keep in mind that the daily workflow
 commits to `main` every day: pull before you push.
 
-## Rebuild the science (research workspace)
+## Rebuild the science
 
-Everything upstream of the package is in the research workspace, which is not in this repository (about 43 GB of data).
-In order:
+The code and the notebooks are in this repository; the data they need (about 43 GB) is not, and the week 1 notebooks
+download it again (Earth Engine account and Copernicus key needed). In order:
 
 ```bash
 .venv/bin/earthengine authenticate

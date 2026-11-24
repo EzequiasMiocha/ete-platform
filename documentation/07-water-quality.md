@@ -114,7 +114,7 @@ with the full tide and the latest measurement, 0.68 (ROC-AUC 0.89). Trained on S
 Landsat images it never saw (R² 0.65), even before 2017 (R² 0.59).*
 
 Tested and **not** used, because they gave no gain: wind at the mouth, local rain, rain per part of the basin, training
-on both satellites together (`scripts/experimento_turbidez_entradas.py` in the research workspace).
+on both satellites together (`scripts/experimento_turbidez_entradas.py`).
 
 ## The water-colour map and its forecasts
 

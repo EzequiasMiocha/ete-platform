@@ -29,9 +29,11 @@ flowchart TD
 | Library with all the logic (download, processing, models, forecast, package) | `src/ete/` | Yes |
 | Trained models and their metadata | `models/` | Yes |
 | Web application and its data package | `plataforma/` | Yes |
-| Daily pipeline, tests, maintenance scripts | `scripts/` (the ones the bulletin needs) | Yes |
-| Analysis notebooks (in Portuguese), one per data type or task, numbered by week | `notebooks/` | No: research workspace |
-| Raw and processed data (about 43 GB) | `data/` | Only the small files the bulletin needs |
+| Daily pipeline, data updates, notebook and workshop builders, publication | `scripts/` | Yes |
+| Analysis notebooks (in Portuguese), one per data type or task, numbered by week, with their results | `notebooks/` | Yes |
+| Figures and tables of every stage | `reports/` | Yes |
+| The two student workshops | `workshops/` | Yes |
+| Raw and processed data (about 43 GB) | `data/` | Only the small files; the rest is rebuilt by the notebooks |
 
 The notebooks are **generated** by scripts (`scripts/build_notebooks*.py`) and run from top to bottom, so every
 figure and table in them can be rebuilt. The logic is never written in a notebook: notebooks call `src/ete/`.
@@ -218,7 +220,7 @@ The application went through several designs, each one reviewed with screenshots
 
 ## Step 10. Publishing and automation
 
-Script `scripts/build_deploy_repo.py` (in the research workspace) builds this repository; `publicar_plataforma.py`
+Script `scripts/build_deploy_repo.py` builds this repository from the project folder; `publicar_plataforma.py`
 pulls, rebuilds, tests and pushes in one command. Full detail in [8. Platform architecture](08-platform-architecture.md).
 
 - **GitHub** holds the code, the package and three workflows:

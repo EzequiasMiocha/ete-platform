@@ -1,0 +1,9 @@
+feature,descricao,AUC,mediana_alagado_dB,mediana_nao_alagado_dB
+VV mediana,composição mensal atual,0.675,-11.26,-9.85
+VH mediana,composição mensal atual,0.745,-17.78,-15.73
+VV percentil 10,momento mais escuro do mês (duas órbitas),0.912,-17.67,-12.08
+VH percentil 10,momento mais escuro do mês (duas órbitas),0.970,-32.38,-18.27
+VV percentil 10 órbita 145,só órbita 145,0.937,-22.32,-11.36
+VH percentil 10 órbita 145,só órbita 145,0.959,-29.00,-17.22
+VV mediana órbita 145,só órbita 145,0.921,-16.47,-10.18
+VH mediana órbita 145,só órbita 145,0.940,-22.61,-15.99

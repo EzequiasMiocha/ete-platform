@@ -142,7 +142,7 @@ People can sign up on the platform with their WhatsApp number and their place. T
 - phone numbers are never stored in the repository, the package or the logs.
 
 To go live it still needs a Meta Business account with a WhatsApp number, approval of the message templates (texts in
-`ALERTAS_WHATSAPP.md`), a hosted database (Supabase) and the matching secrets on Streamlit Cloud and GitHub. Until then
+`guias/alertas_whatsapp.md`), a hosted database (Supabase) and the matching secrets on Streamlit Cloud and GitHub. Until then
 the sign-up form says that sign-ups open soon, and nothing is lost.
 
 ## What is and is not proven

@@ -1,0 +1,62 @@
+{
+  "v": 5,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-20T17:55:12Z"
+  },
+  "lists": "css",
+  "format": {
+    "v": 1,
+    "shared": [
+      "project/deck.css"
+    ]
+  },
+  "title": "Módulo 2: Como uma máquina aprende",
+  "order": [
+    "m2",
+    "m2-exemplos",
+    "m2-duas-maneiras",
+    "m2-modelo",
+    "m2-modelo-exemplos",
+    "m2-ingredientes",
+    "m2-treinar-prever",
+    "m2-errar",
+    "m2-tipos",
+    "m2-classificacao-regressao",
+    "m2-actividade-tipos",
+    "m2-arvore",
+    "m2-arvore-projecto",
+    "m2-actividade-arvore",
+    "m2-floresta",
+    "m2-actividade-votar",
+    "m2-regressao",
+    "m2-projecto",
+    "m2-resumo"
+  ],
+  "sections": {
+    "s-ideia": {
+      "description": "Aprender com exemplos: o que é um modelo, de que dados precisa, treinar e prever",
+      "start": "m2"
+    },
+    "s-tipos": {
+      "description": "As três formas de aprender, e a classificação e a regressão",
+      "start": "m2-tipos"
+    },
+    "s-arvore": {
+      "description": "Dois algoritmos simples, com jogos: a árvore de decisão e a floresta",
+      "start": "m2-arvore"
+    },
+    "s-fim": {
+      "description": "Prever um número, o que a máquina faz no projecto EYES TO EARTH e o resumo",
+      "start": "m2-regressao"
+    }
+  },
+  "cover": "m2",
+  "faces": {
+    "archivo-black": {
+      "family": "Archivo Black",
+      "href": "https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+    }
+  },
+  "designSystems": []
+}

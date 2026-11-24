@@ -6,3 +6,7 @@ __pycache__/
 .streamlit/secrets.toml
 # telefones das pessoas inscritas nos alertas: nunca no repositório
 data/private/
+# ambiente Python local do Workshop 2, zips de distribuição, lista de participantes
+jupyter_env/
+*.zip
+participantes.csv

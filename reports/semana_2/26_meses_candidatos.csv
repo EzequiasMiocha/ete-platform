@@ -1,0 +1,54 @@
+month,rain_basin_mm,rain_basin_pct,q_mean,q_max,q_pct,jrc_observed_fraction,jrc_flood_km2,s1_new_water_km2,s1_offset_vv,sinais,n_sinais,tem_landsat,tem_sentinel1,tem_sentinel2,rotulo_disponivel
+2021-02,289.18,95.24,407.52,548.94,90.48,0.58,52.4,21.6,0.71,chuva+caudal+jrc,3,True,True,True,JRC mensal
+2021-01,240.48,95.24,204.3,1229.7,76.19,0.99,4.77,4.47,0.83,chuva+caudal+jrc,3,True,True,True,JRC mensal
+2014-03,212.05,90.48,371.54,727.81,95.24,1.0,46.62,,,chuva+caudal+jrc,3,True,False,False,JRC mensal
+2023-02,425.72,100.0,573.29,2370.69,100.0,,,20.6,0.86,chuva+caudal,2,True,True,True,desenhar no QGIS / EMS
+2026-01,355.28,100.0,1117.75,2986.89,100.0,,,26.3,1.28,chuva+caudal,2,True,True,True,desenhar no QGIS / EMS
+2026-03,227.47,100.0,314.13,405.81,90.48,,,36.69,0.91,chuva+caudal,2,True,True,True,desenhar no QGIS / EMS
+2013-01,218.86,90.48,474.09,1961.45,95.24,0.09,0.0,,,chuva+caudal,2,True,False,False,JRC mensal
+2006-03,198.19,85.71,400.54,622.62,100.0,0.73,1.94,,,chuva+caudal,2,True,False,False,JRC mensal
+2017-01,194.52,80.95,91.8,183.41,33.33,1.0,5.05,2.63,0.72,chuva+jrc,2,True,True,True,JRC mensal
+2025-02,186.98,90.48,156.92,584.12,57.14,,,3.83,1.0,chuva+caudal,2,True,True,True,desenhar no QGIS / EMS
+2006-02,180.32,85.71,265.28,432.78,80.95,0.2,0.01,,,chuva+caudal,2,True,False,False,JRC mensal
+2011-01,173.23,76.19,340.85,684.16,90.48,0.0,0.0,,,chuva+caudal,2,False,False,False,JRC mensal
+2013-02,81.09,38.1,293.67,479.38,85.71,0.62,16.89,,,caudal+jrc,2,True,False,False,JRC mensal
+2006-04,43.34,38.1,215.31,609.84,90.48,0.99,10.02,,,caudal+jrc,2,True,False,False,JRC mensal
+2023-12,228.54,100.0,54.31,194.36,60.0,,,9.2,1.09,chuva,1,True,True,True,desenhar no QGIS / EMS
+2025-11,221.9,100.0,49.55,170.25,90.0,,,4.45,0.7,chuva,1,True,True,True,desenhar no QGIS / EMS
+2024-03,217.25,95.24,33.76,80.23,19.05,,,5.81,0.71,chuva,1,True,True,True,desenhar no QGIS / EMS
+2016-12,217.19,95.0,13.64,74.72,15.0,0.98,3.89,53.04,0.14,chuva,1,True,True,False,JRC mensal
+2006-01,211.51,85.71,151.36,270.97,66.67,0.68,1.73,,,chuva,1,True,False,False,JRC mensal
+2021-12,188.61,90.0,41.92,131.81,55.0,0.97,2.17,8.67,0.43,chuva,1,True,True,True,JRC mensal
+2006-12,186.17,85.0,77.17,206.75,70.0,0.99,2.72,,,chuva,1,True,False,False,JRC mensal
+2016-11,183.19,95.0,6.24,16.09,10.0,0.54,2.02,16.66,0.09,chuva,1,True,True,False,JRC mensal
+2014-12,179.54,80.0,39.96,201.14,50.0,0.87,1.03,,,chuva,1,True,False,False,JRC mensal
+2017-02,173.58,80.95,92.12,275.72,42.86,0.97,3.31,40.95,0.6,chuva,1,True,True,True,JRC mensal
+2019-02,171.86,76.19,98.38,236.16,52.38,1.0,3.92,8.5,0.39,chuva,1,True,True,True,JRC mensal
+2022-12,170.41,75.0,111.56,220.66,80.0,,,4.86,0.52,chuva,1,True,True,True,desenhar no QGIS / EMS
+2018-02,170.3,71.43,32.55,132.09,9.52,0.81,1.13,11.68,0.83,chuva,1,True,True,True,JRC mensal
+2022-01,162.96,71.43,165.17,439.56,71.43,,,3.43,0.81,caudal,1,True,True,True,desenhar no QGIS / EMS
+2009-11,162.08,90.0,91.93,457.16,100.0,1.0,1.72,,,caudal,1,True,False,False,JRC mensal
+2020-01,153.46,61.9,115.05,634.88,52.38,0.99,2.89,4.4,0.4,caudal,1,True,True,True,JRC mensal
+2025-01,153.21,57.14,278.04,808.91,85.71,,,6.1,0.7,caudal,1,True,True,True,desenhar no QGIS / EMS
+2012-01,140.59,47.62,80.6,201.12,28.57,0.87,31.09,,,jrc,1,True,False,False,JRC mensal
+2012-12,139.75,55.0,115.55,504.42,85.0,0.67,1.22,,,caudal,1,True,False,False,JRC mensal
+2010-01,139.15,42.86,205.01,461.36,80.95,0.12,0.12,,,caudal,1,True,False,False,JRC mensal
+2019-01,122.94,38.1,42.14,210.97,14.29,0.99,5.22,9.61,0.22,jrc,1,True,True,True,JRC mensal
+2020-02,120.56,61.9,194.64,645.77,66.67,0.78,1.76,2.88,0.76,caudal,1,True,True,True,JRC mensal
+2016-03,97.63,80.95,37.63,79.19,28.57,0.99,5.04,51.16,0.24,jrc,1,True,True,False,JRC mensal
+2010-04,92.87,95.24,230.51,419.97,100.0,0.2,0.0,,,caudal,1,False,False,False,JRC mensal
+2021-03,90.65,57.14,139.92,319.28,71.43,1.0,53.97,6.9,0.66,jrc,1,True,True,True,JRC mensal
+2009-03,83.73,47.62,205.9,477.16,85.71,0.7,2.1,,,caudal,1,True,False,False,JRC mensal
+2012-02,75.11,28.57,41.69,84.62,19.05,0.55,13.3,,,jrc,1,True,False,False,JRC mensal
+2023-03,61.72,14.29,183.09,402.97,80.95,,,58.26,0.88,caudal,1,True,True,True,desenhar no QGIS / EMS
+2021-10,58.49,60.0,5.91,17.61,57.14,1.0,5.71,22.24,-0.4,jrc,1,True,True,True,JRC mensal
+2011-02,45.62,9.52,170.91,405.16,61.9,0.9,1.74,,,caudal,1,True,False,False,JRC mensal
+2026-02,42.61,4.76,482.18,966.88,95.24,,,48.05,0.61,caudal,1,True,True,True,desenhar no QGIS / EMS
+2014-04,30.9,28.57,73.75,158.0,80.95,1.0,32.76,,,jrc,1,True,False,False,JRC mensal
+2020-09,25.95,65.0,2.28,9.29,61.9,1.0,4.58,14.58,-0.19,jrc,1,True,True,True,JRC mensal
+2017-05,23.34,71.43,11.94,40.12,57.14,1.0,4.63,3.78,0.74,jrc,1,True,True,True,JRC mensal
+2021-04,20.39,14.29,17.79,47.28,19.05,1.0,5.08,5.1,0.45,jrc,1,True,True,True,JRC mensal
+2021-09,15.67,15.0,0.79,1.52,38.1,1.0,5.78,17.43,-0.28,jrc,1,True,True,True,JRC mensal
+2007-06,14.79,80.95,3.29,8.28,61.9,0.98,4.97,,,jrc,1,True,False,False,JRC mensal
+2014-07,8.19,33.33,0.74,0.88,23.81,1.0,5.41,,,jrc,1,True,False,False,JRC mensal
+2014-05,7.36,28.57,5.77,12.69,33.33,1.0,4.86,,,jrc,1,True,False,False,JRC mensal

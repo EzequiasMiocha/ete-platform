@@ -1,0 +1,63 @@
+{
+  "name": "train_historico",
+  "description": "Layer 1 (30 m): one row per sampled pixel and month, Landsat + terrain + rain, soil moisture and discharge.",
+  "created_utc": "2026-10-10T06:23:45+00:00",
+  "code_version": "0.1.0",
+  "rows": 670243,
+  "columns": 80,
+  "months": [
+    "2006-01",
+    "2026-01"
+  ],
+  "rows_per_split": {
+    "train": 550344,
+    "val": 79899,
+    "test": 40000
+  },
+  "rows_per_stratum": {
+    "dry_low": 255000,
+    "flood": 210943,
+    "dry_other": 119000,
+    "permanent": 45300,
+    "ems": 40000
+  },
+  "processing": {
+    "dry_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "wet_months": [
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "permanent_water_occurrence": 75,
+    "low_hand_m": 5,
+    "calibration": {
+      "start": "2015-04-01",
+      "end": "2021-12-31"
+    },
+    "overlap": {
+      "start": "2017-01-01",
+      "end": "2021-12-31"
+    },
+    "splits": {
+      "train_end": 2019,
+      "val_end": 2021
+    },
+    "block_size_m": 3000,
+    "n_folds": 5,
+    "seed": 42,
+    "sampling": {
+      "flood": 1500,
+      "permanent": 300,
+      "dry_low": 1500,
+      "dry_other": 700
+    }
+  }
+}

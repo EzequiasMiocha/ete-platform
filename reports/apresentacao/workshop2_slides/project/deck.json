@@ -1,0 +1,160 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-11T09:00:00Z"
+  },
+  "lists": "css",
+  "title": "Workshop 2: IA para monitorizar a água e avisar das cheias",
+  "order": [
+    "capa",
+    "missao",
+    "dia-manha",
+    "dia-tarde",
+    "inquerito",
+    "revisao-luz",
+    "revisao-regra",
+    "revisao-2021",
+    "revisao-2024",
+    "m1",
+    "m1-regras",
+    "m1-ia-ml-dl",
+    "m1-telemovel",
+    "m1-todos-os-dias",
+    "m1-seguranca",
+    "m1-armas",
+    "m1-aprende",
+    "m1-actividade",
+    "m1-gancho",
+    "m2",
+    "m2-modelo",
+    "m2-modelo-exemplos",
+    "m2-dados",
+    "m2-python",
+    "m2-tipos",
+    "m2-supervisionada",
+    "m2-supervisionada-exemplos",
+    "m2-classificacao",
+    "m2-regressao",
+    "m2-treinar",
+    "m2-regressao-rio",
+    "m2-nao-supervisionada",
+    "m2-reforco",
+    "m2-actividade-tipos",
+    "m2-algoritmos",
+    "m2-arvore",
+    "m2-arvore-caixas",
+    "m2-floresta",
+    "m2-floresta-porque",
+    "m2-knn",
+    "m2-rede",
+    "m2-deep-learning",
+    "m2-actividade",
+    "m2-actividade-votar",
+    "quiz",
+    "quiz-1",
+    "quiz-2",
+    "quiz-3",
+    "quiz-4",
+    "quiz-5",
+    "m3",
+    "m3-fluxo",
+    "m3-divisao",
+    "m3-futuro",
+    "m3-rotulos",
+    "m3-regra-de-ouro",
+    "m3-exame-erro",
+    "m3-matriz",
+    "m3-notas",
+    "m3-iou",
+    "m3-notas-regressao",
+    "m3-ajuste",
+    "m3-complexidade",
+    "m3-hiperparametros",
+    "m3-decorar",
+    "m3-verificacao",
+    "m4",
+    "m4-o-que-ve",
+    "m4-cor",
+    "m4-trocos",
+    "m4-anomalias",
+    "m4-ia-turbidez",
+    "m4-nao-mede",
+    "m4-actividade",
+    "m5",
+    "m5-dado-alerta",
+    "m5-gatilhos",
+    "m5-niveis",
+    "m5-paginas",
+    "m5-demo",
+    "m5-oficiais",
+    "m5-actividade",
+    "intervalo",
+    "pratica",
+    "pratica-jupyter",
+    "pratica-aulas",
+    "pratica-aula1",
+    "pratica-aula2",
+    "pratica-anos",
+    "pratica-aula3",
+    "pratica-aula4",
+    "apresentacoes",
+    "resultados",
+    "resultados-2024",
+    "resultados-modelos",
+    "licoes",
+    "continuar",
+    "inquerito-final",
+    "obrigado"
+  ],
+  "sections": {
+    "s-abertura": {
+      "description": "Abertura: o objectivo e o programa do dia, o questionário OAD e a revisão do Workshop 1",
+      "start": "capa"
+    },
+    "s-m1": {
+      "description": "Módulo 1: o que são a Inteligência Artificial, o Machine Learning e o Deep Learning",
+      "start": "m1"
+    },
+    "s-m2": {
+      "description": "Módulo 2: como uma máquina aprende: com rótulos (classificação e regressão), sem rótulos e por reforço, e quatro algoritmos",
+      "start": "m2"
+    },
+    "s-quiz": {
+      "description": "Quiz relâmpago sobre os Módulos 1 e 2, uma pergunta por slide",
+      "start": "quiz"
+    },
+    "s-m3": {
+      "description": "Módulo 3: treino e teste, a matriz de confusão, as notas, subajuste e sobreajuste, hiperparâmetros",
+      "start": "m3"
+    },
+    "s-m4": {
+      "description": "Módulo 4: o que o satélite vê na água, os 9 troços do rio e o que não mede",
+      "start": "m4"
+    },
+    "s-m5": {
+      "description": "Módulo 5: a plataforma EYES TO EARTH, do dado ao alerta",
+      "start": "m5"
+    },
+    "s-pratica": {
+      "description": "Intervalo e prática em pares no Jupyter Notebook: quatro temas (classificação, treino e teste, a qualidade da água e a maré, e regressão), cada um com uma aula guiada e uma prática em que os pares escrevem o código",
+      "start": "intervalo"
+    },
+    "s-resultados": {
+      "description": "Apresentações dos pares e todos os modelos lado a lado",
+      "start": "apresentacoes"
+    },
+    "s-fecho": {
+      "description": "Encerramento: conclusões, questionário final e certificados",
+      "start": "licoes"
+    }
+  },
+  "cover": "capa",
+  "faces": {
+    "archivo-black": {
+      "family": "Archivo Black",
+      "href": "https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+    }
+  },
+  "designSystems": []
+}
