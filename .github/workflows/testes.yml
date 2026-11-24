@@ -3,7 +3,7 @@ name: Testes
 
 on:
   push:
-    paths-ignore: ["docs/**", "data/**", "plataforma/dados/boletim/**", "plataforma/dados/series/**"]
+    paths-ignore: ["docs/**", "data/**", "documentation/**", "plataforma/dados/boletim/**", "plataforma/dados/series/**"]
   pull_request:
   workflow_dispatch:
 
