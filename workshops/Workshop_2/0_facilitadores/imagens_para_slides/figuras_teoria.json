@@ -1,0 +1,15 @@
+{
+ "regressao_estudo": {
+  "a": 1.02,
+  "b": 5.8
+ },
+ "grau_melhor": 3,
+ "arvore_perguntas": [
+  "SWIR ≤ 0,09?",
+  "NIR ≤ 0,28?"
+ ],
+ "knn_votos": {
+  "vegetação": 3,
+  "solo": 2
+ }
+}

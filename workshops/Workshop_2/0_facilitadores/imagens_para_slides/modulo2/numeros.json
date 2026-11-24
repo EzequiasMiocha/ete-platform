@@ -1,0 +1,152 @@
+{
+ "aula1": {
+  "exemplos": 738,
+  "agua": 375,
+  "limite_swir": 0.04010000079870224,
+  "folhas": [
+   375,
+   363
+  ],
+  "hectares": 20300.309999999998,
+  "pixeis_imagem": 815850
+ },
+ "votos": {
+  "agua": 72,
+  "linha": 720,
+  "coluna": 192,
+  "bandas": {
+   "azul": 0.083,
+   "verde": 0.109,
+   "vermelho": 0.116,
+   "nir": 0.116,
+   "swir": 0.045
+  },
+  "profundidade_min": 1,
+  "profundidade_max": 4
+ },
+ "regressao_1_pista": {
+  "a": 0.8343925704695754,
+  "b": 7.472211943425329,
+  "erro_passo_0": 45.73725365543547,
+  "erro_final": 17.859292646187914,
+  "passos": 60
+ },
+ "tabela_dados": [
+  {
+   "pixel": "água: cheia barrenta",
+   "rotulo": "água",
+   "azul": 0.087,
+   "verde": 0.112,
+   "vermelho": 0.14,
+   "nir": 0.067,
+   "swir": 0.011
+  },
+  {
+   "pixel": "água: lagoa",
+   "rotulo": "água",
+   "azul": 0.046,
+   "verde": 0.045,
+   "vermelho": 0.045,
+   "nir": 0.019,
+   "swir": 0.014
+  },
+  {
+   "pixel": "não água: vegetação",
+   "rotulo": "não água",
+   "azul": 0.077,
+   "verde": 0.111,
+   "vermelho": 0.082,
+   "nir": 0.383,
+   "swir": 0.264
+  },
+  {
+   "pixel": "não água: areia",
+   "rotulo": "não água",
+   "azul": 0.321,
+   "verde": 0.39,
+   "vermelho": 0.447,
+   "nir": 0.499,
+   "swir": 0.633
+  }
+ ],
+ "actividade": {
+  "oito": [
+   {
+    "nir": 0.036,
+    "swir": 0.014,
+    "rotulo": "água"
+   },
+   {
+    "nir": 0.454,
+    "swir": 0.299,
+    "rotulo": "não água"
+   },
+   {
+    "nir": 0.077,
+    "swir": 0.034,
+    "rotulo": "água"
+   },
+   {
+    "nir": 0.32,
+    "swir": 0.212,
+    "rotulo": "não água"
+   },
+   {
+    "nir": 0.232,
+    "swir": 0.09,
+    "rotulo": "água"
+   },
+   {
+    "nir": 0.189,
+    "swir": 0.163,
+    "rotulo": "não água"
+   },
+   {
+    "nir": 0.121,
+    "swir": 0.115,
+    "rotulo": "água"
+   },
+   {
+    "nir": 0.352,
+    "swir": 0.245,
+    "rotulo": "não água"
+   }
+  ],
+  "x": {
+   "nir": 0.071,
+   "swir": 0.032,
+   "rotulo": "água"
+  },
+  "y": {
+   "nir": 0.216,
+   "swir": 0.102,
+   "rotulo": "água"
+  },
+  "swir_max_agua": 0.115,
+  "swir_min_terra": 0.163
+ },
+ "linear_aula4": {
+  "pesos": {
+   "caudal_m3s": 0.7235617872244963,
+   "chuva_7d_mm": 1.179034354814557,
+   "chuva_14d_mm": -0.23177647221171427,
+   "chuva_30d_mm": 0.14027925115564138
+  },
+  "intercepto": -6.9089724297430095,
+  "dias_treino": 4719,
+  "dias_teste": 2795
+ },
+ "cheia_2026": {
+  "pico": 2986.9,
+  "dia_pico": "19/01",
+  "previsto_no_pico": 1066.635666756297,
+  "previsto_max": 2391.9361823235263,
+  "dia_previsto_max": "22/01"
+ },
+ "boosting": {
+  "arvores": 100,
+  "erro_1_arvore": 46.223170223392735,
+  "erro_10_arvores": 20.422848940635788,
+  "erro_100_arvores": 16.108748189998394
+ }
+}

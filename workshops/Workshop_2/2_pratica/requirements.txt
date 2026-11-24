@@ -1,0 +1,10 @@
+# Bibliotecas da prática do Workshop 2. O Anaconda já as traz todas.
+# Sem Anaconda, com Python 3.10 ou mais recente:  pip install -r requirements.txt  (cerca de 150 MB de Internet)
+# ou, em Linux, o ambiente só do workshop:  ../criar_ambiente.sh  (ver o LEIA-ME)
+notebook
+ipykernel
+numpy
+pandas
+matplotlib
+scikit-learn
+joblib

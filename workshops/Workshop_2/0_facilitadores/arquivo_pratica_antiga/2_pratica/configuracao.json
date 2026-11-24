@@ -1,0 +1,90 @@
+{
+ "_leia_me": "Configuração dos scripts da prática (pasta scripts/). Mude um valor, guarde (Ctrl + S) e corra o script outra vez. As opções da linha de comandos (por exemplo --arvores 300) têm prioridade sobre este ficheiro. Regras do JSON: texto entre aspas duplas, vírgula entre os valores, null = sem valor, true/false = sim/não. Cada secção tem uma _ajuda que explica as opções; os scripts ignoram tudo o que começa por _.",
+ "classificacao": {
+  "_ajuda": {
+   "modelo": "o algoritmo: floresta, arvore, vizinhos ou rede",
+   "pontos": "ficheiro .json com os pontos marcados, por exemplo os_nossos_pontos.json (null = os pontos da equipa)",
+   "caracteristicas": "o que o modelo vê em cada píxel: azul, verde, vermelho, nir, swir, ndwi, mndwi, ndvi, hand, altitude, declive",
+   "terreno": "true = juntar o terreno (hand, altitude e declive) às características",
+   "raio_do_ponto": "cada ponto marcado vale um quadrado de (2 x raio + 1) x (2 x raio + 1) píxeis",
+   "n_arvores": "número de árvores do Random Forest (mais árvores = votação mais estável, mas mais lenta)",
+   "profundidade_maxima": "quantas perguntas seguidas cada árvore pode fazer (null = sem limite)",
+   "folhas_minimas": "quantos exemplos, no mínimo, em cada folha da árvore (mais = árvore mais simples)",
+   "pesos_das_classes": "null ou \"balanced\" (dar o mesmo peso à água e à terra, mesmo com mais pontos de uma delas)",
+   "limiar": "probabilidade a partir da qual o modelo diz água, de 0 a 1 (mais baixo = encontra mais água, mas com mais falsos alarmes)",
+   "ensinar_ano": "null ou um ano (2014, 2021, 2022, 2024, 2025): junta os pontos da equipa desse ano e treina outra vez",
+   "semente": "número da sorte: o mesmo número dá sempre o mesmo resultado (null = um resultado diferente de cada vez)"
+  },
+  "modelo": "floresta",
+  "pontos": null,
+  "caracteristicas": [
+   "azul",
+   "verde",
+   "vermelho",
+   "nir",
+   "swir",
+   "ndwi",
+   "mndwi",
+   "ndvi"
+  ],
+  "terreno": false,
+  "raio_do_ponto": 2,
+  "n_arvores": 100,
+  "profundidade_maxima": null,
+  "folhas_minimas": 1,
+  "pesos_das_classes": null,
+  "limiar": 0.5,
+  "ensinar_ano": null,
+  "semente": 0
+ },
+ "agrupamento": {
+  "_ajuda": {
+   "k_grupos": "em quantos grupos o K-means divide os píxeis (de 2 a 10)",
+   "inicializacoes": "quantas vezes o K-means recomeça com centros diferentes (fica com a melhor)",
+   "caracteristicas": "o que o K-means compara em cada píxel: azul, verde, vermelho, nir, swir, ndwi, mndwi, ndvi",
+   "semente": "número da sorte: o mesmo número dá sempre o mesmo resultado (null = um resultado diferente de cada vez)"
+  },
+  "k_grupos": 4,
+  "inicializacoes": 3,
+  "caracteristicas": [
+   "azul",
+   "verde",
+   "vermelho",
+   "nir",
+   "swir",
+   "ndwi",
+   "mndwi",
+   "ndvi"
+  ],
+  "semente": 0
+ },
+ "regressao": {
+  "_ajuda": {
+   "dias_a_frente": "prever o caudal daqui a quantos dias (de 1 a 30)",
+   "pistas": "colunas da tabela usadas como pistas: caudal_m3s, chuva_dia_mm, chuva_7d_mm, chuva_14d_mm, chuva_30d_mm",
+   "ultimo_ano_de_treino": "o treino vai até este ano; o exame são os anos seguintes (o exame é o futuro)",
+   "modelo": "linear (a recta) ou arvore (árvore de regressão)",
+   "profundidade": "perguntas seguidas da árvore de regressão (null = sem limite)",
+   "semente": "número da sorte: o mesmo número dá sempre o mesmo resultado (null = um resultado diferente de cada vez)"
+  },
+  "dias_a_frente": 3,
+  "pistas": [
+   "caudal_m3s",
+   "chuva_7d_mm",
+   "chuva_14d_mm",
+   "chuva_30d_mm"
+  ],
+  "ultimo_ano_de_treino": 2018,
+  "modelo": "linear",
+  "profundidade": null,
+  "semente": 0
+ },
+ "saida": {
+  "_ajuda": {
+   "pasta": "pasta dos resultados, dentro de 2_pratica (cada execução cria lá uma pasta nova com a data e a hora)",
+   "guardar_modelo": "true = guardar também o modelo treinado (modelo.joblib), para o usar depois sem treinar outra vez"
+  },
+  "pasta": "resultados",
+  "guardar_modelo": true
+ }
+}
