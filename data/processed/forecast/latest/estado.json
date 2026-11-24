@@ -1,13 +1,11 @@
 {
- "emitido_utc": "2026-11-23T12:57:55+00:00",
+ "emitido_utc": "2026-11-24T13:51:04+00:00",
  "versao_codigo": "0.1.0",
- "fonte": "cache",
- "problemas": [
-  "sem ligação aos serviços de previsão: HTTPError"
- ],
- "data_da_previsao": "2026-11-22",
- "dados_obtidos_utc": "2026-11-23T12:57:20+00:00",
- "idade_dos_dados_horas": 0.0,
+ "fonte": "online",
+ "problemas": [],
+ "data_da_previsao": "2026-11-24",
+ "dados_obtidos_utc": "2026-11-24T13:51:06+00:00",
+ "idade_dos_dados_horas": -0.0,
  "desatualizado": false,
  "cenarios": 51,
  "limites_caudal": {
