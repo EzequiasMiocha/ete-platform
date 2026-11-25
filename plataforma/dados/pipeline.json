@@ -1,5 +1,5 @@
 {
- "executado_utc": "2026-11-24T13:51:08+00:00",
+ "executado_utc": "2026-11-25T13:04:26+00:00",
  "codigo_de_saida": 0,
  "passos": [
   {
@@ -11,14 +11,14 @@
   {
    "passo": "modulo_q",
    "estado": "saltado",
-   "detalhe": "feito no computador do projecto, uma vez por mês",
+   "detalhe": "última actualização há 0 dias",
    "segundos": 0
   },
   {
    "passo": "previsao",
    "estado": "ok",
    "detalhe": "",
-   "segundos": 3.8
+   "segundos": 4.3
   },
   {
    "passo": "pacote",
