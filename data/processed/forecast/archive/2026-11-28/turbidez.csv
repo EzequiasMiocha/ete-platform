@@ -1,0 +1,5 @@
+troco,estado,medicoes_em_20_dias,ultima_medicao,fiabilidade,medicao_usada,dias_elevada,prob_max,dia_prob_max,previsao
+1 montante (norte),sem medição recente,0,,reduzida,,-1,,,sem previsão
+2 troço médio,sem medição recente,0,,boa,,0,0.314,2026-12-06,possível
+3 jusante,sem medição recente,0,,boa,,0,0.229,2026-12-06,pouco provável
+4 foz / estuário,sem medição recente,0,,boa,,0,0.212,2026-12-06,pouco provável

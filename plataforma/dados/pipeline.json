@@ -1,5 +1,5 @@
 {
- "executado_utc": "2026-11-27T12:33:49+00:00",
+ "executado_utc": "2026-11-28T11:54:44+00:00",
  "codigo_de_saida": 0,
  "passos": [
   {
@@ -18,7 +18,7 @@
    "passo": "previsao",
    "estado": "ok",
    "detalhe": "",
-   "segundos": 3.6
+   "segundos": 7.1
   },
   {
    "passo": "pacote",
@@ -36,7 +36,7 @@
    "passo": "whatsapp",
    "estado": "não configurado",
    "detalhe": "nível verde: sem alerta · WhatsApp não configurado (faltam WHATSAPP_TOKEN e WHATSAPP_PHONE_ID); enviadas 0, boas-vindas 0",
-   "segundos": 0.1
+   "segundos": 0.2
   }
  ]
 }

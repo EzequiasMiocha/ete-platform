@@ -1,6 +1,6 @@
 # Boletim ETE - Rio Incomáti, Marracuene
 
-**Emitido:** 2026-11-27 12:33 UTC · **Válido até:** 07/12
+**Emitido:** 2026-11-28 11:54 UTC · **Válido até:** 08/12
 
 ## Nível VERDE nos próximos 10 dias: nenhum cenário prevê cheia no Incomáti em Marracuene.
 
@@ -10,21 +10,21 @@
 
 | Dia | Alerta | Alerta possível | Caudal previsto (m³/s) | Cenários acima do limite laranja | Chuva 7 dias na bacia (mm) |
 |---|---|---|---|---|---|
-| 27/11 | verde | verde | 5 (5 a 5) | 0 % | 18 |
-| 28/11 | verde | verde | 8 (8 a 8) | 0 % | 22 |
-| 29/11 | verde | verde | 22 (22 a 25) | 0 % | 22 |
-| 30/11 | verde | verde | 26 (25 a 31) | 0 % | 21 |
-| 01/12 | verde | verde | 22 (21 a 31) | 0 % | 13 |
-| 02/12 | verde | verde | 19 (16 a 31) | 0 % | 10 |
-| 03/12 | verde | verde | 18 (13 a 34) | 0 % | 10 |
-| 04/12 | verde | verde | 17 (11 a 29) | 0 % | 16 |
-| 05/12 | verde | verde | 16 (10 a 24) | 0 % | 10 |
-| 06/12 | verde | verde | 14 (9 a 20) | 0 % | 11 |
-| 07/12 | verde | verde | 14 (9 a 20) | 0 % | 11 |
+| 28/11 | verde | verde | 8 (8 a 8) | 0 % | 21 |
+| 29/11 | verde | verde | 22 (22 a 23) | 0 % | 21 |
+| 30/11 | verde | verde | 26 (25 a 28) | 0 % | 20 |
+| 01/12 | verde | verde | 21 (21 a 24) | 0 % | 11 |
+| 02/12 | verde | verde | 17 (16 a 23) | 0 % | 8 |
+| 03/12 | verde | verde | 16 (13 a 25) | 0 % | 11 |
+| 04/12 | verde | verde | 14 (11 a 23) | 0 % | 17 |
+| 05/12 | verde | verde | 13 (9 a 20) | 0 % | 16 |
+| 06/12 | verde | verde | 12 (8 a 18) | 0 % | 20 |
+| 07/12 | verde | verde | 10 (7 a 18) | 0 % | 20 |
+| 08/12 | verde | verde | 9 (6 a 34) | 0 % | 20 |
 
 Limites de caudal: amarelo 164, laranja 376, vermelho 970 m³/s. "Alerta" é o nível previsto por pelo menos metade dos 51 cenários; "alerta possível" por pelo menos 20 %.
 
-**Segunda opinião (modelo próprio, só com a chuva já caída):** 28/11: 6, 29/11: 9, 30/11: 11, 02/12: 12, 04/12: 12 m³/s.
+**Segunda opinião (modelo próprio, só com a chuva já caída):** 29/11: 16, 30/11: 20, 01/12: 21, 03/12: 20, 05/12: 17 m³/s.
 
 ## Qualidade da água: turbidez (cor da água vista por satélite)
 
@@ -41,7 +41,7 @@ A água do rio deve ser sempre tratada antes de beber (ferver, ou cloro). Com tu
 
 ## Confiança e limites
 
-- Previsão de caudal: 51 cenários do GloFAS; dados obtidos em 2026-11-27 12:33 UTC.
+- Previsão de caudal: 51 cenários do GloFAS; dados obtidos em 2026-11-28 11:54 UTC.
 - A chuva prevista só é usada como gatilho até 7 dias à frente.
 - Turbidez: índice de cor da água (NDTI) medido por satélite; dois satélites independentes concordam (correlação 0,92 no mesmo dia). A previsão dá maior probabilidade ao dia turvo em mais de 8 de cada 10 comparações entre um dia turvo e um dia normal (AUC 0,87, em anos que o modelo não viu; 0,88 noutro satélite e noutros anos). É um indicador relativo: não há medições no rio para o converter em unidades de turbidez.
 - Os limites dos alertas foram calculados com dados até 2021 e testados em 2022-2026.
